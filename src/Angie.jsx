@@ -205,6 +205,164 @@ const normalizeQuestion = (raw, idx, defaultSubject) => {
   return null;
 };
 
+// ═══════════════════════════════════════════════════════════
+// VALIDADOR DE CALIDAD — analiza un bloque de preguntas (formato compacto)
+// y devuelve un informe estructurado por los 8 ejes.
+// ═══════════════════════════════════════════════════════════
+const FV_REGEX = /\b(se[ñn]ale|indique|marque)\s+la\s+(afirmaci[oó]n\s+)?(verdadera|falsa|correcta|incorrecta)/i;
+const YEAR_REGEX = /\b(18|19|20)\d{2}\b/;
+const AUTHOR_REGEX = /\b[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*(?:,\s+\d{4}|\s+\(\d{4}\)|\s+et\s+al\.,?\s+\d{4})/u;
+const MANUAL_REGEX = /\b(seg[uú]n\s+(belloch|vallejo|caballo|mar[ií]no\s+p[eé]rez|apir|cede|isep)|en\s+el\s+manual|cap[ií]tulo\s+\d+|p[aá]g\.\s*\d+|p\.\s*\d+|tema\s+\d+)\b/i;
+const INTERNAL_REF_REGEX = /\b(como\s+vimos|antes\s+mencionado|ya\s+mencionado|en\s+el\s+tema\s+anterior|recuerda\s+que)\b/i;
+
+const validateBlock = (questions) => {
+  const n = questions.length;
+  if (n === 0) return null;
+
+  const report = {
+    n_total: n,
+    ejes: {},
+    score_global: 0,
+    apto: false,
+    detalles: { por_pregunta: [] }
+  };
+
+  // ─── E3: equilibrio de longitud ───
+  let imbalanced = [];
+  let correct_longest_count = 0;
+  questions.forEach((q, i) => {
+    const opts = q.o ? Object.values(q.o) : [];
+    if (opts.length !== 4) return;
+    const lens = opts.map(o => String(o).length);
+    const correctIdx = ["a","b","c","d"].indexOf(q.c);
+    if (correctIdx < 0) return;
+    const correctLen = lens[correctIdx];
+    const others = lens.filter((_, idx) => idx !== correctIdx);
+    const avgOthers = others.reduce((a,b)=>a+b, 0) / 3;
+    const ratio = avgOthers > 0 ? correctLen / avgOthers : 1;
+    if (correctLen === Math.max(...lens)) correct_longest_count++;
+    if (ratio > 1.25) {
+      imbalanced.push({ idx: i+1, ratio: ratio.toFixed(2), correct_len: correctLen, avg_others: Math.round(avgOthers) });
+    }
+  });
+  const e3_pct_longest = correct_longest_count / n * 100;
+  report.ejes.E3_longitud = {
+    nombre: "Equilibrio de longitud",
+    estado: imbalanced.length === 0 && e3_pct_longest <= 35 ? "ok" : imbalanced.length <= n * 0.15 ? "warn" : "fail",
+    detalle: `Correcta es la más larga: ${correct_longest_count}/${n} (${e3_pct_longest.toFixed(0)}%, esperado ~25%). Desequilibradas (>25% más larga): ${imbalanced.length}.`,
+    items: imbalanced.slice(0, 5)
+  };
+
+  // ─── E4: posición correcta ───
+  const positions = [0, 0, 0, 0];
+  questions.forEach(q => {
+    const idx = ["a","b","c","d"].indexOf(q.c);
+    if (idx >= 0) positions[idx]++;
+  });
+  const expected = n / 4;
+  const max_dev = Math.max(...positions.map(p => Math.abs(p - expected)));
+  const e4_ok = max_dev <= expected * 0.6;
+  report.ejes.E4_posicion = {
+    nombre: "Distribución de posición correcta",
+    estado: e4_ok ? "ok" : "fail",
+    detalle: `Posiciones 1:${positions[0]}  2:${positions[1]}  3:${positions[2]}  4:${positions[3]} (esperado ~${expected.toFixed(1)} cada una).`,
+    items: []
+  };
+
+  // ─── E5: justificaciones autor + año ───
+  let no_year = 0;
+  let no_author = 0;
+  let too_short = 0;
+  let too_long = 0;
+  questions.forEach((q, i) => {
+    const just = q.x || "";
+    if (!YEAR_REGEX.test(just)) no_year++;
+    if (!AUTHOR_REGEX.test(just)) no_author++;
+    if (just.length < 200) too_short++;
+    if (just.length > 900) too_long++;
+  });
+  const e5_ok = no_year <= n * 0.1 && too_short <= n * 0.15;
+  report.ejes.E5_justificacion = {
+    nombre: "Justificaciones (autor+año, longitud)",
+    estado: e5_ok ? "ok" : (no_year + too_short > n * 0.3 ? "fail" : "warn"),
+    detalle: `Sin año: ${no_year}/${n}. Sin autor reconocible: ${no_author}/${n}. Demasiado cortas (<200): ${too_short}. Demasiado largas (>900): ${too_long}.`,
+    items: []
+  };
+
+  // ─── E6: proporción FALSA/VERDADERA ───
+  const fv_count = questions.filter(q => FV_REGEX.test(q.e || "")).length;
+  const fv_pct = fv_count / n * 100;
+  const e6_ok = fv_pct >= 10 && fv_pct <= 35;
+  report.ejes.E6_falsa_verdadera = {
+    nombre: "Proporción FALSA/VERDADERA",
+    estado: e6_ok ? "ok" : "warn",
+    detalle: `${fv_count}/${n} preguntas (${fv_pct.toFixed(0)}%). Objetivo ~20%.`,
+    items: []
+  };
+
+  // ─── E7: pregunta_abierta ───
+  let no_pa = 0;
+  let bad_pa_fv = 0;
+  questions.forEach((q, i) => {
+    if (!q.pa) { no_pa++; return; }
+    // Si la pregunta original es FV, comprobar que la pa NO replica el formato
+    if (FV_REGEX.test(q.e || "") && FV_REGEX.test(q.pa)) {
+      bad_pa_fv++;
+    }
+  });
+  const e7_ok = no_pa === 0 && bad_pa_fv === 0;
+  report.ejes.E7_pregunta_abierta = {
+    nombre: "Pregunta abierta (recall)",
+    estado: e7_ok ? "ok" : (no_pa > n * 0.5 ? "fail" : "warn"),
+    detalle: `Con pregunta_abierta: ${n - no_pa}/${n}. Sin pregunta_abierta: ${no_pa}. ${bad_pa_fv > 0 ? `⚠️ ${bad_pa_fv} replican formato FALSA/VERDADERA (irresolubles sin opciones).` : ""}`,
+    items: []
+  };
+
+  // ─── E8: anonimización ───
+  let manual_mentions = 0;
+  let internal_refs = 0;
+  questions.forEach((q, i) => {
+    const text = (q.e || "") + " " + (q.x || "");
+    if (MANUAL_REGEX.test(text)) manual_mentions++;
+    if (INTERNAL_REF_REGEX.test(text)) internal_refs++;
+  });
+  const e8_ok = manual_mentions === 0 && internal_refs === 0;
+  report.ejes.E8_anonimizacion = {
+    nombre: "Anonimización",
+    estado: e8_ok ? "ok" : "warn",
+    detalle: `Menciones a manuales: ${manual_mentions}. Referencias internas: ${internal_refs}.`,
+    items: []
+  };
+
+  // ─── E1, E2: requieren lectura humana ───
+  report.ejes.E1_fidelidad = {
+    nombre: "Fidelidad académica",
+    estado: "manual",
+    detalle: "Requiere lectura humana: ¿la opción correcta es realmente correcta? El validador no puede juzgarlo.",
+    items: []
+  };
+  report.ejes.E2_distractores = {
+    nombre: "Calidad de distractores",
+    estado: "manual",
+    detalle: "Requiere lectura humana: ¿son plausibles? ¿usan autores reales del campo?",
+    items: []
+  };
+
+  // ─── Score global (sobre los ejes automatizables: E3, E4, E5, E6, E7, E8) ───
+  const auto_ejes = ["E3_longitud", "E4_posicion", "E5_justificacion", "E6_falsa_verdadera", "E7_pregunta_abierta", "E8_anonimizacion"];
+  let score = 0;
+  auto_ejes.forEach(k => {
+    const e = report.ejes[k].estado;
+    if (e === "ok") score += 100/6;
+    else if (e === "warn") score += 50/6;
+    // fail: 0
+  });
+  report.score_global = Math.round(score);
+  report.apto = report.score_global >= 70 && !auto_ejes.some(k => report.ejes[k].estado === "fail");
+
+  return report;
+};
+
 export default function Angie(){
   const[tab,setTab]=useState("home");
   const[step,setStep]=useState(1);
@@ -239,6 +397,7 @@ export default function Angie(){
   const[impText,setImpText]=useState("");
   const[impPreview,setImpPreview]=useState(null);
   const[impMsg,setImpMsg]=useState("");
+  const[impReport,setImpReport]=useState(null);
   const[bankSizes,setBankSizes]=useState({});
 
   // Estado del generador de flashcards desde banco
@@ -517,6 +676,7 @@ export default function Angie(){
   const parseImport = () => {
     setImpMsg("");
     setImpPreview(null);
+    setImpReport(null);
     if (!impText.trim()) { setImpMsg("Pega el JSON antes de previsualizar."); return; }
     let data;
     try {
@@ -543,6 +703,9 @@ export default function Angie(){
       return;
     }
     setImpPreview({ normalized, errors, subject: impSubject });
+    // Ejecutar validación de calidad
+    const rep = validateBlock(normalized);
+    setImpReport(rep);
     setImpMsg(`✓ ${normalized.length} preguntas listas. ${errors.length ? "⚠ "+errors.length+" descartadas." : ""}`);
   };
 
@@ -567,6 +730,7 @@ export default function Angie(){
     showToast(`✅ Banco "${impPreview.subject}" actualizado: ${merged.length} preguntas totales`);
     setImpText("");
     setImpPreview(null);
+    setImpReport(null);
     setImpMsg("");
   };
 
@@ -747,7 +911,7 @@ export default function Angie(){
 
         <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
           <button onClick={parseImport} style={pillBtn(true, {pad:"10px 20px"})}>👁 Previsualizar</button>
-          <button onClick={()=>{setImpText(""); setImpPreview(null); setImpMsg("");}} style={pillBtn(false, {pad:"10px 16px", ghost:true})}>Limpiar</button>
+          <button onClick={()=>{setImpText(""); setImpPreview(null); setImpReport(null); setImpMsg("");}} style={pillBtn(false, {pad:"10px 16px", ghost:true})}>Limpiar</button>
         </div>
 
         {impMsg && (
@@ -759,6 +923,62 @@ export default function Angie(){
             fontSize:13, fontWeight:600
           }}>{impMsg}</div>
         )}
+
+        {impReport && (() => {
+          const r = impReport;
+          const stateColors = {
+            ok: { bg: "#F0FDF4", border: C.ok, text: "#065F46", icon: "✅" },
+            warn: { bg: "#FFFBEB", border: C.warn, text: "#92400E", icon: "⚠️" },
+            fail: { bg: "#FEF2F2", border: C.err, text: "#7F1D1D", icon: "❌" },
+            manual: { bg: C.v50, border: C.v300, text: C.v700, icon: "👁️" }
+          };
+          const scoreColor = r.score_global >= 85 ? C.ok : r.score_global >= 70 ? C.warn : C.err;
+          const scoreLabel = r.score_global >= 85 ? "✅ APTO PARA IMPORTAR" : r.score_global >= 70 ? "⚠️ APTO CON OBSERVACIONES" : "❌ REVISAR ANTES DE IMPORTAR";
+          return (
+            <div style={{marginTop:14, padding:16, background:C.surface, borderRadius:14, border:`2px solid ${scoreColor}`, boxShadow:`0 4px 14px ${scoreColor}20`}}>
+              <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12, flexWrap:"wrap", gap:8}}>
+                <div style={{fontWeight:900, fontSize:15, color:C.ink}}>🔍 Análisis de calidad ({r.n_total} preguntas)</div>
+                <div style={{display:"flex", alignItems:"center", gap:10}}>
+                  <span style={{fontSize:30, fontWeight:900, color:scoreColor, letterSpacing:-1}}>{r.score_global}</span>
+                  <span style={{fontSize:13, fontWeight:700, color:scoreColor}}>/100</span>
+                </div>
+              </div>
+              <div style={{padding:"8px 14px", background:`${scoreColor}15`, borderRadius:10, fontSize:12.5, fontWeight:700, color:scoreColor, marginBottom:14, textAlign:"center"}}>
+                {scoreLabel}
+              </div>
+
+              <div style={{display:"flex", flexDirection:"column", gap:8}}>
+                {Object.entries(r.ejes).map(([key, eje]) => {
+                  const c = stateColors[eje.estado];
+                  return (
+                    <div key={key} style={{padding:"10px 12px", background:c.bg, borderRadius:10, border:`1px solid ${c.border}40`}}>
+                      <div style={{display:"flex", justifyContent:"space-between", gap:8, alignItems:"flex-start", flexWrap:"wrap"}}>
+                        <div style={{flex:1, minWidth:200}}>
+                          <div style={{fontWeight:700, fontSize:13, color:c.text, marginBottom:3}}>
+                            {c.icon} {eje.nombre}
+                          </div>
+                          <div style={{fontSize:11.5, color:c.text, opacity:0.85, lineHeight:1.5}}>{eje.detalle}</div>
+                          {eje.items && eje.items.length > 0 && (
+                            <div style={{marginTop:6, fontSize:11, color:c.text, opacity:0.8, lineHeight:1.5, fontFamily:"ui-monospace, monospace"}}>
+                              {eje.items.map((it, idx) => (
+                                <div key={idx}>· Pregunta {it.idx}: ratio {it.ratio}× ({it.correct_len} vs {it.avg_others} chars promedio)</div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div style={{marginTop:12, padding:10, background:C.v50, borderRadius:10, fontSize:11.5, color:C.v700, lineHeight:1.6}}>
+                <strong>👁️ Ejes manuales (E1, E2):</strong> requieren tu lectura porque no se pueden validar automáticamente.
+                Verifica que la respuesta correcta sea realmente correcta y que los distractores sean plausibles.
+              </div>
+            </div>
+          );
+        })()}
 
         {impPreview && (
           <div style={{marginTop:14, padding:14, background:C.v50, borderRadius:14, border:`1px solid ${C.v200}`}}>
