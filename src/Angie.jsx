@@ -154,6 +154,52 @@ const recencyOf = (qs) => {
 };
 
 // ═══════════════════════════════════════════════════════════
+// LIMPIEZA Y RESUMEN DE ENUNCIADOS
+// cleanQuestion: quita muletillas y reformatea autores. NO trunca.
+//   → uso: frente de flashcards (texto completo, pero limpio)
+// summarizeQuestion: igual + recorta a maxLen para listas.
+//   → uso: errores frecuentes, próximas revisiones
+// ═══════════════════════════════════════════════════════════
+const cleanQuestion = (text) => {
+  if (!text) return "";
+  let s = text.trim();
+  // Prefijos típicos: "Respecto a...", "En relación con...", "Según...", etc.
+  s = s.replace(/^(Respecto a(?:l)?(?: la| las| los)?|En relaci[oó]n con(?: la| el| los| las)?|Acerca de(?: la| el| los| las)?|Sobre(?: la| el| los| las)?|De acuerdo con(?: la| el| los| las)?|Seg[uú]n(?: la| el| los| las)?)\s+/i, "");
+  // Coletillas finales: ", señale la afirmación VERDADERA/FALSA..."
+  s = s.replace(/[,;:]\s*(se[ñn]ale|indique|marque|elija|seleccione|¿cu[aá]l)\b.*$/i, "");
+  // "X propuesto/s/a/as por AUTOR (AÑO)" → "X (AUTOR, AÑO)"
+  s = s.replace(/\s+propuest[oa]s?\s+por\s+([A-ZÁÉÍÓÚÑ][^()]*?)\s*\((\d{4})\)/i, " ($1, $2)");
+  // Limpieza final
+  s = s.replace(/[,;:.\s]+$/, "");
+  if (s.length > 0) s = s.charAt(0).toUpperCase() + s.slice(1);
+  return s;
+};
+
+const summarizeQuestion = (text, maxLen = 70) => {
+  if (!text) return "";
+  let s = text.trim();
+  // Mismos prefijos que cleanQuestion
+  s = s.replace(/^(Respecto a(?:l)?(?: la| las| los)?|En relaci[oó]n con(?: la| el| los| las)?|Acerca de(?: la| el| los| las)?|Sobre(?: la| el| los| las)?|De acuerdo con(?: la| el| los| las)?|Seg[uú]n(?: la| el| los| las)?)\s+/i, "");
+  s = s.replace(/[,;:]\s*(se[ñn]ale|indique|marque|elija|seleccione|¿cu[aá]l)\b.*$/i, "");
+  s = s.replace(/\s+propuest[oa]s?\s+por\s+([A-ZÁÉÍÓÚÑ][^()]*?)\s*\((\d{4})\)/i, " ($1, $2)");
+  // Regla extra: "X de AUTOR (AÑO)" → "X (AUTOR, AÑO)"
+  s = s.replace(/\s+de\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:(?:,\s+|\s+y\s+)[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+){0,3})\s*\((\d{4})\)/, " ($1, $2)");
+  // Cortar continuaciones tipo "para el diagnóstico de...", "presenta como..."
+  s = s.replace(/\s+(para|presenta|tiene|incluye|considera|implica|propone|es cierto|es correcto|se caracteriza)\b[^.]*?\.{2,}.*$/i, "");
+  // Limpieza
+  s = s.replace(/\s*\.{2,}\s*$/, "");
+  s = s.replace(/[,;:.\s]+$/, "");
+  if (s.length > 0) s = s.charAt(0).toUpperCase() + s.slice(1);
+  // Truncado en palabra completa
+  if (s.length > maxLen) {
+    const cut = s.slice(0, maxLen);
+    const lastSpace = cut.lastIndexOf(" ");
+    s = (lastSpace > maxLen * 0.6 ? cut.slice(0, lastSpace) : cut) + "…";
+  }
+  return s;
+};
+
+// ═══════════════════════════════════════════════════════════
 // NORMALIZADOR DE PREGUNTAS IMPORTADAS
 // Acepta dos formatos:
 //  A) Formato compacto (el del BANK original): {id, s, t, origen, convocatoria, pa, e, o:{a,b,c,d}, c, x, r}
@@ -399,6 +445,12 @@ export default function Angie(){
   const[impMsg,setImpMsg]=useState("");
   const[impReport,setImpReport]=useState(null);
   const[bankSizes,setBankSizes]=useState({});
+
+  // Estado del bloque de eliminación de preguntas
+  const[delSubject,setDelSubject]=useState("Clínica Adultos");
+  const[delText,setDelText]=useState("");
+  const[delPreview,setDelPreview]=useState(null);
+  const[delMsg,setDelMsg]=useState("");
 
   // Estado del generador de flashcards desde banco
   const[fcGenSubject,setFcGenSubject]=useState("Clínica Adultos");
@@ -734,6 +786,92 @@ export default function Angie(){
     setImpMsg("");
   };
 
+  // ───────────────────────────────────────────────
+  // ELIMINAR PREGUNTAS DEL BANCO
+  // Acepta: array JSON de IDs, array JSON de objetos (extrae .id),
+  // o texto plano con un ID por línea.
+  // ───────────────────────────────────────────────
+  const parseDelete = () => {
+    setDelMsg("");
+    setDelPreview(null);
+    if (!delText.trim()) { setDelMsg("Pega los IDs o el JSON antes de previsualizar."); return; }
+
+    let ids = [];
+    const raw = delText.trim();
+
+    // Intento 1: parsear como JSON
+    let parsedAsJson = false;
+    try {
+      const data = JSON.parse(raw);
+      parsedAsJson = true;
+      if (Array.isArray(data)) {
+        data.forEach(item => {
+          if (typeof item === "string") ids.push(item);
+          else if (item && typeof item === "object" && item.id) ids.push(item.id);
+        });
+      } else if (data && typeof data === "object" && data.id) {
+        ids.push(data.id);
+      }
+    } catch {
+      // No era JSON válido
+    }
+
+    // Intento 2: si no era JSON o no extrajo nada, tratar como IDs uno por línea
+    if (!parsedAsJson || ids.length === 0) {
+      ids = raw.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0 && !l.startsWith("//"));
+    }
+
+    if (ids.length === 0) {
+      setDelMsg("❌ No se encontraron IDs válidos. Pega un JSON con IDs o un ID por línea.");
+      return;
+    }
+
+    // Deduplicar IDs proporcionados
+    ids = [...new Set(ids)];
+
+    // Buscar coincidencias en el banco de la asignatura seleccionada
+    const subjBank = bank.filter(q => q.s === delSubject);
+    const idSet = new Set(ids);
+    const matched = subjBank.filter(q => idSet.has(q.id));
+    const matchedIds = new Set(matched.map(q => q.id));
+    const notFound = ids.filter(id => !matchedIds.has(id));
+
+    if (matched.length === 0) {
+      setDelMsg(`❌ Ninguno de los ${ids.length} IDs se encontró en "${delSubject}". Comprueba que la asignatura es la correcta.`);
+      return;
+    }
+
+    setDelPreview({ matched, notFound, subject: delSubject, totalProvided: ids.length });
+    setDelMsg(`✓ ${matched.length} coincidencia${matched.length === 1 ? "" : "s"} encontrada${matched.length === 1 ? "" : "s"}${notFound.length > 0 ? ` · ${notFound.length} ID${notFound.length === 1 ? "" : "s"} no encontrado${notFound.length === 1 ? "" : "s"}` : ""}.`);
+  };
+
+  const confirmDelete = async () => {
+    if (!delPreview || delPreview.matched.length === 0) return;
+    if (!confirm(`¿Eliminar definitivamente ${delPreview.matched.length} preguntas de "${delPreview.subject}"?\n\nEsta acción no se puede deshacer.`)) return;
+
+    const k = subjectKey(delPreview.subject);
+    const existing = await load(k, []);
+    const idsToRemove = new Set(delPreview.matched.map(q => q.id));
+    const remaining = existing.filter(q => !idsToRemove.has(q.id));
+
+    const ok = await persistSubject(delPreview.subject, remaining);
+    if (!ok) {
+      setDelMsg("❌ Error al guardar los cambios.");
+      return;
+    }
+
+    // Limpiar también el deck (las flashcards basadas en esas preguntas)
+    const newDeck = deck.filter(c => !idsToRemove.has(c.id));
+    if (newDeck.length !== deck.length) {
+      await saveDeck(newDeck);
+    }
+
+    showToast(`🗑️ ${delPreview.matched.length} preguntas eliminadas de "${delPreview.subject}"`);
+    setDelText("");
+    setDelPreview(null);
+    setDelMsg("");
+  };
+
   const clearSubject = async (subj) => {
     if (!confirm(`¿Borrar TODAS las preguntas de "${subj}"? Esta acción no se puede deshacer.`)) return;
     await persistSubject(subj, []);
@@ -1008,6 +1146,87 @@ export default function Angie(){
         )}
       </div>
 
+      {/* ─── BLOQUE: Eliminar preguntas del banco ─── */}
+      <div style={card({marginBottom:14})}>
+        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>🗑️ Eliminar preguntas del banco</div>
+        <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:14}}>
+          Pega los IDs o el JSON completo de las preguntas que quieras eliminar. Se aceptan tres formatos:
+          <br/>· Una lista de IDs, <strong>uno por línea</strong> (<code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>imp_1234_5</code>).
+          <br/>· Un array JSON de IDs: <code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>["imp_1234_5", "imp_1234_6"]</code>.
+          <br/>· El JSON completo de las preguntas (se extraerán los <code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>id</code> automáticamente).
+        </div>
+
+        <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Asignatura</div>
+        <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14}}>
+          {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).map(s => (
+            <button key={s} onClick={()=>setDelSubject(s)} style={pillBtn(delSubject===s, {pad:"7px 14px", size:12})}>
+              {s} <span style={{opacity:.7, fontSize:10.5, marginLeft:4}}>({bankSizes[s] || 0})</span>
+            </button>
+          ))}
+          {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).length === 0 && (
+            <span style={{fontSize:12, color:C.muted, fontStyle:"italic"}}>No hay preguntas en ningún banco.</span>
+          )}
+        </div>
+
+        <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>IDs o JSON a eliminar</div>
+        <textarea
+          value={delText}
+          onChange={e => setDelText(e.target.value)}
+          placeholder='Pega aquí los IDs (uno por línea), un array JSON ["id1","id2"], o el JSON completo de las preguntas a eliminar.'
+          style={{
+            width:"100%", minHeight:140, padding:12, borderRadius:12,
+            border:`1.5px solid ${C.line}`, fontFamily:"ui-monospace, monospace",
+            fontSize:12, lineHeight:1.5, resize:"vertical", color:C.ink,
+            background:C.bg, outline:"none"
+          }}
+        />
+
+        <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
+          <button onClick={parseDelete} style={pillBtn(true, {pad:"10px 20px"})}>👁 Previsualizar</button>
+          <button onClick={()=>{setDelText(""); setDelPreview(null); setDelMsg("");}} style={pillBtn(false, {pad:"10px 16px", ghost:true})}>Limpiar</button>
+        </div>
+
+        {delMsg && (
+          <div style={{
+            marginTop:12, padding:11, borderRadius:11,
+            background: delMsg.startsWith("❌") ? "#FEF2F2" : delMsg.startsWith("✓") ? "#F0FDF4" : C.v50,
+            border:`1px solid ${delMsg.startsWith("❌") ? C.err+"55" : delMsg.startsWith("✓") ? C.ok+"55" : C.v200}`,
+            color: delMsg.startsWith("❌") ? C.err : delMsg.startsWith("✓") ? "#065F46" : C.v700,
+            fontSize:13, fontWeight:600
+          }}>{delMsg}</div>
+        )}
+
+        {delPreview && delPreview.matched.length > 0 && (
+          <div style={{marginTop:14, padding:14, background:"#FEF2F2", borderRadius:14, border:`1px solid ${C.err}55`}}>
+            <div style={{fontWeight:800, fontSize:13, color:"#7F1D1D", marginBottom:8}}>
+              ⚠️ Se eliminarán {delPreview.matched.length} pregunta{delPreview.matched.length === 1 ? "" : "s"} de "{delPreview.subject}"
+              {delPreview.notFound.length > 0 && <span style={{fontWeight:600, fontSize:11.5, color:C.muted, marginLeft:6}}>· {delPreview.notFound.length} no encontradas</span>}
+            </div>
+            <div style={{maxHeight:200, overflowY:"auto", fontSize:11.5, color:"#7F1D1D", lineHeight:1.6, paddingRight:4}}>
+              {delPreview.matched.slice(0, 8).map((q,i) => (
+                <div key={q.id} style={{padding:"6px 0", borderBottom: i < Math.min(delPreview.matched.length, 8)-1 ? `1px solid ${C.err}22` : "none"}}>
+                  <strong>{i+1}.</strong> {summarizeQuestion(q.e, 90)}
+                  <div style={{fontSize:10, color:C.muted, marginTop:2, fontFamily:"ui-monospace, monospace"}}>{q.id}</div>
+                </div>
+              ))}
+              {delPreview.matched.length > 8 && <div style={{padding:"6px 0", fontStyle:"italic", color:C.muted}}>… y {delPreview.matched.length - 8} más</div>}
+            </div>
+            {delPreview.notFound.length > 0 && (
+              <div style={{marginTop:10, padding:"8px 11px", background:C.v50, borderRadius:10, fontSize:11, color:C.muted, lineHeight:1.5}}>
+                <strong>IDs no encontrados</strong> (en otra asignatura o ya borrados):
+                <div style={{fontFamily:"ui-monospace, monospace", marginTop:4, wordBreak:"break-all"}}>
+                  {delPreview.notFound.slice(0, 5).join(", ")}
+                  {delPreview.notFound.length > 5 && ` … (+${delPreview.notFound.length - 5})`}
+                </div>
+              </div>
+            )}
+            <button onClick={confirmDelete} style={{...pillBtn(true, {pad:"11px 18px"}), background:C.err, marginTop:12, width:"100%", boxShadow:`0 6px 18px ${C.err}40`}}>
+              🗑️ Eliminar {delPreview.matched.length} pregunta{delPreview.matched.length === 1 ? "" : "s"} definitivamente
+            </button>
+          </div>
+        )}
+      </div>
+
       {/* ─── BLOQUE: Generar flashcards desde banco ─── */}
       <div style={card({marginBottom:14})}>
         <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>🃏 Generar flashcards desde el banco</div>
@@ -1211,7 +1430,7 @@ export default function Angie(){
                       <div style={{fontWeight:800, fontSize:12, color:"#7F1D1D", marginBottom:8, letterSpacing:.4}}>🔥 Errores frecuentes</div>
                       {frequentErrors.map((fe, i) => (
                         <div key={fe.q.id} style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8, padding:"6px 0", borderTop: i>0 ? `1px solid ${C.err}22` : "none"}}>
-                          <span style={{fontSize:11.5, color:"#7F1D1D", flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", lineHeight:1.4}}>{fe.q.e}</span>
+                          <span style={{fontSize:11.5, color:"#7F1D1D", flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", lineHeight:1.4, fontWeight:600}}>{summarizeQuestion(fe.q.e)}</span>
                           <span style={{fontSize:11, color:C.err, fontWeight:800, flexShrink:0, background:"#FEE2E2", padding:"2px 8px", borderRadius:99}}>
                             {fe.fails}/{fe.attempts} fallos
                           </span>
@@ -1562,7 +1781,7 @@ export default function Angie(){
                         {hasRecall && <span style={{fontSize:9.5, color:C.v500, fontWeight:700, background:C.v50, padding:"2px 8px", borderRadius:99}}>RECALL</span>}
                         {needsOptions && <span style={{fontSize:9.5, color:C.peachInk, fontWeight:700, background:C.peach, padding:"2px 8px", borderRadius:99}}>CON OPCIONES</span>}
                       </div>
-                      <div style={{fontSize:16, lineHeight:1.85, fontWeight:500, color:C.ink, marginBottom: needsOptions ? 12 : 0}}>{fcCard.pa || fcCard.e}</div>
+                      <div style={{fontSize:16, lineHeight:1.85, fontWeight:500, color:C.ink, marginBottom: needsOptions ? 12 : 0}}>{fcCard.pa || cleanQuestion(fcCard.e)}</div>
                       {needsOptions && (
                         <>
                           <div style={{fontSize:10.5, color:C.peachInk, fontWeight:600, fontStyle:"italic", marginBottom:8, padding:"6px 10px", background:C.peach+"60", borderRadius:8, borderLeft:`3px solid ${C.peachInk}`}}>
@@ -1623,7 +1842,7 @@ export default function Angie(){
           <div style={{fontWeight:800, fontSize:14, color:C.ink, marginBottom:10}}>📅 Próximas revisiones</div>
           {pending.sort((a,b)=>a.next_review.localeCompare(b.next_review)).slice(0,5).map(c => (
             <div key={c.id} style={{display:"flex", justifyContent:"space-between", padding:"9px 0", borderBottom:`1px solid ${C.line}`, gap:8, fontSize:13}}>
-              <span style={{flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", color:C.ink}}>{(c.pa || c.e)?.slice(0,65)}…</span>
+              <span style={{flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", color:C.ink}}>{summarizeQuestion(c.pa || c.e)}</span>
               <span style={{fontSize:11, color:C.v700, whiteSpace:"nowrap", background:C.v50, padding:"3px 9px", borderRadius:99, fontWeight:600}}>📅 {c.next_review}</span>
             </div>
           ))}
