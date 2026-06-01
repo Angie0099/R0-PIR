@@ -156,6 +156,43 @@ const recencyOf = (qs) => {
 };
 
 // ═══════════════════════════════════════════════════════════
+// LIMPIEZA Y RESUMEN DE ENUNCIADOS
+// cleanQuestion: quita muletillas y reformatea autores. NO trunca.
+//   → uso: frente de flashcards (texto completo, pero limpio)
+// summarizeQuestion: igual + recorta a maxLen para listas.
+//   → uso: errores frecuentes, próximas revisiones
+// ═══════════════════════════════════════════════════════════
+const cleanQuestion = (text) => {
+  if (!text) return "";
+  let s = text.trim();
+  s = s.replace(/^(Respecto a(?:l)?(?: la| las| los)?|En relaci[oó]n con(?: la| el| los| las)?|Acerca de(?: la| el| los| las)?|Sobre(?: la| el| los| las)?|De acuerdo con(?: la| el| los| las)?|Seg[uú]n(?: la| el| los| las)?)\s+/i, "");
+  s = s.replace(/[,;:]\s*(se[ñn]ale|indique|marque|elija|seleccione|¿cu[aá]l)\b.*$/i, "");
+  s = s.replace(/\s+propuest[oa]s?\s+por\s+([A-ZÁÉÍÓÚÑ][^()]*?)\s*\((\d{4})\)/i, " ($1, $2)");
+  s = s.replace(/[,;:.\s]+$/, "");
+  if (s.length > 0) s = s.charAt(0).toUpperCase() + s.slice(1);
+  return s;
+};
+
+const summarizeQuestion = (text, maxLen = 70) => {
+  if (!text) return "";
+  let s = text.trim();
+  s = s.replace(/^(Respecto a(?:l)?(?: la| las| los)?|En relaci[oó]n con(?: la| el| los| las)?|Acerca de(?: la| el| los| las)?|Sobre(?: la| el| los| las)?|De acuerdo con(?: la| el| los| las)?|Seg[uú]n(?: la| el| los| las)?)\s+/i, "");
+  s = s.replace(/[,;:]\s*(se[ñn]ale|indique|marque|elija|seleccione|¿cu[aá]l)\b.*$/i, "");
+  s = s.replace(/\s+propuest[oa]s?\s+por\s+([A-ZÁÉÍÓÚÑ][^()]*?)\s*\((\d{4})\)/i, " ($1, $2)");
+  s = s.replace(/\s+de\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:(?:,\s+|\s+y\s+)[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+){0,3})\s*\((\d{4})\)/, " ($1, $2)");
+  s = s.replace(/\s+(para|presenta|tiene|incluye|considera|implica|propone|es cierto|es correcto|se caracteriza)\b[^.]*?\.{2,}.*$/i, "");
+  s = s.replace(/\s*\.{2,}\s*$/, "");
+  s = s.replace(/[,;:.\s]+$/, "");
+  if (s.length > 0) s = s.charAt(0).toUpperCase() + s.slice(1);
+  if (s.length > maxLen) {
+    const cut = s.slice(0, maxLen);
+    const lastSpace = cut.lastIndexOf(" ");
+    s = (lastSpace > maxLen * 0.6 ? cut.slice(0, lastSpace) : cut) + "…";
+  }
+  return s;
+};
+
+// ═══════════════════════════════════════════════════════════
 // NORMALIZADOR DE PREGUNTAS IMPORTADAS
 // Acepta dos formatos:
 //  A) Formato compacto (el del BANK original): {id, s, t, origen, convocatoria, pa, e, o:{a,b,c,d}, c, x, r}
@@ -176,7 +213,8 @@ const normalizeQuestion = (raw, idx, defaultSubject) => {
       o: raw.o,
       c: raw.c,
       x: raw.x || "",
-      r: raw.r || ""
+      r: raw.r || "",
+      v: raw.v || raw.verificacion || null
     };
   }
   // Formato B: el del prompt PIR
@@ -201,7 +239,8 @@ const normalizeQuestion = (raw, idx, defaultSubject) => {
       o,
       c: cMap[raw.respuesta_correcta] || "a",
       x: raw.justificacion_tecnica || raw.x || "",
-      r: raw.referencias || raw.r || ""
+      r: raw.referencias || raw.r || "",
+      v: raw.verificacion || raw.v || raw.estado || null
     };
   }
   return null;
@@ -248,6 +287,9 @@ export default function Angie(){
   const[answers,setAnswers]=useState({});
   const[curQ,setCurQ]=useState(0);
   const[showExpl,setShowExpl]=useState({});
+  const[examStart,setExamStart]=useState(null);   // timestamp de inicio del examen
+  const[examElapsed,setExamElapsed]=useState(0);   // segundos transcurridos
+  const[examEndedEarly,setExamEndedEarly]=useState(false); // entregado sin responder todo
   const examMeta=useRef({subject:"",topics:[]});
   const[deck,setDeck]=useState([]);
   const[stats,setStats]=useState({});
@@ -278,6 +320,7 @@ export default function Angie(){
 
   // Importar: opciones extra
   const[impShuffle,setImpShuffle]=useState(false);   // barajar opciones al importar
+  const[impBalance,setImpBalance]=useState(false);   // equilibrar posición de la clave A/B/C/D
   const importFileRef=useRef(null);                  // input de archivo para importar JSON
   const backupFileRef=useRef(null);                  // input de archivo para restaurar copia
 
@@ -401,6 +444,14 @@ export default function Angie(){
   // Recalcula el espacio usado al abrir la pestaña Importar
   useEffect(() => { if (tab === "import" && !bankLoading) computeStorage(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [tab, bankLoading, bank, deck]);
 
+  // Cronómetro del examen: corre mientras estás en la pantalla de examen
+  useEffect(() => {
+    if (tab !== "exam" || !examStart) return;
+    setExamElapsed(Math.floor((Date.now() - examStart) / 1000));
+    const id = setInterval(() => setExamElapsed(Math.floor((Date.now() - examStart) / 1000)), 1000);
+    return () => clearInterval(id);
+  }, [tab, examStart]);
+
   // Navegación con flechas del teclado (← →) en examen y resultados
   useEffect(() => {
     if (tab !== "exam" && tab !== "results") return;
@@ -518,26 +569,41 @@ export default function Angie(){
     const shuffled = [...pool].sort(()=>Math.random()-0.5).slice(0, examSize);
     const tagged = shuffled.map((q,i) => ({ ...q, numero: i+1, _subject: q.s, _topics: q.t }));
     setQuestions(tagged); setAnswers({}); setCurQ(0); setShowExpl({}); setTab("exam");
+    setExamStart(Date.now()); setExamElapsed(0); setExamEndedEarly(false);
   };
 
   const score = questions.filter((q,i)=>answers[i]===q.c).length;
   const failed = questions.filter((q,i)=>answers[i]!==q.c);
   const pct = questions.length ? Math.round(score/questions.length*100) : 0;
 
-  const submitExam = async () => {
-    if (Object.keys(answers).length < questions.length) {
-      setErr(`Faltan ${questions.length-Object.keys(answers).length} preguntas.`); return;
+  const submitExam = async (force = false) => {
+    const sinResponder = questions.length - Object.keys(answers).length;
+    if (!force && sinResponder > 0) {
+      setErr(`Faltan ${sinResponder} preguntas.`); return;
     }
     setErr("");
+    setExamEndedEarly(sinResponder > 0);
     const { subject:s, topics:t } = examMeta.current;
     if (s && t.length) await updateStats(s,t,score,questions.length);
     await updateQStats(questions, answers);
     setTab("results"); setCurQ(0);
   };
 
+  // Finalizar antes de tiempo: corrige lo respondido y muestra la nota parcial.
+  const endExamEarly = () => {
+    const respondidas = Object.keys(answers).length;
+    if (respondidas === 0) { setErr("Responde al menos una pregunta o vuelve al inicio."); return; }
+    const sinResponder = questions.length - respondidas;
+    const msg = sinResponder > 0
+      ? `¿Finalizar ahora? Has respondido ${respondidas} de ${questions.length}. Las ${sinResponder} sin responder contarán como no acertadas.`
+      : "¿Finalizar y ver la nota?";
+    if (confirm(msg)) submitExam(true);
+  };
+
   // Cierra el examen ya corregido y vuelve al inicio (limpia el estado del examen)
   const finishExam = () => {
     setQuestions([]); setAnswers({}); setShowExpl({}); setCurQ(0); setStep(1); setErr(""); setTab("home");
+    setExamStart(null); setExamElapsed(0); setExamEndedEarly(false);
   };
 
   const addToDeck = async () => {
@@ -644,7 +710,7 @@ export default function Angie(){
     const existing = await load(subjectKey(impSubject), []);
     const existingSigs = new Set(existing.map(qSignature));
     const seen = new Set();
-    let dupExisting = 0, dupInternal = 0, withIssues = 0;
+    let dupExisting = 0, dupInternal = 0, withIssues = 0, withQuality = 0, notVerified = 0;
     normalized = normalized.map(q => {
       const sig = qSignature(q);
       let dup = false;
@@ -652,14 +718,22 @@ export default function Angie(){
       else if (seen.has(sig)) { dup = true; dupInternal++; }
       seen.add(sig);
       const issues = validateQuestion(q);
+      const quality = qualityFlags(q);
       if (issues.length) withIssues++;
-      return { ...q, _dup: dup, _issues: issues };
+      if (quality.length) withQuality++;
+      const verif = q.v ? String(q.v).toUpperCase() : null;
+      const isNotVerified = verif && /NO[_\s]?VERIFICADO|REVISAR|DUDA/.test(verif);
+      if (isNotVerified) notVerified++;
+      return { ...q, _dup: dup, _issues: issues, _quality: quality, _verif: verif, _notVerified: !!isNotVerified };
     });
     const fresh = normalized.filter(q => !q._dup).length;
-    setImpPreview({ normalized, errors, subject: impSubject, dupExisting, dupInternal, withIssues, fresh });
+    const keyDist = keyDistribution(normalized.filter(q => !q._dup));
+    setImpPreview({ normalized, errors, subject: impSubject, dupExisting, dupInternal, withIssues, withQuality, notVerified, fresh, keyDist });
     const parts = [`✓ ${normalized.length} preguntas leídas · ${fresh} nuevas`];
     if (dupExisting + dupInternal) parts.push(`${dupExisting + dupInternal} duplicadas`);
-    if (withIssues) parts.push(`${withIssues} con avisos`);
+    if (withIssues) parts.push(`${withIssues} con errores`);
+    if (withQuality) parts.push(`${withQuality} con avisos de calidad`);
+    if (notVerified) parts.push(`${notVerified} sin verificar`);
     if (errors.length) parts.push(`${errors.length} descartadas`);
     setImpMsg(parts.join(" · "));
   };
@@ -672,19 +746,22 @@ export default function Angie(){
     if (mode === "replace") {
       // En reemplazo, quitamos duplicados internos pero conservamos todo lo del lote
       const seen = new Set();
-      merged = impPreview.normalized.filter(q => {
+      let lote = impPreview.normalized.filter(q => {
         const sig = qSignature(q);
         if (seen.has(sig)) return false;
         seen.add(sig);
         return true;
-      }).map(({ _dup, _issues, ...q }) => q);
+      }).map(({ _dup, _issues, _quality, _verif, _notVerified, ...q }) => q);
+      if (impBalance) lote = balanceKeys(lote);
+      merged = lote;
     } else {
       // append: deduplicar por id Y por contenido
       const ids = new Set(existing.map(q => q.id));
       const sigs = new Set(existing.map(qSignature));
-      const fresh = impPreview.normalized
+      let fresh = impPreview.normalized
         .filter(q => !ids.has(q.id) && !sigs.has(qSignature(q)) && !q._dup)
-        .map(({ _dup, _issues, ...q }) => q);
+        .map(({ _dup, _issues, _quality, _verif, _notVerified, ...q }) => q);
+      if (impBalance) fresh = balanceKeys(fresh);
       merged = [...existing, ...fresh];
     }
     const ok = await persistSubject(impPreview.subject, merged);
@@ -782,6 +859,12 @@ export default function Angie(){
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, " ").trim();
 
+  const fmtTime = (s) => {
+    const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    const pad = (n) => String(n).padStart(2, "0");
+    return h > 0 ? `${h}:${pad(m)}:${pad(sec)}` : `${pad(m)}:${pad(sec)}`;
+  };
+
   const fmtBytes = (b) => b < 1024 ? `${b} B`
     : b < 1024 * 1024 ? `${(b/1024).toFixed(0)} KB`
     : `${(b/1024/1024).toFixed(2)} MB`;
@@ -812,6 +895,104 @@ export default function Angie(){
     if (!String(q.x || "").trim()) issues.push("sin justificación");
     if (!String(q.e || "").trim()) issues.push("sin enunciado");
     return issues;
+  };
+
+  // ═══════════════════════════════════════════════════════════
+  // CONTROL DE CALIDAD · 7 filtros psicométricos por pregunta
+  // (principios de construcción de ítems — Haladyna et al.)
+  // Devuelve array de avisos (no bloquean la subida).
+  // ═══════════════════════════════════════════════════════════
+  const LARGO_MARGEN = 1.25; // margen de tolerancia de longitud (25%)
+  const qualityFlags = (q) => {
+    const flags = [];
+    const keys = Object.keys(q.o || {});
+    const txt = (k) => String(q.o[k] || "").trim();
+    const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    // FILTRO 1 · Equilibrio de longitud: ninguna opción debe destacar por tamaño,
+    // y en especial la correcta no puede ser la más larga (pista clásica de "cue").
+    if (keys.length >= 2) {
+      const lens = keys.map(k => txt(k).length);
+      const max = Math.max(...lens), min = Math.min(...lens.filter(l => l > 0), max);
+      const avg = lens.reduce((a, b) => a + b, 0) / lens.length;
+      if (min > 0 && max / min > LARGO_MARGEN * 1.6) flags.push("opciones de longitud muy dispar");
+      if (keys.includes(q.c) && avg > 0) {
+        const ratio = txt(q.c).length / avg;
+        if (ratio >= LARGO_MARGEN) flags.push("la respuesta correcta es la más larga (posible pista)");
+        else if (ratio <= 1 / LARGO_MARGEN) flags.push("la respuesta correcta es notablemente más corta");
+      }
+    }
+
+    // FILTRO 2 · Anonimato: sin mención a manual, academia o fuente.
+    const hay = norm([q.e, q.x, q.r, ...keys.map(k => q.o[k])].join(" "));
+    const fuentes = [];
+    [/\bapir\b/, /\bcede\b/, /\bpersever\b/, /sistematizacion canonica/, /seg[uú]n el manual/, /\bmanual\b/, /\bacademia\b/, /diapositiva/, /\bapuntes\b/]
+      .forEach(rx => { const m = hay.match(rx); if (m) fuentes.push(m[0]); });
+    if (fuentes.length) flags.push(`menciona la fuente (“${[...new Set(fuentes)].join(", ")}”) — debería ser anónima`);
+
+    // FILTRO 3 · Justificación respaldada con autor y año (o manual diagnóstico).
+    const justif = String(q.x || "");
+    const tieneAutorAnio = /[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+\s*(?:y|,|et al\.?|&)?\s*[A-ZÁÉÍÓÚÑ]?[a-záéíóúñ]*\s*\(?\d{4}\)?/.test(justif)
+      || /\(\s*\d{4}\s*\)/.test(justif);
+    const tieneManualDx = /\b(DSM-?\s?(?:5|IV|V)|CIE-?\s?1[01]|ICD-?1[01])\b/i.test(justif);
+    if (justif.trim() && !tieneAutorAnio && !tieneManualDx) flags.push("la justificación no cita autor y año (ni manual diagnóstico)");
+
+    // FILTRO 4 · Sin "todas/ninguna de las anteriores".
+    if (keys.some(k => /\b(todas|ninguna|ambas|a y b|las anteriores)\b/i.test(txt(k)) && /anterior|correct|verdad|opci/i.test(txt(k))))
+      flags.push("usa «todas/ninguna de las anteriores»");
+
+    // FILTRO 5 · Sin absolutos en distractores ni pistas gramaticales.
+    const absol = /\b(siempre|nunca|jam[aá]s|todo[s]?|ning[uú]n[oa]?|exclusivamente|[uú]nicamente|imposible|cualquier)\b/i;
+    const conAbsoluto = keys.filter(k => absol.test(txt(k)));
+    if (conAbsoluto.length === 1) flags.push("solo una opción usa términos absolutos (siempre/nunca/todo) — la delata");
+
+    // FILTRO 6 · Homogeneidad: las opciones deben ser del mismo registro/longitud de tipo.
+    // Heurística: si una opción es mucho más larga en nº de palabras que la mediana.
+    if (keys.length >= 3) {
+      const words = keys.map(k => txt(k).split(/\s+/).filter(Boolean).length).sort((a, b) => a - b);
+      const median = words[Math.floor(words.length / 2)];
+      const outlier = keys.find(k => median > 0 && txt(k).split(/\s+/).filter(Boolean).length > median * 2.2);
+      if (outlier) flags.push("una opción desentona en formato/extensión del resto");
+    }
+
+    // FILTRO 7 · Enunciado completo y opciones sin duplicados/equivalentes.
+    if (String(q.e || "").trim().length < 25) flags.push("enunciado demasiado corto (¿incompleto?)");
+    const vals = keys.map(k => norm(txt(k))).filter(Boolean);
+    if (new Set(vals).size < vals.length) flags.push("hay opciones equivalentes (posible doble respuesta)");
+
+    return flags;
+  };
+
+  // Distribución de la clave (A/B/C/D) en un conjunto de preguntas.
+  const keyDistribution = (qs) => {
+    const dist = { a: 0, b: 0, c: 0, d: 0 };
+    qs.forEach(q => { if (dist[q.c] !== undefined) dist[q.c]++; });
+    const total = qs.length || 1;
+    const ideal = total / 4;
+    // desviación máxima relativa respecto al 25%
+    const maxDevPct = Math.max(...Object.values(dist).map(n => Math.abs(n - ideal))) / total * 100;
+    return { dist, total, maxDevPct: Math.round(maxDevPct) };
+  };
+
+  // Reasigna la posición de la respuesta correcta para repartir las claves
+  // equitativamente entre A/B/C/D (round-robin). Permuta el contenido de o{} y
+  // actualiza c, conservando qué texto es la respuesta correcta.
+  const balanceKeys = (qs) => {
+    const order = ["a", "b", "c", "d"];
+    const counts = { a: 0, b: 0, c: 0, d: 0 };
+    return qs.map(q => {
+      const keys = Object.keys(q.o);
+      if (keys.length < 2 || !keys.includes(q.c)) return q;
+      // letra destino: la menos usada hasta ahora (entre las posiciones disponibles)
+      const avail = order.filter(k => keys.includes(k));
+      const target = avail.reduce((best, k) => counts[k] < counts[best] ? k : best, avail[0]);
+      counts[target]++;
+      if (target === q.c) return q; // ya está donde toca
+      const newO = { ...q.o };
+      // intercambiar textos de q.c y target
+      const tmp = newO[target]; newO[target] = newO[q.c]; newO[q.c] = tmp;
+      return { ...q, o: newO, c: target };
+    });
   };
 
   // Baraja el orden de las opciones recolocando la respuesta correcta.
@@ -972,14 +1153,26 @@ export default function Angie(){
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9áéíóúñ ]/gi, " ").replace(/\s+/g, " ").trim();
   // ¿La respuesta escrita coincide razonablemente con la esperada?
-  const schemaMatch = (written, expected) => {
-    const a = normTxt(written), b = normTxt(expected);
-    if (!a) return false;
-    if (a === b) return true;
-    // coincidencia si uno contiene al otro (para respuestas largas) y es suficientemente sustancial
-    if (b.length >= 4 && (a.includes(b) || b.includes(a))) return true;
-    return false;
+  // Palabras significativas (ignora artículos, preposiciones y términos vacíos)
+  const STOP = new Set(["de","la","el","los","las","un","una","unos","unas","y","o","u","a","en","con","por","para","del","al","se","su","sus","que","es","como","mas","más","segun","según","entre","sobre"]);
+  const sigWords = (s) => normTxt(s).split(" ").filter(w => w.length >= 3 && !STOP.has(w));
+
+  // Puntuación parcial 0–1: fracción de palabras clave de la respuesta esperada
+  // que aparecen en lo que el usuario escribió. Con 1 palabra acertada ya puntúa.
+  const schemaScore = (written, expected) => {
+    const exp = sigWords(expected);
+    if (exp.length === 0) {
+      // respuesta sin palabras significativas: comparación directa indulgente
+      return normTxt(written) && normTxt(written) === normTxt(expected) ? 1 : 0;
+    }
+    const got = new Set(sigWords(written));
+    if (got.size === 0) return 0;
+    const hits = exp.filter(w => got.has(w) || [...got].some(g => g.includes(w) || w.includes(g))).length;
+    return Math.min(1, hits / exp.length);
   };
+
+  // ¿Cuenta como acertada? Basta con acertar algo (1 palabra clave) → umbral bajo.
+  const schemaMatch = (written, expected) => schemaScore(written, expected) > 0;
 
   const parseSchemaImport = () => {
     setImpSchemaMsg(""); setImpSchemaPreview(null);
@@ -1049,12 +1242,12 @@ export default function Angie(){
     return out;
   };
 
-  // Genera opciones para el nivel 2: la correcta + hasta 3 distractores de OTRAS
-  // casillas del mismo esquema (o de otros esquemas de la asignatura si faltan).
+  // Genera opciones para el nivel 2: la correcta + 4 distractores MUY PARECIDOS
+  // (prioriza respuestas que comparten alguna palabra clave con la correcta),
+  // tomados de otras casillas del mismo esquema o de la misma asignatura.
   const buildSchemaOptions = (sc, keys) => {
     const flat = schemaFlat(sc);
     const pool = flat.map(f => f.respuesta);
-    // refuerzo con otras respuestas de la misma asignatura
     const extra = schemas.filter(x => x.s === sc.s && x.id !== sc.id)
       .flatMap(x => schemaFlat(x).map(f => f.respuesta));
     const allPool = [...new Set([...pool, ...extra])];
@@ -1062,10 +1255,15 @@ export default function Angie(){
     keys.forEach(k => {
       const correct = flat.find(f => f.key === k)?.respuesta;
       if (correct == null) return;
+      const correctWords = new Set(sigWords(correct));
       const candidates = allPool.filter(v => v !== correct);
-      // baraja candidatos
-      for (let i = candidates.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [candidates[i],candidates[j]]=[candidates[j],candidates[i]]; }
-      const distractors = candidates.slice(0, 3);
+      // similitud: nº de palabras clave compartidas con la correcta
+      const scored = candidates.map(v => {
+        const w = sigWords(v);
+        const shared = w.filter(x => correctWords.has(x)).length;
+        return { v, shared, rnd: Math.random() };
+      }).sort((a, b) => (b.shared - a.shared) || (a.rnd - b.rnd));
+      const distractors = scored.slice(0, 4).map(x => x.v);
       const choices = [correct, ...distractors];
       for (let i = choices.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [choices[i],choices[j]]=[choices[j],choices[i]]; }
       opts[k] = choices;
@@ -1073,10 +1271,9 @@ export default function Angie(){
     return opts;
   };
 
-  // Pasar al nivel 2 (reconocimiento) usando los huecos fallados
+  // Pasar al nivel 2 (reconocimiento): mismo esquema completo, pero con opciones
   const goSchemaLevel2 = (sc) => {
-    const failedKeys = schemaFlat(sc).filter(f => !schemaMatch(schAnswers[f.key], f.respuesta)).map(f => f.key);
-    const keys = failedKeys.length ? failedKeys : schemaFlat(sc).map(f => f.key);
+    const keys = schemaFlat(sc).map(f => f.key);
     setSchOptions(buildSchemaOptions(sc, keys));
     setSchFocus(keys);
     setSchChoice({}); setSchChoiceRev(false);
@@ -1232,9 +1429,10 @@ export default function Angie(){
       const flat = schemaFlat(current);
       const itemByKey = (k) => { const [si, ii] = k.split("_").map(Number); return current.secciones[si].items[ii]; };
 
-      // ── NIVEL 2: reconocimiento (elegir entre conceptos) ──
+      // ── NIVEL 2: reconocimiento (mismo esquema, con 5 opciones por hueco) ──
       if (schLevel === 2) {
         const keys = schFocus || flat.map(f => f.key);
+        const keySet = new Set(keys);
         let nCorrect = 0;
         if (schChoiceRev) keys.forEach(k => { if (schemaMatch(schChoice[k], itemByKey(k).respuesta)) nCorrect++; });
         const pct2 = keys.length ? Math.round(nCorrect / keys.length * 100) : 0;
@@ -1246,11 +1444,12 @@ export default function Angie(){
                 <div>
                   <div style={{fontSize:11, fontWeight:800, color:C.v500, letterSpacing:1.5}}>🔡 NIVEL 2 · RECONOCIMIENTO</div>
                   <div style={{fontWeight:900, fontSize:18, color:C.ink, letterSpacing:-.3, marginTop:3}}>{current.t}</div>
+                  <div style={{fontSize:12, color:C.muted, marginTop:2}}>{current.s}</div>
                 </div>
                 <button onClick={restartSchema} style={pillBtn(false, {pad:"8px 14px", ghost:true})}>↺ Empezar de nuevo</button>
               </div>
               <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6}}>
-                Elige el concepto correcto entre las opciones. Son los huecos que fallaste al evocar: reconocerlos ahora prepara el reintento final.
+                Mismo esquema, ahora con opciones. Elige en cada hueco la palabra correcta entre las 5 alternativas (son muy parecidas, fíjate bien).
               </div>
               {schChoiceRev && (
                 <div style={{marginTop:12, padding:"10px 14px", borderRadius:14, background: pct2>=70?"#F0FDF4":pct2>=40?"#FFFBEB":"#FEF2F2", border:`1px solid ${pct2>=70?C.ok:pct2>=40?C.warn:C.err}44`, fontSize:13, fontWeight:700, color: pct2>=70?"#065F46":pct2>=40?"#92400E":"#7F1D1D"}}>
@@ -1259,29 +1458,40 @@ export default function Angie(){
               )}
             </div>
 
-            {keys.map(k => {
-              const it = itemByKey(k);
-              const opts = schOptions[k] || [it.respuesta];
+            {current.secciones.map((sec, si) => {
+              const visibleItems = sec.items.map((it, ii) => ({ it, ii, key: `${si}_${ii}` })).filter(x => keySet.has(x.key));
+              if (visibleItems.length === 0) return null;
               return (
-                <div key={k} style={card({marginBottom:10})}>
-                  {it.pista && <div style={{fontSize:13.5, fontWeight:800, color:C.v700, marginBottom:9}}>{it.pista}</div>}
-                  <div style={{display:"flex", flexDirection:"column", gap:7}}>
-                    {opts.map((opt, oi) => {
-                      const chosen = schChoice[k] === opt;
-                      const isCorrect = schemaMatch(opt, it.respuesta);
-                      let bg = C.surface, brd = C.line, col = C.ink;
-                      if (schChoiceRev) {
-                        if (isCorrect) { bg = "#F0FDF4"; brd = C.ok; col = "#065F46"; }
-                        else if (chosen) { bg = "#FEF2F2"; brd = C.err; col = "#7F1D1D"; }
-                      } else if (chosen) { bg = `linear-gradient(135deg, ${C.v700}, ${C.v500})`; brd = C.v600; col = "#fff"; }
+                <div key={si} style={card({marginBottom:12})}>
+                  {sec.titulo && <div style={{fontWeight:800, fontSize:14.5, color:C.ink, marginBottom:12, paddingBottom:9, borderBottom:`2px solid ${C.v100}`}}>{sec.titulo}</div>}
+                  <div style={{display:"flex", flexDirection:"column", gap:14}}>
+                    {visibleItems.map(({ it, key }) => {
+                      const opts = schOptions[key] || [it.respuesta];
                       return (
-                        <button key={oi} disabled={schChoiceRev}
-                          onClick={()=>{ if (!schChoiceRev) setSchChoice(p=>({...p, [k]:opt})); }}
-                          style={{display:"flex", gap:10, alignItems:"flex-start", padding:"11px 14px", borderRadius:12, border:`2px solid ${brd}`, background:bg, color:col, cursor: schChoiceRev?"default":"pointer", textAlign:"left", fontSize:13.5, lineHeight:1.5, fontFamily:"inherit"}}>
-                          <span style={{flex:1}}>{opt}</span>
-                          {schChoiceRev && isCorrect && <span style={{fontWeight:800}}>✓</span>}
-                          {schChoiceRev && chosen && !isCorrect && <span style={{fontWeight:800}}>✗</span>}
-                        </button>
+                        <div key={key} style={{display:"flex", gap:10, alignItems:"flex-start", flexWrap:"wrap"}}>
+                          {it.pista && <div style={{flex:"0 0 auto", minWidth:90, maxWidth:200, fontSize:13, fontWeight:700, color:C.v700, paddingTop:4}}>{it.pista}</div>}
+                          <div style={{flex:1, minWidth:200, display:"flex", flexDirection:"column", gap:6}}>
+                            {opts.map((opt, oi) => {
+                              const chosen = schChoice[key] === opt;
+                              const isCorrect = schemaMatch(opt, it.respuesta);
+                              let bg = C.surface, brd = C.line, col = C.ink;
+                              if (schChoiceRev) {
+                                if (isCorrect) { bg = "#F0FDF4"; brd = C.ok; col = "#065F46"; }
+                                else if (chosen) { bg = "#FEF2F2"; brd = C.err; col = "#7F1D1D"; }
+                              } else if (chosen) { bg = `linear-gradient(135deg, ${C.v700}, ${C.v500})`; brd = C.v600; col = "#fff"; }
+                              return (
+                                <button key={oi} disabled={schChoiceRev}
+                                  onClick={()=>{ if (!schChoiceRev) setSchChoice(p=>({...p, [key]:opt})); }}
+                                  style={{display:"flex", gap:10, alignItems:"flex-start", padding:"9px 13px", borderRadius:11, border:`2px solid ${brd}`, background:bg, color:col, cursor: schChoiceRev?"default":"pointer", textAlign:"left", fontSize:13, lineHeight:1.45, fontFamily:"inherit"}}>
+                                  <span style={{fontWeight:800, color: chosen&&!schChoiceRev?"#fff":C.v500, minWidth:18}}>{String.fromCharCode(97+oi)})</span>
+                                  <span style={{flex:1}}>{opt}</span>
+                                  {schChoiceRev && isCorrect && <span style={{fontWeight:800}}>✓</span>}
+                                  {schChoiceRev && chosen && !isCorrect && <span style={{fontWeight:800}}>✗</span>}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
                       );
                     })}
                   </div>
@@ -1305,9 +1515,10 @@ export default function Angie(){
       const isL3 = schLevel === 3;
       const visibleKeys = isL3 && schFocus ? schFocus : flat.map(f => f.key);
       const visibleSet = new Set(visibleKeys);
-      let totalItems = 0, correctItems = 0;
-      visibleKeys.forEach(k => { totalItems++; if (schRevealed && schemaMatch(schAnswers[k], itemByKey(k).respuesta)) correctItems++; });
-      const pct = totalItems ? Math.round(correctItems / totalItems * 100) : 0;
+      let totalItems = 0, scoreSum = 0;
+      visibleKeys.forEach(k => { totalItems++; if (schRevealed) scoreSum += schemaScore(schAnswers[k], itemByKey(k).respuesta); });
+      const correctItems = Math.round(scoreSum * 10) / 10; // con un decimal
+      const pct = totalItems ? Math.round(scoreSum / totalItems * 100) : 0;
       const lowScore = schRevealed && pct < 60;
 
       return wrap(
@@ -1342,7 +1553,11 @@ export default function Angie(){
                 <div style={{display:"flex", flexDirection:"column", gap:10}}>
                   {visibleItems.map(({ it, key }) => {
                     const written = schAnswers[key] || "";
-                    const ok = schRevealed && schemaMatch(written, it.respuesta);
+                    const sc = schRevealed ? schemaScore(written, it.respuesta) : 0;
+                    const scPct = Math.round(sc * 100);
+                    const full = sc >= 0.999, partial = sc > 0 && !full;
+                    const bdColor = !schRevealed ? C.line : full ? C.ok : partial ? C.warn : C.err;
+                    const bgColor = !schRevealed ? C.surface : full ? "#F0FDF4" : partial ? "#FFFBEB" : "#FEF2F2";
                     return (
                       <div key={key} style={{display:"flex", gap:10, alignItems:"flex-start", flexWrap:"wrap"}}>
                         {it.pista && <div style={{flex:"0 0 auto", minWidth:90, maxWidth:200, fontSize:13, fontWeight:700, color:C.v700, paddingTop:9}}>{it.pista}</div>}
@@ -1353,11 +1568,10 @@ export default function Angie(){
                             disabled={schRevealed}
                             placeholder="Escribe lo que recuerdes…"
                             style={{width:"100%", padding:"9px 13px", borderRadius:11, fontSize:13.5, color:C.ink, fontFamily:"inherit", outline:"none",
-                              border:`1.5px solid ${schRevealed ? (ok?C.ok:C.warn) : C.line}`,
-                              background: schRevealed ? (ok?"#F0FDF4":"#FFFBEB") : C.surface}}/>
+                              border:`1.5px solid ${bdColor}`, background: bgColor}}/>
                           {schRevealed && (
-                            <div style={{marginTop:5, fontSize:12.5, lineHeight:1.5, color: ok?"#065F46":"#92400E"}}>
-                              {ok ? "✓ " : "✗ Respuesta: "}<strong>{it.respuesta}</strong>
+                            <div style={{marginTop:5, fontSize:12.5, lineHeight:1.5, color: full?"#065F46":partial?"#92400E":"#7F1D1D"}}>
+                              {full ? "✓ " : partial ? `◐ ${scPct}% · ` : "✗ "}<strong>{it.respuesta}</strong>
                             </div>
                           )}
                         </div>
@@ -1505,6 +1719,10 @@ export default function Angie(){
           <input type="checkbox" checked={impShuffle} onChange={e=>setImpShuffle(e.target.checked)} style={{width:16, height:16, accentColor:C.v600, cursor:"pointer"}} />
           Barajar el orden de las opciones al importar <span style={{color:C.muted}}>(evita memorizar la letra)</span>
         </label>
+        <label style={{display:"flex", alignItems:"center", gap:8, marginTop:8, fontSize:12.5, color:C.ink, cursor:"pointer", userSelect:"none"}}>
+          <input type="checkbox" checked={impBalance} onChange={e=>setImpBalance(e.target.checked)} style={{width:16, height:16, accentColor:C.v600, cursor:"pointer"}} />
+          Equilibrar la posición de la respuesta correcta <span style={{color:C.muted}}>(reparte la clave entre A/B/C/D)</span>
+        </label>
 
         <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
           <button onClick={parseImport} style={pillBtn(true, {pad:"10px 20px"})}>👁 Previsualizar</button>
@@ -1533,24 +1751,88 @@ export default function Angie(){
                 <span style={{padding:"3px 10px", borderRadius:99, background:"#FFFBEB", color:"#92400E", border:`1px solid ${C.warn}55`}}>{impPreview.dupExisting + impPreview.dupInternal} duplicadas (se omiten)</span>
               )}
               {impPreview.withIssues > 0 && (
-                <span style={{padding:"3px 10px", borderRadius:99, background:"#FEF2F2", color:C.err, border:`1px solid ${C.err}44`}}>{impPreview.withIssues} con avisos</span>
+                <span style={{padding:"3px 10px", borderRadius:99, background:"#FEF2F2", color:C.err, border:`1px solid ${C.err}44`}}>{impPreview.withIssues} con errores</span>
+              )}
+              {impPreview.withQuality > 0 && (
+                <span style={{padding:"3px 10px", borderRadius:99, background:"#FFFBEB", color:"#92400E", border:`1px solid ${C.warn}55`}}>{impPreview.withQuality} con avisos de calidad</span>
+              )}
+              {impPreview.notVerified > 0 && (
+                <span style={{padding:"3px 10px", borderRadius:99, background:"#FEF2F2", color:"#7F1D1D", border:`1px solid ${C.err}44`}}>{impPreview.notVerified} sin verificar</span>
               )}
               {impPreview.errors.length > 0 && (
                 <span style={{padding:"3px 10px", borderRadius:99, background:C.surface, color:C.muted, border:`1px solid ${C.line}`}}>{impPreview.errors.length} descartadas</span>
               )}
             </div>
-            <div style={{maxHeight:200, overflowY:"auto", fontSize:11.5, color:C.muted, lineHeight:1.6}}>
-              {impPreview.normalized.slice(0, 8).map((q,i) => (
-                <div key={i} style={{padding:"6px 0", borderBottom:`1px solid ${C.v100}`, opacity: q._dup ? .5 : 1}}>
-                  <strong style={{color:C.ink}}>{i+1}.</strong> {q.e.slice(0, 100)}…
-                  <div style={{fontSize:10.5, marginTop:2, display:"flex", gap:6, flexWrap:"wrap"}}>
-                    <span style={{color:C.v500}}>Tema: {(q.t||[]).join(", ")}</span>
-                    {q._dup && <span style={{color:C.warn, fontWeight:700}}>· duplicada</span>}
-                    {q._issues && q._issues.length > 0 && <span style={{color:C.err, fontWeight:700}}>· ⚠ {q._issues.join(", ")}</span>}
+            {(impPreview.withIssues > 0 || impPreview.withQuality > 0 || impPreview.notVerified > 0) && (
+              <div style={{marginBottom:10, padding:"9px 12px", borderRadius:11, background:"#FFFBEB", border:`1px solid ${C.warn}55`, fontSize:12, color:"#78350F", fontWeight:600, lineHeight:1.55}}>
+                🔍 Revisa abajo las preguntas marcadas antes de subir. <strong style={{color:C.err}}>Rojo</strong> = error de formato · <strong style={{color:"#92400E"}}>ámbar</strong> = aviso de calidad (respuesta más larga, menciona el manual…) · <strong>sin verificar</strong> = tu prompt la marcó para revisión. Puedes subirlas igual y corregirlas luego en «Revisar y depurar».
+              </div>
+            )}
+            {impPreview.keyDist && impPreview.keyDist.total > 0 && (() => {
+              const { dist, total, maxDevPct } = impPreview.keyDist;
+              const desequilibrada = maxDevPct > 15;
+              return (
+                <div style={{marginBottom:10, padding:"11px 13px", borderRadius:11, background: desequilibrada ? "#FFFBEB" : "#F0FDF4", border:`1px solid ${desequilibrada ? C.warn : C.ok}44`}}>
+                  <div style={{fontSize:12, fontWeight:800, color: desequilibrada ? "#92400E" : "#065F46", marginBottom:8}}>
+                    {desequilibrada ? "⚠ Distribución de la respuesta correcta desequilibrada" : "✓ Distribución de la respuesta correcta equilibrada"}
                   </div>
+                  <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
+                    {["a","b","c","d"].map(letter => {
+                      const n = dist[letter] || 0;
+                      const pct = Math.round(n / total * 100);
+                      return (
+                        <div key={letter} style={{flex:1, minWidth:60, textAlign:"center"}}>
+                          <div style={{fontSize:10.5, fontWeight:700, color:C.muted, marginBottom:3}}>{letter.toUpperCase()}</div>
+                          <div style={{background:C.surface, borderRadius:8, overflow:"hidden", height:34, position:"relative", border:`1px solid ${C.line}`}}>
+                            <div style={{position:"absolute", bottom:0, left:0, right:0, height:`${Math.max(6,pct)}%`, background: desequilibrada ? C.warn : C.ok, opacity:.35}}/>
+                            <div style={{position:"relative", fontSize:12, fontWeight:800, color:C.ink, lineHeight:"34px"}}>{n} · {pct}%</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {desequilibrada && !impBalance && (
+                    <div style={{marginTop:9, fontSize:11.5, color:"#78350F", lineHeight:1.5}}>
+                      Lo ideal es ~25% en cada letra. Marca <strong>«Equilibrar la posición de la respuesta correcta»</strong> arriba y vuelve a previsualizar para repartirla automáticamente.
+                    </div>
+                  )}
+                  {impBalance && (
+                    <div style={{marginTop:9, fontSize:11.5, color:"#065F46", fontWeight:600, lineHeight:1.5}}>
+                      ✓ Al subir se reequilibrará automáticamente entre A/B/C/D.
+                    </div>
+                  )}
                 </div>
-              ))}
-              {impPreview.normalized.length > 8 && <div style={{padding:"6px 0", fontStyle:"italic"}}>… y {impPreview.normalized.length - 8} más</div>}
+              );
+            })()}
+            <div style={{maxHeight:280, overflowY:"auto", fontSize:11.5, color:C.muted, lineHeight:1.6}}>
+              {impPreview.normalized.map((q,i) => {
+                const hasIssue = q._issues && q._issues.length > 0;
+                const hasQuality = q._quality && q._quality.length > 0;
+                const bg = hasIssue ? "#FEF2F2" : (hasQuality || q._notVerified) ? "#FFFBEB" : "transparent";
+                const brd = hasIssue ? `${C.err}33` : (hasQuality || q._notVerified) ? `${C.warn}44` : C.v100;
+                return (
+                  <div key={i} style={{padding:"8px 10px", marginBottom:5, borderRadius:9,
+                    background: bg, border: `1px solid ${brd}`, opacity: q._dup ? .55 : 1}}>
+                    <strong style={{color:C.ink}}>{i+1}.</strong> {summarizeQuestion(q.e, 110)}
+                    <div style={{fontSize:10.5, marginTop:3, display:"flex", gap:6, flexWrap:"wrap"}}>
+                      <span style={{color:C.v500}}>Tema: {(q.t||[]).join(", ") || "—"}</span>
+                      <span style={{color:C.muted}}>· {Object.keys(q.o||{}).length} opciones · correcta {q.c}</span>
+                      {q._dup && <span style={{color:C.warn, fontWeight:700}}>· duplicada (se omite)</span>}
+                      {q._verif && <span style={{fontWeight:700, color: q._notVerified ? "#7F1D1D" : "#065F46"}}>· {q._notVerified ? "⚠ sin verificar" : "✓ verificada"}</span>}
+                    </div>
+                    {hasIssue && (
+                      <div style={{marginTop:5, fontSize:11, color:C.err, fontWeight:700, background:"#fff", borderRadius:7, padding:"5px 8px"}}>
+                        ⛔ Error de formato: {q._issues.join(" · ")}
+                      </div>
+                    )}
+                    {hasQuality && (
+                      <div style={{marginTop:5, fontSize:11, color:"#92400E", fontWeight:600, background:"#fff", borderRadius:7, padding:"5px 8px", lineHeight:1.5}}>
+                        ⚠ Calidad: {q._quality.join(" · ")}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
               <button onClick={()=>confirmImport("append")} disabled={impPreview.fresh===0} style={{...pillBtn(true, {pad:"10px 18px"}), background: impPreview.fresh===0 ? "#A0AEC0" : C.ok, cursor: impPreview.fresh===0 ? "not-allowed":"pointer"}}>
@@ -1969,7 +2251,7 @@ export default function Angie(){
                       <div style={{fontWeight:800, fontSize:12, color:"#7F1D1D", marginBottom:8, letterSpacing:.4}}>🔥 Errores frecuentes</div>
                       {frequentErrors.map((fe, i) => (
                         <div key={fe.q.id} style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8, padding:"6px 0", borderTop: i>0 ? `1px solid ${C.err}22` : "none"}}>
-                          <span style={{fontSize:11.5, color:"#7F1D1D", flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", lineHeight:1.4}}>{fe.q.e}</span>
+                          <span style={{fontSize:11.5, color:"#7F1D1D", flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", lineHeight:1.4, fontWeight:600}}>{summarizeQuestion(fe.q.e)}</span>
                           <span style={{fontSize:11, color:C.err, fontWeight:800, flexShrink:0, background:"#FEE2E2", padding:"2px 8px", borderRadius:99}}>
                             {fe.fails}/{fe.attempts} fallos
                           </span>
@@ -2175,9 +2457,12 @@ export default function Angie(){
         <div style={{background:C.v100, borderRadius:99, height:7, marginBottom:6, overflow:"hidden"}}>
           <div style={{background:`linear-gradient(90deg, ${C.v700}, ${C.v500})`, borderRadius:99, height:7, width:`${prog}%`, transition:"width .35s"}}/>
         </div>
-        <div style={{fontSize:12, color:C.muted, marginBottom:14, display:"flex", justifyContent:"space-between"}}>
+        <div style={{fontSize:12, color:C.muted, marginBottom:14, display:"flex", justifyContent:"space-between", alignItems:"center"}}>
           <span style={{color:C.v700, fontWeight:700}}>{examMeta.current.subject}</span>
-          <span style={{fontWeight:600}}>{Object.keys(answers).length}/{questions.length}</span>
+          <span style={{display:"flex", gap:10, alignItems:"center"}}>
+            <span style={{fontWeight:700, fontVariantNumeric:"tabular-nums", background:C.v50, color:C.v700, padding:"3px 10px", borderRadius:99}}>⏱ {fmtTime(examElapsed)}</span>
+            <span style={{fontWeight:600}}>{Object.keys(answers).length}/{questions.length}</span>
+          </span>
         </div>
         <div style={card({marginBottom:14})}>
           <div style={{fontSize:11, fontWeight:800, color:C.v500, letterSpacing:1.8, marginBottom:9, display:"flex", justifyContent:"space-between", alignItems:"center"}}>
@@ -2228,15 +2513,33 @@ export default function Angie(){
           <button onClick={()=>setCurQ(p=>Math.max(0,p-1))} disabled={curQ===0}
             style={{...pillBtn(false, {pad:"10px 18px", ghost:true}), opacity: curQ===0 ? .35 : 1}}>← Anterior</button>
           <div style={{display:"flex", gap:4, flexWrap:"wrap", justifyContent:"center", maxWidth:380}}>
-            {questions.map((_,i)=>(
-              <button key={i} onClick={()=>setCurQ(i)}
-                style={{width:24, height:24, borderRadius:"50%", border:`2px solid ${i===curQ?C.v700:"transparent"}`, background: answers[i] ? C.v500 : C.v50, cursor:"pointer", fontSize:9.5, fontWeight:700, color: answers[i] ? "#fff" : C.v300}}>{i+1}</button>
-            ))}
+            {questions.map((_,i)=>{
+              const ans = answers[i];
+              let bg = C.v50, col = C.v300, brd = i===curQ ? C.v700 : "transparent";
+              if (ans !== undefined) {
+                if (immediate) {
+                  // modo estudio: revela acierto/fallo
+                  const good = ans === questions[i].c;
+                  bg = good ? C.ok : C.err; col = "#fff";
+                } else {
+                  // modo examen: solo marca respondida, sin destripar
+                  bg = C.v500; col = "#fff";
+                }
+              }
+              return (
+                <button key={i} onClick={()=>setCurQ(i)}
+                  style={{width:24, height:24, borderRadius:"50%", border:`2px solid ${brd}`, background:bg, cursor:"pointer", fontSize:9.5, fontWeight:700, color:col}}>{i+1}</button>
+              );
+            })}
           </div>
           {curQ < questions.length-1
             ? <button onClick={()=>setCurQ(p=>p+1)} style={pillBtn(true, {pad:"11px 22px"})}>Siguiente →</button>
-            : <button onClick={submitExam} style={{...pillBtn(true, {pad:"11px 22px"}), background:`linear-gradient(135deg, ${C.v800}, ${C.v500})`, boxShadow:`0 8px 20px ${C.v700}40`}}>✅ Entregar</button>}
+            : <button onClick={()=>submitExam(false)} style={{...pillBtn(true, {pad:"11px 22px"}), background:`linear-gradient(135deg, ${C.v800}, ${C.v500})`, boxShadow:`0 8px 20px ${C.v700}40`}}>✅ Entregar</button>}
         </div>
+        <button onClick={endExamEarly}
+          style={{width:"100%", marginTop:12, padding:"11px 18px", borderRadius:999, border:`1.5px solid ${C.warn}`, background:"#FFFBEB", color:"#92400E", fontSize:13.5, fontWeight:800, cursor:"pointer", fontFamily:"inherit"}}>
+          🏁 Finalizar ahora y ver mi nota
+        </button>
         {err && (<div style={{marginTop:10, color:C.err, fontSize:13, background:"#FEF2F2", padding:10, borderRadius:12, border:`1px solid ${C.err}33`}}>{err}</div>)}
       </div>
     );
@@ -2258,6 +2561,10 @@ export default function Angie(){
             <div style={{fontSize:54, fontWeight:900, lineHeight:1, letterSpacing:-1}}>{score}<span style={{fontSize:26, opacity:.6}}>/{questions.length}</span></div>
             <div style={{fontSize:20, marginTop:5, fontWeight:800}}>{pct}%</div>
             <div style={{fontSize:12, opacity:.85, marginTop:5, fontWeight:600, letterSpacing:.5}}>{pct>=80 ? "🏆 Excelente" : pct>=60 ? "✅ Aprobado" : "❌ A repasar"}</div>
+            <div style={{fontSize:12, opacity:.85, marginTop:6, fontWeight:600, display:"flex", gap:10, justifyContent:"center", flexWrap:"wrap"}}>
+              <span>⏱ {fmtTime(examElapsed)}</span>
+              {examEndedEarly && <span>· entregado anticipadamente ({Object.keys(answers).length}/{questions.length} respondidas)</span>}
+            </div>
             {failed.length > 0 && (
               <button onClick={addToDeck} style={{marginTop:13, padding:"10px 20px", borderRadius:99, border:"2px solid rgba(255,255,255,.6)", background:"rgba(255,255,255,.12)", color:"#fff", cursor:"pointer", fontWeight:700, fontSize:12.5, fontFamily:"inherit", letterSpacing:.3, backdropFilter:"blur(10px)"}}>
                 🃏 Añadir {failed.length} falladas al mazo
@@ -2381,7 +2688,7 @@ export default function Angie(){
                         {hasRecall && <span style={{fontSize:9.5, color:C.v500, fontWeight:700, background:C.v50, padding:"2px 8px", borderRadius:99}}>RECALL</span>}
                         {needsOptions && <span style={{fontSize:9.5, color:C.peachInk, fontWeight:700, background:C.peach, padding:"2px 8px", borderRadius:99}}>CON OPCIONES</span>}
                       </div>
-                      <div style={{fontSize:16, lineHeight:1.85, fontWeight:500, color:C.ink, marginBottom: needsOptions ? 12 : 0}}>{fcCard.pa || fcCard.e}</div>
+                      <div style={{fontSize:16, lineHeight:1.85, fontWeight:500, color:C.ink, marginBottom: needsOptions ? 12 : 0}}>{fcCard.pa || cleanQuestion(fcCard.e)}</div>
                       {needsOptions && (
                         <>
                           <div style={{fontSize:10.5, color:C.peachInk, fontWeight:600, fontStyle:"italic", marginBottom:8, padding:"6px 10px", background:C.peach+"60", borderRadius:8, borderLeft:`3px solid ${C.peachInk}`}}>
@@ -2442,7 +2749,7 @@ export default function Angie(){
           <div style={{fontWeight:800, fontSize:14, color:C.ink, marginBottom:10}}>📅 Próximas revisiones</div>
           {pending.sort((a,b)=>a.next_review.localeCompare(b.next_review)).slice(0,5).map(c => (
             <div key={c.id} style={{display:"flex", justifyContent:"space-between", padding:"9px 0", borderBottom:`1px solid ${C.line}`, gap:8, fontSize:13}}>
-              <span style={{flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", color:C.ink}}>{(c.pa || c.e)?.slice(0,65)}…</span>
+              <span style={{flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", color:C.ink}}>{summarizeQuestion(c.pa || c.e)}</span>
               <span style={{fontSize:11, color:C.v700, whiteSpace:"nowrap", background:C.v50, padding:"3px 9px", borderRadius:99, fontWeight:600}}>📅 {c.next_review}</span>
             </div>
           ))}
