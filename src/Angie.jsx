@@ -154,52 +154,6 @@ const recencyOf = (qs) => {
 };
 
 // ═══════════════════════════════════════════════════════════
-// LIMPIEZA Y RESUMEN DE ENUNCIADOS
-// cleanQuestion: quita muletillas y reformatea autores. NO trunca.
-//   → uso: frente de flashcards (texto completo, pero limpio)
-// summarizeQuestion: igual + recorta a maxLen para listas.
-//   → uso: errores frecuentes, próximas revisiones
-// ═══════════════════════════════════════════════════════════
-const cleanQuestion = (text) => {
-  if (!text) return "";
-  let s = text.trim();
-  // Prefijos típicos: "Respecto a...", "En relación con...", "Según...", etc.
-  s = s.replace(/^(Respecto a(?:l)?(?: la| las| los)?|En relaci[oó]n con(?: la| el| los| las)?|Acerca de(?: la| el| los| las)?|Sobre(?: la| el| los| las)?|De acuerdo con(?: la| el| los| las)?|Seg[uú]n(?: la| el| los| las)?)\s+/i, "");
-  // Coletillas finales: ", señale la afirmación VERDADERA/FALSA..."
-  s = s.replace(/[,;:]\s*(se[ñn]ale|indique|marque|elija|seleccione|¿cu[aá]l)\b.*$/i, "");
-  // "X propuesto/s/a/as por AUTOR (AÑO)" → "X (AUTOR, AÑO)"
-  s = s.replace(/\s+propuest[oa]s?\s+por\s+([A-ZÁÉÍÓÚÑ][^()]*?)\s*\((\d{4})\)/i, " ($1, $2)");
-  // Limpieza final
-  s = s.replace(/[,;:.\s]+$/, "");
-  if (s.length > 0) s = s.charAt(0).toUpperCase() + s.slice(1);
-  return s;
-};
-
-const summarizeQuestion = (text, maxLen = 70) => {
-  if (!text) return "";
-  let s = text.trim();
-  // Mismos prefijos que cleanQuestion
-  s = s.replace(/^(Respecto a(?:l)?(?: la| las| los)?|En relaci[oó]n con(?: la| el| los| las)?|Acerca de(?: la| el| los| las)?|Sobre(?: la| el| los| las)?|De acuerdo con(?: la| el| los| las)?|Seg[uú]n(?: la| el| los| las)?)\s+/i, "");
-  s = s.replace(/[,;:]\s*(se[ñn]ale|indique|marque|elija|seleccione|¿cu[aá]l)\b.*$/i, "");
-  s = s.replace(/\s+propuest[oa]s?\s+por\s+([A-ZÁÉÍÓÚÑ][^()]*?)\s*\((\d{4})\)/i, " ($1, $2)");
-  // Regla extra: "X de AUTOR (AÑO)" → "X (AUTOR, AÑO)"
-  s = s.replace(/\s+de\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:(?:,\s+|\s+y\s+)[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+){0,3})\s*\((\d{4})\)/, " ($1, $2)");
-  // Cortar continuaciones tipo "para el diagnóstico de...", "presenta como..."
-  s = s.replace(/\s+(para|presenta|tiene|incluye|considera|implica|propone|es cierto|es correcto|se caracteriza)\b[^.]*?\.{2,}.*$/i, "");
-  // Limpieza
-  s = s.replace(/\s*\.{2,}\s*$/, "");
-  s = s.replace(/[,;:.\s]+$/, "");
-  if (s.length > 0) s = s.charAt(0).toUpperCase() + s.slice(1);
-  // Truncado en palabra completa
-  if (s.length > maxLen) {
-    const cut = s.slice(0, maxLen);
-    const lastSpace = cut.lastIndexOf(" ");
-    s = (lastSpace > maxLen * 0.6 ? cut.slice(0, lastSpace) : cut) + "…";
-  }
-  return s;
-};
-
-// ═══════════════════════════════════════════════════════════
 // NORMALIZADOR DE PREGUNTAS IMPORTADAS
 // Acepta dos formatos:
 //  A) Formato compacto (el del BANK original): {id, s, t, origen, convocatoria, pa, e, o:{a,b,c,d}, c, x, r}
@@ -251,164 +205,6 @@ const normalizeQuestion = (raw, idx, defaultSubject) => {
   return null;
 };
 
-// ═══════════════════════════════════════════════════════════
-// VALIDADOR DE CALIDAD — analiza un bloque de preguntas (formato compacto)
-// y devuelve un informe estructurado por los 8 ejes.
-// ═══════════════════════════════════════════════════════════
-const FV_REGEX = /\b(se[ñn]ale|indique|marque)\s+la\s+(afirmaci[oó]n\s+)?(verdadera|falsa|correcta|incorrecta)/i;
-const YEAR_REGEX = /\b(18|19|20)\d{2}\b/;
-const AUTHOR_REGEX = /\b[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*(?:,\s+\d{4}|\s+\(\d{4}\)|\s+et\s+al\.,?\s+\d{4})/u;
-const MANUAL_REGEX = /\b(seg[uú]n\s+(belloch|vallejo|caballo|mar[ií]no\s+p[eé]rez|apir|cede|isep)|en\s+el\s+manual|cap[ií]tulo\s+\d+|p[aá]g\.\s*\d+|p\.\s*\d+|tema\s+\d+)\b/i;
-const INTERNAL_REF_REGEX = /\b(como\s+vimos|antes\s+mencionado|ya\s+mencionado|en\s+el\s+tema\s+anterior|recuerda\s+que)\b/i;
-
-const validateBlock = (questions) => {
-  const n = questions.length;
-  if (n === 0) return null;
-
-  const report = {
-    n_total: n,
-    ejes: {},
-    score_global: 0,
-    apto: false,
-    detalles: { por_pregunta: [] }
-  };
-
-  // ─── E3: equilibrio de longitud ───
-  let imbalanced = [];
-  let correct_longest_count = 0;
-  questions.forEach((q, i) => {
-    const opts = q.o ? Object.values(q.o) : [];
-    if (opts.length !== 4) return;
-    const lens = opts.map(o => String(o).length);
-    const correctIdx = ["a","b","c","d"].indexOf(q.c);
-    if (correctIdx < 0) return;
-    const correctLen = lens[correctIdx];
-    const others = lens.filter((_, idx) => idx !== correctIdx);
-    const avgOthers = others.reduce((a,b)=>a+b, 0) / 3;
-    const ratio = avgOthers > 0 ? correctLen / avgOthers : 1;
-    if (correctLen === Math.max(...lens)) correct_longest_count++;
-    if (ratio > 1.25) {
-      imbalanced.push({ idx: i+1, ratio: ratio.toFixed(2), correct_len: correctLen, avg_others: Math.round(avgOthers) });
-    }
-  });
-  const e3_pct_longest = correct_longest_count / n * 100;
-  report.ejes.E3_longitud = {
-    nombre: "Equilibrio de longitud",
-    estado: imbalanced.length === 0 && e3_pct_longest <= 35 ? "ok" : imbalanced.length <= n * 0.15 ? "warn" : "fail",
-    detalle: `Correcta es la más larga: ${correct_longest_count}/${n} (${e3_pct_longest.toFixed(0)}%, esperado ~25%). Desequilibradas (>25% más larga): ${imbalanced.length}.`,
-    items: imbalanced.slice(0, 5)
-  };
-
-  // ─── E4: posición correcta ───
-  const positions = [0, 0, 0, 0];
-  questions.forEach(q => {
-    const idx = ["a","b","c","d"].indexOf(q.c);
-    if (idx >= 0) positions[idx]++;
-  });
-  const expected = n / 4;
-  const max_dev = Math.max(...positions.map(p => Math.abs(p - expected)));
-  const e4_ok = max_dev <= expected * 0.6;
-  report.ejes.E4_posicion = {
-    nombre: "Distribución de posición correcta",
-    estado: e4_ok ? "ok" : "fail",
-    detalle: `Posiciones 1:${positions[0]}  2:${positions[1]}  3:${positions[2]}  4:${positions[3]} (esperado ~${expected.toFixed(1)} cada una).`,
-    items: []
-  };
-
-  // ─── E5: justificaciones autor + año ───
-  let no_year = 0;
-  let no_author = 0;
-  let too_short = 0;
-  let too_long = 0;
-  questions.forEach((q, i) => {
-    const just = q.x || "";
-    if (!YEAR_REGEX.test(just)) no_year++;
-    if (!AUTHOR_REGEX.test(just)) no_author++;
-    if (just.length < 200) too_short++;
-    if (just.length > 900) too_long++;
-  });
-  const e5_ok = no_year <= n * 0.1 && too_short <= n * 0.15;
-  report.ejes.E5_justificacion = {
-    nombre: "Justificaciones (autor+año, longitud)",
-    estado: e5_ok ? "ok" : (no_year + too_short > n * 0.3 ? "fail" : "warn"),
-    detalle: `Sin año: ${no_year}/${n}. Sin autor reconocible: ${no_author}/${n}. Demasiado cortas (<200): ${too_short}. Demasiado largas (>900): ${too_long}.`,
-    items: []
-  };
-
-  // ─── E6: proporción FALSA/VERDADERA ───
-  const fv_count = questions.filter(q => FV_REGEX.test(q.e || "")).length;
-  const fv_pct = fv_count / n * 100;
-  const e6_ok = fv_pct >= 10 && fv_pct <= 35;
-  report.ejes.E6_falsa_verdadera = {
-    nombre: "Proporción FALSA/VERDADERA",
-    estado: e6_ok ? "ok" : "warn",
-    detalle: `${fv_count}/${n} preguntas (${fv_pct.toFixed(0)}%). Objetivo ~20%.`,
-    items: []
-  };
-
-  // ─── E7: pregunta_abierta ───
-  let no_pa = 0;
-  let bad_pa_fv = 0;
-  questions.forEach((q, i) => {
-    if (!q.pa) { no_pa++; return; }
-    // Si la pregunta original es FV, comprobar que la pa NO replica el formato
-    if (FV_REGEX.test(q.e || "") && FV_REGEX.test(q.pa)) {
-      bad_pa_fv++;
-    }
-  });
-  const e7_ok = no_pa === 0 && bad_pa_fv === 0;
-  report.ejes.E7_pregunta_abierta = {
-    nombre: "Pregunta abierta (recall)",
-    estado: e7_ok ? "ok" : (no_pa > n * 0.5 ? "fail" : "warn"),
-    detalle: `Con pregunta_abierta: ${n - no_pa}/${n}. Sin pregunta_abierta: ${no_pa}. ${bad_pa_fv > 0 ? `⚠️ ${bad_pa_fv} replican formato FALSA/VERDADERA (irresolubles sin opciones).` : ""}`,
-    items: []
-  };
-
-  // ─── E8: anonimización ───
-  let manual_mentions = 0;
-  let internal_refs = 0;
-  questions.forEach((q, i) => {
-    const text = (q.e || "") + " " + (q.x || "");
-    if (MANUAL_REGEX.test(text)) manual_mentions++;
-    if (INTERNAL_REF_REGEX.test(text)) internal_refs++;
-  });
-  const e8_ok = manual_mentions === 0 && internal_refs === 0;
-  report.ejes.E8_anonimizacion = {
-    nombre: "Anonimización",
-    estado: e8_ok ? "ok" : "warn",
-    detalle: `Menciones a manuales: ${manual_mentions}. Referencias internas: ${internal_refs}.`,
-    items: []
-  };
-
-  // ─── E1, E2: requieren lectura humana ───
-  report.ejes.E1_fidelidad = {
-    nombre: "Fidelidad académica",
-    estado: "manual",
-    detalle: "Requiere lectura humana: ¿la opción correcta es realmente correcta? El validador no puede juzgarlo.",
-    items: []
-  };
-  report.ejes.E2_distractores = {
-    nombre: "Calidad de distractores",
-    estado: "manual",
-    detalle: "Requiere lectura humana: ¿son plausibles? ¿usan autores reales del campo?",
-    items: []
-  };
-
-  // ─── Score global (sobre los ejes automatizables: E3, E4, E5, E6, E7, E8) ───
-  const auto_ejes = ["E3_longitud", "E4_posicion", "E5_justificacion", "E6_falsa_verdadera", "E7_pregunta_abierta", "E8_anonimizacion"];
-  let score = 0;
-  auto_ejes.forEach(k => {
-    const e = report.ejes[k].estado;
-    if (e === "ok") score += 100/6;
-    else if (e === "warn") score += 50/6;
-    // fail: 0
-  });
-  report.score_global = Math.round(score);
-  report.apto = report.score_global >= 70 && !auto_ejes.some(k => report.ejes[k].estado === "fail");
-
-  return report;
-};
-
 export default function Angie(){
   const[tab,setTab]=useState("home");
   const[step,setStep]=useState(1);
@@ -420,6 +216,7 @@ export default function Angie(){
   const[fOrigen,setFOrigen]=useState("todas");
   const[fConvocatoria,setFConvocatoria]=useState("todas");
   const[numQ,setNumQ]=useState(25);
+  const[immediate,setImmediate]=useState(false); // false = corregir al final · true = corregir al instante
   const[questions,setQuestions]=useState([]);
   const[answers,setAnswers]=useState({});
   const[curQ,setCurQ]=useState(0);
@@ -443,14 +240,22 @@ export default function Angie(){
   const[impText,setImpText]=useState("");
   const[impPreview,setImpPreview]=useState(null);
   const[impMsg,setImpMsg]=useState("");
-  const[impReport,setImpReport]=useState(null);
   const[bankSizes,setBankSizes]=useState({});
 
-  // Estado del bloque de eliminación de preguntas
-  const[delSubject,setDelSubject]=useState("Clínica Adultos");
-  const[delText,setDelText]=useState("");
-  const[delPreview,setDelPreview]=useState(null);
-  const[delMsg,setDelMsg]=useState("");
+  // Estado del gestor de preguntas (revisar / depurar / borrar individual)
+  const[mgrSubject,setMgrSubject]=useState("Clínica Adultos");
+  const[mgrTopic,setMgrTopic]=useState("__all__");
+  const[mgrExpanded,setMgrExpanded]=useState(null); // id de la pregunta expandida
+  const[mgrSearch,setMgrSearch]=useState("");        // buscador de texto en el gestor
+  const[editing,setEditing]=useState(null);          // borrador de pregunta en edición
+
+  // Importar: opciones extra
+  const[impShuffle,setImpShuffle]=useState(false);   // barajar opciones al importar
+  const importFileRef=useRef(null);                  // input de archivo para importar JSON
+  const backupFileRef=useRef(null);                  // input de archivo para restaurar copia
+
+  // Indicador de espacio usado
+  const[storageInfo,setStorageInfo]=useState({used:0, pct:0});
 
   // Estado del generador de flashcards desde banco
   const[fcGenSubject,setFcGenSubject]=useState("Clínica Adultos");
@@ -548,6 +353,9 @@ export default function Angie(){
 
   const saveDeck = async d => { setDeck(d); await save(K.deck,d); };
   const showToast = m => { setToast(m); setTimeout(()=>setToast(""),3000); };
+
+  // Recalcula el espacio usado al abrir la pestaña Importar
+  useEffect(() => { if (tab === "import" && !bankLoading) computeStorage(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [tab, bankLoading, bank, deck]);
 
   // ───────────────────────────────────────────────
   // GUARDA UNA ASIGNATURA EN STORAGE Y REFRESCA EL BANK COMPLETO
@@ -725,10 +533,9 @@ export default function Angie(){
   // ───────────────────────────────────────────────
   // IMPORTAR: parsear y previsualizar
   // ───────────────────────────────────────────────
-  const parseImport = () => {
+  const parseImport = async () => {
     setImpMsg("");
     setImpPreview(null);
-    setImpReport(null);
     if (!impText.trim()) { setImpMsg("Pega el JSON antes de previsualizar."); return; }
     let data;
     try {
@@ -741,24 +548,41 @@ export default function Angie(){
       setImpMsg("❌ El JSON debe ser un array de preguntas.");
       return;
     }
-    const normalized = [];
+    let normalized = [];
     const errors = [];
     data.forEach((raw, i) => {
-      const n = normalizeQuestion(raw, i, impSubject);
-      if (!n) { errors.push(i+1); return; }
-      // Forzar la asignatura seleccionada en el importador
-      n.s = impSubject;
+      let n = normalizeQuestion(raw, i, impSubject);
+      if (!n) { errors.push(i + 1); return; }
+      n.s = impSubject; // forzar la asignatura del importador
+      if (impShuffle) n = shuffleOptions(n);
       normalized.push(n);
     });
     if (normalized.length === 0) {
       setImpMsg(`❌ Ninguna pregunta válida. Errores en filas: ${errors.join(", ")}`);
       return;
     }
-    setImpPreview({ normalized, errors, subject: impSubject });
-    // Ejecutar validación de calidad
-    const rep = validateBlock(normalized);
-    setImpReport(rep);
-    setImpMsg(`✓ ${normalized.length} preguntas listas. ${errors.length ? "⚠ "+errors.length+" descartadas." : ""}`);
+    // Detección de duplicados (contra el banco existente y dentro del propio lote)
+    const existing = await load(subjectKey(impSubject), []);
+    const existingSigs = new Set(existing.map(qSignature));
+    const seen = new Set();
+    let dupExisting = 0, dupInternal = 0, withIssues = 0;
+    normalized = normalized.map(q => {
+      const sig = qSignature(q);
+      let dup = false;
+      if (existingSigs.has(sig)) { dup = true; dupExisting++; }
+      else if (seen.has(sig)) { dup = true; dupInternal++; }
+      seen.add(sig);
+      const issues = validateQuestion(q);
+      if (issues.length) withIssues++;
+      return { ...q, _dup: dup, _issues: issues };
+    });
+    const fresh = normalized.filter(q => !q._dup).length;
+    setImpPreview({ normalized, errors, subject: impSubject, dupExisting, dupInternal, withIssues, fresh });
+    const parts = [`✓ ${normalized.length} preguntas leídas · ${fresh} nuevas`];
+    if (dupExisting + dupInternal) parts.push(`${dupExisting + dupInternal} duplicadas`);
+    if (withIssues) parts.push(`${withIssues} con avisos`);
+    if (errors.length) parts.push(`${errors.length} descartadas`);
+    setImpMsg(parts.join(" · "));
   };
 
   const confirmImport = async (mode) => {
@@ -767,115 +591,91 @@ export default function Angie(){
     const existing = await load(k, []);
     let merged;
     if (mode === "replace") {
-      merged = impPreview.normalized;
+      // En reemplazo, quitamos duplicados internos pero conservamos todo lo del lote
+      const seen = new Set();
+      merged = impPreview.normalized.filter(q => {
+        const sig = qSignature(q);
+        if (seen.has(sig)) return false;
+        seen.add(sig);
+        return true;
+      }).map(({ _dup, _issues, ...q }) => q);
     } else {
-      // append: deduplicar por id
+      // append: deduplicar por id Y por contenido
       const ids = new Set(existing.map(q => q.id));
-      const fresh = impPreview.normalized.filter(q => !ids.has(q.id));
+      const sigs = new Set(existing.map(qSignature));
+      const fresh = impPreview.normalized
+        .filter(q => !ids.has(q.id) && !sigs.has(qSignature(q)) && !q._dup)
+        .map(({ _dup, _issues, ...q }) => q);
       merged = [...existing, ...fresh];
     }
     const ok = await persistSubject(impPreview.subject, merged);
     if (!ok) {
-      setImpMsg("❌ Error al guardar (¿supera 5 MB? prueba a dividir el bloque)");
+      setImpMsg("❌ Error al guardar (¿supera 5 MB? prueba a dividir el bloque o haz una copia y vacía algo)");
       return;
     }
+    computeStorage();
     showToast(`✅ Banco "${impPreview.subject}" actualizado: ${merged.length} preguntas totales`);
     setImpText("");
     setImpPreview(null);
-    setImpReport(null);
     setImpMsg("");
-  };
-
-  // ───────────────────────────────────────────────
-  // ELIMINAR PREGUNTAS DEL BANCO
-  // Acepta: array JSON de IDs, array JSON de objetos (extrae .id),
-  // o texto plano con un ID por línea.
-  // ───────────────────────────────────────────────
-  const parseDelete = () => {
-    setDelMsg("");
-    setDelPreview(null);
-    if (!delText.trim()) { setDelMsg("Pega los IDs o el JSON antes de previsualizar."); return; }
-
-    let ids = [];
-    const raw = delText.trim();
-
-    // Intento 1: parsear como JSON
-    let parsedAsJson = false;
-    try {
-      const data = JSON.parse(raw);
-      parsedAsJson = true;
-      if (Array.isArray(data)) {
-        data.forEach(item => {
-          if (typeof item === "string") ids.push(item);
-          else if (item && typeof item === "object" && item.id) ids.push(item.id);
-        });
-      } else if (data && typeof data === "object" && data.id) {
-        ids.push(data.id);
-      }
-    } catch {
-      // No era JSON válido
-    }
-
-    // Intento 2: si no era JSON o no extrajo nada, tratar como IDs uno por línea
-    if (!parsedAsJson || ids.length === 0) {
-      ids = raw.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0 && !l.startsWith("//"));
-    }
-
-    if (ids.length === 0) {
-      setDelMsg("❌ No se encontraron IDs válidos. Pega un JSON con IDs o un ID por línea.");
-      return;
-    }
-
-    // Deduplicar IDs proporcionados
-    ids = [...new Set(ids)];
-
-    // Buscar coincidencias en el banco de la asignatura seleccionada
-    const subjBank = bank.filter(q => q.s === delSubject);
-    const idSet = new Set(ids);
-    const matched = subjBank.filter(q => idSet.has(q.id));
-    const matchedIds = new Set(matched.map(q => q.id));
-    const notFound = ids.filter(id => !matchedIds.has(id));
-
-    if (matched.length === 0) {
-      setDelMsg(`❌ Ninguno de los ${ids.length} IDs se encontró en "${delSubject}". Comprueba que la asignatura es la correcta.`);
-      return;
-    }
-
-    setDelPreview({ matched, notFound, subject: delSubject, totalProvided: ids.length });
-    setDelMsg(`✓ ${matched.length} coincidencia${matched.length === 1 ? "" : "s"} encontrada${matched.length === 1 ? "" : "s"}${notFound.length > 0 ? ` · ${notFound.length} ID${notFound.length === 1 ? "" : "s"} no encontrado${notFound.length === 1 ? "" : "s"}` : ""}.`);
-  };
-
-  const confirmDelete = async () => {
-    if (!delPreview || delPreview.matched.length === 0) return;
-    if (!confirm(`¿Eliminar definitivamente ${delPreview.matched.length} preguntas de "${delPreview.subject}"?\n\nEsta acción no se puede deshacer.`)) return;
-
-    const k = subjectKey(delPreview.subject);
-    const existing = await load(k, []);
-    const idsToRemove = new Set(delPreview.matched.map(q => q.id));
-    const remaining = existing.filter(q => !idsToRemove.has(q.id));
-
-    const ok = await persistSubject(delPreview.subject, remaining);
-    if (!ok) {
-      setDelMsg("❌ Error al guardar los cambios.");
-      return;
-    }
-
-    // Limpiar también el deck (las flashcards basadas en esas preguntas)
-    const newDeck = deck.filter(c => !idsToRemove.has(c.id));
-    if (newDeck.length !== deck.length) {
-      await saveDeck(newDeck);
-    }
-
-    showToast(`🗑️ ${delPreview.matched.length} preguntas eliminadas de "${delPreview.subject}"`);
-    setDelText("");
-    setDelPreview(null);
-    setDelMsg("");
   };
 
   const clearSubject = async (subj) => {
     if (!confirm(`¿Borrar TODAS las preguntas de "${subj}"? Esta acción no se puede deshacer.`)) return;
     await persistSubject(subj, []);
     showToast(`🗑️ "${subj}" vaciado`);
+  };
+
+  // ───────────────────────────────────────────────
+  // BORRAR UNA SOLA PREGUNTA DEL BANCO (por id)
+  // Limpia también el mazo y las estadísticas por pregunta.
+  // ───────────────────────────────────────────────
+  const deleteQuestionById = async (q) => {
+    const subj = q.s || q._subject;
+    if (!subj) { showToast("No se pudo identificar la asignatura"); return false; }
+    const k = subjectKey(subj);
+    const existing = await load(k, []);
+    const filtered = existing.filter(x => x.id !== q.id);
+    const ok = await persistSubject(subj, filtered);
+    if (!ok) { showToast("❌ Error al borrar la pregunta"); return false; }
+    // Limpieza: quitar la tarjeta del mazo y sus stats huérfanas
+    setDeck(prev => { const n = prev.filter(c => c.id !== q.id); save(K.deck, n); return n; });
+    setQstats(prev => { const n = {...prev}; delete n[q.id]; save(K.qstats, n); return n; });
+    return true;
+  };
+
+  // Borrar desde el gestor (pestaña Importar)
+  const deleteFromManager = async (q) => {
+    if (!confirm("¿Eliminar esta pregunta del banco para siempre? El resto de preguntas se conserva.")) return;
+    const ok = await deleteQuestionById(q);
+    if (ok) { setMgrExpanded(null); showToast("🗑️ Pregunta eliminada"); }
+  };
+
+  // Borrar la pregunta que se está viendo en examen / resultados,
+  // reindexando respuestas y explicaciones para no descuadrar el examen.
+  const deleteExamQuestion = async () => {
+    const q = questions[curQ];
+    if (!q) return;
+    if (!confirm("¿Eliminar esta pregunta del banco para siempre? No volverá a aparecer en ningún examen.")) return;
+    const ok = await deleteQuestionById(q);
+    if (!ok) return;
+    const idx = curQ;
+    const nextQs = questions.filter((_, i) => i !== idx).map((qq, i) => ({ ...qq, numero: i + 1 }));
+    const remap = (obj) => {
+      const out = {};
+      Object.keys(obj).forEach(kStr => {
+        const kk = Number(kStr);
+        if (kk === idx) return;
+        out[kk > idx ? kk - 1 : kk] = obj[kStr];
+      });
+      return out;
+    };
+    setAnswers(a => remap(a));
+    setShowExpl(s => remap(s));
+    setQuestions(nextQs);
+    setCurQ(c => Math.min(c, Math.max(0, nextQs.length - 1)));
+    showToast("🗑️ Pregunta eliminada del banco");
+    if (nextQs.length === 0) setTab("home");
   };
 
   const exportSubject = async (subj) => {
@@ -892,6 +692,177 @@ export default function Angie(){
       setImpSubject(subj);
       showToast("📋 Copiado al campo de importación");
     }
+  };
+
+  // ═══════════════════════════════════════════════════════════
+  // UTILIDADES NUEVAS (firma de contenido, tamaño, validación)
+  // ═══════════════════════════════════════════════════════════
+  // Firma normalizada del enunciado: sirve para detectar duplicados aunque
+  // cambien acentos, mayúsculas o espacios.
+  const qSignature = (q) => (q.e || "").toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ").trim();
+
+  const fmtBytes = (b) => b < 1024 ? `${b} B`
+    : b < 1024 * 1024 ? `${(b/1024).toFixed(0)} KB`
+    : `${(b/1024/1024).toFixed(2)} MB`;
+
+  // Calcula el espacio aproximado usado en el almacenamiento.
+  const computeStorage = async () => {
+    try {
+      let bytes = 0;
+      const { keys } = await window.storage.list("");
+      for (const kk of (keys || [])) {
+        const r = await window.storage.get(kk);
+        if (r && r.value) bytes += (kk.length + r.value.length) * 2; // ~2 bytes/char (UTF-16)
+      }
+      const LIMIT = 5 * 1024 * 1024;
+      setStorageInfo({ used: bytes, pct: Math.min(100, Math.round(bytes / LIMIT * 100)) });
+    } catch { /* sin datos */ }
+  };
+
+  // Valida una pregunta normalizada. Devuelve array de avisos (vacío = OK).
+  const validateQuestion = (q) => {
+    const issues = [];
+    const keys = Object.keys(q.o || {});
+    if (keys.length < 4) issues.push("menos de 4 opciones");
+    if (keys.some(k => !String(q.o[k] || "").trim())) issues.push("opción vacía");
+    if (!keys.includes(q.c)) issues.push("respuesta correcta fuera de rango");
+    const vals = keys.map(k => String(q.o[k] || "").trim().toLowerCase());
+    if (new Set(vals).size < vals.length) issues.push("opciones repetidas");
+    if (!String(q.x || "").trim()) issues.push("sin justificación");
+    if (!String(q.e || "").trim()) issues.push("sin enunciado");
+    return issues;
+  };
+
+  // Baraja el orden de las opciones recolocando la respuesta correcta.
+  const shuffleOptions = (q) => {
+    const keys = Object.keys(q.o);
+    if (keys.length < 2) return q;
+    const correctVal = q.o[q.c];
+    const vals = keys.map(k => q.o[k]);
+    for (let i = vals.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [vals[i], vals[j]] = [vals[j], vals[i]];
+    }
+    const newO = {};
+    keys.forEach((k, idx) => { newO[k] = vals[idx]; });
+    const newC = keys.find(k => newO[k] === correctVal) || q.c;
+    return { ...q, o: newO, c: newC };
+  };
+
+  // ═══════════════════════════════════════════════════════════
+  // COPIA DE SEGURIDAD COMPLETA (exportar / restaurar)
+  // ═══════════════════════════════════════════════════════════
+  const exportAllBackup = async () => {
+    try {
+      const backup = { _type: "r0pir-backup", _version: 1, exported: new Date().toISOString(), banks: {}, deck: [], stats: {}, qstats: {} };
+      for (const subj of Object.keys(SUBJECTS)) {
+        backup.banks[subj] = await load(subjectKey(subj), []);
+      }
+      backup.deck = await load(K.deck, []);
+      backup.stats = await load(K.stats, {});
+      backup.qstats = await load(K.qstats, {});
+      const blob = new Blob([JSON.stringify(backup)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `r0pir-backup-${todayS()}.json`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      const totalQ = Object.values(backup.banks).reduce((n, arr) => n + arr.length, 0);
+      showToast(`💾 Copia descargada · ${totalQ} preguntas`);
+    } catch (e) { showToast("❌ Error al exportar: " + e.message); }
+  };
+
+  const restoreBackup = async (text, mode) => {
+    let data;
+    try { data = JSON.parse(text); } catch (e) { setImpMsg("❌ El archivo no es un JSON válido: " + e.message); return; }
+    if (!data || typeof data !== "object" || !data.banks) { setImpMsg("❌ Este archivo no parece una copia de R0 PIR."); return; }
+    try {
+      for (const subj of Object.keys(SUBJECTS)) {
+        const incoming = Array.isArray(data.banks[subj]) ? data.banks[subj] : [];
+        if (mode === "replace") {
+          await persistSubject(subj, incoming);
+        } else {
+          const existing = await load(subjectKey(subj), []);
+          const ids = new Set(existing.map(q => q.id));
+          const sigs = new Set(existing.map(qSignature));
+          const fresh = incoming.filter(q => !ids.has(q.id) && !sigs.has(qSignature(q)));
+          await persistSubject(subj, [...existing, ...fresh]);
+        }
+      }
+      if (mode === "replace") {
+        if (Array.isArray(data.deck)) { await save(K.deck, data.deck); setDeck(data.deck); }
+        if (data.stats) { await save(K.stats, data.stats); setStats(data.stats); }
+        if (data.qstats) { await save(K.qstats, data.qstats); setQstats(data.qstats); }
+      } else {
+        if (Array.isArray(data.deck)) {
+          const cur = await load(K.deck, []);
+          const ids = new Set(cur.map(c => c.id));
+          const merged = [...cur, ...data.deck.filter(c => !ids.has(c.id))];
+          await save(K.deck, merged); setDeck(merged);
+        }
+        if (data.qstats) { const merged = { ...data.qstats, ...qstats }; await save(K.qstats, merged); setQstats(merged); }
+        if (data.stats) { const merged = { ...data.stats, ...stats }; await save(K.stats, merged); setStats(merged); }
+      }
+      computeStorage();
+      showToast("✅ Copia restaurada");
+      setImpMsg("✅ Copia restaurada correctamente.");
+    } catch (e) { setImpMsg("❌ Error al restaurar: " + e.message); }
+  };
+
+  const onBackupFile = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const replace = confirm("Restaurar copia:\n\n• Aceptar = REEMPLAZAR todo lo actual por la copia.\n• Cancelar = COMBINAR (añade lo que falte sin borrar lo que ya tienes).");
+      restoreBackup(String(reader.result), replace ? "replace" : "merge");
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  };
+
+  const onImportFile = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => { setImpText(String(reader.result)); setImpPreview(null); setImpMsg("📂 Archivo cargado. Pulsa «Previsualizar»."); };
+    reader.readAsText(file);
+    e.target.value = "";
+  };
+
+  // ═══════════════════════════════════════════════════════════
+  // VACIAR EL MAZO DE FLASHCARDS POR COMPLETO
+  // ═══════════════════════════════════════════════════════════
+  const clearAllFlashcards = async () => {
+    if (deck.length === 0) { showToast("El mazo ya está vacío"); return; }
+    if (!confirm(`¿Borrar TODAS las flashcards (${deck.length})? Se perderá todo el progreso de repetición espaciada.`)) return;
+    if (!confirm("Confirma de nuevo: esta acción vacía el mazo por completo y no se puede deshacer.")) return;
+    await saveDeck([]);
+    setFcIdx(0); setFlipped(false);
+    showToast("🗑️ Mazo vaciado");
+  };
+
+  // ═══════════════════════════════════════════════════════════
+  // EDITAR UNA PREGUNTA EXISTENTE (desde el gestor)
+  // ═══════════════════════════════════════════════════════════
+  const startEdit = (q) => setEditing({ ...q, o: { ...q.o }, t: [...(q.t || [])] });
+  const saveEdit = async () => {
+    const q = editing;
+    if (!q) return;
+    const issues = validateQuestion(q);
+    if (issues.length && !confirm(`Esta pregunta tiene avisos (${issues.join(", ")}). ¿Guardar de todas formas?`)) return;
+    const subj = q.s;
+    const k = subjectKey(subj);
+    const arr = await load(k, []);
+    const updated = arr.map(x => x.id === q.id
+      ? { ...x, e: q.e, o: q.o, c: q.c, x: q.x, r: q.r, t: q.t, pa: q.pa }
+      : x);
+    const ok = await persistSubject(subj, updated);
+    if (ok) { setEditing(null); showToast("✅ Pregunta actualizada"); }
+    else showToast("❌ Error al guardar");
   };
 
   // ───────────────────────────────────────────────
@@ -1019,6 +990,38 @@ export default function Angie(){
   // ───────────────────────────────────────────────
   if (tab === "import") return wrap(
     <div>
+      {/* inputs de archivo ocultos */}
+      <input ref={importFileRef} type="file" accept="application/json,.json" onChange={onImportFile} style={{display:"none"}} />
+      <input ref={backupFileRef} type="file" accept="application/json,.json" onChange={onBackupFile} style={{display:"none"}} />
+
+      {/* ─── BLOQUE: Copia de seguridad ─── */}
+      <div style={card({marginBottom:14, border:`1.5px solid ${C.v200}`})}>
+        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>💾 Copia de seguridad</div>
+        <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:14}}>
+          Tus preguntas viven solo en este navegador. Descarga una copia con <strong>todo</strong> (preguntas, mazo y estadísticas) y guárdala a buen recaudo. Si cambias de equipo o se borran los datos, podrás restaurarla. Hazlo a menudo.
+        </div>
+        <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
+          <button onClick={exportAllBackup} style={{...pillBtn(true, {pad:"11px 20px"}), background:C.ok}}>⬇️ Descargar copia completa</button>
+          <button onClick={()=>backupFileRef.current && backupFileRef.current.click()} style={pillBtn(false, {pad:"11px 18px"})}>♻️ Restaurar desde archivo</button>
+        </div>
+        <div style={{marginTop:14}}>
+          <div style={{display:"flex", justifyContent:"space-between", fontSize:11.5, color:C.muted, fontWeight:600, marginBottom:5}}>
+            <span>Espacio usado (límite ~5 MB)</span>
+            <span style={{color: storageInfo.pct>=80 ? C.err : storageInfo.pct>=60 ? C.warn : C.v700, fontWeight:800}}>
+              {fmtBytes(storageInfo.used)} · {storageInfo.pct}%
+            </span>
+          </div>
+          <div style={{background:C.v50, borderRadius:99, height:7, overflow:"hidden"}}>
+            <div style={{height:7, borderRadius:99, width:`${storageInfo.pct}%`, transition:"width .4s", background: storageInfo.pct>=80 ? C.err : storageInfo.pct>=60 ? C.warn : `linear-gradient(90deg, ${C.v700}, ${C.v500})`}}/>
+          </div>
+          {storageInfo.pct >= 80 && (
+            <div style={{marginTop:8, fontSize:11.5, color:C.err, fontWeight:600, lineHeight:1.5}}>
+              ⚠️ Cerca del límite. Descarga una copia y considera depurar preguntas para no perder datos.
+            </div>
+          )}
+        </div>
+      </div>
+
       <div style={card({marginBottom:14})}>
         <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>📥 Importar preguntas</div>
         <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:14}}>
@@ -1047,97 +1050,63 @@ export default function Angie(){
           }}
         />
 
+        <label style={{display:"flex", alignItems:"center", gap:8, marginTop:10, fontSize:12.5, color:C.ink, cursor:"pointer", userSelect:"none"}}>
+          <input type="checkbox" checked={impShuffle} onChange={e=>setImpShuffle(e.target.checked)} style={{width:16, height:16, accentColor:C.v600, cursor:"pointer"}} />
+          Barajar el orden de las opciones al importar <span style={{color:C.muted}}>(evita memorizar la letra)</span>
+        </label>
+
         <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
           <button onClick={parseImport} style={pillBtn(true, {pad:"10px 20px"})}>👁 Previsualizar</button>
-          <button onClick={()=>{setImpText(""); setImpPreview(null); setImpReport(null); setImpMsg("");}} style={pillBtn(false, {pad:"10px 16px", ghost:true})}>Limpiar</button>
+          <button onClick={()=>importFileRef.current && importFileRef.current.click()} style={pillBtn(false, {pad:"10px 16px"})}>📂 Cargar desde archivo</button>
+          <button onClick={()=>{setImpText(""); setImpPreview(null); setImpMsg("");}} style={pillBtn(false, {pad:"10px 16px", ghost:true})}>Limpiar</button>
         </div>
 
         {impMsg && (
           <div style={{
             marginTop:12, padding:11, borderRadius:11,
-            background: impMsg.startsWith("❌") ? "#FEF2F2" : impMsg.startsWith("✓") ? "#F0FDF4" : C.v50,
-            border:`1px solid ${impMsg.startsWith("❌") ? C.err+"55" : impMsg.startsWith("✓") ? C.ok+"55" : C.v200}`,
-            color: impMsg.startsWith("❌") ? C.err : impMsg.startsWith("✓") ? "#065F46" : C.v700,
+            background: impMsg.startsWith("❌") ? "#FEF2F2" : (impMsg.startsWith("✓")||impMsg.startsWith("✅")) ? "#F0FDF4" : C.v50,
+            border:`1px solid ${impMsg.startsWith("❌") ? C.err+"55" : (impMsg.startsWith("✓")||impMsg.startsWith("✅")) ? C.ok+"55" : C.v200}`,
+            color: impMsg.startsWith("❌") ? C.err : (impMsg.startsWith("✓")||impMsg.startsWith("✅")) ? "#065F46" : C.v700,
             fontSize:13, fontWeight:600
           }}>{impMsg}</div>
         )}
 
-        {impReport && (() => {
-          const r = impReport;
-          const stateColors = {
-            ok: { bg: "#F0FDF4", border: C.ok, text: "#065F46", icon: "✅" },
-            warn: { bg: "#FFFBEB", border: C.warn, text: "#92400E", icon: "⚠️" },
-            fail: { bg: "#FEF2F2", border: C.err, text: "#7F1D1D", icon: "❌" },
-            manual: { bg: C.v50, border: C.v300, text: C.v700, icon: "👁️" }
-          };
-          const scoreColor = r.score_global >= 85 ? C.ok : r.score_global >= 70 ? C.warn : C.err;
-          const scoreLabel = r.score_global >= 85 ? "✅ APTO PARA IMPORTAR" : r.score_global >= 70 ? "⚠️ APTO CON OBSERVACIONES" : "❌ REVISAR ANTES DE IMPORTAR";
-          return (
-            <div style={{marginTop:14, padding:16, background:C.surface, borderRadius:14, border:`2px solid ${scoreColor}`, boxShadow:`0 4px 14px ${scoreColor}20`}}>
-              <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12, flexWrap:"wrap", gap:8}}>
-                <div style={{fontWeight:900, fontSize:15, color:C.ink}}>🔍 Análisis de calidad ({r.n_total} preguntas)</div>
-                <div style={{display:"flex", alignItems:"center", gap:10}}>
-                  <span style={{fontSize:30, fontWeight:900, color:scoreColor, letterSpacing:-1}}>{r.score_global}</span>
-                  <span style={{fontSize:13, fontWeight:700, color:scoreColor}}>/100</span>
-                </div>
-              </div>
-              <div style={{padding:"8px 14px", background:`${scoreColor}15`, borderRadius:10, fontSize:12.5, fontWeight:700, color:scoreColor, marginBottom:14, textAlign:"center"}}>
-                {scoreLabel}
-              </div>
-
-              <div style={{display:"flex", flexDirection:"column", gap:8}}>
-                {Object.entries(r.ejes).map(([key, eje]) => {
-                  const c = stateColors[eje.estado];
-                  return (
-                    <div key={key} style={{padding:"10px 12px", background:c.bg, borderRadius:10, border:`1px solid ${c.border}40`}}>
-                      <div style={{display:"flex", justifyContent:"space-between", gap:8, alignItems:"flex-start", flexWrap:"wrap"}}>
-                        <div style={{flex:1, minWidth:200}}>
-                          <div style={{fontWeight:700, fontSize:13, color:c.text, marginBottom:3}}>
-                            {c.icon} {eje.nombre}
-                          </div>
-                          <div style={{fontSize:11.5, color:c.text, opacity:0.85, lineHeight:1.5}}>{eje.detalle}</div>
-                          {eje.items && eje.items.length > 0 && (
-                            <div style={{marginTop:6, fontSize:11, color:c.text, opacity:0.8, lineHeight:1.5, fontFamily:"ui-monospace, monospace"}}>
-                              {eje.items.map((it, idx) => (
-                                <div key={idx}>· Pregunta {it.idx}: ratio {it.ratio}× ({it.correct_len} vs {it.avg_others} chars promedio)</div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div style={{marginTop:12, padding:10, background:C.v50, borderRadius:10, fontSize:11.5, color:C.v700, lineHeight:1.6}}>
-                <strong>👁️ Ejes manuales (E1, E2):</strong> requieren tu lectura porque no se pueden validar automáticamente.
-                Verifica que la respuesta correcta sea realmente correcta y que los distractores sean plausibles.
-              </div>
-            </div>
-          );
-        })()}
-
         {impPreview && (
           <div style={{marginTop:14, padding:14, background:C.v50, borderRadius:14, border:`1px solid ${C.v200}`}}>
             <div style={{fontWeight:800, fontSize:13, color:C.v700, marginBottom:8}}>
-              Vista previa: {impPreview.normalized.length} preguntas → {impPreview.subject}
+              Vista previa → {impPreview.subject}
             </div>
-            <div style={{maxHeight:180, overflowY:"auto", fontSize:11.5, color:C.muted, lineHeight:1.6}}>
-              {impPreview.normalized.slice(0, 5).map((q,i) => (
-                <div key={i} style={{padding:"6px 0", borderBottom:`1px solid ${C.v100}`}}>
+            <div style={{display:"flex", gap:7, flexWrap:"wrap", marginBottom:10, fontSize:11.5, fontWeight:700}}>
+              <span style={{padding:"3px 10px", borderRadius:99, background:"#F0FDF4", color:"#065F46", border:`1px solid ${C.ok}44`}}>{impPreview.fresh} nuevas</span>
+              {(impPreview.dupExisting + impPreview.dupInternal) > 0 && (
+                <span style={{padding:"3px 10px", borderRadius:99, background:"#FFFBEB", color:"#92400E", border:`1px solid ${C.warn}55`}}>{impPreview.dupExisting + impPreview.dupInternal} duplicadas (se omiten)</span>
+              )}
+              {impPreview.withIssues > 0 && (
+                <span style={{padding:"3px 10px", borderRadius:99, background:"#FEF2F2", color:C.err, border:`1px solid ${C.err}44`}}>{impPreview.withIssues} con avisos</span>
+              )}
+              {impPreview.errors.length > 0 && (
+                <span style={{padding:"3px 10px", borderRadius:99, background:C.surface, color:C.muted, border:`1px solid ${C.line}`}}>{impPreview.errors.length} descartadas</span>
+              )}
+            </div>
+            <div style={{maxHeight:200, overflowY:"auto", fontSize:11.5, color:C.muted, lineHeight:1.6}}>
+              {impPreview.normalized.slice(0, 8).map((q,i) => (
+                <div key={i} style={{padding:"6px 0", borderBottom:`1px solid ${C.v100}`, opacity: q._dup ? .5 : 1}}>
                   <strong style={{color:C.ink}}>{i+1}.</strong> {q.e.slice(0, 100)}…
-                  <div style={{fontSize:10.5, color:C.v500, marginTop:2}}>Tema: {q.t.join(", ")}</div>
+                  <div style={{fontSize:10.5, marginTop:2, display:"flex", gap:6, flexWrap:"wrap"}}>
+                    <span style={{color:C.v500}}>Tema: {(q.t||[]).join(", ")}</span>
+                    {q._dup && <span style={{color:C.warn, fontWeight:700}}>· duplicada</span>}
+                    {q._issues && q._issues.length > 0 && <span style={{color:C.err, fontWeight:700}}>· ⚠ {q._issues.join(", ")}</span>}
+                  </div>
                 </div>
               ))}
-              {impPreview.normalized.length > 5 && <div style={{padding:"6px 0", fontStyle:"italic"}}>… y {impPreview.normalized.length - 5} más</div>}
+              {impPreview.normalized.length > 8 && <div style={{padding:"6px 0", fontStyle:"italic"}}>… y {impPreview.normalized.length - 8} más</div>}
             </div>
             <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
-              <button onClick={()=>confirmImport("append")} style={{...pillBtn(true, {pad:"10px 18px"}), background:C.ok}}>
-                ➕ Añadir al banco existente
+              <button onClick={()=>confirmImport("append")} disabled={impPreview.fresh===0} style={{...pillBtn(true, {pad:"10px 18px"}), background: impPreview.fresh===0 ? "#A0AEC0" : C.ok, cursor: impPreview.fresh===0 ? "not-allowed":"pointer"}}>
+                ➕ Añadir {impPreview.fresh} nuevas al banco
               </button>
               <button onClick={()=>{
-                if (confirm(`¿Reemplazar TODO el banco de "${impPreview.subject}" por estas ${impPreview.normalized.length} preguntas?`)) confirmImport("replace");
+                if (confirm(`¿Reemplazar TODO el banco de "${impPreview.subject}" por estas preguntas?`)) confirmImport("replace");
               }} style={{...pillBtn(true, {pad:"10px 18px"}), background:C.warn}}>
                 🔁 Reemplazar banco completo
               </button>
@@ -1146,84 +1115,162 @@ export default function Angie(){
         )}
       </div>
 
-      {/* ─── BLOQUE: Eliminar preguntas del banco ─── */}
+      {/* ─── BLOQUE: Revisar y depurar preguntas (borrado individual) ─── */}
       <div style={card({marginBottom:14})}>
-        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>🗑️ Eliminar preguntas del banco</div>
+        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>🗂️ Revisar y depurar preguntas</div>
         <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:14}}>
-          Pega los IDs o el JSON completo de las preguntas que quieras eliminar. Se aceptan tres formatos:
-          <br/>· Una lista de IDs, <strong>uno por línea</strong> (<code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>imp_1234_5</code>).
-          <br/>· Un array JSON de IDs: <code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>["imp_1234_5", "imp_1234_6"]</code>.
-          <br/>· El JSON completo de las preguntas (se extraerán los <code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>id</code> automáticamente).
+          Revisa las preguntas del banco una a una y elimina las que estén mal hechas, sean demasiado específicas o no te convenzan. Solo se borra esa pregunta; el resto se conserva.
         </div>
 
-        <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Asignatura</div>
-        <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14}}>
-          {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).map(s => (
-            <button key={s} onClick={()=>setDelSubject(s)} style={pillBtn(delSubject===s, {pad:"7px 14px", size:12})}>
-              {s} <span style={{opacity:.7, fontSize:10.5, marginLeft:4}}>({bankSizes[s] || 0})</span>
-            </button>
-          ))}
-          {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).length === 0 && (
-            <span style={{fontSize:12, color:C.muted, fontStyle:"italic"}}>No hay preguntas en ningún banco.</span>
-          )}
-        </div>
-
-        <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>IDs o JSON a eliminar</div>
-        <textarea
-          value={delText}
-          onChange={e => setDelText(e.target.value)}
-          placeholder='Pega aquí los IDs (uno por línea), un array JSON ["id1","id2"], o el JSON completo de las preguntas a eliminar.'
-          style={{
-            width:"100%", minHeight:140, padding:12, borderRadius:12,
-            border:`1.5px solid ${C.line}`, fontFamily:"ui-monospace, monospace",
-            fontSize:12, lineHeight:1.5, resize:"vertical", color:C.ink,
-            background:C.bg, outline:"none"
-          }}
-        />
-
-        <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
-          <button onClick={parseDelete} style={pillBtn(true, {pad:"10px 20px"})}>👁 Previsualizar</button>
-          <button onClick={()=>{setDelText(""); setDelPreview(null); setDelMsg("");}} style={pillBtn(false, {pad:"10px 16px", ghost:true})}>Limpiar</button>
-        </div>
-
-        {delMsg && (
-          <div style={{
-            marginTop:12, padding:11, borderRadius:11,
-            background: delMsg.startsWith("❌") ? "#FEF2F2" : delMsg.startsWith("✓") ? "#F0FDF4" : C.v50,
-            border:`1px solid ${delMsg.startsWith("❌") ? C.err+"55" : delMsg.startsWith("✓") ? C.ok+"55" : C.v200}`,
-            color: delMsg.startsWith("❌") ? C.err : delMsg.startsWith("✓") ? "#065F46" : C.v700,
-            fontSize:13, fontWeight:600
-          }}>{delMsg}</div>
-        )}
-
-        {delPreview && delPreview.matched.length > 0 && (
-          <div style={{marginTop:14, padding:14, background:"#FEF2F2", borderRadius:14, border:`1px solid ${C.err}55`}}>
-            <div style={{fontWeight:800, fontSize:13, color:"#7F1D1D", marginBottom:8}}>
-              ⚠️ Se eliminarán {delPreview.matched.length} pregunta{delPreview.matched.length === 1 ? "" : "s"} de "{delPreview.subject}"
-              {delPreview.notFound.length > 0 && <span style={{fontWeight:600, fontSize:11.5, color:C.muted, marginLeft:6}}>· {delPreview.notFound.length} no encontradas</span>}
-            </div>
-            <div style={{maxHeight:200, overflowY:"auto", fontSize:11.5, color:"#7F1D1D", lineHeight:1.6, paddingRight:4}}>
-              {delPreview.matched.slice(0, 8).map((q,i) => (
-                <div key={q.id} style={{padding:"6px 0", borderBottom: i < Math.min(delPreview.matched.length, 8)-1 ? `1px solid ${C.err}22` : "none"}}>
-                  <strong>{i+1}.</strong> {summarizeQuestion(q.e, 90)}
-                  <div style={{fontSize:10, color:C.muted, marginTop:2, fontFamily:"ui-monospace, monospace"}}>{q.id}</div>
-                </div>
+        {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).length === 0 ? (
+          <div style={{fontSize:12, color:C.muted, fontStyle:"italic"}}>Aún no hay preguntas en ningún banco. Importa primero un JSON arriba.</div>
+        ) : (
+          <>
+            <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Asignatura</div>
+            <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14}}>
+              {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).map(s => (
+                <button key={s} onClick={()=>{setMgrSubject(s); setMgrTopic("__all__"); setMgrExpanded(null);}} style={pillBtn(mgrSubject===s, {pad:"7px 14px", size:12})}>
+                  {s} <span style={{opacity:.7, fontSize:10.5, marginLeft:4}}>({bankSizes[s] || 0})</span>
+                </button>
               ))}
-              {delPreview.matched.length > 8 && <div style={{padding:"6px 0", fontStyle:"italic", color:C.muted}}>… y {delPreview.matched.length - 8} más</div>}
             </div>
-            {delPreview.notFound.length > 0 && (
-              <div style={{marginTop:10, padding:"8px 11px", background:C.v50, borderRadius:10, fontSize:11, color:C.muted, lineHeight:1.5}}>
-                <strong>IDs no encontrados</strong> (en otra asignatura o ya borrados):
-                <div style={{fontFamily:"ui-monospace, monospace", marginTop:4, wordBreak:"break-all"}}>
-                  {delPreview.notFound.slice(0, 5).join(", ")}
-                  {delPreview.notFound.length > 5 && ` … (+${delPreview.notFound.length - 5})`}
+
+            {(bankSizes[mgrSubject] || 0) > 0 && SUBJECTS[mgrSubject].some(t => bank.some(q => q.s===mgrSubject && (q.t||[]).includes(t))) && (
+              <>
+                <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Tema</div>
+                <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14, maxHeight:140, overflowY:"auto"}}>
+                  <button onClick={()=>{setMgrTopic("__all__"); setMgrExpanded(null);}} style={pillBtn(mgrTopic==="__all__", {pad:"7px 14px", size:12})}>✓ Todos los temas</button>
+                  {SUBJECTS[mgrSubject].filter(t => bank.some(q => q.s===mgrSubject && (q.t||[]).includes(t))).map(t => {
+                    const count = bank.filter(q => q.s===mgrSubject && (q.t||[]).includes(t)).length;
+                    return (
+                      <button key={t} onClick={()=>{setMgrTopic(t); setMgrExpanded(null);}} style={pillBtn(mgrTopic===t, {pad:"7px 14px", size:12})}>
+                        {t} <span style={{opacity:.7, fontSize:10.5, marginLeft:4}}>({count})</span>
+                      </button>
+                    );
+                  })}
                 </div>
-              </div>
+              </>
             )}
-            <button onClick={confirmDelete} style={{...pillBtn(true, {pad:"11px 18px"}), background:C.err, marginTop:12, width:"100%", boxShadow:`0 6px 18px ${C.err}40`}}>
-              🗑️ Eliminar {delPreview.matched.length} pregunta{delPreview.matched.length === 1 ? "" : "s"} definitivamente
-            </button>
-          </div>
+
+            <input
+              value={mgrSearch}
+              onChange={e=>setMgrSearch(e.target.value)}
+              placeholder="🔎 Buscar por texto del enunciado…"
+              style={{width:"100%", padding:"10px 13px", borderRadius:12, border:`1.5px solid ${C.line}`, fontSize:13, color:C.ink, background:C.bg, outline:"none", fontFamily:"inherit", marginBottom:12}}
+            />
+
+            {(() => {
+              const needle = mgrSearch.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+              const pool = bank.filter(q => {
+                if (q.s !== mgrSubject) return false;
+                if (mgrTopic !== "__all__" && !(q.t||[]).includes(mgrTopic)) return false;
+                if (needle) {
+                  const hay = ((q.e||"") + " " + Object.values(q.o||{}).join(" ")).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+                  if (!hay.includes(needle)) return false;
+                }
+                return true;
+              });
+              if (pool.length === 0) {
+                return <div style={{fontSize:12, color:C.muted, fontStyle:"italic", padding:"10px 0"}}>{mgrSearch ? "Ninguna pregunta coincide con la búsqueda." : "No hay preguntas con este filtro."}</div>;
+              }
+              return (
+                <>
+                  <div style={{fontSize:12, color:C.v700, fontWeight:700, marginBottom:8}}>{pool.length} pregunta{pool.length!==1?"s":""}{mgrSearch ? " (filtradas)" : ""}</div>
+                  <div style={{display:"flex", flexDirection:"column", gap:8, maxHeight:520, overflowY:"auto"}}>
+                    {pool.map((q, i) => {
+                      const open = mgrExpanded === q.id;
+                      const isEditing = editing && editing.id === q.id;
+                      const qIssues = validateQuestion(q);
+                      return (
+                        <div key={q.id} style={{border:`1.5px solid ${open?C.v200:C.line}`, borderRadius:14, overflow:"hidden", background: open?C.v50:C.surface}}>
+                          <div onClick={()=>{ setMgrExpanded(e => e===q.id ? null : q.id); if (isEditing) setEditing(null); }}
+                            style={{display:"flex", gap:10, alignItems:"flex-start", padding:"11px 13px", cursor:"pointer"}}>
+                            <span style={{fontWeight:800, color:C.v500, fontSize:12.5, minWidth:24}}>{i+1}.</span>
+                            <span style={{flex:1, fontSize:13, lineHeight:1.5, color:C.ink}}>
+                              {open ? q.e : (q.e.length>120 ? q.e.slice(0,120)+"…" : q.e)}
+                              {qIssues.length > 0 && <span style={{marginLeft:6, fontSize:10.5, color:C.err, fontWeight:700}}>⚠</span>}
+                            </span>
+                            <span style={{fontSize:12, color:C.muted, flexShrink:0}}>{open ? "▲" : "▼"}</span>
+                          </div>
+                          {open && !isEditing && (
+                            <div style={{padding:"0 13px 13px 47px"}}>
+                              <div style={{display:"flex", flexDirection:"column", gap:5, marginBottom:10}}>
+                                {Object.keys(q.o).map(opt => {
+                                  const ic = opt === q.c;
+                                  return (
+                                    <div key={opt} style={{display:"flex", gap:8, padding:"7px 11px", borderRadius:10, border:`1.5px solid ${ic?C.ok:C.line}`, background: ic?"#F0FDF4":C.surface, color: ic?"#065F46":C.muted, fontSize:12.5, lineHeight:1.45}}>
+                                      <span style={{fontWeight:800, minWidth:18}}>{opt})</span>
+                                      <span style={{flex:1}}>{q.o[opt]}</span>
+                                      {ic && <span style={{fontWeight:800}}>✓</span>}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                              {q.x && <div style={{padding:10, borderRadius:11, background:"#FFFBEB", border:`1px solid ${C.warn}44`, fontSize:12, lineHeight:1.6, color:"#78350F", marginBottom:8}}>{q.x}</div>}
+                              {qIssues.length > 0 && <div style={{padding:"7px 10px", borderRadius:10, background:"#FEF2F2", border:`1px solid ${C.err}33`, fontSize:11.5, color:C.err, marginBottom:8, fontWeight:600}}>⚠ Avisos: {qIssues.join(", ")}</div>}
+                              <div style={{display:"flex", gap:6, flexWrap:"wrap", alignItems:"center", marginBottom:10}}>
+                                {(q.t||[]).map(t => <span key={t} style={tagChip("navy")}>{t}</span>)}
+                                {q.origen==="oficial" && q.convocatoria && <span style={tagChip("peach")}>PIR {q.convocatoria}</span>}
+                              </div>
+                              <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
+                                <button onClick={()=>startEdit(q)}
+                                  style={{padding:"8px 16px", borderRadius:11, border:`1.5px solid ${C.v300}`, background:C.v50, color:C.v700, fontWeight:700, fontSize:12.5, cursor:"pointer", fontFamily:"inherit"}}>
+                                  ✏️ Editar
+                                </button>
+                                <button onClick={()=>deleteFromManager(q)}
+                                  style={{padding:"8px 16px", borderRadius:11, border:`1.5px solid ${C.err}`, background:"#FEF2F2", color:C.err, fontWeight:700, fontSize:12.5, cursor:"pointer", fontFamily:"inherit"}}>
+                                  🗑 Eliminar esta pregunta
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                          {open && isEditing && (
+                            <div style={{padding:"0 13px 14px 13px"}}>
+                              <div style={{fontSize:11, fontWeight:800, color:C.v700, letterSpacing:.5, marginBottom:6, textTransform:"uppercase"}}>Enunciado</div>
+                              <textarea value={editing.e} onChange={e=>setEditing(ed=>({...ed, e:e.target.value}))}
+                                style={{width:"100%", minHeight:70, padding:10, borderRadius:10, border:`1.5px solid ${C.line}`, fontSize:13, lineHeight:1.5, color:C.ink, background:C.surface, outline:"none", resize:"vertical", fontFamily:"inherit", marginBottom:10}}/>
+                              <div style={{fontSize:11, fontWeight:800, color:C.v700, letterSpacing:.5, marginBottom:6, textTransform:"uppercase"}}>Opciones · marca la correcta</div>
+                              <div style={{display:"flex", flexDirection:"column", gap:6, marginBottom:10}}>
+                                {Object.keys(editing.o).map(opt => (
+                                  <div key={opt} style={{display:"flex", gap:8, alignItems:"center"}}>
+                                    <label style={{display:"flex", alignItems:"center", gap:5, fontWeight:800, color: editing.c===opt ? C.ok : C.muted, cursor:"pointer", fontSize:13}}>
+                                      <input type="radio" name={`correct_${q.id}`} checked={editing.c===opt} onChange={()=>setEditing(ed=>({...ed, c:opt}))} style={{accentColor:C.ok, cursor:"pointer"}}/>
+                                      {opt})
+                                    </label>
+                                    <input value={editing.o[opt]} onChange={e=>setEditing(ed=>({...ed, o:{...ed.o, [opt]:e.target.value}}))}
+                                      style={{flex:1, padding:"8px 11px", borderRadius:10, border:`1.5px solid ${editing.c===opt?C.ok:C.line}`, fontSize:12.5, color:C.ink, background: editing.c===opt?"#F0FDF4":C.surface, outline:"none", fontFamily:"inherit"}}/>
+                                  </div>
+                                ))}
+                              </div>
+                              <div style={{fontSize:11, fontWeight:800, color:C.v700, letterSpacing:.5, marginBottom:6, textTransform:"uppercase"}}>Justificación</div>
+                              <textarea value={editing.x||""} onChange={e=>setEditing(ed=>({...ed, x:e.target.value}))}
+                                style={{width:"100%", minHeight:60, padding:10, borderRadius:10, border:`1.5px solid ${C.line}`, fontSize:12.5, lineHeight:1.5, color:C.ink, background:C.surface, outline:"none", resize:"vertical", fontFamily:"inherit", marginBottom:10}}/>
+                              <div style={{display:"flex", gap:10, flexWrap:"wrap", marginBottom:12}}>
+                                <div style={{flex:1, minWidth:160}}>
+                                  <div style={{fontSize:11, fontWeight:800, color:C.v700, letterSpacing:.5, marginBottom:6, textTransform:"uppercase"}}>Referencias</div>
+                                  <input value={editing.r||""} onChange={e=>setEditing(ed=>({...ed, r:e.target.value}))}
+                                    style={{width:"100%", padding:"8px 11px", borderRadius:10, border:`1.5px solid ${C.line}`, fontSize:12.5, color:C.ink, background:C.surface, outline:"none", fontFamily:"inherit"}}/>
+                                </div>
+                                <div style={{flex:1, minWidth:160}}>
+                                  <div style={{fontSize:11, fontWeight:800, color:C.v700, letterSpacing:.5, marginBottom:6, textTransform:"uppercase"}}>Temas (separados por coma)</div>
+                                  <input value={(editing.t||[]).join(", ")} onChange={e=>setEditing(ed=>({...ed, t:e.target.value.split(",").map(x=>x.trim()).filter(Boolean)}))}
+                                    style={{width:"100%", padding:"8px 11px", borderRadius:10, border:`1.5px solid ${C.line}`, fontSize:12.5, color:C.ink, background:C.surface, outline:"none", fontFamily:"inherit"}}/>
+                                </div>
+                              </div>
+                              <div style={{display:"flex", gap:8}}>
+                                <button onClick={saveEdit} style={{...pillBtn(true, {pad:"9px 18px"}), background:C.ok}}>✓ Guardar cambios</button>
+                                <button onClick={()=>setEditing(null)} style={pillBtn(false, {pad:"9px 16px", ghost:true})}>Cancelar</button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              );
+            })()}
+          </>
         )}
       </div>
 
@@ -1430,7 +1477,7 @@ export default function Angie(){
                       <div style={{fontWeight:800, fontSize:12, color:"#7F1D1D", marginBottom:8, letterSpacing:.4}}>🔥 Errores frecuentes</div>
                       {frequentErrors.map((fe, i) => (
                         <div key={fe.q.id} style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8, padding:"6px 0", borderTop: i>0 ? `1px solid ${C.err}22` : "none"}}>
-                          <span style={{fontSize:11.5, color:"#7F1D1D", flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", lineHeight:1.4, fontWeight:600}}>{summarizeQuestion(fe.q.e)}</span>
+                          <span style={{fontSize:11.5, color:"#7F1D1D", flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", lineHeight:1.4}}>{fe.q.e}</span>
                           <span style={{fontSize:11, color:C.err, fontWeight:800, flexShrink:0, background:"#FEE2E2", padding:"2px 8px", borderRadius:99}}>
                             {fe.fails}/{fe.attempts} fallos
                           </span>
@@ -1592,6 +1639,19 @@ export default function Angie(){
               )}
             </div>
 
+            <div style={card({marginBottom:11})}>
+              <div style={{fontWeight:700, fontSize:14, marginBottom:10, color:C.ink}}>Modo de corrección</div>
+              <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
+                <button onClick={()=>setImmediate(false)} style={{...softBtn(!immediate), padding:"11px 18px"}}>📝 Examen · corregir al final</button>
+                <button onClick={()=>setImmediate(true)} style={{...softBtn(immediate), padding:"11px 18px"}}>⚡ Estudio · corregir al instante</button>
+              </div>
+              <div style={{fontSize:11.5, color:C.muted, marginTop:8, lineHeight:1.5}}>
+                {immediate
+                  ? "En cuanto respondas cada pregunta verás si has acertado y su explicación. Al terminar, también verás el resumen."
+                  : "Respondes todo el examen y se corrige al pulsar «Entregar» (modo examen real)."}
+              </div>
+            </div>
+
             {err && (
               <div style={{background:"#FEF2F2", border:`1px solid ${C.err}33`, borderRadius:14, padding:11, marginBottom:11, color:C.err, fontSize:13, fontWeight:600}}>{err}</div>
             )}
@@ -1612,8 +1672,12 @@ export default function Angie(){
   // EXAM
   if (tab==="exam") {
     const q = questions[curQ];
+    if (!q) return wrap(<div style={card()}>No hay preguntas en este examen.</div>);
     const optKeys = Object.keys(q.o);
     const prog = Math.round(Object.keys(answers).length/questions.length*100);
+    const answered = answers[curQ] !== undefined;
+    const showFeedback = immediate && answered; // en modo estudio, una vez respondida se revela
+    const isRight = answers[curQ] === q.c;
     return wrap(
       <div>
         <div style={{background:C.v100, borderRadius:99, height:7, marginBottom:6, overflow:"hidden"}}>
@@ -1632,14 +1696,40 @@ export default function Angie(){
           <div style={{display:"flex", flexDirection:"column", gap:9}}>
             {optKeys.map(opt => {
               const sel = answers[curQ]===opt;
+              const isCorrect = opt === q.c;
+              let bg = C.surface, brd = C.line, col = C.ink, sh = "none", numCol = C.v500;
+              if (showFeedback) {
+                if (isCorrect) { bg = "#F0FDF4"; brd = C.ok; col = "#065F46"; numCol = C.ok; }
+                else if (sel) { bg = "#FEF2F2"; brd = C.err; col = "#7F1D1D"; numCol = C.err; }
+              } else if (sel) {
+                bg = `linear-gradient(135deg, ${C.v700}, ${C.v500})`; brd = C.v600; col = "#fff"; sh = `0 6px 18px ${C.v700}30`; numCol = "#fff";
+              }
               return (
-                <button key={opt} onClick={()=>setAnswers(p=>({...p, [curQ]:opt}))}
-                  style={{display:"flex", gap:13, alignItems:"flex-start", padding:"12px 16px", borderRadius:14, border:`2px solid ${sel?C.v600:C.line}`, background: sel ? `linear-gradient(135deg, ${C.v700}, ${C.v500})` : C.surface, color: sel ? "#fff" : C.ink, cursor:"pointer", textAlign:"left", fontSize:14, lineHeight:1.55, fontFamily:"inherit", transition:"all .15s", boxShadow: sel ? `0 6px 18px ${C.v700}30` : "none"}}>
-                  <span style={{fontWeight:800, minWidth:24, color: sel ? "#fff" : C.v500}}>{opt})</span>
-                  <span>{q.o[opt]}</span>
+                <button key={opt}
+                  onClick={()=>{ if (showFeedback) return; setAnswers(p=>({...p, [curQ]:opt})); }}
+                  disabled={showFeedback}
+                  style={{display:"flex", gap:13, alignItems:"flex-start", padding:"12px 16px", borderRadius:14, border:`2px solid ${brd}`, background: bg, color: col, cursor: showFeedback ? "default" : "pointer", textAlign:"left", fontSize:14, lineHeight:1.55, fontFamily:"inherit", transition:"all .15s", boxShadow: sh}}>
+                  <span style={{fontWeight:800, minWidth:24, color: numCol}}>{opt})</span>
+                  <span style={{flex:1}}>{q.o[opt]}</span>
+                  {showFeedback && isCorrect && <span style={{fontWeight:800}}>✓</span>}
+                  {showFeedback && sel && !isCorrect && <span style={{fontWeight:800}}>✗</span>}
                 </button>
               );
             })}
+          </div>
+          {showFeedback && (
+            <div style={{marginTop:14}}>
+              <div style={{fontSize:13.5, fontWeight:800, color: isRight ? C.ok : C.err, marginBottom:8}}>
+                {isRight ? "✓ ¡Correcta!" : `✗ Incorrecta · la respuesta correcta es ${q.c})`}
+              </div>
+              {q.x && (<div style={{padding:13, borderRadius:14, background:"#FFFBEB", border:`1px solid ${C.warn}55`, fontSize:13, lineHeight:1.7, color:"#78350F"}}>{q.x}</div>)}
+              {q.r && (<div style={{marginTop:8, padding:11, borderRadius:14, background:C.v50, border:`1px solid ${C.v200}`, fontSize:12, color:C.v700, lineHeight:1.6}}><strong>📚 Refs:</strong> {q.r}</div>)}
+            </div>
+          )}
+          <div style={{marginTop:16, textAlign:"right"}}>
+            <button onClick={deleteExamQuestion} style={{background:"transparent", border:"none", color:C.muted, fontSize:11.5, cursor:"pointer", fontFamily:"inherit", textDecoration:"underline", padding:4}}>
+              🗑 Eliminar esta pregunta del banco
+            </button>
           </div>
         </div>
         <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8, flexWrap:"wrap"}}>
@@ -1663,6 +1753,7 @@ export default function Angie(){
   // RESULTS
   if (tab==="results") {
     const q = questions[curQ];
+    if (!q) return wrap(<div style={card()}>No hay preguntas que mostrar.</div>);
     const optKeys = Object.keys(q.o);
     const ua = answers[curQ];
     const ok = ua === q.c;
@@ -1711,6 +1802,11 @@ export default function Angie(){
               {q.r && (<div style={{padding:11, borderRadius:14, background:C.v50, border:`1px solid ${C.v200}`, fontSize:12, color:C.v700, lineHeight:1.6}}><strong>📚 Refs:</strong> {q.r}</div>)}
             </div>
           )}
+          <div style={{marginTop:14, textAlign:"right"}}>
+            <button onClick={deleteExamQuestion} style={{background:"transparent", border:"none", color:C.muted, fontSize:11.5, cursor:"pointer", fontFamily:"inherit", textDecoration:"underline", padding:4}}>
+              🗑 Eliminar esta pregunta del banco
+            </button>
+          </div>
         </div>
         <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8}}>
           <button onClick={()=>setCurQ(p=>Math.max(0,p-1))} disabled={curQ===0} style={{...pillBtn(false, {pad:"10px 18px", ghost:true}), opacity: curQ===0 ? .35 : 1}}>← Anterior</button>
@@ -1730,7 +1826,15 @@ export default function Angie(){
   if (tab==="flashcards") return wrap(
     <div>
       <div style={{background:`linear-gradient(160deg, ${C.navy} 0%, ${C.navy2} 100%)`, color:"#fff", borderRadius:22, padding:"18px 22px", marginBottom:14, boxShadow:"0 10px 28px rgba(27,22,64,.25)"}}>
-        <div style={{fontWeight:800, fontSize:14, marginBottom:12}}>Flashcards</div>
+        <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:10, marginBottom:12}}>
+          <div style={{fontWeight:800, fontSize:14}}>Flashcards</div>
+          {deck.length > 0 && (
+            <button onClick={clearAllFlashcards}
+              style={{background:"rgba(239,68,68,.18)", border:"1px solid rgba(239,68,68,.5)", color:"#FCA5A5", borderRadius:99, padding:"5px 12px", fontSize:11, fontWeight:700, cursor:"pointer", fontFamily:"inherit", letterSpacing:.3}}>
+              🗑 Vaciar mazo
+            </button>
+          )}
+        </div>
         <div style={{display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:10}}>
           {[
             {l:"Hoy", v:due.length, c:"#FCA5A5"},
@@ -1781,7 +1885,7 @@ export default function Angie(){
                         {hasRecall && <span style={{fontSize:9.5, color:C.v500, fontWeight:700, background:C.v50, padding:"2px 8px", borderRadius:99}}>RECALL</span>}
                         {needsOptions && <span style={{fontSize:9.5, color:C.peachInk, fontWeight:700, background:C.peach, padding:"2px 8px", borderRadius:99}}>CON OPCIONES</span>}
                       </div>
-                      <div style={{fontSize:16, lineHeight:1.85, fontWeight:500, color:C.ink, marginBottom: needsOptions ? 12 : 0}}>{fcCard.pa || cleanQuestion(fcCard.e)}</div>
+                      <div style={{fontSize:16, lineHeight:1.85, fontWeight:500, color:C.ink, marginBottom: needsOptions ? 12 : 0}}>{fcCard.pa || fcCard.e}</div>
                       {needsOptions && (
                         <>
                           <div style={{fontSize:10.5, color:C.peachInk, fontWeight:600, fontStyle:"italic", marginBottom:8, padding:"6px 10px", background:C.peach+"60", borderRadius:8, borderLeft:`3px solid ${C.peachInk}`}}>
@@ -1842,7 +1946,7 @@ export default function Angie(){
           <div style={{fontWeight:800, fontSize:14, color:C.ink, marginBottom:10}}>📅 Próximas revisiones</div>
           {pending.sort((a,b)=>a.next_review.localeCompare(b.next_review)).slice(0,5).map(c => (
             <div key={c.id} style={{display:"flex", justifyContent:"space-between", padding:"9px 0", borderBottom:`1px solid ${C.line}`, gap:8, fontSize:13}}>
-              <span style={{flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", color:C.ink}}>{summarizeQuestion(c.pa || c.e)}</span>
+              <span style={{flex:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", color:C.ink}}>{(c.pa || c.e)?.slice(0,65)}…</span>
               <span style={{fontSize:11, color:C.v700, whiteSpace:"nowrap", background:C.v50, padding:"3px 9px", borderRadius:99, fontWeight:600}}>📅 {c.next_review}</span>
             </div>
           ))}
