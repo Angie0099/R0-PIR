@@ -290,6 +290,11 @@ export default function Angie(){
   const[schId,setSchId]=useState(null);              // esquema abierto (id) o null = lista
   const[schAnswers,setSchAnswers]=useState({});      // respuestas escritas {sec_item: texto}
   const[schRevealed,setSchRevealed]=useState(false); // mostrar soluciones
+  const[schLevel,setSchLevel]=useState(1);           // 1=evocar · 2=reconocer · 3=re-evocar
+  const[schChoice,setSchChoice]=useState({});        // elecciones nivel 2 {sec_item: texto elegido}
+  const[schChoiceRev,setSchChoiceRev]=useState(false);// nivel 2 corregido
+  const[schOptions,setSchOptions]=useState({});      // opciones generadas nivel 2 {sec_item: [textos]}
+  const[schFocus,setSchFocus]=useState(null);        // claves a re-evocar en nivel 3 (las falladas)
   // Importación de esquemas
   const[impSchemaText,setImpSchemaText]=useState("");
   const[impSchemaPreview,setImpSchemaPreview]=useState(null);
@@ -1033,7 +1038,65 @@ export default function Angie(){
     showToast("🗑️ Esquema eliminado");
   };
 
-  const openSchema = (sc) => { setSchId(sc.id); setSchAnswers({}); setSchRevealed(false); };
+  const openSchema = (sc) => { setSchId(sc.id); setSchAnswers({}); setSchRevealed(false); setSchLevel(1); setSchChoice({}); setSchChoiceRev(false); setSchOptions({}); setSchFocus(null); };
+
+  // Lista plana de {key, pista, respuesta, titulo} de un esquema
+  const schemaFlat = (sc) => {
+    const out = [];
+    sc.secciones.forEach((sec, si) => sec.items.forEach((it, ii) => {
+      out.push({ key: `${si}_${ii}`, pista: it.pista, respuesta: it.respuesta, titulo: sec.titulo });
+    }));
+    return out;
+  };
+
+  // Genera opciones para el nivel 2: la correcta + hasta 3 distractores de OTRAS
+  // casillas del mismo esquema (o de otros esquemas de la asignatura si faltan).
+  const buildSchemaOptions = (sc, keys) => {
+    const flat = schemaFlat(sc);
+    const pool = flat.map(f => f.respuesta);
+    // refuerzo con otras respuestas de la misma asignatura
+    const extra = schemas.filter(x => x.s === sc.s && x.id !== sc.id)
+      .flatMap(x => schemaFlat(x).map(f => f.respuesta));
+    const allPool = [...new Set([...pool, ...extra])];
+    const opts = {};
+    keys.forEach(k => {
+      const correct = flat.find(f => f.key === k)?.respuesta;
+      if (correct == null) return;
+      const candidates = allPool.filter(v => v !== correct);
+      // baraja candidatos
+      for (let i = candidates.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [candidates[i],candidates[j]]=[candidates[j],candidates[i]]; }
+      const distractors = candidates.slice(0, 3);
+      const choices = [correct, ...distractors];
+      for (let i = choices.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [choices[i],choices[j]]=[choices[j],choices[i]]; }
+      opts[k] = choices;
+    });
+    return opts;
+  };
+
+  // Pasar al nivel 2 (reconocimiento) usando los huecos fallados
+  const goSchemaLevel2 = (sc) => {
+    const failedKeys = schemaFlat(sc).filter(f => !schemaMatch(schAnswers[f.key], f.respuesta)).map(f => f.key);
+    const keys = failedKeys.length ? failedKeys : schemaFlat(sc).map(f => f.key);
+    setSchOptions(buildSchemaOptions(sc, keys));
+    setSchFocus(keys);
+    setSchChoice({}); setSchChoiceRev(false);
+    setSchLevel(2);
+  };
+
+  // Pasar al nivel 3 (re-evocación) centrado en lo que aún falla
+  const goSchemaLevel3 = (sc) => {
+    const flat = schemaFlat(sc);
+    const stillWrong = (schFocus || flat.map(f=>f.key)).filter(k => {
+      const f = flat.find(x => x.key === k);
+      return f && !schemaMatch(schChoice[k], f.respuesta);
+    });
+    const keys = stillWrong.length ? stillWrong : (schFocus || flat.map(f=>f.key));
+    setSchFocus(keys);
+    setSchAnswers({}); setSchRevealed(false);
+    setSchLevel(3);
+  };
+
+  const restartSchema = () => { setSchAnswers({}); setSchRevealed(false); setSchLevel(1); setSchChoice({}); setSchChoiceRev(false); setSchOptions({}); setSchFocus(null); };
 
   // ───────────────────────────────────────────────
   // ESTILOS
@@ -1164,75 +1227,160 @@ export default function Angie(){
     const current = schId ? schemas.find(sc => sc.id === schId) : null;
     const subjectsWithSchemas = Object.keys(SUBJECTS).filter(s => schemas.some(sc => sc.s === s));
 
-    // Vista de un esquema concreto (rellenar huecos)
+    // Vista de un esquema concreto (flujo de 3 niveles)
     if (current) {
+      const flat = schemaFlat(current);
+      const itemByKey = (k) => { const [si, ii] = k.split("_").map(Number); return current.secciones[si].items[ii]; };
+
+      // ── NIVEL 2: reconocimiento (elegir entre conceptos) ──
+      if (schLevel === 2) {
+        const keys = schFocus || flat.map(f => f.key);
+        let nCorrect = 0;
+        if (schChoiceRev) keys.forEach(k => { if (schemaMatch(schChoice[k], itemByKey(k).respuesta)) nCorrect++; });
+        const pct2 = keys.length ? Math.round(nCorrect / keys.length * 100) : 0;
+        const allChosen = keys.every(k => schChoice[k] !== undefined);
+        return wrap(
+          <div>
+            <div style={card({marginBottom:12})}>
+              <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:10, marginBottom:6, flexWrap:"wrap"}}>
+                <div>
+                  <div style={{fontSize:11, fontWeight:800, color:C.v500, letterSpacing:1.5}}>🔡 NIVEL 2 · RECONOCIMIENTO</div>
+                  <div style={{fontWeight:900, fontSize:18, color:C.ink, letterSpacing:-.3, marginTop:3}}>{current.t}</div>
+                </div>
+                <button onClick={restartSchema} style={pillBtn(false, {pad:"8px 14px", ghost:true})}>↺ Empezar de nuevo</button>
+              </div>
+              <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6}}>
+                Elige el concepto correcto entre las opciones. Son los huecos que fallaste al evocar: reconocerlos ahora prepara el reintento final.
+              </div>
+              {schChoiceRev && (
+                <div style={{marginTop:12, padding:"10px 14px", borderRadius:14, background: pct2>=70?"#F0FDF4":pct2>=40?"#FFFBEB":"#FEF2F2", border:`1px solid ${pct2>=70?C.ok:pct2>=40?C.warn:C.err}44`, fontSize:13, fontWeight:700, color: pct2>=70?"#065F46":pct2>=40?"#92400E":"#7F1D1D"}}>
+                  Acertaste {nCorrect} de {keys.length} ({pct2}%)
+                </div>
+              )}
+            </div>
+
+            {keys.map(k => {
+              const it = itemByKey(k);
+              const opts = schOptions[k] || [it.respuesta];
+              return (
+                <div key={k} style={card({marginBottom:10})}>
+                  {it.pista && <div style={{fontSize:13.5, fontWeight:800, color:C.v700, marginBottom:9}}>{it.pista}</div>}
+                  <div style={{display:"flex", flexDirection:"column", gap:7}}>
+                    {opts.map((opt, oi) => {
+                      const chosen = schChoice[k] === opt;
+                      const isCorrect = schemaMatch(opt, it.respuesta);
+                      let bg = C.surface, brd = C.line, col = C.ink;
+                      if (schChoiceRev) {
+                        if (isCorrect) { bg = "#F0FDF4"; brd = C.ok; col = "#065F46"; }
+                        else if (chosen) { bg = "#FEF2F2"; brd = C.err; col = "#7F1D1D"; }
+                      } else if (chosen) { bg = `linear-gradient(135deg, ${C.v700}, ${C.v500})`; brd = C.v600; col = "#fff"; }
+                      return (
+                        <button key={oi} disabled={schChoiceRev}
+                          onClick={()=>{ if (!schChoiceRev) setSchChoice(p=>({...p, [k]:opt})); }}
+                          style={{display:"flex", gap:10, alignItems:"flex-start", padding:"11px 14px", borderRadius:12, border:`2px solid ${brd}`, background:bg, color:col, cursor: schChoiceRev?"default":"pointer", textAlign:"left", fontSize:13.5, lineHeight:1.5, fontFamily:"inherit"}}>
+                          <span style={{flex:1}}>{opt}</span>
+                          {schChoiceRev && isCorrect && <span style={{fontWeight:800}}>✓</span>}
+                          {schChoiceRev && chosen && !isCorrect && <span style={{fontWeight:800}}>✗</span>}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+
+            <div style={{display:"flex", gap:8, flexWrap:"wrap", marginTop:4}}>
+              {!schChoiceRev ? (
+                <button onClick={()=>setSchChoiceRev(true)} disabled={!allChosen}
+                  style={{...pillBtn(true, {pad:"13px 24px"}), background: allChosen ? `linear-gradient(135deg, ${C.v800}, ${C.v500})` : "#A0AEC0", flex:1, cursor: allChosen?"pointer":"not-allowed"}}>✅ Comprobar</button>
+              ) : (
+                <button onClick={()=>goSchemaLevel3(current)} style={{...pillBtn(true, {pad:"13px 24px"}), background:`linear-gradient(135deg, ${C.v800}, ${C.v500})`, flex:1}}>✍️ Volver a evocar (nivel 3)</button>
+              )}
+            </div>
+          </div>
+        );
+      }
+
+      // ── NIVELES 1 y 3: evocación libre (3 = solo huecos en foco) ──
+      const isL3 = schLevel === 3;
+      const visibleKeys = isL3 && schFocus ? schFocus : flat.map(f => f.key);
+      const visibleSet = new Set(visibleKeys);
       let totalItems = 0, correctItems = 0;
-      current.secciones.forEach((sec, si) => sec.items.forEach((it, ii) => {
-        totalItems++;
-        if (schRevealed && schemaMatch(schAnswers[`${si}_${ii}`], it.respuesta)) correctItems++;
-      }));
+      visibleKeys.forEach(k => { totalItems++; if (schRevealed && schemaMatch(schAnswers[k], itemByKey(k).respuesta)) correctItems++; });
       const pct = totalItems ? Math.round(correctItems / totalItems * 100) : 0;
+      const lowScore = schRevealed && pct < 60;
+
       return wrap(
         <div>
           <div style={card({marginBottom:12})}>
             <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:10, marginBottom:6, flexWrap:"wrap"}}>
               <div>
-                <div style={{fontSize:11, fontWeight:800, color:C.v500, letterSpacing:1.5}}>📋 ESQUEMA PREVIO</div>
+                <div style={{fontSize:11, fontWeight:800, color:C.v500, letterSpacing:1.5}}>{isL3 ? "✍️ NIVEL 3 · RE-EVOCACIÓN" : "📋 NIVEL 1 · EVOCACIÓN"}</div>
                 <div style={{fontWeight:900, fontSize:18, color:C.ink, letterSpacing:-.3, marginTop:3}}>{current.t}</div>
                 <div style={{fontSize:12, color:C.muted, marginTop:2}}>{current.s}</div>
               </div>
-              <button onClick={()=>{ setSchId(null); setSchRevealed(false); setSchAnswers({}); }} style={pillBtn(false, {pad:"8px 14px", ghost:true})}>← Temas</button>
+              <button onClick={()=>{ setSchId(null); restartSchema(); }} style={pillBtn(false, {pad:"8px 14px", ghost:true})}>← Temas</button>
             </div>
             <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6}}>
-              Rellena de memoria los huecos que recuerdes. Aunque falles, este esfuerzo prepara el repaso. Cuando termines, pulsa <strong>Comprobar</strong>.
+              {isL3
+                ? "Último paso: recupera de memoria, ya sin ayuda, lo que reforzaste. Solo los huecos que aún se te resistían."
+                : "Rellena de memoria los huecos que recuerdes. Aunque falles, este esfuerzo prepara el repaso. Cuando termines, pulsa Comprobar."}
             </div>
             {schRevealed && (
               <div style={{marginTop:12, padding:"10px 14px", borderRadius:14, background: pct>=70?"#F0FDF4":pct>=40?"#FFFBEB":"#FEF2F2", border:`1px solid ${pct>=70?C.ok:pct>=40?C.warn:C.err}44`, fontSize:13, fontWeight:700, color: pct>=70?"#065F46":pct>=40?"#92400E":"#7F1D1D"}}>
-                Recordaste {correctItems} de {totalItems} ({pct}%)
+                Recordaste {correctItems} de {totalItems} ({pct}%){lowScore ? " · conviene reforzar con opciones 👇" : ""}
               </div>
             )}
           </div>
 
-          {current.secciones.map((sec, si) => (
-            <div key={si} style={card({marginBottom:12})}>
-              {sec.titulo && <div style={{fontWeight:800, fontSize:14.5, color:C.ink, marginBottom:12, paddingBottom:9, borderBottom:`2px solid ${C.v100}`}}>{sec.titulo}</div>}
-              <div style={{display:"flex", flexDirection:"column", gap:10}}>
-                {sec.items.map((it, ii) => {
-                  const key = `${si}_${ii}`;
-                  const written = schAnswers[key] || "";
-                  const ok = schRevealed && schemaMatch(written, it.respuesta);
-                  return (
-                    <div key={ii} style={{display:"flex", gap:10, alignItems:"flex-start", flexWrap:"wrap"}}>
-                      {it.pista && <div style={{flex:"0 0 auto", minWidth:90, maxWidth:200, fontSize:13, fontWeight:700, color:C.v700, paddingTop:9}}>{it.pista}</div>}
-                      <div style={{flex:1, minWidth:180}}>
-                        <input
-                          value={written}
-                          onChange={e=>setSchAnswers(p=>({...p, [key]:e.target.value}))}
-                          disabled={schRevealed}
-                          placeholder="Escribe lo que recuerdes…"
-                          style={{width:"100%", padding:"9px 13px", borderRadius:11, fontSize:13.5, color:C.ink, fontFamily:"inherit", outline:"none",
-                            border:`1.5px solid ${schRevealed ? (ok?C.ok:C.warn) : C.line}`,
-                            background: schRevealed ? (ok?"#F0FDF4":"#FFFBEB") : C.surface}}/>
-                        {schRevealed && (
-                          <div style={{marginTop:5, fontSize:12.5, lineHeight:1.5, color: ok?"#065F46":"#92400E"}}>
-                            {ok ? "✓ " : "✗ Respuesta: "}<strong>{it.respuesta}</strong>
-                          </div>
-                        )}
+          {current.secciones.map((sec, si) => {
+            const visibleItems = sec.items.map((it, ii) => ({ it, ii, key: `${si}_${ii}` })).filter(x => visibleSet.has(x.key));
+            if (visibleItems.length === 0) return null;
+            return (
+              <div key={si} style={card({marginBottom:12})}>
+                {sec.titulo && <div style={{fontWeight:800, fontSize:14.5, color:C.ink, marginBottom:12, paddingBottom:9, borderBottom:`2px solid ${C.v100}`}}>{sec.titulo}</div>}
+                <div style={{display:"flex", flexDirection:"column", gap:10}}>
+                  {visibleItems.map(({ it, key }) => {
+                    const written = schAnswers[key] || "";
+                    const ok = schRevealed && schemaMatch(written, it.respuesta);
+                    return (
+                      <div key={key} style={{display:"flex", gap:10, alignItems:"flex-start", flexWrap:"wrap"}}>
+                        {it.pista && <div style={{flex:"0 0 auto", minWidth:90, maxWidth:200, fontSize:13, fontWeight:700, color:C.v700, paddingTop:9}}>{it.pista}</div>}
+                        <div style={{flex:1, minWidth:180}}>
+                          <input
+                            value={written}
+                            onChange={e=>setSchAnswers(p=>({...p, [key]:e.target.value}))}
+                            disabled={schRevealed}
+                            placeholder="Escribe lo que recuerdes…"
+                            style={{width:"100%", padding:"9px 13px", borderRadius:11, fontSize:13.5, color:C.ink, fontFamily:"inherit", outline:"none",
+                              border:`1.5px solid ${schRevealed ? (ok?C.ok:C.warn) : C.line}`,
+                              background: schRevealed ? (ok?"#F0FDF4":"#FFFBEB") : C.surface}}/>
+                          {schRevealed && (
+                            <div style={{marginTop:5, fontSize:12.5, lineHeight:1.5, color: ok?"#065F46":"#92400E"}}>
+                              {ok ? "✓ " : "✗ Respuesta: "}<strong>{it.respuesta}</strong>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           <div style={{display:"flex", gap:8, flexWrap:"wrap", marginTop:4}}>
             {!schRevealed ? (
               <button onClick={()=>setSchRevealed(true)} style={{...pillBtn(true, {pad:"13px 24px"}), background:`linear-gradient(135deg, ${C.v800}, ${C.v500})`, flex:1}}>✅ Comprobar</button>
             ) : (
-              <button onClick={()=>{ setSchRevealed(false); setSchAnswers({}); }} style={{...pillBtn(true, {pad:"13px 24px"}), flex:1}}>🔄 Repetir esquema</button>
+              <>
+                {lowScore && (
+                  <button onClick={()=>goSchemaLevel2(current)} style={{...pillBtn(true, {pad:"13px 22px"}), background:C.warn, flex:1}}>🔡 Reforzar con opciones</button>
+                )}
+                <button onClick={restartSchema} style={{...pillBtn(!lowScore, {pad:"13px 22px"}), background: lowScore ? C.v50 : `linear-gradient(135deg, ${C.v800}, ${C.v500})`, flex:1}}>🔄 Repetir desde el inicio</button>
+              </>
             )}
-            <button onClick={()=>{ setSubject(current.s); setSelTopics([current.t]); setStep(3); setSchId(null); setTab("home"); }}
+            <button onClick={()=>{ setSubject(current.s); setSelTopics([current.t]); setStep(3); setSchId(null); restartSchema(); setTab("home"); }}
               style={{...pillBtn(false, {pad:"13px 20px"}), background:C.v50}}>🚀 Examen de este tema</button>
           </div>
         </div>
