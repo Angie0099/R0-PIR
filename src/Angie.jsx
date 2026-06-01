@@ -97,11 +97,13 @@ const migrateBank = (bankArr, subj) => {
 };
 
 // Mapeo asignatura → clave de storage (sin acentos, sin espacios)
-const subjectKey = (subj) => "bank:" + subj
+const slugSubject = (subj) => subj
   .toLowerCase()
   .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   .replace(/[^a-z0-9]+/g, "_")
   .replace(/^_+|_+$/g, "");
+const subjectKey = (subj) => "bank:" + slugSubject(subj);
+const schemaKey  = (subj) => "schema:" + slugSubject(subj);
 
 const SR_INT = [1,2,5,7,15];
 const LEARN_N = 3;
@@ -205,6 +207,31 @@ const normalizeQuestion = (raw, idx, defaultSubject) => {
   return null;
 };
 
+// ═══════════════════════════════════════════════════════════
+// NORMALIZADOR DE ESQUEMAS IMPORTADOS
+// Acepta: { asignatura, tema, secciones:[{ titulo, items:[{pista, respuesta}] }] }
+// (también admite alias en inglés: title/cue/answer y el formato compacto {s,t,secciones})
+// ═══════════════════════════════════════════════════════════
+const normalizeSchema = (raw, idx, defaultSubject) => {
+  if (!raw || typeof raw !== "object") return null;
+  const secRaw = raw.secciones || raw.sections;
+  if (!Array.isArray(secRaw)) return null;
+  const secciones = secRaw.map(sec => ({
+    titulo: sec.titulo || sec.title || "",
+    items: (Array.isArray(sec.items) ? sec.items : []).map(it => ({
+      pista: String(it.pista ?? it.cue ?? "").trim(),
+      respuesta: String(it.respuesta ?? it.answer ?? "").trim()
+    })).filter(it => it.respuesta || it.pista)
+  })).filter(sec => sec.items.length > 0);
+  if (secciones.length === 0) return null;
+  return {
+    id: raw.id || `sch_${Date.now()}_${idx}`,
+    s: raw.asignatura || raw.s || defaultSubject,
+    t: raw.tema || raw.t || "",
+    secciones
+  };
+};
+
 export default function Angie(){
   const[tab,setTab]=useState("home");
   const[step,setStep]=useState(1);
@@ -256,6 +283,18 @@ export default function Angie(){
 
   // Indicador de espacio usado
   const[storageInfo,setStorageInfo]=useState({used:0, pct:0});
+
+  // ── ESQUEMAS (recuperación estructurada previa al tema) ──
+  const[schemas,setSchemas]=useState([]);            // todos los esquemas cargados
+  const[schSubject,setSchSubject]=useState("Clínica Adultos"); // asignatura en la pestaña Esquemas
+  const[schId,setSchId]=useState(null);              // esquema abierto (id) o null = lista
+  const[schAnswers,setSchAnswers]=useState({});      // respuestas escritas {sec_item: texto}
+  const[schRevealed,setSchRevealed]=useState(false); // mostrar soluciones
+  // Importación de esquemas
+  const[impSchemaText,setImpSchemaText]=useState("");
+  const[impSchemaPreview,setImpSchemaPreview]=useState(null);
+  const[impSchemaMsg,setImpSchemaMsg]=useState("");
+  const schemaFileRef=useRef(null);
 
   // Estado del generador de flashcards desde banco
   const[fcGenSubject,setFcGenSubject]=useState("Clínica Adultos");
@@ -356,6 +395,36 @@ export default function Angie(){
 
   // Recalcula el espacio usado al abrir la pestaña Importar
   useEffect(() => { if (tab === "import" && !bankLoading) computeStorage(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [tab, bankLoading, bank, deck]);
+
+  // Navegación con flechas del teclado (← →) en examen y resultados
+  useEffect(() => {
+    if (tab !== "exam" && tab !== "results") return;
+    const onKey = (e) => {
+      const el = document.activeElement;
+      if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.isContentEditable)) return;
+      if (e.key === "ArrowLeft") { setCurQ(c => Math.max(0, c - 1)); }
+      else if (e.key === "ArrowRight") { setCurQ(c => Math.min(questions.length - 1, c + 1)); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [tab, questions.length]);
+
+  // Carga de esquemas una vez listo el banco
+  useEffect(() => {
+    if (bankLoading) return;
+    let cancelled = false;
+    (async () => {
+      const all = [];
+      for (const subj of Object.keys(SUBJECTS)) {
+        try {
+          const arr = await load(schemaKey(subj), []);
+          if (Array.isArray(arr)) all.push(...arr);
+        } catch { /* ignora */ }
+      }
+      if (!cancelled) setSchemas(all);
+    })();
+    return () => { cancelled = true; };
+  }, [bankLoading]);
 
   // ───────────────────────────────────────────────
   // GUARDA UNA ASIGNATURA EN STORAGE Y REFRESCA EL BANK COMPLETO
@@ -459,6 +528,11 @@ export default function Angie(){
     if (s && t.length) await updateStats(s,t,score,questions.length);
     await updateQStats(questions, answers);
     setTab("results"); setCurQ(0);
+  };
+
+  // Cierra el examen ya corregido y vuelve al inicio (limpia el estado del examen)
+  const finishExam = () => {
+    setQuestions([]); setAnswers({}); setShowExpl({}); setCurQ(0); setStep(1); setErr(""); setTab("home");
   };
 
   const addToDeck = async () => {
@@ -756,9 +830,10 @@ export default function Angie(){
   // ═══════════════════════════════════════════════════════════
   const exportAllBackup = async () => {
     try {
-      const backup = { _type: "r0pir-backup", _version: 1, exported: new Date().toISOString(), banks: {}, deck: [], stats: {}, qstats: {} };
+      const backup = { _type: "r0pir-backup", _version: 2, exported: new Date().toISOString(), banks: {}, schemas: {}, deck: [], stats: {}, qstats: {} };
       for (const subj of Object.keys(SUBJECTS)) {
         backup.banks[subj] = await load(subjectKey(subj), []);
+        backup.schemas[subj] = await load(schemaKey(subj), []);
       }
       backup.deck = await load(K.deck, []);
       backup.stats = await load(K.stats, {});
@@ -790,6 +865,18 @@ export default function Angie(){
           const sigs = new Set(existing.map(qSignature));
           const fresh = incoming.filter(q => !ids.has(q.id) && !sigs.has(qSignature(q)));
           await persistSubject(subj, [...existing, ...fresh]);
+        }
+        // Esquemas
+        const incSch = (data.schemas && Array.isArray(data.schemas[subj])) ? data.schemas[subj] : [];
+        if (incSch.length) {
+          if (mode === "replace") {
+            await persistSchemas(subj, incSch);
+          } else {
+            const exSch = await load(schemaKey(subj), []);
+            const temas = new Set(exSch.map(x => x.t));
+            const freshSch = incSch.filter(x => !temas.has(x.t));
+            await persistSchemas(subj, [...exSch, ...freshSch]);
+          }
         }
       }
       if (mode === "replace") {
@@ -865,6 +952,89 @@ export default function Angie(){
     else showToast("❌ Error al guardar");
   };
 
+  // ═══════════════════════════════════════════════════════════
+  // ESQUEMAS: guardar, importar y comparar respuestas
+  // ═══════════════════════════════════════════════════════════
+  const persistSchemas = async (subj, arr) => {
+    const ok = await save(schemaKey(subj), arr);
+    if (!ok) return false;
+    setSchemas(prev => [...prev.filter(x => x.s !== subj), ...arr]);
+    return true;
+  };
+
+  // Normaliza texto para comparación indulgente (sin acentos, signos ni mayúsculas)
+  const normTxt = (s) => String(s || "").toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9áéíóúñ ]/gi, " ").replace(/\s+/g, " ").trim();
+  // ¿La respuesta escrita coincide razonablemente con la esperada?
+  const schemaMatch = (written, expected) => {
+    const a = normTxt(written), b = normTxt(expected);
+    if (!a) return false;
+    if (a === b) return true;
+    // coincidencia si uno contiene al otro (para respuestas largas) y es suficientemente sustancial
+    if (b.length >= 4 && (a.includes(b) || b.includes(a))) return true;
+    return false;
+  };
+
+  const parseSchemaImport = () => {
+    setImpSchemaMsg(""); setImpSchemaPreview(null);
+    if (!impSchemaText.trim()) { setImpSchemaMsg("Pega el JSON del esquema antes de previsualizar."); return; }
+    let data;
+    try { data = JSON.parse(impSchemaText); } catch (e) { setImpSchemaMsg("❌ JSON inválido: " + e.message); return; }
+    const arr = Array.isArray(data) ? data : [data];
+    const normalized = [];
+    const errors = [];
+    arr.forEach((raw, i) => {
+      const n = normalizeSchema(raw, i, schSubject);
+      if (!n || !n.t) { errors.push(i + 1); return; }
+      normalized.push(n);
+    });
+    if (normalized.length === 0) { setImpSchemaMsg(`❌ Ningún esquema válido (revisa que tenga "tema" y "secciones"). Filas con error: ${errors.join(", ")}`); return; }
+    setImpSchemaPreview({ normalized, errors });
+    setImpSchemaMsg(`✓ ${normalized.length} esquema(s) listo(s)${errors.length ? ` · ${errors.length} descartado(s)` : ""}`);
+  };
+
+  const confirmSchemaImport = async () => {
+    if (!impSchemaPreview) return;
+    // Agrupar por asignatura
+    const bySubject = {};
+    impSchemaPreview.normalized.forEach(sc => { (bySubject[sc.s] = bySubject[sc.s] || []).push(sc); });
+    let total = 0;
+    for (const subj of Object.keys(bySubject)) {
+      const existing = await load(schemaKey(subj), []);
+      // Reemplaza el esquema del mismo tema; añade los nuevos
+      const incoming = bySubject[subj];
+      const incomingTemas = new Set(incoming.map(x => x.t));
+      const kept = existing.filter(x => !incomingTemas.has(x.t));
+      const merged = [...kept, ...incoming];
+      const ok = await persistSchemas(subj, merged);
+      if (!ok) { setImpSchemaMsg("❌ Error al guardar (¿espacio lleno?)"); return; }
+      total += incoming.length;
+    }
+    computeStorage();
+    showToast(`✅ ${total} esquema(s) guardado(s)`);
+    setImpSchemaText(""); setImpSchemaPreview(null); setImpSchemaMsg("");
+  };
+
+  const onSchemaFile = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => { setImpSchemaText(String(reader.result)); setImpSchemaPreview(null); setImpSchemaMsg("📂 Archivo cargado. Pulsa «Previsualizar»."); };
+    reader.readAsText(file);
+    e.target.value = "";
+  };
+
+  const deleteSchema = async (sc) => {
+    if (!confirm(`¿Eliminar el esquema de "${sc.t}"?`)) return;
+    const existing = await load(schemaKey(sc.s), []);
+    await persistSchemas(sc.s, existing.filter(x => x.id !== sc.id));
+    setSchId(null);
+    showToast("🗑️ Esquema eliminado");
+  };
+
+  const openSchema = (sc) => { setSchId(sc.id); setSchAnswers({}); setSchRevealed(false); };
+
   // ───────────────────────────────────────────────
   // ESTILOS
   // ───────────────────────────────────────────────
@@ -932,6 +1102,7 @@ export default function Angie(){
     {id:"home", l:"Inicio"},
     {id:"exam", l:"Examen", d:!questions.length},
     {id:"results", l:"Resultados", d:!questions.length},
+    {id:"esquemas", l:"Esquemas"},
     {id:"flashcards", l:`Mazo${due.length?` · ${due.length}`:""}`},
     {id:"stats", l:"Progreso"},
     {id:"import", l:"Importar"}
@@ -984,6 +1155,138 @@ export default function Angie(){
       </div>
     </div>
   );
+
+  // ───────────────────────────────────────────────
+  // PESTAÑA: ESQUEMAS (recuperación estructurada previa)
+  // ───────────────────────────────────────────────
+  if (tab === "esquemas") {
+    const subjSchemas = schemas.filter(sc => sc.s === schSubject);
+    const current = schId ? schemas.find(sc => sc.id === schId) : null;
+    const subjectsWithSchemas = Object.keys(SUBJECTS).filter(s => schemas.some(sc => sc.s === s));
+
+    // Vista de un esquema concreto (rellenar huecos)
+    if (current) {
+      let totalItems = 0, correctItems = 0;
+      current.secciones.forEach((sec, si) => sec.items.forEach((it, ii) => {
+        totalItems++;
+        if (schRevealed && schemaMatch(schAnswers[`${si}_${ii}`], it.respuesta)) correctItems++;
+      }));
+      const pct = totalItems ? Math.round(correctItems / totalItems * 100) : 0;
+      return wrap(
+        <div>
+          <div style={card({marginBottom:12})}>
+            <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:10, marginBottom:6, flexWrap:"wrap"}}>
+              <div>
+                <div style={{fontSize:11, fontWeight:800, color:C.v500, letterSpacing:1.5}}>📋 ESQUEMA PREVIO</div>
+                <div style={{fontWeight:900, fontSize:18, color:C.ink, letterSpacing:-.3, marginTop:3}}>{current.t}</div>
+                <div style={{fontSize:12, color:C.muted, marginTop:2}}>{current.s}</div>
+              </div>
+              <button onClick={()=>{ setSchId(null); setSchRevealed(false); setSchAnswers({}); }} style={pillBtn(false, {pad:"8px 14px", ghost:true})}>← Temas</button>
+            </div>
+            <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6}}>
+              Rellena de memoria los huecos que recuerdes. Aunque falles, este esfuerzo prepara el repaso. Cuando termines, pulsa <strong>Comprobar</strong>.
+            </div>
+            {schRevealed && (
+              <div style={{marginTop:12, padding:"10px 14px", borderRadius:14, background: pct>=70?"#F0FDF4":pct>=40?"#FFFBEB":"#FEF2F2", border:`1px solid ${pct>=70?C.ok:pct>=40?C.warn:C.err}44`, fontSize:13, fontWeight:700, color: pct>=70?"#065F46":pct>=40?"#92400E":"#7F1D1D"}}>
+                Recordaste {correctItems} de {totalItems} ({pct}%)
+              </div>
+            )}
+          </div>
+
+          {current.secciones.map((sec, si) => (
+            <div key={si} style={card({marginBottom:12})}>
+              {sec.titulo && <div style={{fontWeight:800, fontSize:14.5, color:C.ink, marginBottom:12, paddingBottom:9, borderBottom:`2px solid ${C.v100}`}}>{sec.titulo}</div>}
+              <div style={{display:"flex", flexDirection:"column", gap:10}}>
+                {sec.items.map((it, ii) => {
+                  const key = `${si}_${ii}`;
+                  const written = schAnswers[key] || "";
+                  const ok = schRevealed && schemaMatch(written, it.respuesta);
+                  return (
+                    <div key={ii} style={{display:"flex", gap:10, alignItems:"flex-start", flexWrap:"wrap"}}>
+                      {it.pista && <div style={{flex:"0 0 auto", minWidth:90, maxWidth:200, fontSize:13, fontWeight:700, color:C.v700, paddingTop:9}}>{it.pista}</div>}
+                      <div style={{flex:1, minWidth:180}}>
+                        <input
+                          value={written}
+                          onChange={e=>setSchAnswers(p=>({...p, [key]:e.target.value}))}
+                          disabled={schRevealed}
+                          placeholder="Escribe lo que recuerdes…"
+                          style={{width:"100%", padding:"9px 13px", borderRadius:11, fontSize:13.5, color:C.ink, fontFamily:"inherit", outline:"none",
+                            border:`1.5px solid ${schRevealed ? (ok?C.ok:C.warn) : C.line}`,
+                            background: schRevealed ? (ok?"#F0FDF4":"#FFFBEB") : C.surface}}/>
+                        {schRevealed && (
+                          <div style={{marginTop:5, fontSize:12.5, lineHeight:1.5, color: ok?"#065F46":"#92400E"}}>
+                            {ok ? "✓ " : "✗ Respuesta: "}<strong>{it.respuesta}</strong>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+
+          <div style={{display:"flex", gap:8, flexWrap:"wrap", marginTop:4}}>
+            {!schRevealed ? (
+              <button onClick={()=>setSchRevealed(true)} style={{...pillBtn(true, {pad:"13px 24px"}), background:`linear-gradient(135deg, ${C.v800}, ${C.v500})`, flex:1}}>✅ Comprobar</button>
+            ) : (
+              <button onClick={()=>{ setSchRevealed(false); setSchAnswers({}); }} style={{...pillBtn(true, {pad:"13px 24px"}), flex:1}}>🔄 Repetir esquema</button>
+            )}
+            <button onClick={()=>{ setSubject(current.s); setSelTopics([current.t]); setStep(3); setSchId(null); setTab("home"); }}
+              style={{...pillBtn(false, {pad:"13px 20px"}), background:C.v50}}>🚀 Examen de este tema</button>
+          </div>
+        </div>
+      );
+    }
+
+    // Lista de esquemas por asignatura
+    return wrap(
+      <div>
+        <div style={card({marginBottom:14})}>
+          <div style={{fontWeight:900, fontSize:18, color:C.ink, letterSpacing:-.3, marginBottom:6}}>📋 Esquemas previos</div>
+          <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:4}}>
+            Antes de repasar un tema, intenta reconstruir su esquema de memoria (cambios de manuales, trastornos del capítulo, modelos y autores…). Recuperar la estructura antes de estudiar fija mucho mejor el contenido.
+          </div>
+          {subjectsWithSchemas.length === 0 && (
+            <div style={{marginTop:12, padding:"12px 14px", background:C.v50, borderRadius:12, fontSize:12.5, color:C.v700, lineHeight:1.6}}>
+              Aún no hay esquemas. Ve a la pestaña <strong>Importar</strong> → <strong>Importar esquemas</strong> y pega el JSON generado por tu prompt.
+            </div>
+          )}
+        </div>
+
+        {subjectsWithSchemas.length > 0 && (
+          <div style={card()}>
+            <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Asignatura</div>
+            <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14}}>
+              {subjectsWithSchemas.map(s => (
+                <button key={s} onClick={()=>setSchSubject(s)} style={pillBtn(schSubject===s, {pad:"7px 14px", size:12})}>
+                  {s} <span style={{opacity:.7, fontSize:10.5, marginLeft:4}}>({schemas.filter(sc=>sc.s===s).length})</span>
+                </button>
+              ))}
+            </div>
+            {subjSchemas.length === 0 ? (
+              <div style={{fontSize:12.5, color:C.muted, fontStyle:"italic", padding:"8px 0"}}>No hay esquemas en esta asignatura.</div>
+            ) : (
+              <div style={{display:"flex", flexDirection:"column", gap:8}}>
+                {subjSchemas.map(sc => (
+                  <div key={sc.id} style={{display:"flex", alignItems:"center", gap:10, padding:"12px 14px", borderRadius:14, border:`1.5px solid ${C.line}`, background:C.surface}}>
+                    <div onClick={()=>openSchema(sc)} style={{flex:1, cursor:"pointer"}}>
+                      <div style={{fontWeight:700, fontSize:14, color:C.ink}}>{sc.t}</div>
+                      <div style={{fontSize:11.5, color:C.muted, marginTop:2}}>
+                        {sc.secciones.length} sección(es) · {sc.secciones.reduce((n,se)=>n+se.items.length,0)} huecos
+                      </div>
+                    </div>
+                    <button onClick={()=>openSchema(sc)} style={pillBtn(true, {pad:"8px 16px", size:12.5})}>Estudiar →</button>
+                    <button onClick={()=>deleteSchema(sc)} title="Eliminar esquema" style={{background:"transparent", border:"none", color:C.muted, cursor:"pointer", fontSize:15, padding:4}}>🗑</button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   // ───────────────────────────────────────────────
   // PESTAÑA: IMPORTAR
@@ -1111,6 +1414,47 @@ export default function Angie(){
                 🔁 Reemplazar banco completo
               </button>
             </div>
+          </div>
+        )}
+      </div>
+
+      {/* ─── BLOQUE: Importar esquemas ─── */}
+      <input ref={schemaFileRef} type="file" accept="application/json,.json" onChange={onSchemaFile} style={{display:"none"}} />
+      <div style={card({marginBottom:14})}>
+        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>📋 Importar esquemas</div>
+        <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:14}}>
+          Pega el JSON de uno o varios esquemas (uno por tema). Formato: <code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>{`{ asignatura, tema, secciones:[{ titulo, items:[{ pista, respuesta }] }] }`}</code>. Si ya existe un esquema para ese tema, se reemplaza.
+        </div>
+        <textarea
+          value={impSchemaText}
+          onChange={e => setImpSchemaText(e.target.value)}
+          placeholder='[{"asignatura":"Clínica Adultos","tema":"Trastornos de ansiedad","secciones":[{"titulo":"Cambios DSM-5 / CIE-11","items":[{"pista":"TOC y TEPT","respuesta":"salen del capítulo de ansiedad"}]}]}]'
+          style={{width:"100%", minHeight:160, padding:12, borderRadius:12, border:`1.5px solid ${C.line}`, fontFamily:"ui-monospace, monospace", fontSize:12, lineHeight:1.5, resize:"vertical", color:C.ink, background:C.bg, outline:"none"}}
+        />
+        <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
+          <button onClick={parseSchemaImport} style={pillBtn(true, {pad:"10px 20px"})}>👁 Previsualizar</button>
+          <button onClick={()=>schemaFileRef.current && schemaFileRef.current.click()} style={pillBtn(false, {pad:"10px 16px"})}>📂 Cargar desde archivo</button>
+          <button onClick={()=>{setImpSchemaText(""); setImpSchemaPreview(null); setImpSchemaMsg("");}} style={pillBtn(false, {pad:"10px 16px", ghost:true})}>Limpiar</button>
+        </div>
+        {impSchemaMsg && (
+          <div style={{marginTop:12, padding:11, borderRadius:11,
+            background: impSchemaMsg.startsWith("❌") ? "#FEF2F2" : (impSchemaMsg.startsWith("✓")||impSchemaMsg.startsWith("✅")) ? "#F0FDF4" : C.v50,
+            border:`1px solid ${impSchemaMsg.startsWith("❌") ? C.err+"55" : (impSchemaMsg.startsWith("✓")||impSchemaMsg.startsWith("✅")) ? C.ok+"55" : C.v200}`,
+            color: impSchemaMsg.startsWith("❌") ? C.err : (impSchemaMsg.startsWith("✓")||impSchemaMsg.startsWith("✅")) ? "#065F46" : C.v700,
+            fontSize:13, fontWeight:600}}>{impSchemaMsg}</div>
+        )}
+        {impSchemaPreview && (
+          <div style={{marginTop:14, padding:14, background:C.v50, borderRadius:14, border:`1px solid ${C.v200}`}}>
+            <div style={{fontWeight:800, fontSize:13, color:C.v700, marginBottom:8}}>{impSchemaPreview.normalized.length} esquema(s):</div>
+            <div style={{maxHeight:180, overflowY:"auto", fontSize:12, color:C.muted, lineHeight:1.6}}>
+              {impSchemaPreview.normalized.map((sc,i) => (
+                <div key={i} style={{padding:"6px 0", borderBottom:`1px solid ${C.v100}`}}>
+                  <strong style={{color:C.ink}}>{sc.t}</strong> <span style={{color:C.v500}}>· {sc.s}</span>
+                  <div style={{fontSize:10.5, marginTop:2}}>{sc.secciones.length} sección(es) · {sc.secciones.reduce((n,se)=>n+se.items.length,0)} huecos</div>
+                </div>
+              ))}
+            </div>
+            <button onClick={confirmSchemaImport} style={{...pillBtn(true, {pad:"10px 18px"}), background:C.ok, marginTop:12}}>➕ Guardar esquemas</button>
           </div>
         )}
       </div>
@@ -1818,6 +2162,10 @@ export default function Angie(){
           <button onClick={()=>setCurQ(p=>Math.min(questions.length-1, p+1))} disabled={curQ===questions.length-1}
             style={{...pillBtn(false, {pad:"10px 18px", ghost:true}), opacity: curQ===questions.length-1 ? .35 : 1}}>Siguiente →</button>
         </div>
+        <button onClick={finishExam}
+          style={{width:"100%", marginTop:14, padding:"14px 18px", borderRadius:999, border:"none", background:`linear-gradient(135deg, ${C.v800}, ${C.v500})`, color:"#fff", fontSize:15, fontWeight:800, cursor:"pointer", fontFamily:"inherit", letterSpacing:.3, boxShadow:`0 8px 22px ${C.v700}40`}}>
+          🏁 Finalizar y volver al inicio
+        </button>
       </div>
     );
   }
