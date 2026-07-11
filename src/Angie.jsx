@@ -311,6 +311,12 @@ export default function Angie(){
   const[impMsg,setImpMsg]=useState("");
   const[bankSizes,setBankSizes]=useState({});
 
+  // ── BANCO OFICIAL (empotrado, solo lectura, cargado bajo demanda desde /banco) ──
+  const[source,setSource]=useState("mias");          // "mias" | "oficial"
+  const[officialMap,setOfficialMap]=useState({});    // { asignatura: {slug,count,topics[]} }
+  const[officialBank,setOfficialBank]=useState({});  // { asignatura: [preguntas] } (caché en memoria)
+  const[officialBusy,setOfficialBusy]=useState(null);// asignatura que se está descargando
+
   // Estado del gestor de preguntas (revisar / depurar / borrar individual)
   const[mgrSubject,setMgrSubject]=useState("Clínica Adultos");
   const[mgrTopic,setMgrTopic]=useState("__all__");
@@ -441,6 +447,41 @@ export default function Angie(){
   const saveDeck = async d => { setDeck(d); await save(K.deck,d); };
   const showToast = m => { setToast(m); setTimeout(()=>setToast(""),3000); };
 
+  // Carga el índice del banco oficial una sola vez (fichero pequeño)
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/banco/manifest.json", { cache: "no-cache" });
+        if (!res.ok) return;
+        const m = await res.json();
+        if (!cancelled && m && m.subjects) setOfficialMap(m.subjects);
+      } catch { /* sin banco oficial desplegado: la app sigue funcionando con las preguntas propias */ }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  // Descarga (y cachea) la asignatura oficial elegida. Solo lectura: nunca se guarda en storage.
+  const ensureOfficial = async (subj) => {
+    if (!subj || officialBank[subj]) return officialBank[subj] || [];
+    const meta = officialMap[subj];
+    if (!meta) return [];
+    setOfficialBusy(subj);
+    try {
+      const res = await fetch(`/banco/${meta.slug}.json`, { cache: "force-cache" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const arr = await res.json();
+      const clean = Array.isArray(arr) ? arr : [];
+      setOfficialBank(prev => ({ ...prev, [subj]: clean }));
+      return clean;
+    } catch (e) {
+      showToast("❌ No pude cargar el banco oficial de " + subj);
+      return [];
+    } finally {
+      setOfficialBusy(null);
+    }
+  };
+
   // Recalcula el espacio usado al abrir la pestaña Importar
   useEffect(() => { if (tab === "import" && !bankLoading) computeStorage(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [tab, bankLoading, bank, deck]);
 
@@ -520,8 +561,20 @@ export default function Angie(){
     setQstats(next); await save(K.qstats, next);
   };
 
+  // ── Fuente activa: preguntas propias (localStorage) vs banco oficial (empotrado) ──
+  const officialFlat = useMemo(() => Object.values(officialBank).flat(), [officialBank]);
+  const activeBank = source === "oficial" ? officialFlat : bank;
+  const curSubjectList = source === "oficial" ? Object.keys(officialMap) : Object.keys(SUBJECTS);
+  const curTopics = (subj) => source === "oficial"
+    ? ((officialMap[subj] && officialMap[subj].topics) || [])
+    : (SUBJECTS[subj] || []);
+  // Nº de preguntas mostrado en el selector (para el oficial usa el índice, aunque no esté descargado aún)
+  const subjBadgeCount = (subj) => source === "oficial"
+    ? ((officialMap[subj] && officialMap[subj].count) || 0)
+    : bankCount(subj);
+
   const buildPool = (subj, tops, filters) => {
-    return bank.filter(q => {
+    return activeBank.filter(q => {
       if (subj && q.s !== subj) return false;
       if (tops.length > 0 && !tops.some(t => q.t.includes(t))) return false;
       const qs = qstats[q.id];
@@ -553,15 +606,33 @@ export default function Angie(){
     if (!subject || selTopics.length === 0) return 0;
     return buildPool(subject, selTopics, { estado: fEstado, dificultad: fDificultad, recencia: fRecencia, origen: fOrigen, convocatoria: fConvocatoria }).length;
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subject, selTopics, fEstado, fDificultad, fRecencia, fOrigen, fConvocatoria, qstats, bank]);
+  }, [subject, selTopics, fEstado, fDificultad, fRecencia, fOrigen, fConvocatoria, qstats, bank, activeBank, source]);
 
   const bankCount = (subj, tops=[]) =>
-    bank.filter(q => q.s===subj && (tops.length===0 || tops.some(t=>q.t.includes(t)))).length;
+    activeBank.filter(q => q.s===subj && (tops.length===0 || tops.some(t=>q.t.includes(t)))).length;
 
-  const generate = () => {
+  const generate = async () => {
     if (!subject) { setErr("Selecciona una asignatura."); return; }
     if (selTopics.length === 0) { setErr("Selecciona al menos un tema."); return; }
-    const pool = buildPool(subject, selTopics, { estado: fEstado, dificultad: fDificultad, recencia: fRecencia, origen: fOrigen, convocatoria: fConvocatoria });
+    // Banco oficial: asegurarse de que la asignatura está descargada antes de armar el examen
+    let poolBank = activeBank;
+    if (source === "oficial") {
+      const loaded = await ensureOfficial(subject);
+      poolBank = loaded;
+    }
+    const applyFilters = (arr) => arr.filter(q => {
+      if (subject && q.s !== subject) return false;
+      if (selTopics.length > 0 && !selTopics.some(t => q.t.includes(t))) return false;
+      const qs = qstats[q.id];
+      if (fEstado === "falladas") { if (!qs || qs.a === 0) return false; if (qs.c / qs.a >= 0.5) return false; }
+      if (fEstado === "no_vistas") { if (qs && qs.a > 0) return false; }
+      if (fDificultad !== "todas") { if (difficultyOf(qs) !== fDificultad) return false; }
+      if (fRecencia !== "todas") { if (recencyOf(qs) !== fRecencia) return false; }
+      if (fOrigen !== "todas") { if (q.origen !== fOrigen) return false; }
+      if (fConvocatoria !== "todas") { if (String(q.convocatoria) !== fConvocatoria) return false; }
+      return true;
+    });
+    const pool = applyFilters(poolBank);
     if (pool.length === 0) { setErr("No hay preguntas con esos filtros. Prueba a ampliar criterios."); return; }
     setErr("");
     examMeta.current = { subject, topics:[...selTopics] };
@@ -2302,31 +2373,56 @@ export default function Angie(){
 
         {step===1 && (
           <div style={card({marginBottom:12})}>
-            <div style={{fontWeight:800, fontSize:15, color:C.ink, marginBottom:14}}>1 · Elige la asignatura</div>
+            <div style={{fontWeight:800, fontSize:15, color:C.ink, marginBottom:12}}>1 · Elige la asignatura</div>
+
+            {/* Selector de fuente: mis preguntas vs banco oficial */}
+            {Object.keys(officialMap).length > 0 && (
+              <div style={{display:"flex", gap:7, marginBottom:14}}>
+                <button onClick={()=>{ setSource("mias"); setSubject(""); setSelTopics([]); }}
+                  style={{...softBtn(source==="mias"), flex:1, padding:"9px 12px", fontSize:12.5, textAlign:"center"}}>
+                  Mis preguntas
+                </button>
+                <button onClick={()=>{ setSource("oficial"); setSubject(""); setSelTopics([]); }}
+                  style={{...softBtn(source==="oficial", C.v600), flex:1, padding:"9px 12px", fontSize:12.5, textAlign:"center"}}>
+                  📚 Banco oficial
+                </button>
+              </div>
+            )}
+
             <div style={{display:"flex", flexDirection:"column", gap:9}}>
-              {Object.keys(SUBJECTS).map(s => {
+              {curSubjectList.map(s => {
                 const tot = subjTotal(s);
                 const sp = tot.total > 0 ? Math.round(tot.correct/tot.total*100) : null;
-                const bq = bankCount(s);
+                const bq = subjBadgeCount(s);
                 const sel = subject===s;
                 const empty = bq === 0;
+                const nTopics = curTopics(s).length;
+                const busy = officialBusy === s;
                 return (
-                  <button key={s} disabled={empty}
-                    onClick={()=>{ setSubject(s); setSelTopics([]); setStep(2); }}
-                    style={{...softBtn(sel), textAlign:"left", padding:"14px 18px", fontSize:14, display:"flex", justifyContent:"space-between", alignItems:"center", gap:10, opacity: empty ? .4 : 1, cursor: empty ? "not-allowed" : "pointer"}}>
+                  <button key={s} disabled={empty || busy}
+                    onClick={async ()=>{ setSubject(s); setSelTopics([]); if (source==="oficial") { await ensureOfficial(s); } setStep(2); }}
+                    style={{...softBtn(sel, source==="oficial"?C.v600:C.v500), textAlign:"left", padding:"14px 18px", fontSize:14, display:"flex", justifyContent:"space-between", alignItems:"center", gap:10, opacity: empty ? .4 : 1, cursor: (empty||busy) ? "not-allowed" : "pointer"}}>
                     <span style={{fontWeight:700}}>{s}</span>
                     <span style={{display:"flex", gap:8, alignItems:"center", fontSize:12, color:C.muted}}>
                       {sp !== null && <span style={{color:colorOf(sp), fontWeight:800, background:`${colorOf(sp)}15`, padding:"2px 9px", borderRadius:99}}>{sp}%</span>}
-                      {bq > 0 ? <span style={tagChip("navy")}>📚 {bq}</span> : <span style={{fontSize:10.5, fontWeight:700, color:C.muted}}>SIN PREGUNTAS</span>}
-                      {!empty && <span style={{color:C.v500, fontWeight:700}}>{SUBJECTS[s].length} temas →</span>}
+                      {busy ? <span style={{fontSize:11, fontWeight:700, color:C.v600}}>Cargando…</span>
+                        : bq > 0 ? <span style={tagChip("navy")}>📚 {bq}</span>
+                        : <span style={{fontSize:10.5, fontWeight:700, color:C.muted}}>SIN PREGUNTAS</span>}
+                      {!empty && <span style={{color:C.v500, fontWeight:700}}>{nTopics} temas →</span>}
                     </span>
                   </button>
                 );
               })}
             </div>
-            <div style={{marginTop:14, padding:11, background:C.v50, borderRadius:12, fontSize:12, color:C.v700, textAlign:"center"}}>
-              ¿Sin preguntas? Ve a la pestaña <strong>Importar</strong> y pega tu JSON.
-            </div>
+            {source === "oficial" ? (
+              <div style={{marginTop:14, padding:11, background:C.v50, borderRadius:12, fontSize:12, color:C.v700, textAlign:"center", lineHeight:1.5}}>
+                📚 Banco oficial de solo lectura ({officialMap && Object.values(officialMap).reduce((n,m)=>n+(m.count||0),0)} preguntas). Cada asignatura se descarga la primera vez que la abres.
+              </div>
+            ) : (
+              <div style={{marginTop:14, padding:11, background:C.v50, borderRadius:12, fontSize:12, color:C.v700, textAlign:"center"}}>
+                ¿Sin preguntas? Ve a la pestaña <strong>Importar</strong> y pega tu JSON.
+              </div>
+            )}
           </div>
         )}
 
@@ -2337,11 +2433,11 @@ export default function Angie(){
             </div>
             <div style={{fontSize:12, color:C.muted, marginBottom:12}}>Selecciona uno o varios temas (o todos los disponibles)</div>
             <div style={{display:"flex", gap:7, marginBottom:12, flexWrap:"wrap"}}>
-              <button onClick={()=>setSelTopics(SUBJECTS[subject].filter(t=>bankCount(subject,[t])>0))} style={pillBtn(false, {pad:"6px 14px", size:12})}>✓ Todos disponibles</button>
+              <button onClick={()=>setSelTopics(curTopics(subject).filter(t=>bankCount(subject,[t])>0))} style={pillBtn(false, {pad:"6px 14px", size:12})}>✓ Todos disponibles</button>
               <button onClick={()=>setSelTopics([])} style={pillBtn(false, {pad:"6px 14px", size:12, ghost:true})}>✗ Ninguno</button>
             </div>
             <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(220px,1fr))", gap:8}}>
-              {SUBJECTS[subject].map(t => {
+              {curTopics(subject).map(t => {
                 const st = getTS(subject, t);
                 const tp = st.total > 0 ? Math.round(st.correct/st.total*100) : null;
                 const bq = bankCount(subject, [t]);
