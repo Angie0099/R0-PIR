@@ -11,7 +11,7 @@ const SUBJECTS = {
   "Evaluación Psicológica": ["Fundamentos de la evaluación psicológica","Clasificación de las técnicas de evaluación","Técnicas de observación","Autoinformes","Entrevista","Técnicas objetivas","Técnicas subjetivas","Técnicas proyectivas","Evaluación de la inteligencia","Evaluación de las aptitudes","Evaluación de la personalidad","Evaluación de características psicopatológicas","Evaluación del desarrollo intelectual, social y del lenguaje","Evaluación del envejecimiento","Evaluación neuropsicológica","Otras áreas a evaluar"],
   "Psicopatología": ["Modelos en psicopatología","Sistemas clasificatorios en psicopatología","Psicopatología de la conciencia","Psicopatología de la atención","Psicopatología de la sensopercepción","Psicopatología de la memoria","Psicopatología del pensamiento","Psicopatología del lenguaje","Psicopatología de la afectividad","Trastornos psicomotores"],
   "Clínica Adultos": ["Trastornos del espectro de la esquizofrenia","Trastornos depresivos","Trastornos bipolares y relacionados","Trastornos de ansiedad","TOC","Trastornos relacionados con estrés y trauma","Trastornos disociativos","Trastornos por síntomas somáticos y relacionados","Trastornos de la conducta alimentaria","Trastornos del sueño-vigilia","Disfunciones sexuales","Disforia de género","Trastornos parafílicos","Trastornos disruptivos del control de los impulsos y de la conducta","Trastornos adictivos y relacionados con sustancias","Trastornos neurocognitivos","Trastornos de la personalidad","Afecciones que requieren más estudio"],
-  "Tratamientos Psicológicos": [],
+  "Tratamientos Psicológicos": ["Disfunciones sexuales"],
   "Psicoterapias": [],
   "Psicobiología": [],
   "Psicología Diferencial y de la Personalidad": [],
@@ -107,7 +107,17 @@ const schemaKey  = (subj) => "schema:" + slugSubject(subj);
 
 const SR_INT = [1,2,5,7,15];
 const LEARN_N = 3;
-const K = { deck:"pir:deck_v5", stats:"pir:stats_v1", qstats:"pir:qstats_v1" };
+const K = { deck:"pir:deck_v5", stats:"pir:stats_v1", qstats:"pir:qstats_v1", hiddenOfficial:"pir:hidden_oficial_v1" };
+
+// Preguntas del banco oficial corruptas por OCR (marca de agua colada en el texto): se descartan al cargar.
+const OFFICIAL_CORRUPT_RX = /PSICOLOG[IÍ]A\s*AMI|\bAMIR\b|\bCEDE\b/i;
+const isCorruptOfficial = (q) => {
+  try {
+    const o = q.o || {};
+    const txt = [q.e, o.a, o.b, o.c, o.d].filter(Boolean).join(" ");
+    return OFFICIAL_CORRUPT_RX.test(txt);
+  } catch { return false; }
+};
 
 const C = {
   bg:"#F7F2EE",surface:"#FFFFFF",ink:"#15122B",muted:"#7A7591",line:"#EFEAFB",
@@ -316,6 +326,7 @@ export default function Angie(){
   const[officialMap,setOfficialMap]=useState({});    // { asignatura: {slug,count,topics[]} }
   const[officialBank,setOfficialBank]=useState({});  // { asignatura: [preguntas] } (caché en memoria)
   const[officialBusy,setOfficialBusy]=useState(null);// asignatura que se está descargando
+  const[hiddenOfficial,setHiddenOfficial]=useState({}); // { id: true } preguntas oficiales ocultadas por la usuaria
 
   // Estado del gestor de preguntas (revisar / depurar / borrar individual)
   const[mgrSubject,setMgrSubject]=useState("Clínica Adultos");
@@ -447,10 +458,14 @@ export default function Angie(){
   const saveDeck = async d => { setDeck(d); await save(K.deck,d); };
   const showToast = m => { setToast(m); setTimeout(()=>setToast(""),3000); };
 
-  // Carga el índice del banco oficial una sola vez (fichero pequeño)
+  // Carga el índice del banco oficial una sola vez (fichero pequeño) + lista de ocultas
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      try {
+        const hid = await load(K.hiddenOfficial, {});
+        if (!cancelled && hid && typeof hid === "object") setHiddenOfficial(hid);
+      } catch { /* sin lista de ocultas */ }
       try {
         const res = await fetch("/banco/manifest.json", { cache: "no-cache" });
         if (!res.ok) return;
@@ -471,7 +486,9 @@ export default function Angie(){
       const res = await fetch(`/banco/${meta.slug}.json`, { cache: "force-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const arr = await res.json();
-      const clean = Array.isArray(arr) ? arr : [];
+      // Descarta preguntas corruptas (marca de agua OCR) y las ocultadas por la usuaria
+      const clean = (Array.isArray(arr) ? arr : [])
+        .filter(q => !isCorruptOfficial(q) && !hiddenOfficial[q.id]);
       setOfficialBank(prev => ({ ...prev, [subj]: clean }));
       return clean;
     } catch (e) {
@@ -480,6 +497,18 @@ export default function Angie(){
     } finally {
       setOfficialBusy(null);
     }
+  };
+
+  // Oculta para siempre una pregunta oficial (equivalente a "borrar" en el banco de solo lectura)
+  const hideOfficialQuestion = async (q) => {
+    const next = { ...hiddenOfficial, [q.id]: true };
+    setHiddenOfficial(next);
+    await save(K.hiddenOfficial, next);
+    setOfficialBank(prev => {
+      const out = {};
+      for (const s of Object.keys(prev)) out[s] = prev[s].filter(x => x.id !== q.id);
+      return out;
+    });
   };
 
   // Recalcula el espacio usado al abrir la pestaña Importar
@@ -825,6 +854,27 @@ export default function Angie(){
       }).map(({ _dup, _issues, _quality, _verif, _notVerified, ...q }) => q);
       if (impBalance) lote = balanceKeys(lote);
       merged = lote;
+    } else if (mode === "update") {
+      // update: sustituye por id las que ya existen; añade las nuevas; conserva el resto intacto
+      const strip = ({ _dup, _issues, _quality, _verif, _notVerified, ...q }) => q;
+      const byId = new Map(existing.map(q => [q.id, q]));
+      let updated = 0, added = 0;
+      // dedup interno del lote por id (última gana)
+      const lote = [];
+      const seenLote = new Set();
+      for (const q of impPreview.normalized) {
+        if (seenLote.has(q.id)) continue;
+        seenLote.add(q.id); lote.push(strip(q));
+      }
+      // firmas de las que NO se van a actualizar, para no crear duplicados de contenido al añadir
+      const loteIds = new Set(lote.map(q => q.id));
+      const keepSigs = new Set(existing.filter(q => !loteIds.has(q.id)).map(qSignature));
+      for (const q of lote) {
+        if (byId.has(q.id)) { byId.set(q.id, q); updated++; }
+        else if (!keepSigs.has(qSignature(q))) { byId.set(q.id, q); added++; keepSigs.add(qSignature(q)); }
+      }
+      merged = [...byId.values()];
+      setImpMsg(`✔ ${updated} sustituidas · ${added} nuevas`);
     } else {
       // append: deduplicar por id Y por contenido
       const ids = new Set(existing.map(q => q.id));
@@ -858,6 +908,8 @@ export default function Angie(){
   // Limpia también el mazo y las estadísticas por pregunta.
   // ───────────────────────────────────────────────
   const deleteQuestionById = async (q) => {
+    // Banco oficial (solo lectura): no se borra del archivo, se oculta para siempre
+    if (q && q._ro) { await hideOfficialQuestion(q); return true; }
     const subj = q.s || q._subject;
     if (!subj) { showToast("No se pudo identificar la asignatura"); return false; }
     const k = subjectKey(subj);
@@ -1908,6 +1960,10 @@ export default function Angie(){
             <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
               <button onClick={()=>confirmImport("append")} disabled={impPreview.fresh===0} style={{...pillBtn(true, {pad:"10px 18px"}), background: impPreview.fresh===0 ? "#A0AEC0" : C.ok, cursor: impPreview.fresh===0 ? "not-allowed":"pointer"}}>
                 ➕ Añadir {impPreview.fresh} nuevas al banco
+              </button>
+              <button onClick={()=>confirmImport("update")} style={{...pillBtn(true, {pad:"10px 18px"}), background:C.v600}}
+                title="Si una pregunta ya existe (mismo id), la sustituye por esta versión; si es nueva, la añade. No toca el resto del banco.">
+                🔄 Sustituir duplicadas y añadir nuevas
               </button>
               <button onClick={()=>{
                 if (confirm(`¿Reemplazar TODO el banco de "${impPreview.subject}" por estas preguntas?`)) confirmImport("replace");
