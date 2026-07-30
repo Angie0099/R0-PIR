@@ -342,7 +342,7 @@ export default function Angie(){
   const backupFileRef=useRef(null);                  // input de archivo para restaurar copia
 
   // Indicador de espacio usado
-  const[storageInfo,setStorageInfo]=useState({used:0, pct:0});
+  const[storageInfo,setStorageInfo]=useState({used:0, pct:0, quota:0});
 
   // ── ESQUEMAS (recuperación estructurada previa al tema) ──
   const[schemas,setSchemas]=useState([]);            // todos los esquemas cargados
@@ -990,19 +990,28 @@ export default function Angie(){
 
   const fmtBytes = (b) => b < 1024 ? `${b} B`
     : b < 1024 * 1024 ? `${(b/1024).toFixed(0)} KB`
-    : `${(b/1024/1024).toFixed(2)} MB`;
+    : b < 1024 * 1024 * 1024 ? `${(b/1024/1024).toFixed(2)} MB`
+    : `${(b/1024/1024/1024).toFixed(2)} GB`;
 
-  // Calcula el espacio aproximado usado en el almacenamiento.
+  // Calcula el espacio usado en el almacenamiento (IndexedDB).
   const computeStorage = async () => {
     try {
+      // Uso y cuota REALES que da el navegador (cientos de MB o GB según equipo).
+      if (navigator.storage && navigator.storage.estimate) {
+        const est = await navigator.storage.estimate();
+        const used = est.usage || 0;
+        const quota = est.quota || 0;
+        setStorageInfo({ used, quota, pct: quota ? Math.min(100, Math.round(used / quota * 100)) : 0 });
+        return;
+      }
+      // Fallback (navegadores sin estimate): suma manual, sin el viejo tope de 5 MB.
       let bytes = 0;
       const { keys } = await window.storage.list("");
       for (const kk of (keys || [])) {
         const r = await window.storage.get(kk);
         if (r && r.value) bytes += (kk.length + r.value.length) * 2; // ~2 bytes/char (UTF-16)
       }
-      const LIMIT = 5 * 1024 * 1024;
-      setStorageInfo({ used: bytes, pct: Math.min(100, Math.round(bytes / LIMIT * 100)) });
+      setStorageInfo({ used: bytes, quota: 0, pct: 0 });
     } catch { /* sin datos */ }
   };
 
@@ -1794,17 +1803,17 @@ export default function Angie(){
         </div>
         <div style={{marginTop:14}}>
           <div style={{display:"flex", justifyContent:"space-between", fontSize:11.5, color:C.muted, fontWeight:600, marginBottom:5}}>
-            <span>Espacio usado (límite ~5 MB)</span>
-            <span style={{color: storageInfo.pct>=80 ? C.err : storageInfo.pct>=60 ? C.warn : C.v700, fontWeight:800}}>
-              {fmtBytes(storageInfo.used)} · {storageInfo.pct}%
+            <span>Espacio usado{storageInfo.quota ? ` de ${fmtBytes(storageInfo.quota)} disponibles` : ""}</span>
+            <span style={{color: storageInfo.pct>=90 ? C.err : storageInfo.pct>=75 ? C.warn : C.v700, fontWeight:800}}>
+              {fmtBytes(storageInfo.used)}{storageInfo.quota ? ` · ${storageInfo.pct}%` : ""}
             </span>
           </div>
           <div style={{background:C.v50, borderRadius:99, height:7, overflow:"hidden"}}>
-            <div style={{height:7, borderRadius:99, width:`${storageInfo.pct}%`, transition:"width .4s", background: storageInfo.pct>=80 ? C.err : storageInfo.pct>=60 ? C.warn : `linear-gradient(90deg, ${C.v700}, ${C.v500})`}}/>
+            <div style={{height:7, borderRadius:99, width:`${storageInfo.quota ? storageInfo.pct : 0}%`, transition:"width .4s", background: storageInfo.pct>=90 ? C.err : storageInfo.pct>=75 ? C.warn : `linear-gradient(90deg, ${C.v700}, ${C.v500})`}}/>
           </div>
-          {storageInfo.pct >= 80 && (
+          {storageInfo.pct >= 90 && (
             <div style={{marginTop:8, fontSize:11.5, color:C.err, fontWeight:600, lineHeight:1.5}}>
-              ⚠️ Cerca del límite. Descarga una copia y considera depurar preguntas para no perder datos.
+              ⚠️ Cerca del límite del navegador. Descarga una copia por seguridad.
             </div>
           )}
         </div>
@@ -2249,8 +2258,8 @@ export default function Angie(){
           );
         })}
         <div style={{marginTop:14, padding:12, background:C.v50, borderRadius:12, fontSize:11.5, color:C.v700, lineHeight:1.6}}>
-          💡 <strong>Tip:</strong> Cada asignatura admite hasta ≈2.500-3.000 preguntas (límite ~5 MB por clave de almacenamiento).
-          Si te acercas al límite, exporta el JSON y trocéalo manualmente.
+          💡 <strong>Tip:</strong> Tus preguntas se guardan en este navegador (IndexedDB), con mucho margen de espacio.
+          Aun así, descarga una copia de seguridad a menudo, sobre todo antes de cambiar de equipo o navegador.
         </div>
       </div>
     </div>
