@@ -300,6 +300,7 @@ export default function Angie(){
   const[examStart,setExamStart]=useState(null);   // timestamp de inicio del examen
   const[examElapsed,setExamElapsed]=useState(0);   // segundos transcurridos
   const[examEndedEarly,setExamEndedEarly]=useState(false); // entregado sin responder todo
+  const[retryMode,setRetryMode]=useState(false); // modo "repetir falladas": NO cuenta en estadísticas
   const examMeta=useRef({subject:"",topics:[]});
   const[deck,setDeck]=useState([]);
   const[stats,setStats]=useState({});
@@ -668,6 +669,7 @@ export default function Angie(){
     const examSize = numQ === "todas" ? pool.length : numQ;
     const shuffled = [...pool].sort(()=>Math.random()-0.5).slice(0, examSize);
     const tagged = shuffled.map((q,i) => ({ ...q, numero: i+1, _subject: q.s, _topics: q.t }));
+    setRetryMode(false);
     setQuestions(tagged); setAnswers({}); setCurQ(0); setShowExpl({}); setTab("exam");
     setExamStart(Date.now()); setExamElapsed(0); setExamEndedEarly(false);
   };
@@ -683,9 +685,12 @@ export default function Angie(){
     }
     setErr("");
     setExamEndedEarly(sinResponder > 0);
-    const { subject:s, topics:t } = examMeta.current;
-    if (s && t.length) await updateStats(s,t,score,questions.length);
-    await updateQStats(questions, answers);
+    // En modo "repetir falladas" es práctica pura: NO tocamos estadísticas ni qstats.
+    if (!retryMode) {
+      const { subject:s, topics:t } = examMeta.current;
+      if (s && t.length) await updateStats(s,t,score,questions.length);
+      await updateQStats(questions, answers);
+    }
     setTab("results"); setCurQ(0);
   };
 
@@ -703,7 +708,46 @@ export default function Angie(){
   // Cierra el examen ya corregido y vuelve al inicio (limpia el estado del examen)
   const finishExam = () => {
     setQuestions([]); setAnswers({}); setShowExpl({}); setCurQ(0); setStep(1); setErr(""); setTab("home");
-    setExamStart(null); setExamElapsed(0); setExamEndedEarly(false);
+    setExamStart(null); setExamElapsed(0); setExamEndedEarly(false); setRetryMode(false);
+  };
+
+  // Copia las falladas al portapapeles en formato TSV (columnas) para pegar en Excel:
+  // Enunciado <tab> Respuesta correcta <tab> Tema
+  const copyFailed = async () => {
+    if (!failed.length) return;
+    const oneLine = s => String(s ?? "").replace(/\s+/g, " ").trim();
+    const header = "Enunciado\tRespuesta correcta\tTema";
+    const rows = failed.map(q => {
+      const enun = oneLine(q.e);
+      const correcta = `${q.c}) ${oneLine(q.o[q.c])}`;
+      const tema = (q._topics || q.t || []).join(", ");
+      return `${enun}\t${correcta}\t${tema}`;
+    });
+    const tsv = [header, ...rows].join("\n");
+    try {
+      await navigator.clipboard.writeText(tsv);
+      showToast(`📋 ${failed.length} fallos copiados · pega en Excel`);
+    } catch {
+      // Fallback para navegadores que bloquean clipboard: seleccionar de un textarea temporal
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = tsv; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        document.execCommand("copy"); document.body.removeChild(ta);
+        showToast(`📋 ${failed.length} fallos copiados · pega en Excel`);
+      } catch { showToast("No pude copiar automáticamente"); }
+    }
+  };
+
+  // Rehace SOLO las preguntas falladas de la tanda actual, rebarajadas.
+  // Es modo práctica (retryMode): no cuenta en estadísticas. Se repite hasta 0 fallos.
+  const retryFailed = () => {
+    if (!failed.length) return;
+    const shuffled = [...failed].sort(()=>Math.random()-0.5);
+    const tagged = shuffled.map((q,i) => ({ ...q, numero: i+1, _subject: q.s, _topics: q.t }));
+    setRetryMode(true);
+    setQuestions(tagged); setAnswers({}); setCurQ(0); setShowExpl({}); setTab("exam");
+    setExamStart(Date.now()); setExamElapsed(0); setExamEndedEarly(false);
   };
 
   const addToDeck = async () => {
@@ -2733,6 +2777,38 @@ export default function Angie(){
             )}
           </div>
         </div>
+        {retryMode && failed.length===0 && (
+          <div style={card({border:`2px solid ${C.ok}`, marginBottom:13, background:"#F0FDF4"})}>
+            <div style={{textAlign:"center", padding:"6px 4px"}}>
+              <div style={{fontSize:22, fontWeight:900, color:"#065F46"}}>🎉 ¡Todas correctas!</div>
+              <div style={{fontSize:13, color:"#065F46", marginTop:5, fontWeight:600, lineHeight:1.5}}>Has limpiado todas las falladas de esta tanda. Buen trabajo.</div>
+            </div>
+          </div>
+        )}
+
+        {failed.length > 0 && (
+          <div style={card({border:`2px solid ${C.err}33`, marginBottom:13})}>
+            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8, marginBottom:11, flexWrap:"wrap"}}>
+              <span style={{fontWeight:800, fontSize:13, color:"#7F1D1D", letterSpacing:.3}}>📋 Repaso de tus fallos ({failed.length})</span>
+              <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
+                <button onClick={copyFailed} style={pillBtn(false, {pad:"8px 14px", size:12.5, ghost:true})}>📄 Copiar (Excel)</button>
+                <button onClick={retryFailed} style={{padding:"8px 14px", borderRadius:99, border:"none", background:C.err, color:"#fff", cursor:"pointer", fontWeight:700, fontSize:12.5, fontFamily:"inherit", letterSpacing:.3}}>🔁 Repetir falladas</button>
+              </div>
+            </div>
+            <div style={{display:"flex", flexDirection:"column", gap:9}}>
+              {failed.map((fq,i) => (
+                <div key={fq.id || i} style={{padding:"10px 13px", borderRadius:12, background:"#FEF2F2", border:`1px solid ${C.err}22`}}>
+                  <div style={{fontSize:13, lineHeight:1.6, color:C.ink, fontWeight:500, marginBottom:6}}>{fq.e}</div>
+                  <div style={{fontSize:12.5, lineHeight:1.5, color:"#065F46", fontWeight:700}}>✓ Correcta: {fq.c}) {fq.o[fq.c]}</div>
+                  {(fq._topics || fq.t || []).length > 0 && (
+                    <div style={{fontSize:11, color:C.muted, fontWeight:600, marginTop:4}}>{(fq._topics || fq.t || []).join(" · ")}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div style={card({border:`2px solid ${ok?C.ok:C.err}`, marginBottom:13})}>
           <div style={{display:"flex", justifyContent:"space-between", marginBottom:9, flexWrap:"wrap", gap:6}}>
             <span style={{fontSize:11, fontWeight:800, color:C.muted, letterSpacing:1.2}}>PREGUNTA {q.numero}/{questions.length}</span>
