@@ -1,0 +1,8 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+
+# Índices y cruces locales: pueden contener rutas del equipo y ocupan bastante espacio.
+analysis/*
+!analysis/REVISION_PREGUNTAS.md
