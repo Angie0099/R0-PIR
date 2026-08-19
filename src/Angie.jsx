@@ -23,6 +23,105 @@ const SUBJECTS = {
   "Psicología de la Salud": []
 };
 
+// El banco desplegado usa estas 11 asignaturas. Las denominaciones antiguas se
+// conservan solo para recuperar preguntas y estadísticas guardadas en el navegador.
+const OFFICIAL_SUBJECT_NAMES = [
+  "Psicología Clínica",
+  "Tratamientos Adultos",
+  "Evaluación Psicológica",
+  "Psicología de la Personalidad y Diferencial",
+  "Psicobiología",
+  "Psicología Básica",
+  "Psicoterapias",
+  "Psicología Social",
+  "Psicología Evolutiva",
+  "Tratamientos Infantiles",
+  "Psicología Experimental"
+];
+
+const SUBJECT_TO_UNIFIED = {
+  "Psicopatología": "Psicología Clínica",
+  "Clínica Adultos": "Psicología Clínica",
+  "Tratamientos Psicológicos": "Tratamientos Adultos",
+  "Psicología Diferencial y de la Personalidad": "Psicología de la Personalidad y Diferencial",
+  "Estadística y Experimental": "Psicología Experimental",
+  "Psicología Clínica Infantil": "Tratamientos Infantiles",
+  "Psicología del Desarrollo": "Psicología Evolutiva",
+  "Psicología de la Salud": "Tratamientos Adultos"
+};
+
+const TOPIC_TO_UNIFIED = {
+  "Psicopatología de la conciencia": "Patología de la conciencia",
+  "Psicopatología de la atención": "Psicopatología de la atención y orientación",
+  "Psicopatología de la sensopercepción": "Psicopatología de la sensopercepción",
+  "Psicopatología del pensamiento": "Psicopatología del pensamiento",
+  "Psicopatología del lenguaje": "Psicopatología del lenguaje",
+  "Psicopatología de la afectividad": "Psicopatología de la afectividad",
+  "Trastornos psicomotores": "Psicopatología de la conducta motora",
+  "Trastornos del espectro de la esquizofrenia": "Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos",
+  "TOC": "Trastorno obsesivo-compulsivo y relacionados",
+  "Trastornos relacionados con estrés y trauma": "Trastornos relacionados con traumas y factores de estrés",
+  "Trastornos por síntomas somáticos y relacionados": "Trastornos de síntomas somáticos y relacionados",
+  "Trastornos de la conducta alimentaria": "Trastornos de la conducta alimentaria y de la ingestión de alimentos",
+  "Trastornos disruptivos del control de los impulsos y de la conducta": "Trastornos destructivos, del control de los impulsos y de la conducta",
+  "Trastornos adictivos y relacionados con sustancias": "Trastornos adictivos con sustancia",
+  "Autoinformes": "Los autoinformes",
+  "Entrevista": "La entrevista",
+  "Evaluación de la inteligencia": "Tests de inteligencia y aptitudes",
+  "Evaluación de las aptitudes": "Tests de inteligencia y aptitudes",
+  "Evaluación de la personalidad": "Tests de personalidad",
+  "Clasificación de las técnicas de evaluación": "Clasificación de las técnicas de evaluación psicológica"
+};
+
+const STORAGE_SUBJECTS = [...new Set([...Object.keys(SUBJECTS), ...OFFICIAL_SUBJECT_NAMES])];
+const REVIEWED_STATUSES = new Set(["VALIDADA_ORIGINAL", "VALIDADA_DRIVE", "CORREGIDA"]);
+const ORIGINAL_REFERENCE_RX = /\b(belloch|fonseca|caballo|vallejo|moreno|sand[ií]n|ramos|ballesteros|berm[uú]dez|s[aá]nchez-elvira|redolar|domjan|stahl|papalia|santrock|gaviria|colom|uned|dsm\s*-?\s*5|cie\s*-?\s*11|manual de psicopatolog[ií]a)\b/i;
+const ACADEMY_REFERENCE_RX = /\b(apir|amir|cede|persever|academia|simulacro|diapositivas?|apuntes?)\b/i;
+
+const unifiedSubject = (subj) => SUBJECT_TO_UNIFIED[subj] || subj;
+const unifiedTopic = (topic) => TOPIC_TO_UNIFIED[topic] || topic;
+const normalizeQuestionForUnifiedBank = (q) => ({
+  ...q,
+  s: unifiedSubject(q.s || q._subject || ""),
+  t: [...new Set((q.t || q._topics || []).map(unifiedTopic).filter(Boolean))]
+});
+const personalReviewIssues = (q) => {
+  const issues = [];
+  const status = String(q.v || "").toUpperCase();
+  const reference = String(q.r || "");
+  if (!REVIEWED_STATUSES.has(status)) issues.push("pendiente de validación documental");
+  if (!String(q.x || "").trim()) issues.push("sin justificación revisada");
+  if (!reference.trim()) issues.push("sin referencia original");
+  else if (ACADEMY_REFERENCE_RX.test(reference)) issues.push("referencia de academia no admitida");
+  else if (!ORIGINAL_REFERENCE_RX.test(reference)) issues.push("la referencia no identifica un manual original");
+  return issues;
+};
+const isReviewedPersonalQuestion = (q) => personalReviewIssues(q).length === 0;
+
+const migrateStatsToUnifiedBank = (input) => {
+  const output = {};
+  let changed = false;
+  Object.entries(input || {}).forEach(([oldSubject, topics]) => {
+    const newSubject = unifiedSubject(oldSubject);
+    if (newSubject !== oldSubject) changed = true;
+    if (!output[newSubject]) output[newSubject] = {};
+    Object.entries(topics || {}).forEach(([oldTopic, record]) => {
+      const newTopic = unifiedTopic(oldTopic);
+      if (newTopic !== oldTopic) changed = true;
+      const previous = output[newSubject][newTopic] || { correct:0, total:0, sessions:[] };
+      if (output[newSubject][newTopic]) changed = true;
+      output[newSubject][newTopic] = {
+        correct: previous.correct + Number(record?.correct || 0),
+        total: previous.total + Number(record?.total || 0),
+        sessions: [...(previous.sessions || []), ...(record?.sessions || [])]
+          .sort((a,b) => String(a.date || "").localeCompare(String(b.date || "")))
+          .slice(-50)
+      };
+    });
+  });
+  return { stats: output, changed };
+};
+
 // ═══════════════════════════════════════════════════════════
 // MIGRACIÓN DE TEMAS v1 → v2 (one-shot)
 // Mapeo de nombres antiguos a nuevos para preservar preguntas
@@ -316,21 +415,20 @@ export default function Angie(){
   const[bankLoading,setBankLoading]=useState(true);
 
   // Estado de la pestaña Importar
-  const[impSubject,setImpSubject]=useState("Clínica Adultos");
+  const[impSubject,setImpSubject]=useState("Psicología Clínica");
   const[impText,setImpText]=useState("");
   const[impPreview,setImpPreview]=useState(null);
   const[impMsg,setImpMsg]=useState("");
   const[bankSizes,setBankSizes]=useState({});
 
   // ── BANCO OFICIAL (empotrado, solo lectura, cargado bajo demanda desde /banco) ──
-  const[source,setSource]=useState("oficial");       // abre el banco completo por defecto
   const[officialMap,setOfficialMap]=useState({});    // { asignatura: {slug,count,topics[]} }
   const[officialBank,setOfficialBank]=useState({});  // { asignatura: [preguntas] } (caché en memoria)
   const[officialBusy,setOfficialBusy]=useState(null);// asignatura que se está descargando
   const[hiddenOfficial,setHiddenOfficial]=useState({}); // { id: true } preguntas oficiales ocultadas por la usuaria
 
   // Estado del gestor de preguntas (revisar / depurar / borrar individual)
-  const[mgrSubject,setMgrSubject]=useState("Clínica Adultos");
+  const[mgrSubject,setMgrSubject]=useState("Psicología Clínica");
   const[mgrTopic,setMgrTopic]=useState("__all__");
   const[mgrExpanded,setMgrExpanded]=useState(null); // id de la pregunta expandida
   const[mgrSearch,setMgrSearch]=useState("");        // buscador de texto en el gestor
@@ -347,7 +445,7 @@ export default function Angie(){
 
   // ── ESQUEMAS (recuperación estructurada previa al tema) ──
   const[schemas,setSchemas]=useState([]);            // todos los esquemas cargados
-  const[schSubject,setSchSubject]=useState("Clínica Adultos"); // asignatura en la pestaña Esquemas
+  const[schSubject,setSchSubject]=useState("Psicología Clínica"); // asignatura en la pestaña Esquemas
   const[schId,setSchId]=useState(null);              // esquema abierto (id) o null = lista
   const[schAnswers,setSchAnswers]=useState({});      // respuestas escritas {sec_item: texto}
   const[schRevealed,setSchRevealed]=useState(false); // mostrar soluciones
@@ -363,7 +461,7 @@ export default function Angie(){
   const schemaFileRef=useRef(null);
 
   // Estado del generador de flashcards desde banco
-  const[fcGenSubject,setFcGenSubject]=useState("Clínica Adultos");
+  const[fcGenSubject,setFcGenSubject]=useState("Psicología Clínica");
   const[fcGenTopic,setFcGenTopic]=useState("__all__"); // "__all__" o nombre de tema
   const[fcGenSkipExisting,setFcGenSkipExisting]=useState(true);
 
@@ -400,8 +498,13 @@ export default function Angie(){
         if (!cancelled) setDeck(d);
 
         log("Cargando stats…");
-        const s = await load(K.stats,{}).catch(e => { log("⚠️ stats error: "+e); return {}; });
-        if (!cancelled) setStats(s);
+        const savedStats = await load(K.stats,{}).catch(e => { log("⚠️ stats error: "+e); return {}; });
+        const migratedStats = migrateStatsToUnifiedBank(savedStats);
+        if (!cancelled) setStats(migratedStats.stats);
+        if (migratedStats.changed) {
+          await save(K.stats, migratedStats.stats);
+          log("  ✓ porcentajes antiguos recuperados en el banco único");
+        }
 
         log("Cargando qstats…");
         const qs = await load(K.qstats,{}).catch(e => { log("⚠️ qstats error: "+e); return {}; });
@@ -410,7 +513,7 @@ export default function Angie(){
         // Cargar bancos UNO A UNO (no paralelo) con try/catch individual
         const all = [];
         const sizes = {};
-        const subjs = Object.keys(SUBJECTS);
+        const subjs = STORAGE_SUBJECTS;
         for (let i = 0; i < subjs.length; i++) {
           if (cancelled) return;
           const subj = subjs[i];
@@ -542,7 +645,7 @@ export default function Angie(){
     let cancelled = false;
     (async () => {
       const all = [];
-      for (const subj of Object.keys(SUBJECTS)) {
+      for (const subj of STORAGE_SUBJECTS) {
         try {
           const arr = await load(schemaKey(subj), []);
           if (Array.isArray(arr)) all.push(...arr);
@@ -591,17 +694,31 @@ export default function Angie(){
     setQstats(next); await save(K.qstats, next);
   };
 
-  // ── Fuente activa: preguntas propias (localStorage) vs banco oficial (empotrado) ──
+  // ── BANCO ÚNICO: banco desplegado + aportaciones personales ya validadas ──
   const officialFlat = useMemo(() => Object.values(officialBank).flat(), [officialBank]);
-  const activeBank = source === "oficial" ? officialFlat : bank;
-  const curSubjectList = source === "oficial" ? Object.keys(officialMap) : Object.keys(SUBJECTS);
-  const curTopics = (subj) => source === "oficial"
-    ? ((officialMap[subj] && officialMap[subj].topics) || [])
-    : (SUBJECTS[subj] || []);
-  // Nº de preguntas mostrado en el selector (para el oficial usa el índice, aunque no esté descargado aún)
-  const subjBadgeCount = (subj) => source === "oficial"
-    ? ((officialMap[subj] && officialMap[subj].count) || 0)
-    : bankCount(subj);
+  const reviewedLocalBank = useMemo(
+    () => bank.filter(isReviewedPersonalQuestion).map(normalizeQuestionForUnifiedBank),
+    [bank]
+  );
+  const activeBank = useMemo(() => {
+    const byId = new Map();
+    officialFlat.forEach(q => byId.set(q.id, q));
+    reviewedLocalBank.forEach(q => { if (!byId.has(q.id)) byId.set(q.id, q); });
+    return [...byId.values()];
+  }, [officialFlat, reviewedLocalBank]);
+  const curSubjectList = useMemo(
+    () => Object.keys(officialMap).length ? Object.keys(officialMap) : OFFICIAL_SUBJECT_NAMES,
+    [officialMap]
+  );
+  const curTopics = (subj) => {
+    const officialTopics = (officialMap[subj] && officialMap[subj].topics) || [];
+    const personalTopics = reviewedLocalBank.filter(q => q.s === subj).flatMap(q => q.t || []);
+    return [...new Set([...officialTopics, ...personalTopics])];
+  };
+  // Antes de descargar una asignatura usamos el total del manifiesto; después, el total combinado.
+  const subjBadgeCount = (subj) => officialBank[subj]
+    ? activeBank.filter(q => q.s === subj).length
+    : ((officialMap[subj] && officialMap[subj].count) || reviewedLocalBank.filter(q => q.s === subj).length);
 
   const buildPool = (subj, tops, filters) => {
     return activeBank.filter(q => {
@@ -615,7 +732,8 @@ export default function Angie(){
       if (filters.estado === "no_vistas") { if (qs && qs.a > 0) return false; }
       if (filters.dificultad !== "todas") { if (difficultyOf(qs) !== filters.dificultad) return false; }
       if (filters.recencia !== "todas") { if (recencyOf(qs) !== filters.recencia) return false; }
-      if (filters.origen !== "todas") { if (q.origen !== filters.origen) return false; }
+      if (filters.origen === "oficial") { if (!["oficial", "banco_oficial"].includes(q.origen)) return false; }
+      else if (filters.origen !== "todas" && q.origen !== filters.origen) return false;
       if (filters.convocatoria !== "todas") { if (String(q.convocatoria) !== filters.convocatoria) return false; }
       return true;
     });
@@ -623,33 +741,41 @@ export default function Angie(){
 
   const availableYears = useMemo(() => {
     const ys = new Set();
-    bank.forEach(q => {
-      if (q.origen !== "oficial" || q.convocatoria == null) return;
+    activeBank.forEach(q => {
+      if (!["oficial", "banco_oficial"].includes(q.origen) || q.convocatoria == null) return;
       if (subject && q.s !== subject) return;
       if (selTopics.length > 0 && !selTopics.some(t => q.t.includes(t))) return;
       ys.add(q.convocatoria);
     });
     return [...ys].sort((a,b) => b-a);
-  }, [subject, selTopics, bank]);
+  }, [subject, selTopics, activeBank]);
 
   const poolCount = useMemo(() => {
     if (!subject || selTopics.length === 0) return 0;
     return buildPool(subject, selTopics, { estado: fEstado, dificultad: fDificultad, recencia: fRecencia, origen: fOrigen, convocatoria: fConvocatoria }).length;
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subject, selTopics, fEstado, fDificultad, fRecencia, fOrigen, fConvocatoria, qstats, bank, activeBank, source]);
+  }, [subject, selTopics, fEstado, fDificultad, fRecencia, fOrigen, fConvocatoria, qstats, activeBank]);
 
   const bankCount = (subj, tops=[]) =>
     activeBank.filter(q => q.s===subj && (tops.length===0 || tops.some(t=>q.t.includes(t)))).length;
 
+  const homeSubject = curSubjectList.length ? curSubjectList[homeIdx % curSubjectList.length] : "";
+  const officialSubjectCount = Object.keys(officialMap).length;
+  useEffect(() => {
+    if (tab === "home" && step === 1 && homeSubject && officialSubjectCount > 0) ensureOfficial(homeSubject);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab, step, homeSubject, officialSubjectCount]);
+
   const generate = async () => {
     if (!subject) { setErr("Selecciona una asignatura."); return; }
     if (selTopics.length === 0) { setErr("Selecciona al menos un tema."); return; }
-    // Banco oficial: asegurarse de que la asignatura está descargada antes de armar el examen
-    let poolBank = activeBank;
-    if (source === "oficial") {
-      const loaded = await ensureOfficial(subject);
-      poolBank = loaded;
-    }
+    // Asegura el bloque oficial y añade únicamente aportaciones personales validadas.
+    const loaded = await ensureOfficial(subject);
+    const byId = new Map(loaded.map(q => [q.id, q]));
+    reviewedLocalBank.filter(q => q.s === subject).forEach(q => {
+      if (!byId.has(q.id)) byId.set(q.id, q);
+    });
+    const poolBank = [...byId.values()];
     const applyFilters = (arr) => arr.filter(q => {
       if (subject && q.s !== subject) return false;
       if (selTopics.length > 0 && !selTopics.some(t => q.t.includes(t))) return false;
@@ -658,7 +784,8 @@ export default function Angie(){
       if (fEstado === "no_vistas") { if (qs && qs.a > 0) return false; }
       if (fDificultad !== "todas") { if (difficultyOf(qs) !== fDificultad) return false; }
       if (fRecencia !== "todas") { if (recencyOf(qs) !== fRecencia) return false; }
-      if (fOrigen !== "todas") { if (q.origen !== fOrigen) return false; }
+      if (fOrigen === "oficial") { if (!["oficial", "banco_oficial"].includes(q.origen)) return false; }
+      else if (fOrigen !== "todas" && q.origen !== fOrigen) return false;
       if (fConvocatoria !== "todas") { if (String(q.convocatoria) !== fConvocatoria) return false; }
       return true;
     });
@@ -762,7 +889,12 @@ export default function Angie(){
   const addBankSubsetToDeck = async () => {
     const subj = fcGenSubject;
     const topic = fcGenTopic;
-    const pool = bank.filter(q => {
+    const loaded = await ensureOfficial(subj);
+    const byId = new Map(loaded.map(q => [q.id, q]));
+    reviewedLocalBank.filter(q => q.s === subj).forEach(q => {
+      if (!byId.has(q.id)) byId.set(q.id, q);
+    });
+    const pool = [...byId.values()].filter(q => {
       if (q.s !== subj) return false;
       if (topic !== "__all__" && !(q.t || []).includes(topic)) return false;
       return true;
@@ -850,31 +982,37 @@ export default function Angie(){
       setImpMsg(`❌ Ninguna pregunta válida. Errores en filas: ${errors.join(", ")}`);
       return;
     }
-    // Detección de duplicados (contra el banco existente y dentro del propio lote)
+    // Detección de duplicados contra el banco único y control documental obligatorio.
+    const official = await ensureOfficial(impSubject);
     const existing = await load(subjectKey(impSubject), []);
-    const existingSigs = new Set(existing.map(qSignature));
+    const existingSigs = new Set([...official, ...existing].map(qSignature));
+    const existingIds = new Set([...official, ...existing].map(q => q.id));
     const seen = new Set();
-    let dupExisting = 0, dupInternal = 0, withIssues = 0, withQuality = 0, notVerified = 0;
+    let dupExisting = 0, dupInternal = 0, withIssues = 0, withQuality = 0, notVerified = 0, approved = 0;
     normalized = normalized.map(q => {
       const sig = qSignature(q);
       let dup = false;
-      if (existingSigs.has(sig)) { dup = true; dupExisting++; }
+      if (existingSigs.has(sig) || existingIds.has(q.id)) { dup = true; dupExisting++; }
       else if (seen.has(sig)) { dup = true; dupInternal++; }
       seen.add(sig);
-      const issues = validateQuestion(q);
+      const issues = [...new Set([...validateQuestion(q), ...personalReviewIssues(q)])];
       const quality = qualityFlags(q);
       if (issues.length) withIssues++;
       if (quality.length) withQuality++;
       const verif = q.v ? String(q.v).toUpperCase() : null;
       const isNotVerified = verif && /NO[_\s]?VERIFICADO|REVISAR|DUDA/.test(verif);
       if (isNotVerified) notVerified++;
-      return { ...q, _dup: dup, _issues: issues, _quality: quality, _verif: verif, _notVerified: !!isNotVerified };
+      const isApproved = !dup && issues.length === 0 && !isNotVerified;
+      if (isApproved) approved++;
+      return { ...q, _dup: dup, _issues: issues, _quality: quality, _verif: verif, _notVerified: !!isNotVerified, _approved: isApproved };
     });
-    const fresh = normalized.filter(q => !q._dup).length;
-    const keyDist = keyDistribution(normalized.filter(q => !q._dup));
-    setImpPreview({ normalized, errors, subject: impSubject, dupExisting, dupInternal, withIssues, withQuality, notVerified, fresh, keyDist });
-    const parts = [`✓ ${normalized.length} preguntas leídas · ${fresh} nuevas`];
+    const fresh = approved;
+    const rejected = normalized.length - approved - dupExisting - dupInternal;
+    const keyDist = keyDistribution(normalized.filter(q => q._approved));
+    setImpPreview({ normalized, errors, subject: impSubject, dupExisting, dupInternal, withIssues, withQuality, notVerified, fresh, rejected, keyDist });
+    const parts = [`✓ ${normalized.length} preguntas leídas · ${fresh} revisadas listas para añadir`];
     if (dupExisting + dupInternal) parts.push(`${dupExisting + dupInternal} duplicadas`);
+    if (rejected) parts.push(`${rejected} bloqueadas hasta su revisión`);
     if (withIssues) parts.push(`${withIssues} con errores`);
     if (withQuality) parts.push(`${withQuality} con avisos de calidad`);
     if (notVerified) parts.push(`${notVerified} sin verificar`);
@@ -890,23 +1028,23 @@ export default function Angie(){
     if (mode === "replace") {
       // En reemplazo, quitamos duplicados internos pero conservamos todo lo del lote
       const seen = new Set();
-      let lote = impPreview.normalized.filter(q => {
+      let lote = impPreview.normalized.filter(q => q._approved).filter(q => {
         const sig = qSignature(q);
         if (seen.has(sig)) return false;
         seen.add(sig);
         return true;
-      }).map(({ _dup, _issues, _quality, _verif, _notVerified, ...q }) => q);
+      }).map(({ _dup, _issues, _quality, _verif, _notVerified, _approved, ...q }) => q);
       if (impBalance) lote = balanceKeys(lote);
       merged = lote;
     } else if (mode === "update") {
       // update: sustituye por id las que ya existen; añade las nuevas; conserva el resto intacto
-      const strip = ({ _dup, _issues, _quality, _verif, _notVerified, ...q }) => q;
+      const strip = ({ _dup, _issues, _quality, _verif, _notVerified, _approved, ...q }) => q;
       const byId = new Map(existing.map(q => [q.id, q]));
       let updated = 0, added = 0;
       // dedup interno del lote por id (última gana)
       const lote = [];
       const seenLote = new Set();
-      for (const q of impPreview.normalized) {
+      for (const q of impPreview.normalized.filter(q => q._approved)) {
         if (seenLote.has(q.id)) continue;
         seenLote.add(q.id); lote.push(strip(q));
       }
@@ -924,8 +1062,8 @@ export default function Angie(){
       const ids = new Set(existing.map(q => q.id));
       const sigs = new Set(existing.map(qSignature));
       let fresh = impPreview.normalized
-        .filter(q => !ids.has(q.id) && !sigs.has(qSignature(q)) && !q._dup)
-        .map(({ _dup, _issues, _quality, _verif, _notVerified, ...q }) => q);
+        .filter(q => q._approved && !ids.has(q.id) && !sigs.has(qSignature(q)) && !q._dup)
+        .map(({ _dup, _issues, _quality, _verif, _notVerified, _approved, ...q }) => q);
       if (impBalance) fresh = balanceKeys(fresh);
       merged = [...existing, ...fresh];
     }
@@ -1193,7 +1331,7 @@ export default function Angie(){
   const exportAllBackup = async () => {
     try {
       const backup = { _type: "r0pir-backup", _version: 2, exported: new Date().toISOString(), banks: {}, schemas: {}, deck: [], stats: {}, qstats: {} };
-      for (const subj of Object.keys(SUBJECTS)) {
+      for (const subj of STORAGE_SUBJECTS) {
         backup.banks[subj] = await load(subjectKey(subj), []);
         backup.schemas[subj] = await load(schemaKey(subj), []);
       }
@@ -1217,7 +1355,8 @@ export default function Angie(){
     try { data = JSON.parse(text); } catch (e) { setImpMsg("❌ El archivo no es un JSON válido: " + e.message); return; }
     if (!data || typeof data !== "object" || !data.banks) { setImpMsg("❌ Este archivo no parece una copia de R0 PIR."); return; }
     try {
-      for (const subj of Object.keys(SUBJECTS)) {
+      const subjectsToRestore = [...new Set([...STORAGE_SUBJECTS, ...Object.keys(data.banks || {})])];
+      for (const subj of subjectsToRestore) {
         const incoming = Array.isArray(data.banks[subj]) ? data.banks[subj] : [];
         if (mode === "replace") {
           await persistSubject(subj, incoming);
@@ -1243,7 +1382,10 @@ export default function Angie(){
       }
       if (mode === "replace") {
         if (Array.isArray(data.deck)) { await save(K.deck, data.deck); setDeck(data.deck); }
-        if (data.stats) { await save(K.stats, data.stats); setStats(data.stats); }
+        if (data.stats) {
+          const migrated = migrateStatsToUnifiedBank(data.stats).stats;
+          await save(K.stats, migrated); setStats(migrated);
+        }
         if (data.qstats) { await save(K.qstats, data.qstats); setQstats(data.qstats); }
       } else {
         if (Array.isArray(data.deck)) {
@@ -1253,7 +1395,10 @@ export default function Angie(){
           await save(K.deck, merged); setDeck(merged);
         }
         if (data.qstats) { const merged = { ...data.qstats, ...qstats }; await save(K.qstats, merged); setQstats(merged); }
-        if (data.stats) { const merged = { ...data.stats, ...stats }; await save(K.stats, merged); setStats(merged); }
+        if (data.stats) {
+          const merged = migrateStatsToUnifiedBank({ ...data.stats, ...stats }).stats;
+          await save(K.stats, merged); setStats(merged);
+        }
       }
       computeStorage();
       showToast("✅ Copia restaurada");
@@ -1541,7 +1686,7 @@ export default function Angie(){
     {id:"esquemas", l:"Esquemas"},
     {id:"flashcards", l:`Mazo${due.length?` · ${due.length}`:""}`},
     {id:"stats", l:"Progreso"},
-    {id:"import", l:"Importar"}
+    {id:"import", l:"Añadir"}
   ];
 
   const TabBar = () => (
@@ -1598,7 +1743,7 @@ export default function Angie(){
   if (tab === "esquemas") {
     const subjSchemas = schemas.filter(sc => sc.s === schSubject);
     const current = schId ? schemas.find(sc => sc.id === schId) : null;
-    const subjectsWithSchemas = Object.keys(SUBJECTS).filter(s => schemas.some(sc => sc.s === s));
+    const subjectsWithSchemas = [...new Set(schemas.map(sc => sc.s).filter(Boolean))];
 
     // Vista de un esquema concreto (flujo de 3 niveles)
     if (current) {
@@ -1839,7 +1984,7 @@ export default function Angie(){
       <div style={card({marginBottom:14, border:`1.5px solid ${C.v200}`})}>
         <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>💾 Copia de seguridad</div>
         <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:14}}>
-          Tus preguntas viven solo en este navegador. Descarga una copia con <strong>todo</strong> (preguntas, mazo y estadísticas) y guárdala a buen recaudo. Si cambias de equipo o se borran los datos, podrás restaurarla. Hazlo a menudo.
+          Tus borradores, mazo y porcentajes viven en este navegador. Descarga una copia con <strong>todo</strong> y guárdala a buen recaudo. Si cambias de equipo o se borran los datos, podrás restaurarla. Hazlo a menudo.
         </div>
         <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
           <button onClick={exportAllBackup} style={{...pillBtn(true, {pad:"11px 20px"}), background:C.ok}}>⬇️ Descargar copia completa</button>
@@ -1864,16 +2009,16 @@ export default function Angie(){
       </div>
 
       <div style={card({marginBottom:14})}>
-        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>📥 Importar preguntas</div>
+        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>📥 Añadir preguntas revisadas</div>
         <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:14}}>
-          Pega el JSON generado por el prompt PIR. Acepta tanto el formato del prompt
+          Pega el JSON después de revisarlo con manuales originales. Solo entrarán en el banco único las preguntas con estado <strong>VALIDADA_ORIGINAL</strong>, <strong>VALIDADA_DRIVE</strong> o <strong>CORREGIDA</strong>, justificación y referencia original (Belloch, Fonseca, DSM, CIE, UNED, etc.). Se rechazan referencias de academias. Acepta tanto el formato del prompt
           (<code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>tema, asignatura, pregunta, opciones, respuesta_correcta, justificacion_tecnica</code>)
           como el formato compacto (<code style={{background:C.v50, padding:"1px 5px", borderRadius:4}}>id, s, t, e, o, c, x, r</code>).
         </div>
 
         <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Asignatura destino</div>
         <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14}}>
-          {Object.keys(SUBJECTS).map(s => (
+          {curSubjectList.map(s => (
             <button key={s} onClick={()=>setImpSubject(s)} style={pillBtn(impSubject===s, {pad:"7px 14px", size:12})}>{s}</button>
           ))}
         </div>
@@ -1941,7 +2086,7 @@ export default function Angie(){
             </div>
             {(impPreview.withIssues > 0 || impPreview.withQuality > 0 || impPreview.notVerified > 0) && (
               <div style={{marginBottom:10, padding:"9px 12px", borderRadius:11, background:"#FFFBEB", border:`1px solid ${C.warn}55`, fontSize:12, color:"#78350F", fontWeight:600, lineHeight:1.55}}>
-                🔍 Revisa abajo las preguntas marcadas antes de subir. <strong style={{color:C.err}}>Rojo</strong> = error de formato · <strong style={{color:"#92400E"}}>ámbar</strong> = aviso de calidad (respuesta más larga, menciona el manual…) · <strong>sin verificar</strong> = tu prompt la marcó para revisión. Puedes subirlas igual y corregirlas luego en «Revisar y depurar».
+                🔍 Las preguntas en rojo quedan bloqueadas: deben revisarse aquí con un manual original antes de incorporarlas. Los avisos ámbar señalan aspectos de redacción que conviene comprobar.
               </div>
             )}
             {impPreview.keyDist && impPreview.keyDist.total > 0 && (() => {
@@ -2012,16 +2157,7 @@ export default function Angie(){
             </div>
             <div style={{display:"flex", gap:8, marginTop:12, flexWrap:"wrap"}}>
               <button onClick={()=>confirmImport("append")} disabled={impPreview.fresh===0} style={{...pillBtn(true, {pad:"10px 18px"}), background: impPreview.fresh===0 ? "#A0AEC0" : C.ok, cursor: impPreview.fresh===0 ? "not-allowed":"pointer"}}>
-                ➕ Añadir {impPreview.fresh} nuevas al banco
-              </button>
-              <button onClick={()=>confirmImport("update")} style={{...pillBtn(true, {pad:"10px 18px"}), background:C.v600}}
-                title="Si una pregunta ya existe (mismo id), la sustituye por esta versión; si es nueva, la añade. No toca el resto del banco.">
-                🔄 Sustituir duplicadas y añadir nuevas
-              </button>
-              <button onClick={()=>{
-                if (confirm(`¿Reemplazar TODO el banco de "${impPreview.subject}" por estas preguntas?`)) confirmImport("replace");
-              }} style={{...pillBtn(true, {pad:"10px 18px"}), background:C.warn}}>
-                🔁 Reemplazar banco completo
+                ➕ Añadir {impPreview.fresh} revisadas al banco único
               </button>
             </div>
           </div>
@@ -2071,30 +2207,30 @@ export default function Angie(){
 
       {/* ─── BLOQUE: Revisar y depurar preguntas (borrado individual) ─── */}
       <div style={card({marginBottom:14})}>
-        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>🗂️ Revisar y depurar preguntas</div>
+        <div style={{fontWeight:900, fontSize:17, color:C.ink, marginBottom:6}}>🗂️ Borradores personales</div>
         <div style={{fontSize:12.5, color:C.muted, lineHeight:1.6, marginBottom:14}}>
-          Revisa las preguntas del banco una a una y elimina las que estén mal hechas, sean demasiado específicas o no te convenzan. Solo se borra esa pregunta; el resto se conserva.
+          Aquí se conservan las preguntas personales del navegador. Las no validadas no aparecen en los exámenes. Cuando una pregunta tenga redacción, opciones, clave, justificación y referencia original revisadas, se incorporará automáticamente al banco único.
         </div>
 
-        {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).length === 0 ? (
-          <div style={{fontSize:12, color:C.muted, fontStyle:"italic"}}>Aún no hay preguntas en ningún banco. Importa primero un JSON arriba.</div>
+        {STORAGE_SUBJECTS.filter(s => (bankSizes[s] || 0) > 0).length === 0 ? (
+          <div style={{fontSize:12, color:C.muted, fontStyle:"italic"}}>Aún no hay borradores personales guardados.</div>
         ) : (
           <>
             <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Asignatura</div>
             <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14}}>
-              {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).map(s => (
+              {STORAGE_SUBJECTS.filter(s => (bankSizes[s] || 0) > 0).map(s => (
                 <button key={s} onClick={()=>{setMgrSubject(s); setMgrTopic("__all__"); setMgrExpanded(null);}} style={pillBtn(mgrSubject===s, {pad:"7px 14px", size:12})}>
                   {s} <span style={{opacity:.7, fontSize:10.5, marginLeft:4}}>({bankSizes[s] || 0})</span>
                 </button>
               ))}
             </div>
 
-            {(bankSizes[mgrSubject] || 0) > 0 && SUBJECTS[mgrSubject].some(t => bank.some(q => q.s===mgrSubject && (q.t||[]).includes(t))) && (
+            {(bankSizes[mgrSubject] || 0) > 0 && bank.some(q => q.s===mgrSubject && (q.t||[]).length > 0) && (
               <>
                 <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Tema</div>
                 <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14, maxHeight:140, overflowY:"auto"}}>
                   <button onClick={()=>{setMgrTopic("__all__"); setMgrExpanded(null);}} style={pillBtn(mgrTopic==="__all__", {pad:"7px 14px", size:12})}>✓ Todos los temas</button>
-                  {SUBJECTS[mgrSubject].filter(t => bank.some(q => q.s===mgrSubject && (q.t||[]).includes(t))).map(t => {
+                  {[...new Set(bank.filter(q => q.s===mgrSubject).flatMap(q => q.t || []))].map(t => {
                     const count = bank.filter(q => q.s===mgrSubject && (q.t||[]).includes(t)).length;
                     return (
                       <button key={t} onClick={()=>{setMgrTopic(t); setMgrExpanded(null);}} style={pillBtn(mgrTopic===t, {pad:"7px 14px", size:12})}>
@@ -2238,23 +2374,20 @@ export default function Angie(){
 
         <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Asignatura</div>
         <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14}}>
-          {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).map(s => (
-            <button key={s} onClick={()=>{setFcGenSubject(s); setFcGenTopic("__all__");}} style={pillBtn(fcGenSubject===s, {pad:"7px 14px", size:12})}>{s}</button>
+          {curSubjectList.map(s => (
+            <button key={s} onClick={async ()=>{setFcGenSubject(s); setFcGenTopic("__all__"); await ensureOfficial(s);}} style={pillBtn(fcGenSubject===s, {pad:"7px 14px", size:12})}>{s}</button>
           ))}
-          {Object.keys(SUBJECTS).filter(s => (bankSizes[s] || 0) > 0).length === 0 && (
-            <span style={{fontSize:12, color:C.muted, fontStyle:"italic"}}>Aún no hay preguntas en ningún banco. Importa primero un JSON arriba.</span>
-          )}
         </div>
 
-        {(bankSizes[fcGenSubject] || 0) > 0 && (
+        {subjBadgeCount(fcGenSubject) > 0 && (
           <>
             <div style={{fontSize:11.5, fontWeight:700, color:C.muted, letterSpacing:.6, marginBottom:7, textTransform:"uppercase"}}>Tema</div>
             <div style={{display:"flex", gap:6, flexWrap:"wrap", marginBottom:14, maxHeight:140, overflowY:"auto"}}>
               <button onClick={()=>setFcGenTopic("__all__")} style={pillBtn(fcGenTopic==="__all__", {pad:"7px 14px", size:12})}>
                 ✓ Todos los temas
               </button>
-              {SUBJECTS[fcGenSubject].filter(t => bank.some(q => q.s === fcGenSubject && (q.t || []).includes(t))).map(t => {
-                const count = bank.filter(q => q.s === fcGenSubject && (q.t || []).includes(t)).length;
+              {curTopics(fcGenSubject).filter(t => activeBank.some(q => q.s === fcGenSubject && (q.t || []).includes(t))).map(t => {
+                const count = activeBank.filter(q => q.s === fcGenSubject && (q.t || []).includes(t)).length;
                 return (
                   <button key={t} onClick={()=>setFcGenTopic(t)} style={pillBtn(fcGenTopic===t, {pad:"7px 14px", size:12})}>
                     {t} <span style={{opacity:.7, fontSize:10.5, marginLeft:4}}>({count})</span>
@@ -2264,7 +2397,7 @@ export default function Angie(){
             </div>
 
             {(() => {
-              const pool = bank.filter(q => q.s === fcGenSubject && (fcGenTopic === "__all__" || (q.t || []).includes(fcGenTopic)));
+              const pool = activeBank.filter(q => q.s === fcGenSubject && (fcGenTopic === "__all__" || (q.t || []).includes(fcGenTopic)));
               const existingIds = new Set(deck.map(c => c.id));
               const newOnes = pool.filter(q => !existingIds.has(q.id)).length;
               const alreadyIn = pool.length - newOnes;
@@ -2287,23 +2420,20 @@ export default function Angie(){
 
       <div style={card()}>
         <div style={{fontWeight:800, fontSize:14, color:C.ink, marginBottom:12}}>📊 Estado del banco por asignatura</div>
-        {Object.keys(SUBJECTS).map(s => {
-          const n = bankSizes[s] || 0;
+        {curSubjectList.map(s => {
+          const n = subjBadgeCount(s);
           return (
             <div key={s} style={{display:"flex", justifyContent:"space-between", alignItems:"center", padding:"10px 0", borderBottom:`1px solid ${C.line}`, gap:8, flexWrap:"wrap"}}>
               <div style={{flex:1, minWidth:180, fontSize:13, color:C.ink, fontWeight:600}}>{s}</div>
               <div style={{display:"flex", alignItems:"center", gap:6}}>
                 <span style={{fontSize:13, fontWeight:800, color: n>0 ? C.v700 : C.muted, minWidth:40, textAlign:"right"}}>{n}</span>
                 <span style={{fontSize:11, color:C.muted}}>preg.</span>
-                <button onClick={()=>exportSubject(s)} disabled={n===0} style={{...pillBtn(false, {pad:"5px 10px", size:11, ghost:true}), opacity: n===0 ? .3 : 1}}>📤 Exportar</button>
-                <button onClick={()=>clearSubject(s)} disabled={n===0} style={{...pillBtn(false, {pad:"5px 10px", size:11, ghost:true}), opacity: n===0 ? .3 : 1, color:C.err}}>🗑️ Vaciar</button>
               </div>
             </div>
           );
         })}
         <div style={{marginTop:14, padding:12, background:C.v50, borderRadius:12, fontSize:11.5, color:C.v700, lineHeight:1.6}}>
-          💡 <strong>Tip:</strong> Tus preguntas se guardan en este navegador (IndexedDB), con mucho margen de espacio.
-          Aun así, descarga una copia de seguridad a menudo, sobre todo antes de cambiar de equipo o navegador.
+          💡 El banco de exámenes es único. Las aportaciones personales solo se suman cuando han sido validadas documentalmente; los porcentajes y el mazo siguen guardándose en este navegador.
         </div>
       </div>
     </div>
@@ -2316,12 +2446,12 @@ export default function Angie(){
   // HOME
   if (tab==="home") {
     // Carrusel de asignaturas (ciclando)
-    const subjList = Object.keys(SUBJECTS);
-    const featuredSubject = subjList[homeIdx % subjList.length];
-    const featTopics = SUBJECTS[featuredSubject];
+    const subjList = curSubjectList;
+    const featuredSubject = homeSubject;
+    const featTopics = curTopics(featuredSubject);
     const featTot = subjTotal(featuredSubject);
     const featPct = featTot.total > 0 ? Math.round(featTot.correct/featTot.total*100) : null;
-    const featBank = bankCount(featuredSubject);
+    const featBank = subjBadgeCount(featuredSubject);
     // Cobertura: temas con al menos 1 pregunta en banco
     const topicsWithBank = featTopics.filter(t => bankCount(featuredSubject, [t]) > 0).length;
     const coveragePct = featTopics.length > 0 ? Math.round(topicsWithBank/featTopics.length*100) : 0;
@@ -2329,7 +2459,7 @@ export default function Angie(){
     // Áreas de mejora: temas con peor % aciertos (mín 3 intentos, < 75%)
     // Calculamos intentos/aciertos por tema agregando desde qstats por pregunta
     const topicAggregate = {};
-    bank.filter(q => q.s === featuredSubject).forEach(q => {
+    activeBank.filter(q => q.s === featuredSubject).forEach(q => {
       const qs = qstats[q.id];
       if (!qs || qs.a === 0) return;
       q.t.forEach(topic => {
@@ -2346,7 +2476,7 @@ export default function Angie(){
       .slice(0, 3);
 
     // Errores frecuentes: preguntas con más fallos absolutos (a - c)
-    const frequentErrors = bank
+    const frequentErrors = activeBank
       .filter(q => q.s === featuredSubject)
       .map(q => {
         const qs = qstats[q.id];
@@ -2484,20 +2614,6 @@ export default function Angie(){
           <div style={card({marginBottom:12})}>
             <div style={{fontWeight:800, fontSize:15, color:C.ink, marginBottom:12}}>1 · Elige la asignatura</div>
 
-            {/* Selector de fuente: mis preguntas vs banco oficial */}
-            {Object.keys(officialMap).length > 0 && (
-              <div style={{display:"flex", gap:7, marginBottom:14}}>
-                <button onClick={()=>{ setSource("mias"); setSubject(""); setSelTopics([]); }}
-                  style={{...softBtn(source==="mias"), flex:1, padding:"9px 12px", fontSize:12.5, textAlign:"center"}}>
-                  Mis preguntas
-                </button>
-                <button onClick={()=>{ setSource("oficial"); setSubject(""); setSelTopics([]); }}
-                  style={{...softBtn(source==="oficial", C.v600), flex:1, padding:"9px 12px", fontSize:12.5, textAlign:"center"}}>
-                  📚 Banco oficial
-                </button>
-              </div>
-            )}
-
             <div style={{display:"flex", flexDirection:"column", gap:9}}>
               {curSubjectList.map(s => {
                 const tot = subjTotal(s);
@@ -2509,8 +2625,8 @@ export default function Angie(){
                 const busy = officialBusy === s;
                 return (
                   <button key={s} disabled={empty || busy}
-                    onClick={async ()=>{ setSubject(s); setSelTopics([]); if (source==="oficial") { await ensureOfficial(s); } setStep(2); }}
-                    style={{...softBtn(sel, source==="oficial"?C.v600:C.v500), textAlign:"left", padding:"14px 18px", fontSize:14, display:"flex", justifyContent:"space-between", alignItems:"center", gap:10, opacity: empty ? .4 : 1, cursor: (empty||busy) ? "not-allowed" : "pointer"}}>
+                    onClick={async ()=>{ setSubject(s); setSelTopics([]); await ensureOfficial(s); setStep(2); }}
+                    style={{...softBtn(sel, C.v600), textAlign:"left", padding:"14px 18px", fontSize:14, display:"flex", justifyContent:"space-between", alignItems:"center", gap:10, opacity: empty ? .4 : 1, cursor: (empty||busy) ? "not-allowed" : "pointer"}}>
                     <span style={{fontWeight:700}}>{s}</span>
                     <span style={{display:"flex", gap:8, alignItems:"center", fontSize:12, color:C.muted}}>
                       {sp !== null && <span style={{color:colorOf(sp), fontWeight:800, background:`${colorOf(sp)}15`, padding:"2px 9px", borderRadius:99}}>{sp}%</span>}
@@ -2523,15 +2639,9 @@ export default function Angie(){
                 );
               })}
             </div>
-            {source === "oficial" ? (
-              <div style={{marginTop:14, padding:11, background:C.v50, borderRadius:12, fontSize:12, color:C.v700, textAlign:"center", lineHeight:1.5}}>
-                📚 Banco oficial de solo lectura ({officialMap && Object.values(officialMap).reduce((n,m)=>n+(m.count||0),0)} preguntas). Cada asignatura se descarga la primera vez que la abres.
-              </div>
-            ) : (
-              <div style={{marginTop:14, padding:11, background:C.v50, borderRadius:12, fontSize:12, color:C.v700, textAlign:"center"}}>
-                ¿Sin preguntas? Ve a la pestaña <strong>Importar</strong> y pega tu JSON.
-              </div>
-            )}
+            <div style={{marginTop:14, padding:11, background:C.v50, borderRadius:12, fontSize:12, color:C.v700, textAlign:"center", lineHeight:1.5}}>
+              📚 Banco único revisado ({officialMap && Object.values(officialMap).reduce((n,m)=>n+(m.count||0),0)} preguntas). Tus aportaciones solo se incorporan cuando incluyen validación y referencia a un manual original.
+            </div>
           </div>
         )}
 
@@ -2999,10 +3109,11 @@ export default function Angie(){
   return wrap(
     <div>
       <div style={{fontWeight:900, fontSize:18, color:C.ink, marginBottom:14, letterSpacing:-.3}}>📈 Progreso por asignatura y tema</div>
-      {Object.keys(SUBJECTS).map(subj => {
+      {curSubjectList.map(subj => {
         const tot = subjTotal(subj);
         const sp = tot.total > 0 ? Math.round(tot.correct/tot.total*100) : null;
-        const subjBank = bankCount(subj);
+        const subjBank = subjBadgeCount(subj);
+        const topics = curTopics(subj);
         return (
           <div key={subj} style={{...card(), marginBottom:14, opacity: subjBank===0 ? .5 : 1}}>
             <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:11, flexWrap:"wrap", gap:6}}>
@@ -3018,13 +3129,13 @@ export default function Angie(){
               </div>
             )}
             <div>
-              {SUBJECTS[subj].map((t,i) => {
+              {topics.map((t,i) => {
                 const st = getTS(subj, t);
                 const tp = st.total > 0 ? Math.round(st.correct/st.total*100) : null;
                 const bq = bankCount(subj, [t]);
                 const last = stats[subj]?.[t]?.sessions?.slice(-1)[0];
                 return (
-                  <div key={t} style={{display:"flex", alignItems:"center", gap:8, padding:"9px 0", borderBottom: i<SUBJECTS[subj].length-1 ? `1px solid ${C.line}` : "none", flexWrap:"wrap", opacity: bq===0 ? .5 : 1}}>
+                  <div key={t} style={{display:"flex", alignItems:"center", gap:8, padding:"9px 0", borderBottom: i<topics.length-1 ? `1px solid ${C.line}` : "none", flexWrap:"wrap", opacity: bq===0 ? .5 : 1}}>
                     <div style={{flex:1, minWidth:150}}>
                       <div style={{fontSize:13, color:C.ink, display:"flex", alignItems:"center", gap:6, fontWeight:500}}>
                         {t}
