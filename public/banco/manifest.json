@@ -6,57 +6,225 @@
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
       "count": 4193,
-      "topics": ["Patología de la conciencia", "Psicopatología de la sensopercepción", "Psicopatología de la atención y orientación", "Psicopatología del lenguaje", "Trastornos depresivos", "Trastornos de la personalidad", "Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos", "Trastornos disociativos", "Trastornos del sueño-vigilia", "Trastornos de síntomas somáticos y relacionados", "Trastornos relacionados con traumas y factores de estrés", "Trastornos de la conducta alimentaria y de la ingestión de alimentos", "Trastornos neurocognitivos", "Trastornos de ansiedad", "Psicopatología de la memoria", "Pensamiento y lenguaje", "Trastornos de la comunicación", "Trastorno obsesivo-compulsivo y relacionados", "Disfunciones sexuales", "Trastornos destructivos, del control de los impulsos y de la conducta", "Trastornos adictivos con sustancia", "Psicopatología de la conducta motora", "Trastornos bipolares y relacionados", "Disforia de género", "Sistemas clasificatorios en psicopatología", "Psicopatología de la afectividad", "Trastornos parafílicos", "Psicopatología del pensamiento", "Modelos en psicopatología", "Trastornos de excreción"]
+      "topics": [
+        "Patología de la conciencia",
+        "Psicopatología de la sensopercepción",
+        "Psicopatología de la atención y orientación",
+        "Psicopatología del lenguaje",
+        "Trastornos depresivos",
+        "Trastornos de la personalidad",
+        "Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos",
+        "Trastornos disociativos",
+        "Trastornos del sueño-vigilia",
+        "Trastornos de síntomas somáticos y relacionados",
+        "Trastornos relacionados con traumas y factores de estrés",
+        "Trastornos de la conducta alimentaria y de la ingestión de alimentos",
+        "Trastornos neurocognitivos",
+        "Trastornos de ansiedad",
+        "Psicopatología de la memoria",
+        "Pensamiento y lenguaje",
+        "Trastornos de la comunicación",
+        "Trastorno obsesivo-compulsivo y relacionados",
+        "Disfunciones sexuales",
+        "Trastornos destructivos, del control de los impulsos y de la conducta",
+        "Trastornos adictivos con sustancia",
+        "Psicopatología de la conducta motora",
+        "Trastornos bipolares y relacionados",
+        "Disforia de género",
+        "Sistemas clasificatorios en psicopatología",
+        "Psicopatología de la afectividad",
+        "Trastornos parafílicos",
+        "Psicopatología del pensamiento",
+        "Modelos en psicopatología",
+        "Trastornos de excreción"
+      ]
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4129,
-      "topics": ["Técnicas psicológicas generales", "Tratamiento de las adicciones", "Tratamiento de los trastornos de ansiedad", "Tratamiento de los trastornos de personalidad", "Tratamiento del trauma y TEPT", "Tratamiento de la depresión y trastornos del ánimo", "Tratamiento de los trastornos destructivos", "Tratamiento de la psicosis y esquizofrenia", "Tratamiento de los trastornos del sueño", "Tratamiento del TOC y relacionados", "Tratamiento de los trastornos alimentarios", "Tratamiento de los trastornos somáticos", "Tratamiento del TEA", "Componentes y eficacia de la psicoterapia", "Tratamiento de los trastornos disociativos", "Tratamiento de las disfunciones sexuales", "Tratamiento de los trastornos neurocognitivos", "Tratamiento de los trastornos de la comunicación"]
+      "count": 4197,
+      "topics": [
+        "Introducción",
+        "Técnicas psicológicas generales",
+        "Tratamiento de las adicciones",
+        "Tratamiento de los trastornos de ansiedad",
+        "Tratamiento de los trastornos de personalidad",
+        "Tratamiento del trauma y TEPT",
+        "Tratamiento de la depresión y trastornos del ánimo",
+        "Tratamiento de los trastornos destructivos",
+        "Tratamiento de la psicosis y esquizofrenia",
+        "Tratamiento de los trastornos del sueño",
+        "Tratamiento del TOC y relacionados",
+        "Tratamiento de los trastornos alimentarios",
+        "Tratamiento de los trastornos somáticos",
+        "Tratamiento del TEA",
+        "Componentes y eficacia de la psicoterapia",
+        "Tratamiento de los trastornos disociativos",
+        "Tratamiento de las disfunciones sexuales",
+        "Tratamiento de los trastornos neurocognitivos",
+        "Tratamiento de los trastornos de la comunicación"
+      ]
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
       "count": 1954,
-      "topics": ["Fundamentos de la evaluación psicológica", "Técnicas proyectivas", "Los autoinformes", "Evaluación neuropsicológica", "Técnicas de observación", "Tests de inteligencia y aptitudes", "Evaluación infantil", "Tests de personalidad", "Evaluación de adicciones", "Evaluación de la ansiedad", "La entrevista", "Técnicas subjetivas", "Técnicas objetivas", "Clasificación de las técnicas de evaluación psicológica"]
+      "topics": [
+        "Fundamentos de la evaluación psicológica",
+        "Técnicas proyectivas",
+        "Los autoinformes",
+        "Evaluación neuropsicológica",
+        "Técnicas de observación",
+        "Tests de inteligencia y aptitudes",
+        "Evaluación infantil",
+        "Tests de personalidad",
+        "Evaluación de adicciones",
+        "Evaluación de la ansiedad",
+        "La entrevista",
+        "Técnicas subjetivas",
+        "Técnicas objetivas",
+        "Clasificación de las técnicas de evaluación psicológica"
+      ]
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
       "count": 1389,
-      "topics": ["Introducción a la psicología de la personalidad", "Diferencias intergrupales II: raza, clase social y bilingüismo", "Modelos factoriales III: Eysenck", "Diferencias interindividuales en inteligencia", "Determinantes de la conducta: genética vs. ambiente", "Otros constructos de la personalidad", "Teorías psicoanalíticas de la personalidad", "Modelos factoriales II: Cattell", "Teorías humanistas y existenciales de la personalidad", "Diferencias intergrupales I: edad y sexo", "Teorías biológicas de la personalidad", "Teorías socio-cognitivas", "Modelos factoriales I: Allport", "Otros modelos factoriales", "Modelos interaccionistas", "Estrategias de investigación en Psicología Diferencial", "La identidad personal", "Teorías cognitivas de la personalidad", "Diferencias interindividuales en creatividad y personalidad"]
+      "topics": [
+        "Introducción a la psicología de la personalidad",
+        "Diferencias intergrupales II: raza, clase social y bilingüismo",
+        "Modelos factoriales III: Eysenck",
+        "Diferencias interindividuales en inteligencia",
+        "Determinantes de la conducta: genética vs. ambiente",
+        "Otros constructos de la personalidad",
+        "Teorías psicoanalíticas de la personalidad",
+        "Modelos factoriales II: Cattell",
+        "Teorías humanistas y existenciales de la personalidad",
+        "Diferencias intergrupales I: edad y sexo",
+        "Teorías biológicas de la personalidad",
+        "Teorías socio-cognitivas",
+        "Modelos factoriales I: Allport",
+        "Otros modelos factoriales",
+        "Modelos interaccionistas",
+        "Estrategias de investigación en Psicología Diferencial",
+        "La identidad personal",
+        "Teorías cognitivas de la personalidad",
+        "Diferencias interindividuales en creatividad y personalidad"
+      ]
     },
     "Psicobiología": {
       "slug": "psicobiologia",
       "count": 1232,
-      "topics": ["Acción de los fármacos en el sistema nervioso", "SNC I: estructuras subcorticales", "Sistemas perceptivos", "SNC II: la corteza cerebral", "Neurobiología del sexo", "Nivel celular: la neurona", "Emoción", "Estructura del sistema nervioso", "Neuroendocrinología: el sistema endocrino", "Aproximación a la genética", "Sistema motor", "Ritmos biológicos y sueño", "Sistema nervioso periférico", "Desarrollo del sistema nervioso", "Funciones cognitivas superiores", "Métodos de investigación y diagnóstico en Neurología"]
+      "topics": [
+        "Acción de los fármacos en el sistema nervioso",
+        "SNC I: estructuras subcorticales",
+        "Sistemas perceptivos",
+        "SNC II: la corteza cerebral",
+        "Neurobiología del sexo",
+        "Nivel celular: la neurona",
+        "Emoción",
+        "Estructura del sistema nervioso",
+        "Neuroendocrinología: el sistema endocrino",
+        "Aproximación a la genética",
+        "Sistema motor",
+        "Ritmos biológicos y sueño",
+        "Sistema nervioso periférico",
+        "Desarrollo del sistema nervioso",
+        "Funciones cognitivas superiores",
+        "Métodos de investigación y diagnóstico en Neurología"
+      ]
     },
     "Psicología Básica": {
       "slug": "psicologia_basica",
       "count": 797,
-      "topics": ["Memoria", "Emoción", "Pensamiento y lenguaje", "Aprendizaje y condicionamiento", "Atención", "Percepción", "Motivación y emoción", "Sensación y percepción", "Cognición social", "Conducta verbal", "Introducción a la psicología"]
+      "topics": [
+        "Memoria",
+        "Emoción",
+        "Pensamiento y lenguaje",
+        "Aprendizaje y condicionamiento",
+        "Atención",
+        "Percepción",
+        "Motivación y emoción",
+        "Sensación y percepción",
+        "Cognición social",
+        "Conducta verbal",
+        "Introducción a la psicología"
+      ]
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 622,
-      "topics": ["Psicoanálisis y terapias psicodinámicas", "Terapia de grupo y psicodrama", "Terapias de familia y modelos sistémicos", "Técnicas psicológicas generales", "Terapia Cognitivo-Conductual", "Historia de las psicoterapias", "Psicoanálisis I: Freud", "Terapias de tercera generación", "Componentes y eficacia de la psicoterapia", "Terapias humanistas y existenciales"]
+      "count": 554,
+      "topics": [
+        "Psicoanálisis y terapias psicodinámicas",
+        "Terapia de grupo y psicodrama",
+        "Terapias de familia y modelos sistémicos",
+        "Técnicas psicológicas generales",
+        "Terapia Cognitivo-Conductual",
+        "Historia de las psicoterapias",
+        "Psicoanálisis I: Freud",
+        "Terapias de tercera generación",
+        "Componentes y eficacia de la psicoterapia",
+        "Terapias humanistas y existenciales"
+      ]
     },
     "Psicología Social": {
       "slug": "psicologia_social",
       "count": 615,
-      "topics": ["Cognición social y procesos de atribución", "Procesos de interacción social", "Procesos de grupo", "Las actitudes", "Estructura y rendimiento del grupo", "Modelos teóricos sobre la psicología social", "Relaciones intergrupales", "Influencia de la organización en el individuo", "Modelos teóricos sobre las organizaciones"]
+      "topics": [
+        "Cognición social y procesos de atribución",
+        "Procesos de interacción social",
+        "Procesos de grupo",
+        "Las actitudes",
+        "Estructura y rendimiento del grupo",
+        "Modelos teóricos sobre la psicología social",
+        "Relaciones intergrupales",
+        "Influencia de la organización en el individuo",
+        "Modelos teóricos sobre las organizaciones"
+      ]
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
       "count": 483,
-      "topics": ["Desarrollo cognitivo en la segunda infancia", "El desarrollo social y moral", "Las manifestaciones de la función simbólica", "Perspectivas teóricas en psicología del desarrollo", "La adolescencia", "Primera infancia (0-2 años)", "Definición y modelos de la psicología de la educación", "La edad adulta y la vejez", "Introducción a la psicología del desarrollo", "Proceso de enseñanza y aprendizaje"]
+      "topics": [
+        "Desarrollo cognitivo en la segunda infancia",
+        "El desarrollo social y moral",
+        "Las manifestaciones de la función simbólica",
+        "Perspectivas teóricas en psicología del desarrollo",
+        "La adolescencia",
+        "Primera infancia (0-2 años)",
+        "Definición y modelos de la psicología de la educación",
+        "La edad adulta y la vejez",
+        "Introducción a la psicología del desarrollo",
+        "Proceso de enseñanza y aprendizaje"
+      ]
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
       "count": 320,
-      "topics": ["Trastornos depresivos y bipolares infantojuvenil", "Trastornos de conducta infantojuvenil", "Trastornos de excreción infantojuvenil", "Trastornos de ansiedad infantojuvenil", "TDAH", "Trastornos relacionados con trauma infantojuvenil", "Trastorno del Espectro Autista", "Trastornos del aprendizaje", "Discapacidad intelectual", "Trastornos del sueño infantojuvenil", "Introducción a la psicología clínica infantil", "Trastornos de la comunicación", "Trastornos alimentarios infantojuvenil", "Otros problemas infantojuveniles", "TOC infantojuvenil", "Trastornos psicóticos infantojuvenil"]
+      "topics": [
+        "Trastornos depresivos y bipolares infantojuvenil",
+        "Trastornos de conducta infantojuvenil",
+        "Trastornos de excreción infantojuvenil",
+        "Trastornos de ansiedad infantojuvenil",
+        "TDAH",
+        "Trastornos relacionados con trauma infantojuvenil",
+        "Trastorno del Espectro Autista",
+        "Trastornos del aprendizaje",
+        "Discapacidad intelectual",
+        "Trastornos del sueño infantojuvenil",
+        "Introducción a la psicología clínica infantil",
+        "Trastornos de la comunicación",
+        "Trastornos alimentarios infantojuvenil",
+        "Otros problemas infantojuveniles",
+        "TOC infantojuvenil",
+        "Trastornos psicóticos infantojuvenil"
+      ]
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
       "count": 227,
-      "topics": ["Psicometría", "Método científico y experimental", "Estadística"]
+      "topics": [
+        "Psicometría",
+        "Método científico y experimental",
+        "Estadística"
+      ]
     }
   }
 }
