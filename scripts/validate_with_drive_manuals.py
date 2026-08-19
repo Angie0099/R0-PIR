@@ -10,11 +10,17 @@ from pathlib import Path
 
 
 TARGET_SUBJECTS = {
+    "Evaluación Psicológica",
     "Psicobiología",
     "Psicología Básica",
+    "Psicología Clínica",
     "Psicología Evolutiva",
+    "Psicología Experimental",
     "Psicología Social",
     "Psicología de la Personalidad y Diferencial",
+    "Psicoterapias",
+    "Tratamientos Adultos",
+    "Tratamientos Infantiles",
 }
 
 STOPWORDS = {
@@ -44,6 +50,7 @@ SOURCE_ARTIFACT = re.compile(
     r":\s*PSICOLOG[ÍI]A\s*$",
     re.I,
 )
+UPPER_ARTIFACT = re.compile(r"\b(?:IR|AP)\b|PSICOLOG[ÍI]A")
 
 
 def fold(value: str) -> str:
@@ -99,19 +106,48 @@ def best_window(
     return best
 
 
-def eligible(question: dict[str, object]) -> bool:
+def evidence_excerpt(
+    chunk: str, prompt_tokens: set[str], exact_answer: str, radius: int = 430
+) -> tuple[str, int]:
+    """Return the answer occurrence with the strongest nearby prompt context."""
+    normalized = fold(chunk)
+    positions = [match.start() for match in re.finditer(re.escape(exact_answer), normalized)]
+    if not positions:
+        return re.sub(r"\s+", " ", chunk)[:720], 0
+    best_excerpt = ""
+    best_hits = -1
+    for position in positions:
+        start = max(0, position - radius)
+        end = min(len(chunk), position + len(exact_answer) + radius)
+        excerpt = chunk[start:end]
+        hits = len(prompt_tokens & set(words(excerpt)))
+        if hits > best_hits:
+            best_excerpt = excerpt
+            best_hits = hits
+    return re.sub(r"\s+", " ", best_excerpt).strip(), max(0, best_hits)
+
+
+def eligible(question: dict[str, object], *, include_review: bool = False) -> bool:
     if str(question.get("s") or "") not in TARGET_SUBJECTS:
         return False
-    if str(question.get("x") or "").strip():
+    has_explanation = bool(str(question.get("x") or "").strip())
+    if has_explanation and not (
+        include_review and str(question.get("v") or "") == "REVISAR"
+    ):
         return False
     prompt = str(question.get("e") or "")
     options = question.get("o") or {}
     answer = str(options.get(str(question.get("c") or "")) or "").strip()
+    full_question = " ".join(
+        [prompt, *(str(options.get(key) or "") for key in "abcd")]
+    )
     if NEGATIVE_STEM.search(fold(prompt)):
         return False
-    if BAD_TEXT.search(prompt + " " + answer):
+    if BAD_TEXT.search(full_question):
         return False
     if SOURCE_ARTIFACT.search(prompt):
+        return False
+    if UPPER_ARTIFACT.search(full_question):
         return False
     if len(OCR_FRAGMENT.findall(prompt)) >= 2:
         return False
@@ -165,8 +201,24 @@ def main() -> int:
     parser.add_argument("--database", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--summary", required=True)
+    parser.add_argument(
+        "--subjects",
+        help="Asignaturas separadas por |. Si se omite, usa todas las admitidas.",
+    )
+    parser.add_argument("--status", default="VALIDADA_ORIGINAL")
+    parser.add_argument(
+        "--include-review",
+        action="store_true",
+        help="Incluye preguntas con explicación provisional y estado REVISAR.",
+    )
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
+
+    selected_subjects = (
+        {value.strip() for value in args.subjects.split("|") if value.strip()}
+        if args.subjects
+        else TARGET_SUBJECTS
+    )
 
     connection = sqlite3.connect(args.database)
     connection.row_factory = sqlite3.Row
@@ -183,11 +235,11 @@ def main() -> int:
         changed = False
         for question in questions:
             subject = str(question.get("s") or "")
-            if subject not in TARGET_SUBJECTS:
+            if subject not in selected_subjects:
                 continue
             counts["target_questions"] += 1
             subject_counts[subject]["target_questions"] += 1
-            if not eligible(question):
+            if not eligible(question, include_review=args.include_review):
                 counts["not_eligible"] += 1
                 subject_counts[subject]["not_eligible"] += 1
                 continue
@@ -227,6 +279,9 @@ def main() -> int:
                 chunk, prompt_hits, answer_fraction, exact, score = best_window(
                     str(row["text"]), prompt_set, answer_set, exact_answer
                 )
+                excerpt, evidence_prompt_hits = evidence_excerpt(
+                    chunk, prompt_set, exact_answer
+                )
                 candidates.append(
                     {
                         "document": str(row["title"]),
@@ -236,7 +291,8 @@ def main() -> int:
                         "answer_fraction": round(answer_fraction, 3),
                         "exact_answer": exact,
                         "score": round(score, 3),
-                        "evidence_preview": re.sub(r"\s+", " ", chunk)[:360],
+                        "evidence_prompt_hits": evidence_prompt_hits,
+                        "evidence_preview": excerpt,
                     }
                 )
             candidates.sort(
@@ -259,6 +315,7 @@ def main() -> int:
                 and len(exact_answer) >= 8
                 and token_count >= 1
                 and int(best["prompt_hits"]) >= 4
+                and int(best["evidence_prompt_hits"]) >= 3
             )
             if not strong:
                 counts["insufficient_evidence"] += 1
@@ -267,7 +324,7 @@ def main() -> int:
 
             explanation = justification(prompt, answer, str(best["document"]))
             reference = (
-                f"{best['document']} (Fondo Común de Drive, sección "
+                f"{best['document']} (manual original del Fondo Común de Drive, sección "
                 f"{best['section']} del texto indexado)."
             )
             validations.append(
@@ -283,7 +340,9 @@ def main() -> int:
                     "prompt_hits": best["prompt_hits"],
                     "answer_fraction": best["answer_fraction"],
                     "exact_answer": best["exact_answer"],
+                    "evidence_prompt_hits": best["evidence_prompt_hits"],
                     "evidence_preview": best["evidence_preview"],
+                    "status": args.status,
                 }
             )
             counts["validated"] += 1
@@ -291,7 +350,7 @@ def main() -> int:
             if args.write:
                 question["x"] = explanation
                 question["r"] = reference
-                question["v"] = "VALIDADA_DRIVE"
+                question["v"] = args.status
                 changed = True
 
         if changed:
