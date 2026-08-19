@@ -323,7 +323,7 @@ export default function Angie(){
   const[bankSizes,setBankSizes]=useState({});
 
   // ── BANCO OFICIAL (empotrado, solo lectura, cargado bajo demanda desde /banco) ──
-  const[source,setSource]=useState("mias");          // "mias" | "oficial"
+  const[source,setSource]=useState("oficial");       // abre el banco completo por defecto
   const[officialMap,setOfficialMap]=useState({});    // { asignatura: {slug,count,topics[]} }
   const[officialBank,setOfficialBank]=useState({});  // { asignatura: [preguntas] } (caché en memoria)
   const[officialBusy,setOfficialBusy]=useState(null);// asignatura que se está descargando
@@ -484,7 +484,7 @@ export default function Angie(){
     if (!meta) return [];
     setOfficialBusy(subj);
     try {
-      const res = await fetch(`/banco/${meta.slug}.json`, { cache: "force-cache" });
+      const res = await fetch(`/banco/${meta.slug}.json`, { cache: "no-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const arr = await res.json();
       // Descarta preguntas corruptas (marca de agua OCR) y las ocultadas por la usuaria

@@ -163,18 +163,21 @@ def main() -> int:
                 continue
             metadata = json.loads(command[len(DOCUMENT_PREFIX) :])
             text = read_document_text()
-            chars, section_count = ingest_document(
-                connection,
-                title=str(metadata["title"]),
-                subject=str(metadata["subject"]),
-                url=str(metadata["url"]),
-                text=text,
-            )
-            print(
-                f"indexed title={metadata['title']!r} subject={metadata['subject']!r} "
-                f"chars={chars} sections={section_count}",
-                flush=True,
-            )
+            try:
+                chars, section_count = ingest_document(
+                    connection,
+                    title=str(metadata["title"]),
+                    subject=str(metadata["subject"]),
+                    url=str(metadata["url"]),
+                    text=text,
+                )
+                print(
+                    f"indexed title={metadata['title']!r} subject={metadata['subject']!r} "
+                    f"chars={chars} sections={section_count}",
+                    flush=True,
+                )
+            except RuntimeError as error:
+                print(f"skipped title={metadata['title']!r} reason={error}", flush=True)
         connection.close()
         return 0
 

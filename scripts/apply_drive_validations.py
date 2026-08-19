@@ -9,6 +9,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--bank-dir", required=True)
     parser.add_argument("--validations", required=True)
+    parser.add_argument(
+        "--replace-review",
+        action="store_true",
+        help="Permite sustituir explicaciones provisionales con estado REVISAR.",
+    )
     args = parser.parse_args()
 
     rows = [
@@ -40,11 +45,13 @@ def main() -> int:
                 raise SystemExit(f"El enunciado ha cambiado: {question_id}")
             if answer != str(validation["answer"]):
                 raise SystemExit(f"La respuesta ha cambiado: {question_id}")
-            if str(question.get("x") or "").strip():
-                raise SystemExit(f"La pregunta ya tiene justificación: {question_id}")
+            if str(question.get("x") or "").strip() and not (
+                args.replace_review and str(question.get("v") or "") == "REVISAR"
+            ):
+                raise SystemExit(f"La pregunta ya tiene justificación definitiva: {question_id}")
             question["x"] = validation["justification"]
             question["r"] = validation["reference"]
-            question["v"] = "VALIDADA_DRIVE"
+            question["v"] = str(validation.get("status") or "VALIDADA_ORIGINAL")
             updated += 1
             changed = True
         if changed:
