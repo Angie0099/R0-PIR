@@ -41,7 +41,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4197,
+      "count": 4182,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -150,7 +150,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 554,
+      "count": 569,
       "topics": [
         "Psicoanálisis y terapias psicodinámicas",
         "Terapia de grupo y psicodrama",

@@ -75,7 +75,7 @@ const TOPIC_TO_UNIFIED = {
 
 const STORAGE_SUBJECTS = [...new Set([...Object.keys(SUBJECTS), ...OFFICIAL_SUBJECT_NAMES])];
 const REVIEWED_STATUSES = new Set(["VALIDADA_ORIGINAL", "VALIDADA_DRIVE", "CORREGIDA"]);
-const ORIGINAL_REFERENCE_RX = /\b(belloch|fonseca|caballo|vallejo|moreno|sand[ií]n|ramos|ballesteros|berm[uú]dez|s[aá]nchez-elvira|redolar|domjan|stahl|papalia|santrock|gaviria|colom|uned|dsm\s*-?\s*5|cie\s*-?\s*11|manual de psicopatolog[ií]a)\b/i;
+const ORIGINAL_REFERENCE_RX = /\b(belloch|fonseca|caballo|vallejo|moreno|rodr[ií]guez morej[oó]n|feixas|mir[oó]|sand[ií]n|ramos|ballesteros|berm[uú]dez|s[aá]nchez-elvira|redolar|domjan|stahl|papalia|santrock|gaviria|colom|uned|dsm\s*-?\s*5|cie\s*-?\s*11|manual de psicopatolog[ií]a)\b/i;
 const ACADEMY_REFERENCE_RX = /\b(apir|amir|cede|persever|academia|simulacro|diapositivas?|apuntes?)\b/i;
 
 const unifiedSubject = (subj) => SUBJECT_TO_UNIFIED[subj] || subj;
