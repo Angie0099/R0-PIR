@@ -36,6 +36,20 @@ const edits = {
     r: `${dsm} Trastorno delirante, p. 107.`,
     v: "VALIDADA_ORIGINAL",
   },
+  PERSEV_JUL25_D2_063: {
+    t: ["Trastorno obsesivo-compulsivo y relacionados"],
+    e: "La decisión de separar el trastorno obsesivo-compulsivo (TOC) de los trastornos de ansiedad en las clasificaciones diagnósticas ha dado lugar a un amplio debate. Señala una razón que avala específicamente esa separación.",
+    o: {
+      a: "La persistencia de los rituales no solo se explica por la necesidad de disminuir la ansiedad, sino también por la necesidad de que el comportamiento esté «completo o acabado».",
+      b: "La exposición con prevención de respuesta está indicada para la excoriación y la tricotilomanía.",
+      c: "Existe evidencia suficiente de que la impulsividad y la compulsividad son los extremos de un único continuo.",
+      d: "La tasa de comorbilidad entre los trastornos del espectro obsesivo-compulsivo es mayor que la existente entre el TOC y los trastornos de ansiedad.",
+    },
+    c: "a",
+    x: "En muchas personas con TOC, los rituales persisten por la necesidad de completar o terminar la conducta, y no solo para reducir ansiedad. Esta motivación, junto con el papel del asco y las dificultades de inhibición, apoya distinguir el TOC de los trastornos de ansiedad.",
+    r: "Belloch, A., Sandín, B. y Ramos, F. (2024). Manual de psicopatología, vol. II, 4.ª ed., capítulo 5: Trastorno obsesivo-compulsivo y trastornos relacionados, pp. 156-157.",
+    v: "VALIDADA_ORIGINAL",
+  },
   AGOSTO2_063: {
     t: ["Trastornos de la conducta alimentaria y de la ingestión de alimentos"],
     e: "¿Cuál de los siguientes factores se asocia con un mayor riesgo de desarrollar bulimia nerviosa?",

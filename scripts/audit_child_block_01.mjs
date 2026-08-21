@@ -33,6 +33,19 @@ const edits = {
     r: `${dsm} Trastorno por déficit de atención/hiperactividad: criterios diagnósticos y características diagnósticas, pp. 69-70.`,
     v: "VALIDADA_ORIGINAL",
   },
+  "SmCm22PIR2025 (1)_166": {
+    e: "Según el DSM-5-TR, ¿cuál de las siguientes afirmaciones sobre el inicio del trastorno del espectro del autismo (TEA) es correcta?",
+    o: {
+      a: "El inicio del TEA suele detectarse con claridad al nacer, ya que los signos son evidentes desde los primeros días de vida.",
+      b: "Los síntomas suelen reconocerse durante el segundo año de vida (12-24 meses), aunque pueden observarse antes si los retrasos son graves o después si son sutiles.",
+      c: "Los primeros signos del TEA aparecen repentinamente entre los 3 y los 5 años, especialmente tras episodios de estrés o separación.",
+      d: "El diagnóstico de TEA no puede realizarse antes de los 3 años, porque antes no pueden observarse signos clínicamente relevantes.",
+    },
+    c: "b",
+    x: "Las características conductuales del TEA se hacen evidentes en la primera infancia y los síntomas se reconocen habitualmente durante el segundo año de vida. El DSM-5-TR indica que pueden observarse antes de los 12 meses cuando los retrasos son graves, o después de los 24 meses si son más sutiles.",
+    r: `${dsm} Trastorno del espectro autista: desarrollo y curso, p. 63.`,
+    v: "VALIDADA_ORIGINAL",
+  },
 };
 
 const questions = JSON.parse(fs.readFileSync(bankPath, "utf8"));
