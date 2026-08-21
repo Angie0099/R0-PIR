@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4190,
+      "count": 4192,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -63,7 +63,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4179,
+      "count": 4180,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -219,7 +219,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 174,
+      "count": 171,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
