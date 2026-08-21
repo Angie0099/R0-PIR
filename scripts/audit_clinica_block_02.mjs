@@ -23,7 +23,7 @@ const edits = {
   },
   SM_ENERO_1_SOL_1_077: {
     t: ["Trastornos de ansiedad"],
-    e: "Una persona teme a los aviones y a los ascensores, ambos incluidos en la situación agorafóbica de transporte público, pero no teme otras situaciones de agorafobia. ¿Cuál es el diagnóstico más apropiado?",
+    e: "Una persona teme viajar en avión, pero no teme ninguna otra situación de agorafobia. ¿Cuál es el diagnóstico más apropiado?",
     o: {
       a: "Fobia específica, tipo situacional.",
       b: "Agorafobia.",
