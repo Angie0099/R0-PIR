@@ -41,11 +41,12 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 68,
+      "count": 148,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Trastorno por déficit de atención con hiperactividad (TDAH)",
         "Trastorno del espectro del autismo (TEA)",
+        "Trastornos por tics infantojuveniles",
         "Trastornos específicos del aprendizaje y de la coordinación",
         "Trastornos de ansiedad infantojuveniles",
         "Trastornos depresivos y bipolares infantojuveniles",
@@ -218,7 +219,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 252,
+      "count": 172,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
