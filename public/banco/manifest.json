@@ -41,7 +41,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 156,
+      "count": 157,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Trastorno por déficit de atención con hiperactividad (TDAH)",
@@ -63,7 +63,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4180,
+      "count": 4182,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -108,7 +108,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1389,
+      "count": 1390,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Diferencias intergrupales II: raza, clase social y bilingüismo",
@@ -155,7 +155,7 @@
     },
     "Psicología Básica": {
       "slug": "psicologia_basica",
-      "count": 797,
+      "count": 798,
       "topics": [
         "Memoria",
         "Emoción",
@@ -172,7 +172,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 569,
+      "count": 563,
       "topics": [
         "Psicoanálisis y terapias psicodinámicas",
         "Terapia de grupo y psicodrama",
@@ -203,7 +203,7 @@
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
-      "count": 483,
+      "count": 484,
       "topics": [
         "Desarrollo cognitivo en la segunda infancia",
         "El desarrollo social y moral",
