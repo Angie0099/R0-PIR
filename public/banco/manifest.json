@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4176,
+      "count": 4173,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -41,7 +41,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 170,
+      "count": 173,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Trastorno por déficit de atención con hiperactividad (TDAH)",
