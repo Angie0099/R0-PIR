@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4187,
+      "count": 4183,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -41,13 +41,15 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 39,
+      "count": 65,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
         "Trastornos de ansiedad infantojuveniles",
         "Trastornos específicos del aprendizaje y de la coordinación",
-        "Trastornos relacionados con traumas y factores de estrés infantojuveniles"
+        "Trastornos relacionados con traumas y factores de estrés infantojuveniles",
+        "Trastornos disruptivos, del control de los impulsos y de la conducta infantojuveniles",
+        "Trastornos de la conducta alimentaria y de la ingestión infantojuveniles"
       ]
     },
     "Tratamientos Adultos": {
@@ -161,7 +163,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 569,
+      "count": 568,
       "topics": [
         "Psicoanálisis y terapias psicodinámicas",
         "Terapia de grupo y psicodrama",
@@ -208,7 +210,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 287,
+      "count": 266,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
