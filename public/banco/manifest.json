@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4193,
+      "count": 4187,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -37,6 +37,17 @@
         "Psicopatología del pensamiento",
         "Modelos en psicopatología",
         "Trastornos de excreción"
+      ]
+    },
+    "Psicopatología Infantil": {
+      "slug": "psicopatologia_infantil",
+      "count": 39,
+      "topics": [
+        "Discapacidad intelectual",
+        "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
+        "Trastornos de ansiedad infantojuveniles",
+        "Trastornos específicos del aprendizaje y de la coordinación",
+        "Trastornos relacionados con traumas y factores de estrés infantojuveniles"
       ]
     },
     "Tratamientos Adultos": {
@@ -197,7 +208,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 320,
+      "count": 287,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",

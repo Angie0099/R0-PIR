@@ -10,6 +10,7 @@ const BANK_SEED = [];
 const SUBJECTS = {
   "Evaluación Psicológica": ["Fundamentos de la evaluación psicológica","Clasificación de las técnicas de evaluación","Técnicas de observación","Autoinformes","Entrevista","Técnicas objetivas","Técnicas subjetivas","Técnicas proyectivas","Evaluación de la inteligencia","Evaluación de las aptitudes","Evaluación de la personalidad","Evaluación de características psicopatológicas","Evaluación del desarrollo intelectual, social y del lenguaje","Evaluación del envejecimiento","Evaluación neuropsicológica","Otras áreas a evaluar"],
   "Psicopatología": ["Modelos en psicopatología","Sistemas clasificatorios en psicopatología","Psicopatología de la conciencia","Psicopatología de la atención","Psicopatología de la sensopercepción","Psicopatología de la memoria","Psicopatología del pensamiento","Psicopatología del lenguaje","Psicopatología de la afectividad","Trastornos psicomotores"],
+  "Psicopatología Infantil": [],
   "Clínica Adultos": ["Trastornos del espectro de la esquizofrenia","Trastornos depresivos","Trastornos bipolares y relacionados","Trastornos de ansiedad","TOC","Trastornos relacionados con estrés y trauma","Trastornos disociativos","Trastornos por síntomas somáticos y relacionados","Trastornos de la conducta alimentaria","Trastornos del sueño-vigilia","Disfunciones sexuales","Disforia de género","Trastornos parafílicos","Trastornos disruptivos del control de los impulsos y de la conducta","Trastornos adictivos y relacionados con sustancias","Trastornos neurocognitivos","Trastornos de la personalidad","Afecciones que requieren más estudio"],
   "Tratamientos Psicológicos": ["Disfunciones sexuales"],
   "Psicoterapias": [],
@@ -23,10 +24,11 @@ const SUBJECTS = {
   "Psicología de la Salud": []
 };
 
-// El banco desplegado usa estas 11 asignaturas. Las denominaciones antiguas se
+// El banco desplegado usa estas 12 asignaturas. Las denominaciones antiguas se
 // conservan solo para recuperar preguntas y estadísticas guardadas en el navegador.
 const OFFICIAL_SUBJECT_NAMES = [
   "Psicología Clínica",
+  "Psicopatología Infantil",
   "Tratamientos Adultos",
   "Evaluación Psicológica",
   "Psicología de la Personalidad y Diferencial",
@@ -706,6 +708,34 @@ export default function Angie(){
     reviewedLocalBank.forEach(q => { if (!byId.has(q.id)) byId.set(q.id, q); });
     return [...byId.values()];
   }, [officialFlat, reviewedLocalBank]);
+  // El progreso se calcula por identificador. Así, si una pregunta se corrige
+  // o se mueve al tema adecuado, sus intentos y aciertos se conservan.
+  const questionProgress = useMemo(() => {
+    const subjects = {};
+    activeBank.forEach(question => {
+      const saved = qstats[question.id];
+      const total = Number(saved?.a || 0);
+      if (!total) return;
+      const correct = Math.min(total, Number(saved?.c || 0));
+      const subject = question.s;
+      if (!subjects[subject]) subjects[subject] = { correct:0, total:0, topics:{} };
+      const subjectProgress = subjects[subject];
+      subjectProgress.correct += correct;
+      subjectProgress.total += total;
+      (question.t || []).forEach(topic => {
+        if (!subjectProgress.topics[topic]) subjectProgress.topics[topic] = { correct:0, total:0, last:null };
+        const topicProgress = subjectProgress.topics[topic];
+        topicProgress.correct += correct;
+        topicProgress.total += total;
+        if (saved?.ls && (!topicProgress.last || String(saved.ls) > topicProgress.last)) topicProgress.last = String(saved.ls);
+      });
+    });
+    return subjects;
+  }, [activeBank, qstats]);
+  const hasQuestionLevelProgress = useMemo(
+    () => Object.values(questionProgress).some(progress => progress.total > 0),
+    [questionProgress]
+  );
   const curSubjectList = useMemo(
     () => Object.keys(officialMap).length ? Object.keys(officialMap) : OFFICIAL_SUBJECT_NAMES,
     [officialMap]
@@ -945,10 +975,14 @@ export default function Angie(){
     setFcIdx(i => nd.length ? i % nd.length : 0);
   };
 
-  const getTS = (subj,t) => stats[subj]?.[t] || {correct:0,total:0};
-  const subjTotal = subj => Object.values(stats[subj]||{}).reduce(
-    (a,t)=>({correct:a.correct+t.correct, total:a.total+t.total}), {correct:0,total:0}
-  );
+  const getTS = (subj,t) => hasQuestionLevelProgress
+    ? questionProgress[subj]?.topics?.[t] || {correct:0,total:0}
+    : stats[subj]?.[t] || {correct:0,total:0};
+  const subjTotal = subj => hasQuestionLevelProgress
+    ? questionProgress[subj] || {correct:0,total:0}
+    : Object.values(stats[subj]||{}).reduce(
+      (a,t)=>({correct:a.correct+t.correct, total:a.total+t.total}), {correct:0,total:0}
+    );
   const colorOf = p => p>=80 ? C.ok : p>=60 ? C.warn : C.err;
 
   // ───────────────────────────────────────────────
@@ -3133,7 +3167,9 @@ export default function Angie(){
                 const st = getTS(subj, t);
                 const tp = st.total > 0 ? Math.round(st.correct/st.total*100) : null;
                 const bq = bankCount(subj, [t]);
-                const last = stats[subj]?.[t]?.sessions?.slice(-1)[0];
+                const last = hasQuestionLevelProgress
+                  ? (questionProgress[subj]?.topics?.[t]?.last ? {date: questionProgress[subj].topics[t].last} : null)
+                  : stats[subj]?.[t]?.sessions?.slice(-1)[0];
                 return (
                   <div key={t} style={{display:"flex", alignItems:"center", gap:8, padding:"9px 0", borderBottom: i<topics.length-1 ? `1px solid ${C.line}` : "none", flexWrap:"wrap", opacity: bq===0 ? .5 : 1}}>
                     <div style={{flex:1, minWidth:150}}>
