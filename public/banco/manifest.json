@@ -39,6 +39,27 @@
         "Trastornos de excreción"
       ]
     },
+    "Psicopatología Infantil": {
+      "slug": "psicopatologia_infantil",
+      "count": 68,
+      "topics": [
+        "Introducción a la psicopatología infantil",
+        "Trastorno por déficit de atención con hiperactividad (TDAH)",
+        "Trastorno del espectro del autismo (TEA)",
+        "Trastornos específicos del aprendizaje y de la coordinación",
+        "Trastornos de ansiedad infantojuveniles",
+        "Trastornos depresivos y bipolares infantojuveniles",
+        "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
+        "Trastornos relacionados con traumas y factores de estrés infantojuveniles",
+        "Trastornos disruptivos, del control de los impulsos y de la conducta infantojuveniles",
+        "Trastornos de la conducta alimentaria y de la ingestión infantojuveniles",
+        "Trastornos del sueño-vigilia infantojuveniles",
+        "Trastornos de eliminación infantojuveniles",
+        "Trastornos psicóticos infantojuveniles",
+        "Trastornos de la comunicación",
+        "Discapacidad intelectual"
+      ]
+    },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
       "count": 4182,
@@ -197,7 +218,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 320,
+      "count": 252,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
