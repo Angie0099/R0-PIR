@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4177,
+      "count": 4158,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -23,7 +23,6 @@
         "Trastornos de ansiedad",
         "Psicopatología de la memoria",
         "Pensamiento y lenguaje",
-        "Trastornos de la comunicación",
         "Trastorno obsesivo-compulsivo y relacionados",
         "Disfunciones sexuales",
         "Trastornos destructivos, del control de los impulsos y de la conducta",
@@ -35,13 +34,12 @@
         "Psicopatología de la afectividad",
         "Trastornos parafílicos",
         "Psicopatología del pensamiento",
-        "Modelos en psicopatología",
-        "Trastornos de excreción"
+        "Modelos en psicopatología"
       ]
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 130,
+      "count": 148,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -169,7 +167,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 568,
+      "count": 569,
       "topics": [
         "Psicoanálisis y terapias psicodinámicas",
         "Terapia de grupo y psicodrama",
