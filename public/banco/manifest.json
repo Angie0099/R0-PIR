@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4158,
+      "count": 4159,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -39,7 +39,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 148,
+      "count": 151,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -103,7 +103,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1389,
+      "count": 1390,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Diferencias intergrupales II: raza, clase social y bilingüismo",
@@ -214,7 +214,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 207,
+      "count": 202,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
@@ -225,7 +225,6 @@
         "Trastorno del Espectro Autista",
         "Trastornos del aprendizaje",
         "Discapacidad intelectual",
-        "Trastornos del sueño infantojuvenil",
         "Introducción a la psicología clínica infantil",
         "Trastornos de la comunicación",
         "Trastornos alimentarios infantojuvenil",
