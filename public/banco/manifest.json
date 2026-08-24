@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4172,
+      "count": 4173,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -60,16 +60,16 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4174,
+      "count": 4139,
       "topics": [
         "Introducción",
+        "Psicología de la salud — estrés laboral y burnout",
         "Técnicas psicológicas generales",
         "Tratamiento de las adicciones",
         "Tratamiento de los trastornos de ansiedad",
         "Tratamiento de los trastornos de personalidad",
         "Tratamiento del trauma y TEPT",
         "Tratamiento de la depresión y trastornos del ánimo",
-        "Tratamiento de los trastornos destructivos",
         "Tratamiento de la psicosis y esquizofrenia",
         "Tratamiento de los trastornos del sueño",
         "Tratamiento del TOC y relacionados",
@@ -104,7 +104,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1395,
+      "count": 1396,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Diferencias intergrupales II: raza, clase social y bilingüismo",
@@ -129,7 +129,7 @@
     },
     "Psicobiología": {
       "slug": "psicobiologia",
-      "count": 1232,
+      "count": 1233,
       "topics": [
         "Acción de los fármacos en el sistema nervioso",
         "SNC I: estructuras subcorticales",
@@ -168,7 +168,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 570,
+      "count": 571,
       "topics": [
         "Psicoanálisis y terapias psicodinámicas",
         "Terapia de grupo y psicodrama",
@@ -215,7 +215,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 145,
+      "count": 176,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
