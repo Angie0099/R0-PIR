@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4173,
+      "count": 4133,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -40,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 181,
+      "count": 215,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4139,
+      "count": 4140,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -84,7 +84,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1959,
+      "count": 1960,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Técnicas proyectivas",
@@ -199,7 +199,7 @@
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
-      "count": 486,
+      "count": 487,
       "topics": [
         "Desarrollo cognitivo en la segunda infancia",
         "El desarrollo social y moral",
@@ -235,7 +235,7 @@
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
-      "count": 231,
+      "count": 234,
       "topics": [
         "Psicometría",
         "Método científico y experimental",
