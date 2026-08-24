@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4159,
+      "count": 4164,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -26,6 +26,7 @@
         "Trastorno obsesivo-compulsivo y relacionados",
         "Disfunciones sexuales",
         "Trastornos destructivos, del control de los impulsos y de la conducta",
+        "Conducta suicida y autolesión",
         "Trastornos adictivos con sustancia",
         "Psicopatología de la conducta motora",
         "Trastornos bipolares y relacionados",
@@ -39,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 151,
+      "count": 152,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -214,7 +215,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 202,
+      "count": 195,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
@@ -227,15 +228,13 @@
         "Discapacidad intelectual",
         "Introducción a la psicología clínica infantil",
         "Trastornos de la comunicación",
-        "Trastornos alimentarios infantojuvenil",
         "Otros problemas infantojuveniles",
-        "TOC infantojuvenil",
         "Trastornos psicóticos infantojuvenil"
       ]
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
-      "count": 227,
+      "count": 228,
       "topics": [
         "Psicometría",
         "Método científico y experimental",
