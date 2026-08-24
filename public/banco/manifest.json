@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4180,
+      "count": 4177,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -41,7 +41,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 95,
+      "count": 130,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -53,7 +53,9 @@
         "Trastornos por tics infantojuveniles",
         "Trastornos depresivos y bipolares infantojuveniles",
         "Trastornos del sueño-vigilia infantojuveniles",
-        "Trastornos de la comunicación"
+        "Trastornos de la comunicación",
+        "Trastornos de eliminación infantojuveniles",
+        "Trastorno por déficit de atención con hiperactividad (TDAH)"
       ]
     },
     "Tratamientos Adultos": {
@@ -214,7 +216,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 239,
+      "count": 207,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
