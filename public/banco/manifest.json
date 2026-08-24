@@ -40,11 +40,12 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 152,
+      "count": 160,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
         "Trastornos de ansiedad infantojuveniles",
+        "Trastorno del espectro autista",
         "Trastornos específicos del aprendizaje y de la coordinación",
         "Trastornos relacionados con traumas y factores de estrés infantojuveniles",
         "Trastornos disruptivos, del control de los impulsos y de la conducta infantojuveniles",
@@ -59,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4182,
+      "count": 4183,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -84,7 +85,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1954,
+      "count": 1955,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Técnicas proyectivas",
@@ -168,7 +169,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 569,
+      "count": 570,
       "topics": [
         "Psicoanálisis y terapias psicodinámicas",
         "Terapia de grupo y psicodrama",
@@ -199,7 +200,7 @@
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
-      "count": 483,
+      "count": 484,
       "topics": [
         "Desarrollo cognitivo en la segunda infancia",
         "El desarrollo social y moral",
@@ -215,7 +216,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 195,
+      "count": 183,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
@@ -223,6 +224,7 @@
         "Trastornos de ansiedad infantojuvenil",
         "TDAH",
         "Trastornos relacionados con trauma infantojuvenil",
+        "Conducta suicida y autolesión infantojuvenil",
         "Trastorno del Espectro Autista",
         "Trastornos del aprendizaje",
         "Discapacidad intelectual",
