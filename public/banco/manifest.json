@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4171,
+      "count": 4172,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -40,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 180,
+      "count": 181,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4184,
+      "count": 4174,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -79,8 +79,7 @@
         "Componentes y eficacia de la psicoterapia",
         "Tratamiento de los trastornos disociativos",
         "Tratamiento de las disfunciones sexuales",
-        "Tratamiento de los trastornos neurocognitivos",
-        "Tratamiento de los trastornos de la comunicación"
+        "Tratamiento de los trastornos neurocognitivos"
       ]
     },
     "Evaluación Psicológica": {
@@ -216,7 +215,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 137,
+      "count": 145,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
