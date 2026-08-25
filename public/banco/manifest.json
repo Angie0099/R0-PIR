@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4029,
+      "count": 3995,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -40,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 299,
+      "count": 320,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4146,
+      "count": 4150,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -104,7 +104,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1396,
+      "count": 1397,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Diferencias intergrupales II: raza, clase social y bilingüismo",
@@ -129,7 +129,7 @@
     },
     "Psicobiología": {
       "slug": "psicobiologia",
-      "count": 1234,
+      "count": 1236,
       "topics": [
         "Acción de los fármacos en el sistema nervioso",
         "SNC I: estructuras subcorticales",
@@ -151,7 +151,7 @@
     },
     "Psicología Básica": {
       "slug": "psicologia_basica",
-      "count": 801,
+      "count": 803,
       "topics": [
         "Memoria",
         "Emoción",
@@ -184,7 +184,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 618,
+      "count": 619,
       "topics": [
         "Cognición social y procesos de atribución",
         "Procesos de interacción social",
@@ -199,7 +199,7 @@
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
-      "count": 487,
+      "count": 488,
       "topics": [
         "Desarrollo cognitivo en la segunda infancia",
         "El desarrollo social y moral",
@@ -215,7 +215,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 180,
+      "count": 181,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
@@ -235,7 +235,7 @@
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
-      "count": 237,
+      "count": 238,
       "topics": [
         "Psicometría",
         "Método científico y experimental",
