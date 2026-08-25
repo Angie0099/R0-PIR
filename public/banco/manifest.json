@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 3941,
+      "count": 3921,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -40,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 361,
+      "count": 371,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4153,
+      "count": 4157,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -104,7 +104,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1398,
+      "count": 1402,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Diferencias intergrupales II: raza, clase social y bilingüismo",
@@ -184,7 +184,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 619,
+      "count": 620,
       "topics": [
         "Cognición social y procesos de atribución",
         "Procesos de interacción social",
@@ -199,7 +199,7 @@
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
-      "count": 488,
+      "count": 489,
       "topics": [
         "Desarrollo cognitivo en la segunda infancia",
         "El desarrollo social y moral",
