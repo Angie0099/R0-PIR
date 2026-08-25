@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 4036,
+      "count": 4029,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -40,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 298,
+      "count": 299,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -151,7 +151,7 @@
     },
     "Psicología Básica": {
       "slug": "psicologia_basica",
-      "count": 800,
+      "count": 801,
       "topics": [
         "Memoria",
         "Emoción",
@@ -184,7 +184,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 617,
+      "count": 618,
       "topics": [
         "Cognición social y procesos de atribución",
         "Procesos de interacción social",
@@ -215,7 +215,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 178,
+      "count": 180,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
@@ -235,7 +235,7 @@
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
-      "count": 235,
+      "count": 237,
       "topics": [
         "Psicometría",
         "Método científico y experimental",
