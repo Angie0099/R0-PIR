@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 3921,
+      "count": 3909,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -40,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 371,
+      "count": 379,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4157,
+      "count": 4158,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -129,7 +129,7 @@
     },
     "Psicobiología": {
       "slug": "psicobiologia",
-      "count": 1237,
+      "count": 1238,
       "topics": [
         "Acción de los fármacos en el sistema nervioso",
         "SNC I: estructuras subcorticales",
@@ -151,7 +151,7 @@
     },
     "Psicología Básica": {
       "slug": "psicologia_basica",
-      "count": 806,
+      "count": 807,
       "topics": [
         "Memoria",
         "Emoción",
@@ -235,7 +235,7 @@
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
-      "count": 240,
+      "count": 241,
       "topics": [
         "Psicometría",
         "Método científico y experimental",
