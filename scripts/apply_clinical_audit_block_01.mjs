@@ -28,6 +28,10 @@ const report = read(reportPath);
 if (report.complete !== true) throw new Error("El informe todavía no está cerrado.");
 const sourceTopics = new Set(report.scope?.source_topics || []);
 if (!sourceTopics.size) throw new Error("El informe no declara sus temas fuente.");
+const configuredStatuses = Array.isArray(report.scope?.source_statuses) && report.scope.source_statuses.length
+  ? report.scope.source_statuses
+  : (report.scope?.source_selector?.v ? [report.scope.source_selector.v] : []);
+const sourceStatuses = configuredStatuses.length ? new Set(configuredStatuses) : null;
 
 const dataBySubject = new Map();
 for (const [subject, details] of Object.entries(manifest.subjects)) dataBySubject.set(subject, read(path.join(bancoDir, `${details.slug}.json`)));
@@ -44,7 +48,10 @@ const registerReportId = (id) => {
 for (const item of report.entries || []) registerReportId(item.id);
 for (const group of report.relocation_map || []) for (const id of group.ids || []) registerReportId(id);
 for (const group of report.holds || []) for (const id of group.ids || []) registerReportId(id);
-const sourceQuestions = dataBySubject.get(CLINICAL).filter((question) => sourceTopics.has(question.t?.[0]));
+const sourceQuestions = dataBySubject.get(CLINICAL).filter((question) => (
+  sourceTopics.has(question.t?.[0])
+  && (!sourceStatuses || sourceStatuses.has(question.v ?? null))
+));
 const sourceIds = new Set(sourceQuestions.map((question) => question.id));
 if (sourceIds.size !== sourceQuestions.length || sourceIds.size !== reportIds.size || [...sourceIds].some((id) => !reportIds.has(id)) || [...reportIds].some((id) => !sourceIds.has(id))) {
   throw new Error(`La cobertura del informe no coincide con los temas fuente (${reportIds.size}/${sourceIds.size}).`);
@@ -57,7 +64,7 @@ const assertCorrected = (question) => {
 };
 const sourceExpected = (id) => {
   const original = currentById.get(id);
-  if (!original || original.s !== CLINICAL || !sourceTopics.has(original.t?.[0])) throw new Error(`ID fuera de los temas fuente: ${id}`);
+  if (!original || original.s !== CLINICAL || !sourceTopics.has(original.t?.[0]) || (sourceStatuses && !sourceStatuses.has(original.v ?? null))) throw new Error(`ID fuera de los temas fuente: ${id}`);
   return original;
 };
 const replacements = new Map();

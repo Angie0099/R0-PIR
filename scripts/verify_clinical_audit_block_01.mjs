@@ -12,6 +12,12 @@ const manifest = JSON.parse(fs.readFileSync(path.join(bancoDir, "manifest.json")
 const report = JSON.parse(fs.readFileSync(path.resolve(appDir, reportArgument), "utf8"));
 if (report.complete !== true) throw new Error("El informe no está finalizado.");
 const options = ["a", "b", "c", "d"];
+const CLINICAL = "Psicología Clínica";
+const sourceTopics = new Set(report.scope?.source_topics || []);
+const configuredStatuses = Array.isArray(report.scope?.source_statuses) && report.scope.source_statuses.length
+  ? report.scope.source_statuses
+  : (report.scope?.source_selector?.v ? [report.scope.source_selector.v] : []);
+const sourceStatuses = configuredStatuses.length ? new Set(configuredStatuses) : null;
 const clean = (value) => String(value ?? "").normalize("NFC").replace(/\u00ad/g, "").replace(/[‐‑]/g, "-").replace(/\s+/g, " ").trim();
 const equal = (left, right) => JSON.stringify(left) === JSON.stringify(right);
 const fail = (message) => { throw new Error(message); };
@@ -34,6 +40,17 @@ const register = (id) => {
 for (const item of report.entries || []) register(item.id);
 for (const group of report.relocation_map || []) for (const id of group.ids || []) register(id);
 for (const group of report.holds || []) for (const id of group.ids || []) register(id);
+if (sourceTopics.size) {
+  const expectedFromHead = before.filter((question) => (
+    question.s === CLINICAL
+    && sourceTopics.has(question.t?.[0])
+    && (!sourceStatuses || sourceStatuses.has(question.v ?? null))
+  ));
+  const expectedIdsFromHead = new Set(expectedFromHead.map((question) => question.id));
+  if (expectedIdsFromHead.size !== expectedFromHead.length || expectedIdsFromHead.size !== expectedIds.size || [...expectedIdsFromHead].some((id) => !expectedIds.has(id))) {
+    fail(`Cobertura del informe no coincide con el alcance previo (${expectedIds.size}/${expectedIdsFromHead.size}).`);
+  }
+}
 const unchangedProgress = (original, updated, id) => {
   const mutable = new Set(["s", "t", "e", "o", "c", "x", "r", "v"]);
   for (const key of new Set([...Object.keys(original), ...Object.keys(updated)])) if (!mutable.has(key) && !equal(original[key], updated[key])) fail(`Dato de progreso alterado: ${id}.${key}`);
