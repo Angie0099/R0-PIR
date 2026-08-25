@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 3844,
+      "count": 3841,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4169,
+      "count": 4170,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -129,7 +129,7 @@
     },
     "Psicobiología": {
       "slug": "psicobiologia",
-      "count": 1238,
+      "count": 1239,
       "topics": [
         "Acción de los fármacos en el sistema nervioso",
         "SNC I: estructuras subcorticales",
@@ -184,7 +184,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 620,
+      "count": 621,
       "topics": [
         "Cognición social y procesos de atribución",
         "Procesos de interacción social",

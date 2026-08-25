@@ -30,7 +30,9 @@ const sourceTopics = new Set(report.scope?.source_topics || []);
 if (!sourceTopics.size) throw new Error("El informe no declara sus temas fuente.");
 const configuredStatuses = Array.isArray(report.scope?.source_statuses) && report.scope.source_statuses.length
   ? report.scope.source_statuses
-  : (report.scope?.source_selector?.v ? [report.scope.source_selector.v] : []);
+  : (report.scope?.source_selector?.v
+    ? [report.scope.source_selector.v]
+    : (report.scope?.source_status_filter ? [report.scope.source_status_filter] : []));
 const sourceStatuses = configuredStatuses.length ? new Set(configuredStatuses) : null;
 
 const dataBySubject = new Map();

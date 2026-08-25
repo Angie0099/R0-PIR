@@ -16,7 +16,9 @@ const CLINICAL = "Psicología Clínica";
 const sourceTopics = new Set(report.scope?.source_topics || []);
 const configuredStatuses = Array.isArray(report.scope?.source_statuses) && report.scope.source_statuses.length
   ? report.scope.source_statuses
-  : (report.scope?.source_selector?.v ? [report.scope.source_selector.v] : []);
+  : (report.scope?.source_selector?.v
+    ? [report.scope.source_selector.v]
+    : (report.scope?.source_status_filter ? [report.scope.source_status_filter] : []));
 const sourceStatuses = configuredStatuses.length ? new Set(configuredStatuses) : null;
 const clean = (value) => String(value ?? "").normalize("NFC").replace(/\u00ad/g, "").replace(/[‐‑]/g, "-").replace(/\s+/g, " ").trim();
 const equal = (left, right) => JSON.stringify(left) === JSON.stringify(right);
