@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 3891,
+      "count": 3844,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -40,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 387,
+      "count": 426,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4166,
+      "count": 4169,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -84,7 +84,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1966,
+      "count": 1971,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Técnicas proyectivas",
