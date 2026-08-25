@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 3995,
+      "count": 3941,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -40,7 +40,7 @@
     },
     "Psicopatología Infantil": {
       "slug": "psicopatologia_infantil",
-      "count": 320,
+      "count": 361,
       "topics": [
         "Discapacidad intelectual",
         "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4150,
+      "count": 4153,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -84,7 +84,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1963,
+      "count": 1964,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Técnicas proyectivas",
@@ -104,7 +104,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1397,
+      "count": 1398,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Diferencias intergrupales II: raza, clase social y bilingüismo",
@@ -129,7 +129,7 @@
     },
     "Psicobiología": {
       "slug": "psicobiologia",
-      "count": 1236,
+      "count": 1237,
       "topics": [
         "Acción de los fármacos en el sistema nervioso",
         "SNC I: estructuras subcorticales",
@@ -151,7 +151,7 @@
     },
     "Psicología Básica": {
       "slug": "psicologia_basica",
-      "count": 803,
+      "count": 806,
       "topics": [
         "Memoria",
         "Emoción",
@@ -215,7 +215,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 181,
+      "count": 183,
       "topics": [
         "Trastornos depresivos y bipolares infantojuvenil",
         "Trastornos de conducta infantojuvenil",
@@ -235,7 +235,7 @@
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
-      "count": 238,
+      "count": 240,
       "topics": [
         "Psicometría",
         "Método científico y experimental",
