@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4170,
+      "count": 4085,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -168,8 +168,9 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 571,
+      "count": 656,
       "topics": [
+        "Introducción",
         "Psicoanálisis y terapias psicodinámicas",
         "Terapia de grupo y psicodrama",
         "Terapias de familia y modelos sistémicos",
