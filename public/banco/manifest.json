@@ -1,7 +1,7 @@
 {
   "_type": "r0pir-banco-oficial",
   "_version": 1,
-  "total": 15961,
+  "total": 16009,
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
@@ -60,7 +60,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4085,
+      "count": 4133,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
