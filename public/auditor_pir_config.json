@@ -1,6 +1,8 @@
 {
   "version": 2,
   "manual_catalog": "/auditor_pir_manual_catalog.json",
+  "documentary_prompt": "/auditor_documental_prompt.md",
+  "documentary_runtime": "El catálogo permite seleccionar y enlazar fuentes; el acceso a un Drive privado requiere una integración segura de servidor con autorización OAuth.",
   "publication_threshold": "evidencia_original_y_clave_unica",
   "source_policy": "Solo manuales originales, clasificaciones primarias y artículos fuente. Nunca manuales de academia como evidencia final.",
   "subjects": {
