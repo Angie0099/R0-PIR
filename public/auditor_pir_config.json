@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "manual_catalog": "/auditor_pir_manual_catalog.json",
-  "publication_threshold": "alta",
+  "publication_threshold": "evidencia_original_y_clave_unica",
   "source_policy": "Solo manuales originales, clasificaciones primarias y artículos fuente. Nunca manuales de academia como evidencia final.",
   "subjects": {
     "Psicología Clínica": {
@@ -19,7 +19,8 @@
     "Tratamientos Adultos": {"default_sources":["Manual original de tratamiento por tema", "Guías clínicas y estudios primarios cuando proceda"]},
     "Tratamientos Infantiles": {"default_sources":["Comeche Moreno y Vallejo Pareja (2016), Manual de terapia de conducta en la infancia", "DSM-5-TR"]}
   },
-  "blocking_rules": ["Dos alternativas defendibles", "Clave sin fuente", "Porcentaje sin muestra o periodo", "Referencia no original", "Destino temático no inequívoco"],
+  "blocking_rules": ["Dos alternativas defendibles", "Clave sin fuente", "Porcentaje sin población, periodo o instrumento", "Referencia no original", "Destino temático no inequívoco", "Justificación contradictoria con clave u opciones"],
   "mechanical_checks": ["OCR_BASURA", "OCR_CORTE", "JUSTIFICACION_EN_OPCION", "OPCION_VACIA", "CLAVE_INVALIDA", "DUPLICADO_ENUNCIADO", "SIN_JUSTIFICACION", "SIN_REFERENCIA"],
-  "status_flow": ["CRIBA_AUTOMATICA", "VALIDADA_ORIGINAL", "CORREGIDA", "REUBICADA", "REQUIERE_SOL", "PUBLICADA"]
+  "status_flow": ["CRIBA_AUTOMATICA", "AGRUPADA_POR_EVIDENCIA", "REQUIERE_SOL", "VALIDADA_ORIGINAL", "CORREGIDA", "REUBICADA", "PUBLICADA"],
+  "efficiency_rules": ["Primero criba mecánica; no consultar fuentes para defectos estructurales no reparables", "Agrupar por definición, tabla o fuente para reutilizar evidencia", "Procesar casos inequívocos en lote y ambiguos en sublotes de diez", "No repetir búsquedas documentales ya registradas en la caché de evidencia", "No publicar hasta completar todos los controles de calidad"]
 }
