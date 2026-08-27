@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "manual_catalog": "/auditor_pir_manual_catalog.json",
   "publication_threshold": "alta",
   "source_policy": "Solo manuales originales, clasificaciones primarias y artículos fuente. Nunca manuales de academia como evidencia final.",
   "subjects": {

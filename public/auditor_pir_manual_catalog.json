@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "belloch_psicosis_2024",
+      "title": "Manual de psicopatología, vol. II, 4.ª ed.",
+      "authors": "Belloch, Sandín y Ramos",
+      "year": 2024,
+      "drive_id": "1j-NXKp-N3v6Az5SLMxyCmdZ53yREwdAQLTb4SAacsg8",
+      "topics": {
+        "Psicología Clínica > Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos": {
+          "chapter": "11",
+          "pages": "397–430",
+          "anchors": ["esquizofrenia", "trastorno delirante", "síntomas negativos", "catatonía", "psicosis atenuada", "alucinaciones"]
+        }
+      }
+    },
+    {
+      "id": "dsm5tr_2022",
+      "title": "Diagnostic and Statistical Manual of Mental Disorders, 5th ed., text revision",
+      "authors": "American Psychiatric Association",
+      "year": 2022,
+      "topics": {
+        "Psicología Clínica > Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos": {
+          "chapter": "Schizophrenia Spectrum and Other Psychotic Disorders",
+          "anchors": ["criterios", "duración", "esquizofrenia", "trastorno delirante", "trastorno psicótico breve", "catatonía"]
+        },
+        "Psicopatología Infantil > Trastorno del espectro autista": {
+          "chapter": "Autism Spectrum Disorder",
+          "anchors": ["diagnóstico diferencial", "estereotipias", "movimientos estereotipados"]
+        }
+      }
+    },
+    {
+      "id": "cie11_2024",
+      "title": "ICD-11 for Mortality and Morbidity Statistics",
+      "authors": "World Health Organization",
+      "year": 2024,
+      "url": "https://icd.who.int/browse/2024-01/mms/en",
+      "topics": {
+        "Psicología Clínica > Sistemas clasificatorios en psicopatología": {
+          "anchors": ["trastorno por juego", "TEPT complejo", "hipocondría", "trastornos mentales"]
+        }
+      }
+    }
+  ],
+  "evidence_schema": ["source_id", "topic", "claim", "chapter", "page_or_section", "confidence", "verified_at"]
+}
