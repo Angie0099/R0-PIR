@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "publication_threshold": "alta",
+  "source_policy": "Solo manuales originales, clasificaciones primarias y artículos fuente. Nunca manuales de academia como evidencia final.",
+  "subjects": {
+    "Psicología Clínica": {
+      "default_sources": [
+        "Belloch, Sandín y Ramos (2024), Manual de psicopatología, vols. I-II, 4.ª ed.",
+        "American Psychiatric Association (2022), DSM-5-TR",
+        "World Health Organization (2024), CIE-11"
+      ],
+      "topic_rules": {
+        "Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos": ["DSM-5-TR: Schizophrenia Spectrum and Other Psychotic Disorders", "Belloch 2024, vol. II, cap. 11"],
+        "Trastornos adictivos y comportamentales": ["DSM-5-TR: Substance-Related and Addictive Disorders", "CIE-11: Disorders due to substance use or addictive behaviours"]
+      }
+    },
+    "Psicopatología Infantil": {"default_sources":["DSM-5-TR", "CIE-11", "Fonseca-Pedrero, manual original correspondiente"]},
+    "Tratamientos Adultos": {"default_sources":["Manual original de tratamiento por tema", "Guías clínicas y estudios primarios cuando proceda"]},
+    "Tratamientos Infantiles": {"default_sources":["Comeche Moreno y Vallejo Pareja (2016), Manual de terapia de conducta en la infancia", "DSM-5-TR"]}
+  },
+  "blocking_rules": ["Dos alternativas defendibles", "Clave sin fuente", "Porcentaje sin muestra o periodo", "Referencia no original", "Destino temático no inequívoco"],
+  "mechanical_checks": ["OCR_BASURA", "OCR_CORTE", "JUSTIFICACION_EN_OPCION", "OPCION_VACIA", "CLAVE_INVALIDA", "DUPLICADO_ENUNCIADO", "SIN_JUSTIFICACION", "SIN_REFERENCIA"],
+  "status_flow": ["CRIBA_AUTOMATICA", "VALIDADA_ORIGINAL", "CORREGIDA", "REUBICADA", "REQUIERE_SOL", "PUBLICADA"]
+}

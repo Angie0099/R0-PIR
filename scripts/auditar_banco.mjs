@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const bankDir = path.join(root, 'public', 'banco');
 const outDir = path.join(root, 'analysis', 'audit_reports');
 const manifest = JSON.parse(fs.readFileSync(path.join(bankDir, 'manifest.json'), 'utf8'));
+const config = JSON.parse(fs.readFileSync(path.join(root, 'public', 'auditor_pir_config.json'), 'utf8'));
 const files = fs.readdirSync(bankDir).filter(f => f.endsWith('.json') && f !== 'manifest.json');
 const all = files.flatMap(file => JSON.parse(fs.readFileSync(path.join(bankDir, file), 'utf8')).map(q => ({...q, _file:file})));
 const norm = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
@@ -26,7 +27,7 @@ const issues = all.map(q => {
   if ((byText.get(norm(q.e)) || []).length > 1) flags.push('DUPLICADO_ENUNCIADO');
   return {id:q.id,s:q.s,t:q.t,file:q._file,flags,priority:flags.filter(x=>/CLAVE|VACIA|OCR_BASURA|JUSTIFICACION/.test(x)).length};
 }).filter(x => x.flags.length);
-const report={createdAt:new Date().toISOString(),total:all.length,uniqueIds:new Set(all.map(q=>q.id)).size,manifestTotal:manifest.total,issues,bySubject:Object.groupBy(issues,x=>x.s),nextBatches:Object.entries(Object.groupBy(issues,x=>x.s)).map(([subject,rows])=>({subject,ids:rows.sort((a,b)=>b.priority-a.priority).slice(0,50).map(x=>x.id)}))};
+const report={createdAt:new Date().toISOString(),configVersion:config.version,total:all.length,uniqueIds:new Set(all.map(q=>q.id)).size,manifestTotal:manifest.total,issues,bySubject:Object.groupBy(issues,x=>x.s),nextBatches:Object.entries(Object.groupBy(issues,x=>x.s)).map(([subject,rows])=>({subject,ids:rows.sort((a,b)=>b.priority-a.priority).slice(0,50).map(x=>x.id)}))};
 fs.mkdirSync(outDir,{recursive:true});
 fs.writeFileSync(path.join(outDir,'auditoria_automatica_actual.json'),JSON.stringify(report,null,2));
 console.log(JSON.stringify({total:report.total,uniqueIds:report.uniqueIds,issues:issues.length,batches:report.nextBatches.map(x=>[x.subject,x.ids.length])},null,2));
