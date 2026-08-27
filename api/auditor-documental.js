@@ -25,12 +25,22 @@ export default async function handler(req, res) {
   if (!source || !source.drive_id || typeof query !== 'string' || query.trim().length < 4) {
     return res.status(400).json({ error: 'Fuente o consulta no válida.' });
   }
-  if (!process.env.GOOGLE_DRIVE_ACCESS_TOKEN) {
+  if (!process.env.GOOGLE_DRIVE_REFRESH_TOKEN || !process.env.GOOGLE_OAUTH_CLIENT_ID || !process.env.GOOGLE_OAUTH_CLIENT_SECRET) {
     return res.status(503).json({ error: 'La conexión privada con Drive todavía no está autorizada.' });
   }
 
+  const refreshBody = new URLSearchParams({
+    client_id: process.env.GOOGLE_OAUTH_CLIENT_ID,
+    client_secret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+    refresh_token: process.env.GOOGLE_DRIVE_REFRESH_TOKEN,
+    grant_type: 'refresh_token',
+  });
+  const refresh = await fetch('https://oauth2.googleapis.com/token', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: refreshBody });
+  if (!refresh.ok) return res.status(502).json({ error: 'No se pudo renovar el permiso privado de Drive.' });
+  const { access_token } = await refresh.json();
+
   const endpoint = `https://www.googleapis.com/drive/v3/files/${encodeURIComponent(source.drive_id)}/export?mimeType=text%2Fplain`;
-  const response = await fetch(endpoint, { headers: { Authorization: `Bearer ${process.env.GOOGLE_DRIVE_ACCESS_TOKEN}` } });
+  const response = await fetch(endpoint, { headers: { Authorization: `Bearer ${access_token}` } });
   if (!response.ok) return res.status(502).json({ error: 'No se pudo consultar el manual autorizado.' });
 
   const excerpt = excerptFor(await response.text(), query);
