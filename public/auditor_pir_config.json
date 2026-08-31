@@ -6,18 +6,20 @@
   "publication_threshold": "evidencia_original_y_clave_unica",
   "source_policy": "Solo manuales originales, clasificaciones primarias y artículos fuente. Nunca manuales de academia como evidencia final.",
   "subjects": {
-    "Psicología Clínica": {
+    "Clínica Adultos": {
       "default_sources": [
         "Belloch, Sandín y Ramos (2024), Manual de psicopatología, vols. I-II, 4.ª ed.",
         "American Psychiatric Association (2022), DSM-5-TR",
         "World Health Organization (2024), CIE-11"
       ],
       "topic_rules": {
-        "Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos": ["DSM-5-TR: Schizophrenia Spectrum and Other Psychotic Disorders", "Belloch 2024, vol. II, cap. 11"],
-        "Trastornos adictivos y comportamentales": ["DSM-5-TR: Substance-Related and Addictive Disorders", "CIE-11: Disorders due to substance use or addictive behaviours"]
+        "Trastornos del espectro de la esquizofrenia": ["DSM-5-TR: Schizophrenia Spectrum and Other Psychotic Disorders", "Belloch 2024, vol. II, cap. 11"],
+        "Trastornos depresivos": ["DSM-5-TR: Depressive Disorders", "Belloch 2024, vol. II, cap. 6"],
+        "Trastornos adictivos y relacionados con sustancias": ["DSM-5-TR: Substance-Related and Addictive Disorders", "CIE-11: Disorders due to substance use or addictive behaviours"]
       }
     },
-    "Psicopatología Infantil": {"default_sources":["DSM-5-TR", "CIE-11", "Fonseca-Pedrero, manual original correspondiente"]},
+    "Psicopatología": {"default_sources":["Belloch, Sandín y Ramos (2024), Manual de psicopatología, vols. I-II, 4.ª ed.", "Vallejo Ruiloba, Introducción a la psicopatología y la psiquiatría"]},
+    "Clínica Infantojuvenil": {"default_sources":["DSM-5-TR", "CIE-11", "Fonseca-Pedrero, manual original correspondiente"]},
     "Tratamientos Adultos": {"default_sources":["Manual original de tratamiento por tema", "Guías clínicas y estudios primarios cuando proceda"]},
     "Tratamientos Infantiles": {"default_sources":["Comeche Moreno y Vallejo Pareja (2016), Manual de terapia de conducta en la infancia", "DSM-5-TR"]}
   },
