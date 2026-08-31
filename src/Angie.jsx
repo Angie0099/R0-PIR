@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
+import { PIR_TOPIC_ORDER } from "./pirRoadmap";
 
 // ═══════════════════════════════════════════════════════════
 // BANCO INICIAL (semilla mínima — todo lo demás vive en storage)
@@ -7,22 +8,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 // ═══════════════════════════════════════════════════════════
 const BANK_SEED = [];
 
-const SUBJECTS = {
-  "Evaluación Psicológica": ["Fundamentos de la evaluación psicológica","Clasificación de las técnicas de evaluación","Técnicas de observación","Autoinformes","Entrevista","Técnicas objetivas","Técnicas subjetivas","Técnicas proyectivas","Evaluación de la inteligencia","Evaluación de las aptitudes","Evaluación de la personalidad","Evaluación de características psicopatológicas","Evaluación del desarrollo intelectual, social y del lenguaje","Evaluación del envejecimiento","Evaluación neuropsicológica","Otras áreas a evaluar"],
-  "Psicopatología": ["Modelos en psicopatología","Sistemas clasificatorios en psicopatología","Psicopatología de la conciencia","Psicopatología de la atención","Psicopatología de la sensopercepción","Psicopatología de la memoria","Psicopatología del pensamiento","Psicopatología del lenguaje","Psicopatología de la afectividad","Trastornos psicomotores"],
-  "Clínica Infantojuvenil": [],
-  "Clínica Adultos": ["Trastornos del espectro de la esquizofrenia","Trastornos depresivos","Trastornos bipolares y relacionados","Trastornos de ansiedad","TOC","Trastornos relacionados con estrés y trauma","Trastornos disociativos","Trastornos por síntomas somáticos y relacionados","Trastornos de la conducta alimentaria","Trastornos del sueño-vigilia","Disfunciones sexuales","Disforia de género","Trastornos parafílicos","Trastornos disruptivos del control de los impulsos y de la conducta","Trastornos adictivos y relacionados con sustancias","Trastornos neurocognitivos","Trastornos de la personalidad","Afecciones que requieren más estudio"],
-  "Tratamientos Psicológicos": ["Disfunciones sexuales"],
-  "Psicoterapias": [],
-  "Psicobiología": [],
-  "Psicología Diferencial y de la Personalidad": [],
-  "Estadística y Experimental": [],
-  "Psicología Clínica Infantil": [],
-  "Psicología Social": [],
-  "Psicología Básica": [],
-  "Psicología del Desarrollo": [],
-  "Psicología de la Salud": []
-};
+const SUBJECTS = PIR_TOPIC_ORDER;
 
 // El banco desplegado usa estas 13 asignaturas. Las denominaciones antiguas se
 // conservan solo para recuperar preguntas y estadísticas guardadas en el navegador.
@@ -77,7 +63,8 @@ const TOPIC_TO_UNIFIED = {
   "Clasificación de las técnicas de evaluación": "Clasificación de las técnicas de evaluación psicológica"
 };
 
-const STORAGE_SUBJECTS = [...new Set([...Object.keys(SUBJECTS), ...OFFICIAL_SUBJECT_NAMES])];
+const LEGACY_STORAGE_SUBJECTS = ["Psicología Clínica", "Psicopatología Infantil", "Tratamientos Psicológicos", "Psicología Diferencial y de la Personalidad", "Estadística y Experimental", "Psicología Clínica Infantil", "Psicología del Desarrollo", "Psicología de la Salud"];
+const STORAGE_SUBJECTS = [...new Set([...Object.keys(SUBJECTS), ...OFFICIAL_SUBJECT_NAMES, ...LEGACY_STORAGE_SUBJECTS])];
 const REVIEWED_STATUSES = new Set(["VALIDADA_ORIGINAL", "VALIDADA_DRIVE", "CORREGIDA"]);
 const ORIGINAL_REFERENCE_RX = /\b(belloch|fonseca|caballo|vallejo|moreno|rodr[ií]guez morej[oó]n|feixas|mir[oó]|sand[ií]n|ramos|ballesteros|berm[uú]dez|s[aá]nchez-elvira|redolar|domjan|stahl|papalia|santrock|gaviria|colom|uned|dsm\s*-?\s*5|cie\s*-?\s*11|manual de psicopatolog[ií]a)\b/i;
 const ACADEMY_REFERENCE_RX = /\b(apir|amir|cede|persever|academia|simulacro|diapositivas?|apuntes?)\b/i;
@@ -459,7 +446,7 @@ export default function Angie(){
 
   // ── ESQUEMAS (recuperación estructurada previa al tema) ──
   const[schemas,setSchemas]=useState([]);            // todos los esquemas cargados
-  const[schSubject,setSchSubject]=useState("Psicología Clínica"); // asignatura en la pestaña Esquemas
+  const[schSubject,setSchSubject]=useState("Clínica Adultos"); // asignatura en la pestaña Esquemas
   const[schId,setSchId]=useState(null);              // esquema abierto (id) o null = lista
   const[schAnswers,setSchAnswers]=useState({});      // respuestas escritas {sec_item: texto}
   const[schRevealed,setSchRevealed]=useState(false); // mostrar soluciones

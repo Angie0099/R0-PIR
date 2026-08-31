@@ -1,0 +1,87 @@
+export const PIR_TOPIC_ORDER = {
+  "Psicopatología": [
+    "Modelos en psicopatología", "Sistemas clasificatorios en psicopatología", "Psicopatología de la conciencia",
+    "Psicopatología de la atención", "Psicopatología de la sensopercepción", "Psicopatología de la memoria",
+    "Psicopatología del pensamiento", "Psicopatología del lenguaje", "Psicopatología de la afectividad", "Trastornos psicomotores"
+  ],
+  "Clínica Adultos": [
+    "Trastornos del espectro de la esquizofrenia", "Trastornos depresivos", "Conducta suicida y autolesión",
+    "Trastornos bipolares y relacionados", "Trastornos de ansiedad", "TOC", "Trastornos relacionados con estrés y trauma",
+    "Trastornos disociativos", "Trastornos por síntomas somáticos y relacionados", "Trastornos de la conducta alimentaria",
+    "Trastornos del sueño-vigilia", "Disfunciones sexuales", "Disforia de género", "Trastornos parafílicos",
+    "Trastornos disruptivos del control de los impulsos y de la conducta", "Trastornos adictivos y relacionados con sustancias",
+    "Trastornos neurocognitivos", "Trastornos de la personalidad", "Afecciones que requieren más estudio"
+  ],
+  "Clínica Infantojuvenil": [
+    "Introducción a la psicopatología infantil", "Discapacidad intelectual", "Trastornos de la comunicación",
+    "Trastorno del espectro autista", "Trastorno por déficit de atención con hiperactividad (TDAH)",
+    "Trastornos específicos del aprendizaje y de la coordinación", "Trastornos por tics infantojuveniles",
+    "Trastornos psicóticos infantojuveniles", "Trastornos depresivos y bipolares infantojuveniles",
+    "Trastornos de ansiedad infantojuveniles", "Trastorno obsesivo-compulsivo y relacionados infantojuveniles",
+    "Trastornos relacionados con traumas y factores de estrés infantojuveniles",
+    "Trastornos de la conducta alimentaria y de la ingestión infantojuveniles",
+    "Trastornos de eliminación infantojuveniles", "Trastornos del sueño-vigilia infantojuveniles",
+    "Trastornos disruptivos, del control de los impulsos y de la conducta infantojuveniles"
+  ],
+  "Tratamientos Adultos": [
+    "Introducción", "Técnicas psicológicas generales", "Componentes y eficacia de la psicoterapia", "Tratamientos transdiagnósticos",
+    "Tratamiento de los trastornos de ansiedad", "Tratamiento del TOC y relacionados", "Tratamiento del trauma y TEPT",
+    "Tratamiento de la depresión y trastornos del ánimo", "Tratamiento de la psicosis y esquizofrenia",
+    "Tratamiento de los trastornos de personalidad", "Tratamiento de los trastornos alimentarios",
+    "Tratamiento de los trastornos somáticos", "Tratamiento de los trastornos disociativos", "Tratamiento de las adicciones",
+    "Tratamiento de las disfunciones sexuales", "Tratamiento de los trastornos del sueño",
+    "Tratamiento de los trastornos neurocognitivos", "Tratamiento del TEA", "Psicología de la salud — estrés laboral y burnout"
+  ],
+  "Evaluación Psicológica": [
+    "Fundamentos de la evaluación psicológica", "Clasificación de las técnicas de evaluación psicológica", "Técnicas de observación",
+    "Los autoinformes", "La entrevista", "Técnicas objetivas", "Técnicas subjetivas", "Técnicas proyectivas",
+    "Tests de inteligencia y aptitudes", "Tests de personalidad", "Evaluación infantil", "Evaluación neuropsicológica",
+    "Evaluación de la ansiedad", "Evaluación de adicciones"
+  ],
+  "Psicología de la Personalidad y Diferencial": [
+    "Introducción a la psicología de la personalidad", "Estrategias de investigación en Psicología Diferencial",
+    "Determinantes de la conducta: genética vs. ambiente", "Diferencias interindividuales en inteligencia",
+    "Diferencias intergrupales I: edad y sexo", "Diferencias intergrupales II: raza, clase social y bilingüismo",
+    "Modelos factoriales I: Allport", "Modelos factoriales II: Cattell", "Modelos factoriales III: Eysenck",
+    "Otros modelos factoriales", "Teorías biológicas de la personalidad", "Teorías psicoanalíticas de la personalidad",
+    "Teorías humanistas y existenciales de la personalidad", "Teorías cognitivas de la personalidad", "Teorías socio-cognitivas",
+    "Modelos interaccionistas", "La identidad personal", "Otros constructos de la personalidad",
+    "Diferencias interindividuales en creatividad y personalidad"
+  ],
+  "Psicobiología": [
+    "Aproximación a la genética", "Nivel celular: la neurona", "Estructura del sistema nervioso", "Sistema nervioso periférico",
+    "SNC I: estructuras subcorticales", "SNC II: la corteza cerebral", "Desarrollo del sistema nervioso", "Sistemas perceptivos",
+    "Sistema motor", "Neuroendocrinología: el sistema endocrino", "Ritmos biológicos y sueño", "Neurobiología del sexo",
+    "Emoción", "Funciones cognitivas superiores", "Acción de los fármacos en el sistema nervioso",
+    "Métodos de investigación y diagnóstico en Neurología"
+  ],
+  "Psicología Básica": [
+    "Introducción a la psicología", "Sensación y percepción", "Percepción", "Atención", "Aprendizaje y condicionamiento",
+    "Memoria", "Pensamiento y lenguaje", "Conducta verbal", "Motivación y emoción", "Emoción", "Cognición social"
+  ],
+  "Psicoterapias": [
+    "Introducción", "Historia de las psicoterapias", "Psicoanálisis I: Freud", "Psicoanálisis y terapias psicodinámicas",
+    "Terapias humanistas y existenciales", "Terapia Cognitivo-Conductual", "Terapias de tercera generación",
+    "Terapias de familia y modelos sistémicos", "Terapia de grupo y psicodrama", "Técnicas psicológicas generales",
+    "Componentes y eficacia de la psicoterapia"
+  ],
+  "Psicología Social": [
+    "Modelos teóricos sobre la psicología social", "Cognición social y procesos de atribución", "Las actitudes",
+    "Procesos de interacción social", "Procesos de grupo", "Estructura y rendimiento del grupo", "Relaciones intergrupales",
+    "Modelos teóricos sobre las organizaciones", "Influencia de la organización en el individuo"
+  ],
+  "Psicología Evolutiva": [
+    "Introducción a la psicología del desarrollo", "Perspectivas teóricas en psicología del desarrollo", "Primera infancia (0-2 años)",
+    "Desarrollo cognitivo en la segunda infancia", "Las manifestaciones de la función simbólica", "El desarrollo social y moral",
+    "La adolescencia", "La edad adulta y la vejez", "Definición y modelos de la psicología de la educación",
+    "Proceso de enseñanza y aprendizaje"
+  ],
+  "Tratamientos Infantiles": [
+    "Introducción a la psicología clínica infantil", "Discapacidad intelectual", "Trastornos de la comunicación",
+    "Trastorno del Espectro Autista", "TDAH", "Trastornos del aprendizaje", "Trastornos de ansiedad infantojuvenil",
+    "Trastornos depresivos y bipolares infantojuvenil", "Trastornos relacionados con trauma infantojuvenil",
+    "Trastornos psicóticos infantojuvenil", "Trastornos de conducta infantojuvenil", "Trastornos de excreción infantojuvenil",
+    "Conducta suicida y autolesión infantojuvenil", "Otros problemas infantojuveniles"
+  ],
+  "Psicología Experimental": ["Introducción", "Método científico y experimental", "Estadística", "Psicometría"]
+};
