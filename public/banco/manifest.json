@@ -1,7 +1,7 @@
 {
   "_type": "r0pir-banco-oficial",
   "_version": 1,
-  "total": 16009,
+  "total": 16059,
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
@@ -77,7 +77,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4133,
+      "count": 4183,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -96,7 +96,8 @@
         "Componentes y eficacia de la psicoterapia",
         "Tratamiento de los trastornos disociativos",
         "Tratamiento de las disfunciones sexuales",
-        "Tratamiento de los trastornos neurocognitivos"
+        "Tratamiento de los trastornos neurocognitivos",
+        "Tratamientos transdiagnósticos"
       ]
     },
     "Evaluación Psicológica": {
