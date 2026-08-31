@@ -10,7 +10,7 @@ const BANK_SEED = [];
 const SUBJECTS = {
   "Evaluación Psicológica": ["Fundamentos de la evaluación psicológica","Clasificación de las técnicas de evaluación","Técnicas de observación","Autoinformes","Entrevista","Técnicas objetivas","Técnicas subjetivas","Técnicas proyectivas","Evaluación de la inteligencia","Evaluación de las aptitudes","Evaluación de la personalidad","Evaluación de características psicopatológicas","Evaluación del desarrollo intelectual, social y del lenguaje","Evaluación del envejecimiento","Evaluación neuropsicológica","Otras áreas a evaluar"],
   "Psicopatología": ["Modelos en psicopatología","Sistemas clasificatorios en psicopatología","Psicopatología de la conciencia","Psicopatología de la atención","Psicopatología de la sensopercepción","Psicopatología de la memoria","Psicopatología del pensamiento","Psicopatología del lenguaje","Psicopatología de la afectividad","Trastornos psicomotores"],
-  "Psicopatología Infantil": [],
+  "Clínica Infantojuvenil": [],
   "Clínica Adultos": ["Trastornos del espectro de la esquizofrenia","Trastornos depresivos","Trastornos bipolares y relacionados","Trastornos de ansiedad","TOC","Trastornos relacionados con estrés y trauma","Trastornos disociativos","Trastornos por síntomas somáticos y relacionados","Trastornos de la conducta alimentaria","Trastornos del sueño-vigilia","Disfunciones sexuales","Disforia de género","Trastornos parafílicos","Trastornos disruptivos del control de los impulsos y de la conducta","Trastornos adictivos y relacionados con sustancias","Trastornos neurocognitivos","Trastornos de la personalidad","Afecciones que requieren más estudio"],
   "Tratamientos Psicológicos": ["Disfunciones sexuales"],
   "Psicoterapias": [],
@@ -24,11 +24,12 @@ const SUBJECTS = {
   "Psicología de la Salud": []
 };
 
-// El banco desplegado usa estas 12 asignaturas. Las denominaciones antiguas se
+// El banco desplegado usa estas 13 asignaturas. Las denominaciones antiguas se
 // conservan solo para recuperar preguntas y estadísticas guardadas en el navegador.
 const OFFICIAL_SUBJECT_NAMES = [
-  "Psicología Clínica",
-  "Psicopatología Infantil",
+  "Psicopatología",
+  "Clínica Adultos",
+  "Clínica Infantojuvenil",
   "Tratamientos Adultos",
   "Evaluación Psicológica",
   "Psicología de la Personalidad y Diferencial",
@@ -42,31 +43,32 @@ const OFFICIAL_SUBJECT_NAMES = [
 ];
 
 const SUBJECT_TO_UNIFIED = {
-  "Psicopatología": "Psicología Clínica",
-  "Clínica Adultos": "Psicología Clínica",
+  "Psicología Clínica Infantil": "Tratamientos Infantiles",
+  "Psicopatología Infantil": "Clínica Infantojuvenil",
   "Tratamientos Psicológicos": "Tratamientos Adultos",
   "Psicología Diferencial y de la Personalidad": "Psicología de la Personalidad y Diferencial",
   "Estadística y Experimental": "Psicología Experimental",
-  "Psicología Clínica Infantil": "Tratamientos Infantiles",
   "Psicología del Desarrollo": "Psicología Evolutiva",
   "Psicología de la Salud": "Tratamientos Adultos"
 };
 
 const TOPIC_TO_UNIFIED = {
-  "Psicopatología de la conciencia": "Patología de la conciencia",
-  "Psicopatología de la atención": "Psicopatología de la atención y orientación",
+  "Patología de la conciencia": "Psicopatología de la conciencia",
+  "Psicopatología de la atención y orientación": "Psicopatología de la atención",
   "Psicopatología de la sensopercepción": "Psicopatología de la sensopercepción",
   "Psicopatología del pensamiento": "Psicopatología del pensamiento",
   "Psicopatología del lenguaje": "Psicopatología del lenguaje",
   "Psicopatología de la afectividad": "Psicopatología de la afectividad",
-  "Trastornos psicomotores": "Psicopatología de la conducta motora",
-  "Trastornos del espectro de la esquizofrenia": "Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos",
-  "TOC": "Trastorno obsesivo-compulsivo y relacionados",
-  "Trastornos relacionados con estrés y trauma": "Trastornos relacionados con traumas y factores de estrés",
-  "Trastornos por síntomas somáticos y relacionados": "Trastornos de síntomas somáticos y relacionados",
-  "Trastornos de la conducta alimentaria": "Trastornos de la conducta alimentaria y de la ingestión de alimentos",
-  "Trastornos disruptivos del control de los impulsos y de la conducta": "Trastornos destructivos, del control de los impulsos y de la conducta",
-  "Trastornos adictivos y relacionados con sustancias": "Trastornos adictivos con sustancia",
+  "Psicopatología de la conducta motora": "Trastornos psicomotores",
+  "Trastornos del espectro de la esquizofrenia y otros trastornos psicóticos": "Trastornos del espectro de la esquizofrenia",
+  "Trastorno obsesivo-compulsivo y relacionados": "TOC",
+  "Trastornos relacionados con traumas y factores de estrés": "Trastornos relacionados con estrés y trauma",
+  "Trastornos de síntomas somáticos y relacionados": "Trastornos por síntomas somáticos y relacionados",
+  "Trastornos de la conducta alimentaria y de la ingestión de alimentos": "Trastornos de la conducta alimentaria",
+  "Trastornos destructivos, del control de los impulsos y de la conducta": "Trastornos disruptivos del control de los impulsos y de la conducta",
+  "Trastornos disruptivos, del control de los impulsos y de la conducta": "Trastornos disruptivos del control de los impulsos y de la conducta",
+  "Trastornos adictivos con sustancia": "Trastornos adictivos y relacionados con sustancias",
+  "Trastornos adictivos y comportamentales": "Trastornos adictivos y relacionados con sustancias",
   "Autoinformes": "Los autoinformes",
   "Entrevista": "La entrevista",
   "Evaluación de la inteligencia": "Tests de inteligencia y aptitudes",
@@ -80,11 +82,21 @@ const REVIEWED_STATUSES = new Set(["VALIDADA_ORIGINAL", "VALIDADA_DRIVE", "CORRE
 const ORIGINAL_REFERENCE_RX = /\b(belloch|fonseca|caballo|vallejo|moreno|rodr[ií]guez morej[oó]n|feixas|mir[oó]|sand[ií]n|ramos|ballesteros|berm[uú]dez|s[aá]nchez-elvira|redolar|domjan|stahl|papalia|santrock|gaviria|colom|uned|dsm\s*-?\s*5|cie\s*-?\s*11|manual de psicopatolog[ií]a)\b/i;
 const ACADEMY_REFERENCE_RX = /\b(apir|amir|cede|persever|academia|simulacro|diapositivas?|apuntes?)\b/i;
 
-const unifiedSubject = (subj) => SUBJECT_TO_UNIFIED[subj] || subj;
+const PSYCHOPATHOLOGY_TOPICS = new Set(SUBJECTS["Psicopatología"]);
+const CHILD_CLINICAL_RX = /infantojuvenil|infantil|espectro autista|déficit de atención/i;
+const unifiedSubject = (subj, topic = "") => {
+  if (subj === "Psicología Clínica") {
+    const normalizedTopic = TOPIC_TO_UNIFIED[topic] || topic;
+    if (PSYCHOPATHOLOGY_TOPICS.has(normalizedTopic)) return "Psicopatología";
+    if (CHILD_CLINICAL_RX.test(normalizedTopic)) return "Clínica Infantojuvenil";
+    return "Clínica Adultos";
+  }
+  return SUBJECT_TO_UNIFIED[subj] || subj;
+};
 const unifiedTopic = (topic) => TOPIC_TO_UNIFIED[topic] || topic;
 const normalizeQuestionForUnifiedBank = (q) => ({
   ...q,
-  s: unifiedSubject(q.s || q._subject || ""),
+  s: unifiedSubject(q.s || q._subject || "", (q.t || q._topics || [])[0] || ""),
   t: [...new Set((q.t || q._topics || []).map(unifiedTopic).filter(Boolean))]
 });
 const personalReviewIssues = (q) => {
@@ -104,10 +116,10 @@ const migrateStatsToUnifiedBank = (input) => {
   const output = {};
   let changed = false;
   Object.entries(input || {}).forEach(([oldSubject, topics]) => {
-    const newSubject = unifiedSubject(oldSubject);
-    if (newSubject !== oldSubject) changed = true;
-    if (!output[newSubject]) output[newSubject] = {};
     Object.entries(topics || {}).forEach(([oldTopic, record]) => {
+      const newSubject = unifiedSubject(oldSubject, oldTopic);
+      if (newSubject !== oldSubject) changed = true;
+      if (!output[newSubject]) output[newSubject] = {};
       const newTopic = unifiedTopic(oldTopic);
       if (newTopic !== oldTopic) changed = true;
       const previous = output[newSubject][newTopic] || { correct:0, total:0, sessions:[] };
