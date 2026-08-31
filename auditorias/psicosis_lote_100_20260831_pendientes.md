@@ -1,0 +1,7 @@
+# Psicosis — pendientes documentales del lote de 100
+
+Estos 49 registros no se han publicado como validados. Requieren contraste literal con DSM/CIE-11, Belloch o el artículo original citado; se mantienen con sus IDs y estadísticas intactos.
+
+`SM_JULIO_1_SOL_1_052`, `SM_JULIO_1_SOL_1_067`, `SM_JUNIO_2_SOL_1_046`, `SM_MAYO_1_SOL_1_111`, `Simu 13 comentado_035`, `Simu 14 comentado _027`, `Simu 14 comentado _062`, `Simu 15 comentado_068`, `Simu 16 comentado_107`, `Simu 31 comentado Hardcore 1_107`, `Simu 8 comentado _043`, `simu 9 comentado_081`, `simu 9 comentado_083`, `simu 9 comentado_084`, `simu 9 comentado_085`, `SmCm08PIR2025_148`, `SmCm08PIR2025_152`, `SmCm14PIR2025_058`, `SmCm16PIR2025_202`, `SmCm21PIR2025 (2)_019`, `SmCm22PIR2025 (1)_050`, `SmCm22PIR2025 (1)_069`, `SmCm23PIR2025_201`, `SmCm24PIR2025 (1)_052`, `SmCm26PIR2025_101`, `SmCm27PIR2025 (1)_087`, `DICIEMBRE-UNO-24_COMENTADO_088`, `simu 9 comentado_105`, `SmCm13PIR2025_053`, `SmCm1PIR2024_159`, `Simu 15 comentado_047`, `SmCm26PIR2025_117`, `Simu 7 comentado _095`, `Simu 8 comentado _045`, `SmCm10PIR2025_021`, `SmCm11PIR2025_137`, `SmCm11PIR2025_170`, `SmCm12PIR2024 2_015`, `SmCm12PIR2024 2_017`, `SmCm15PIR2025_021`, `SmCm16PIR2025_055`, `SmCm17PIR2025_096`, `SmCm29PIR2025_048`, `SmCm13PIR2025_052`, `PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_130`, `Simu 14 comentado _064`, `Simu 15 comentado_046`, `SmCm29PIR2025_073`, `SmCm28PIR2025_205`.
+
+Además, `Simu 15 comentado_068` (disforia de integridad corporal) está fuera de Psicosis, pero necesita decidir destino taxonómico antes de moverla.
