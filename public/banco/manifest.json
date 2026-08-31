@@ -5,7 +5,7 @@
   "subjects": {
     "Psicología Clínica": {
       "slug": "psicologia_clinica",
-      "count": 3834,
+      "count": 3831,
       "topics": [
         "Patología de la conciencia",
         "Psicopatología de la sensopercepción",
@@ -77,7 +77,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4213,
+      "count": 4214,
       "topics": [
         "Introducción",
         "Psicología de la salud — estrés laboral y burnout",
@@ -102,7 +102,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1971,
+      "count": 1972,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Técnicas proyectivas",
@@ -122,7 +122,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1402,
+      "count": 1403,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Diferencias intergrupales II: raza, clase social y bilingüismo",
