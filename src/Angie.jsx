@@ -1779,7 +1779,7 @@ export default function Angie(){
       <div style={{fontSize:19,fontWeight:850,color:C.navy}}>Auditor Experto PIR</div>
       <p style={{color:C.muted,lineHeight:1.55}}>Criba mecánica y pauta documental para revisar cada pregunta sin alterar IDs, estadísticas ni progreso.</p>
       <div style={{padding:14,borderRadius:12,background:C.lilac,color:C.navy,fontSize:13,lineHeight:1.6}}>
-        <strong>Regla de validación:</strong> solo se aprueba una pregunta cuando su tema, clave, cuatro alternativas, justificación y referencia original son coherentes. Las ambiguas pasan a revisión documental, nunca se publican automáticamente.
+        <strong>Regla de validación:</strong> solo se aprueba una pregunta cuando su tema, clave, cuatro alternativas, justificación y referencia original son coherentes. La justificación debe explicar por qué la clave es correcta y descartar individualmente cada distractor; las ambiguas pasan a revisión documental y nunca se publican automáticamente.
       </div>
       <div style={{marginTop:16,fontWeight:800}}>Mapa de ruta PIR</div>
       <div style={{marginTop:8,display:"grid",gap:7}}>{Object.entries(officialMap).map(([s,v])=><div key={s} style={{padding:"9px 11px",border:`1px solid ${C.line}`,borderRadius:10,fontSize:12}}><strong>{s}</strong><span style={{color:C.muted}}> · {(v.topics||[]).length} temas</span></div>)}</div>

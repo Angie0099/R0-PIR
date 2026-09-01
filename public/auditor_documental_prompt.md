@@ -38,7 +38,7 @@ Si falta un dato de entrada, etiqueta el registro `REQUIERE_SOL`; no completes e
 1. Estado y nivel de confianza.
 2. Pregunta y cuatro alternativas finales, si procede.
 3. Clave final.
-4. Justificación de 4–7 frases: por qué la clave es correcta y por qué cada distractor es incorrecto.
+4. Justificación de 4–7 frases: identifica la letra correcta y explica el respaldo documental; después descarta individualmente cada una de las otras tres letras, indicando qué concepto describe realmente o qué criterio, cifra, sistema o relación invierte. Se prohíbe agruparlas bajo una frase genérica.
 5. Referencia completa: autor, año, obra/artículo, edición, capítulo y página/sección; DOI o enlace estable cuando exista.
 6. Evidencia estructurada: `source_id`, afirmación contrastada, ubicación documental y fecha de verificación.
 7. Si se reubica: tema de origen y tema de destino.

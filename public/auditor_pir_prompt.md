@@ -37,7 +37,7 @@ Para cada lote crea una matriz privada mínima: `id | incidencia | destino candi
 
 ### Fase D — justificación y publicación
 
-La justificación final debe contener cuatro partes concisas: (1) por qué la clave es correcta; (2) por qué `a` es falsa; (3) por qué `b` es falsa; (4) por qué `c`/`d` son falsas. Incluye referencia completa y enlace/DOI si existe. No uses frases genéricas como «las restantes no cumplen».
+La justificación final debe explicar explícitamente las cuatro alternativas: primero, por qué la clave es correcta; después, por qué cada uno de los otros tres distractores es incorrecto. Nombra las letras (`a`, `b`, `c`, `d`) y señala el error concreto de cada distractor: criterio que confunde, sistema diagnóstico al que pertenece, dato que invierte o concepto que describe realmente. Incluye referencia completa y enlace/DOI si existe. No uses fórmulas genéricas como «las restantes no cumplen», «no corresponde» o «las otras son falsas» sin explicar el motivo.
 
 Solo asigna `VALIDADA_ORIGINAL` y publica si se cumplen simultáneamente: fuente original suficiente, clave única, cuatro alternativas válidas, justificación individualizada, referencia verificable y tema válido. Los casos restantes quedan como `REQUIERE_SOL` y no se publican.
 
