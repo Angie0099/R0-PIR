@@ -5,7 +5,7 @@
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 1063,
+      "count": 1064,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -68,7 +68,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4216,
+      "count": 4199,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -93,7 +93,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1976,
+      "count": 1977,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Clasificación de las técnicas de evaluación psicológica",
@@ -113,7 +113,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1403,
+      "count": 1404,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Estrategias de investigación en Psicología Diferencial",
@@ -194,7 +194,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 623,
+      "count": 624,
       "topics": [
         "Modelos teóricos sobre la psicología social",
         "Cognición social y procesos de atribución",
@@ -225,7 +225,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 184,
+      "count": 197,
       "topics": [
         "Introducción a la psicología clínica infantil",
         "Discapacidad intelectual",
