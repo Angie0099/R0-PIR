@@ -21,7 +21,7 @@
     },
     "Clínica Adultos": {
       "slug": "clinica_adultos",
-      "count": 2758,
+      "count": 2755,
       "topics": [
         "Trastornos del espectro de la esquizofrenia",
         "Trastornos depresivos",
@@ -45,7 +45,7 @@
     },
     "Clínica Infantojuvenil": {
       "slug": "clinica_infantojuvenil",
-      "count": 440,
+      "count": 443,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Discapacidad intelectual",
@@ -62,7 +62,8 @@
         "Trastornos de la conducta alimentaria y de la ingestión infantojuveniles",
         "Trastornos de eliminación infantojuveniles",
         "Trastornos del sueño-vigilia infantojuveniles",
-        "Trastornos disruptivos, del control de los impulsos y de la conducta infantojuveniles"
+        "Trastornos disruptivos, del control de los impulsos y de la conducta infantojuveniles",
+        "Disforia de género infantojuvenil"
       ]
     },
     "Tratamientos Adultos": {
