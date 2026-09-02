@@ -1,0 +1,1091 @@
+{
+  "createdAt": "2026-09-02T09:47:44.239Z",
+  "subject": "Clínica Adultos",
+  "topic": "Trastornos relacionados con estrés y trauma",
+  "totalTema": 151,
+  "pendingBefore": 95,
+  "summary": {
+    "alta": 13,
+    "media": 79,
+    "baja": 3,
+    "ocr": 43,
+    "explicacionEnOpcion": 3,
+    "sinJustificacion": 40,
+    "sinReferencia": 76,
+    "ubicacionRevisar": 3,
+    "duplicadosExactos": 0
+  },
+  "batches": {
+    "profundidadPrimero": [
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_050",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_038",
+      "SEPTIEMBRE-UNO-24_COMENTADO_147",
+      "SM_AGOSTO_1_SOL_1_081",
+      "SM_AGOSTO_1_SOL_1_082",
+      "SM_DICIEMBRE_1_SOL_1_011",
+      "SM_DICIEMBRE_1_SOL_1_013",
+      "SM_ENERO_1_SOL_1_088",
+      "SM_JULIO_2_SOL_1_011",
+      "SM_JUNIO_2_SOL_1_020",
+      "SM_JUNIO_2_SOL_1_061",
+      "SM_MAYO_1_SOL_1_094",
+      "SM_MAYO_1_SOL_1_120"
+    ],
+    "profundidadDespues": [
+      "NOVIEMBRE-DOS-24_COMENTADO_054",
+      "OCTUBRE-UNO-24_COMENTADO_056",
+      "OCTUBRE-UNO-24_COMENTADO_072",
+      "PERSEV_JUL25_D2_037",
+      "PERSEV_JUL25_D2_040",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_165",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_174",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_073",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_076",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_034",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_066",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_047",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_048",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_040",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_075",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_044",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_028",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_047",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_093",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_202",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_154",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_159",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_169",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_094",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_088",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_093",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_208",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_082",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_097",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_099",
+      "Simu 12 comentado_075",
+      "Simu 13 comentado_049",
+      "Simu 14 comentado _046",
+      "Simu 15 comentado_064",
+      "Simu 16 comentado_110",
+      "Simu 31 comentado Hardcore 1_100",
+      "Simu 32 comentado hardcore 2_072",
+      "Simu 7 comentado _069",
+      "Simu 7 comentado _077",
+      "Simu 8 comentado _037",
+      "Simu 8 comentado _057",
+      "Simu 8 comentado _060",
+      "Simu 8 comentado _068",
+      "Simu 8 comentado _069",
+      "simu 9 comentado_099",
+      "Simulacro06.2018Comentarios_221",
+      "SM_ABRIL_1_SOL_1_060",
+      "SM_DICIEMBRE_1_SOL_1_014",
+      "SM_DICIEMBRE_2_SOL_1_057",
+      "SM_JUNIO_1_SOL_1_052",
+      "SmCm06PIR2025_031",
+      "SmCm08PIR2025_168",
+      "SmCm10PIR2025_019",
+      "SmCm10PIR2025_020",
+      "SmCm11PIR2025_171",
+      "SmCm12PIR2024 2_034",
+      "SmCm13PIR2025_054",
+      "SmCm13PIR2025_055",
+      "SmCm14PIR2025_073",
+      "SmCm14PIR2025_075",
+      "SmCm15PIR2025_036",
+      "SmCm17PIR2025_010",
+      "SmCm18PIR2025_068",
+      "SmCm18PIR2025_069",
+      "SmCm19PIR2024_062",
+      "SmCm19PIR2024_063",
+      "SmCm21PIR2025 (2)_042",
+      "SmCm22PIR2025 (1)_060",
+      "SmCm22PIR2025 (1)_061",
+      "SmCm22PIR2025_028",
+      "SmCm24PIR2025 (1)_009",
+      "SmCm25PIR2025_046",
+      "SmCm25PIR2025_049",
+      "SmCm29PIR2025_054",
+      "SmCm29PIR2025_067",
+      "SmCm2PIR2024_066",
+      "SmCm30PIR2025 (1)_036",
+      "SmCm30PIR2025 (1)_048",
+      "SmCm11PIR2025_049"
+    ],
+    "revisionRapidaFinal": [
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_078",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_043",
+      "SmCm25PIR2025_028"
+    ]
+  },
+  "rows": [
+    {
+      "id": "NOVIEMBRE-DOS-24_COMENTADO_054",
+      "enunciado": "Respecto al trastorno de juego por apuestas:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "OCTUBRE-UNO-24_COMENTADO_056",
+      "enunciado": "1 Señala la opción correcta respecto a las características clínicas y síntomas del trastorno por estrés postraumático (TEPT):",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "OCTUBRE-UNO-24_COMENTADO_072",
+      "enunciado": "1 Señala la afirmación correcta respecto al trastorno de adaptación:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEV_JUL25_D2_037",
+      "enunciado": "Según el DSM-5, ¿cuál de los siguientes es un predictor robusto para Trastorno de Estrés Agudo?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEV_JUL25_D2_040",
+      "enunciado": "¿Cuál de las siguientes afirmaciones sobre el trastorno de adaptación es INCORRECTA?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_165",
+      "enunciado": "2 3 4 5 6 Señale a continuación la afirmación correcta en relación con los trastornos asociados a trau- mas y estresores:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_174",
+      "enunciado": "2  3 4 5 6 ¿Sobre qué trastorno la CIE-11 contempla como requisito la preocupación excesiva que puede acompañarse de pensamientos recurrentes y rumiación?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_073",
+      "enunciado": "¿Cuál de las siguientes variables facilitadoras del trauma NO se considera un factor de mantenimiento?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_076",
+      "enunciado": "Señale qué aspecto NO se asocia a los trastornos de adaptación:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_034",
+      "enunciado": "1 Señale la respuesta correcta con respecto al trastorno de adaptación (DSM-5):",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_050",
+      "enunciado": "1 Según el DSM-5, el trastorno de estrés postraumático, ¿con qué trastorno presenta una alta comorbilidad y algunos de sus síntomas se solapan?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR",
+        "AUTOR_MODELO_REVISAR",
+        "UBICACION_REVISAR:Trastornos de ansiedad"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_066",
+      "enunciado": "1 Desde el modelo del condicionamiento, por lo que se refiere a las víctimas de agresiones se- xuales, ¿cuál de las siguientes afirmaciones es correcta?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_047",
+      "enunciado": "Para el diagnóstico del trastorno de estrés agudo se pide la presencia de nueve o más sínto- mas que están agrupados cinco grupos. Indique cuál se considera un síntoma de alerta:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_048",
+      "enunciado": "¿Qué trastorno puede dar lugar a la anestesia emocional para experimentar sentimientos de intimidad y ternura?:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_078",
+      "enunciado": "La resistencia de las víctimas de sucesos traumáticos depende de diversos factores, ¿cuál de los siguientes es un factor precipitante de un posterior cuadro de estrés postraumático?:",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_040",
+      "enunciado": "2 3 4 5 6 Señale la opción correcta respecto a las diferencias y similitudes entre el DSM–5 y el CIE–11 sobre el trastorno de adaptación:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_075",
+      "enunciado": "2 3 4 5 6 Según el DSM-5, entre los factores de riesgo peritraumáticos del trastorno de estrés postrau- mático se encuentra:",
+      "clave": "a",
+      "flags": [
+        "SIN_DESCARTE_DISTRACTORES",
+        "DATO_CUANTITATIVO_REVISAR",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_044",
+      "enunciado": "2 3 La etiología del Trastorno de Estrés Postraumático (TEPT) se puede explicar parcialmente por los siguientes modelos o teorías (señale la respuesta correcta):",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_028",
+      "enunciado": "2 Marque la respuesta correcta respecto al Trastorno de Estrés Postraumático (TEPT):",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_038",
+      "enunciado": "2 3 Marque cuál de los siguientes síntomas NO es un síntoma negativo del Trastorno de Estrés Postraumático (TEPT):",
+      "clave": "b",
+      "flags": [
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_047",
+      "enunciado": "2 3 Señale la respuesta correcta sobre el Trastorno de Estrés Postraumático (TEPT):",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_093",
+      "enunciado": "2 3  4 5 ¿Cuál de los siguientes NO constituye un especificador del trastorno de adaptación (DSM-5)?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_202",
+      "enunciado": "2 3  4 5 ¿Con qué patrón disfuncional cerebral ha sido asociado el subtipo disociativo del trastorno de estrés postraumático (TEPT)?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_154",
+      "enunciado": "1 ¿Cuál de las siguientes opciones sobre comorbilidad sería aplicable al Trastorno de Estrés Postraumático (TEPT)?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_159",
+      "enunciado": "1 Indique la respuesta correcta sobre la prevalencia del Trastorno de Estrés Postraumático (TEPT):",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_169",
+      "enunciado": "1 Carmen sufrió un evento estresante hace un mes exacto. Desde entonces presenta irritabili- dad, estado de ánimo decaído, desesperanza, agitación, alteraciones de la conducta y otros síntomas de manera persistente. ¿Qué trastorno se le diagnosticaría a Carmen en base a esta información?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_094",
+      "enunciado": "1 La teoría magnocelular que sostiene una disfunción en las vías visuales responsables de pro- cesar el movimiento y una perseveración de la vía parvocelular, se encuentra en:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_043",
+      "enunciado": "1 Señale la correcta respecto al trastorno de duelo complejo persistente (DSM-5):",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_088",
+      "enunciado": "1 Respecto a las variables facilitadoras del trauma, ¿cuál de las siguientes se corresponden con los factores de mantenimiento?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_093",
+      "enunciado": "1 En el Trastorno de Estrés Postraumático (TEPT) se distingue entre síntomas positivos y nega- tivos, ¿cuál de los siguientes es un síntoma positivo?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_208",
+      "enunciado": "1 Señala la FALSA respecto al Trastorno de Estrés Postraumático (TEPT) (DSM-5):",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_082",
+      "enunciado": "2 4 Respecto a las variables facilitadoras del trauma, señala cuál de los siguientes se caracteriza como factor de mantenimiento:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_097",
+      "enunciado": "2 4 ¿Cuál de los siguientes trastornos es conceptualizado como la epidemia oculta?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_099",
+      "enunciado": "2 4 Respecto al diagnóstico diferencial del trastorno relacionado con traumas y factores de estrés:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_147",
+      "enunciado": "Para hacer el diagnóstico de trastorno de estrés postraumático (TEPT) en adultos y niños ma- yores a 6 años necesitamos:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "UBICACION_REVISAR:Revisar posible Clínica Infantojuvenil"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "Simu 12 comentado_075",
+      "enunciado": "Frewen y Lanius (2014) proponen un modelo al que denominan 4D ¿Qué NO incluye el modelo 4D?",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 13 comentado_049",
+      "enunciado": "Echeburúa (2011) propone tres tipos de variables facilitadoras en la aparición del trauma: predisponentes, precipitantes y de mantenimiento. Señale cuál de las opciones siguientes se incluye entre las variables predisponentes.",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 14 comentado _046",
+      "enunciado": "¿Cuál de las siguientes afirmaciones refleja una d de las actualizaciones introducidas en el DSM-5c TR en relación con los trastornos relacionados P con trauma y factores de estrés?. a e",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 15 comentado_064",
+      "enunciado": "En relación a los sucesos traumáticos sabemos que generan terror e indefensión ya que ponen en peligro la integridad física o psicológica de una persona. No obstante, las diferencias de reacción ante un mismo hecho traumático son PSICOLOGÍA muy variables de unas personas a otras. Es por ello que sería INCORRECTO afirmar acerca de los sucesos traumáticos y el daño psicológico que:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 16 comentado_110",
+      "enunciado": "¿Para qué trastorno plantean Botella, Baños p y Guillen un modelo para el que el factor más l relevante es la evaluación negativa y distorsionada s del suceso estresante (magnificación) y la t minusvaloración de las propias capacidades de r afrontamiento? q t",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 31 comentado Hardcore 1_100",
+      "enunciado": "En cuál de los siguientes trastornos se habla de la metáfora de la digestión psicológica:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 32 comentado hardcore 2_072",
+      "enunciado": "¿Cuál de los siguientes síntomas forma parte del grupo sintomático de alteraciones en la cognición y el estado de ánimo en el trastorno de estrés postraumático?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 7 comentado _069",
+      "enunciado": "Señala la respuesta INCORRECTA en relación al \"Trastorno por duelo prolongado\" (CIE-11):",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 7 comentado _077",
+      "enunciado": "Uno de los siguientes se considera un síntoma de intrusión dentro del TEPT:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 8 comentado _037",
+      "enunciado": "¿Cuál de las siguientes variables facilitadoras del trauma NO es un factor predisponente (pretrauma)?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 8 comentado _057",
+      "enunciado": "Se conoce como pensamientos invasivos a:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 8 comentado _060",
+      "enunciado": "Indica cuál de los siguientes síntomas NO es un síntoma positivo característico del Trastorno de Estrés Postraumático (TEPT):",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 8 comentado _068",
+      "enunciado": "Las reacciones disociativas que puede provocar el trastorno de estrés postraumático (TEPT), ¿en qué categoría de síntomas se incluyen?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 8 comentado _069",
+      "enunciado": "El modelo que explica que los síntomas depresivos del Trastorno por estrés postraumático se producen cuando la persona está expuesta a situaciones aversivas que percibe como incontrolables es: Co",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "simu 9 comentado_099",
+      "enunciado": "Indica cuál de los siguientes síntomas NO es uno d de los síntomas característicos de los momentos a iniciales en el Trastorno de Estrés Postraumático q (TEPT): p c",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simulacro06.2018Comentarios_221",
+      "enunciado": "¿Cuáles fueron los primeros autores que investigaron el papel que los eventos vitales estresantes podían tener sobre la salud?",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_060",
+      "enunciado": "Señale la afirmación correcta sobre el Trastorno de Estrés Postraumático (TEPT):",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_AGOSTO_1_SOL_1_081",
+      "enunciado": "En relación al Trastorno de Estrés Postraumático (TEPT), señale la a�rmación correcta:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_AGOSTO_1_SOL_1_082",
+      "enunciado": "¿Cuál de las siguientes teorías trata de explicar el fenómeno de reexperimentación en el Trastorno de Estrés Postraumático (TEPT)?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_011",
+      "enunciado": "Señale la alternativa correcta respecto al Trastorno de Estrés Postraumático Complejo (TEPT-Complejo) incluido en la CIE-11:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_013",
+      "enunciado": "Respecto al curso del Trastorno de Estrés Postraumático (TEPT) es correcto que:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_014",
+      "enunciado": "Señale la alternativa correcta respecto al trastorno adaptativo en comparación con el tras- torno depresivo mayor:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_DICIEMBRE_2_SOL_1_057",
+      "enunciado": "Indique la afirmación correcta sobre el concepto “ventanas sensibles en el neurodesarollo” de Schalinski et al. (2016):",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_ENERO_1_SOL_1_088",
+      "enunciado": "En relación al trastorno de adaptación, marca la opción FALSA:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_011",
+      "enunciado": "Teniendo en cuenta las diferencias entre el Trastorno de Estrés Agudo (TEA) y el Trastorno de Estrés Postraumático (TEPT), indique la FALSA:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_JUNIO_1_SOL_1_052",
+      "enunciado": "Marque la INCORRECTA en relación al Trastorno de Estrés Postraumático (TEPT):",
+      "clave": "a",
+      "flags": [
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_JUNIO_2_SOL_1_020",
+      "enunciado": "Señale cuál de las siguientes opciones se relaciona con el Trastorno de Estrés Postraumático (TEPT) (DSM-5):",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_JUNIO_2_SOL_1_061",
+      "enunciado": "La arritmia sinusal respiratoria o variabilidad del ritmo cardíaco es una característica trans- diagnóstica de:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "UBICACION_REVISAR:Trastornos de ansiedad"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_MAYO_1_SOL_1_094",
+      "enunciado": "El DALY (año de vida ajustado por la discapacidad) es un índice que permitiría contabilizar el año perdido de vida \"sana\". En términos generales, ¿en qué trastorno podemos ver un mayor impacto de esta disfuncionalidad e incapacitación?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_MAYO_1_SOL_1_120",
+      "enunciado": " la opción correcta:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SmCm06PIR2025_031",
+      "enunciado": "¿Cuántos síntomas se requiere que estén presentes para el diagnóstico de Trastorno de estrés agudo en el criterio B (DSM 5)?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm08PIR2025_168",
+      "enunciado": "¿Cuál de las siguientes variables facilitadoras i del trauma NO es un factor predisponente i (pretrauma)? t d",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm10PIR2025_019",
+      "enunciado": "El grupo de Maercker ofrece una explicación para un trastorno de los que aparecen en el capítulo de Trastornos relacionados con Trauma y Estrés del DSM-5, ¿para cuál? AMIR",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm10PIR2025_020",
+      "enunciado": "¿En qué manual aparece reflejado el TEPT complejo?",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm11PIR2025_171",
+      "enunciado": "¿En dónde se encuentran las reacciones disociativas en el Trastorno de Estrés Postraumático para mayores de 6 años?",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm12PIR2024 2_034",
+      "enunciado": "Las personas que sufren Trastorno de Estrés Postraumático pueden presentar creencias o expectativas negativas persistentes y exageradas sobre sí mismas, los demás o el mundo (p.ej.: “no puedo confiar en nadie”) ¿con qué criterio diagnóstico de dicho trastorno se relacionan estas creencias?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm13PIR2025_054",
+      "enunciado": "La característica principal del Trastorno Adaptativo es una respuesta a una situación psicosocial estresante identificable, donde se presentan síntomas emocionales y/o comportamentales en respuesta a ese factor de estrés. Señale la opción incorrecta respecto al Trastorno Adaptativo entre las siguientes afirmaciones:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm13PIR2025_055",
+      "enunciado": "Hablamos de Trastorno de Estrés Postraumático 5 crónico cuando los síntomas se extienden:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm14PIR2025_073",
+      "enunciado": "¿Cuál de los siguientes trastornos tiene una prevalencia similar en hombres y mujeres?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm14PIR2025_075",
+      "enunciado": "Sabemos que una persona puede experimentar un trastorno de estrés agudo si tiene conocimiento de que un familiar próximo o amigo íntimo ha muerto. Según DSM-5 ¿cómo tendría que ser esta muerte para vivenciarla como traumática?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm15PIR2025_036",
+      "enunciado": "En el TEPT se pueden distinguir síntomas positivos y negativos, señale cuál de los siguientes NO es un síntoma negativo:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm17PIR2025_010",
+      "enunciado": "Respecto a la evolución temporal de los síntomas del TEPT, señale la alternativa INCORRECTA:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm18PIR2025_068",
+      "enunciado": "¿Cuál de los siguientes es considerado un factor de riesgo peritraumático para el desarrollo de un Trastorno de estrés postraumático?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm18PIR2025_069",
+      "enunciado": "¿Cuál de los siguientes NO es un indicador positivo de recuperación en pacientes con Trastorno de estrés postraumático (TEPT)?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm19PIR2024_062",
+      "enunciado": "Indica cuál de los siguientes criterios diagnósticos para estrés postraumático estaría dentro de alteraciones cognitivas:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm19PIR2024_063",
+      "enunciado": "Señala la alternativa correcta en relación a la t teoría del procesamiento de la información para t explicar el trastorno de estrés postraumático: c d",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "SIN_DESCARTE_DISTRACTORES",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm21PIR2025 (2)_042",
+      "enunciado": "¿Cuál de los siguientes acontecimientos traumáticos tiene una mayor probabilidad de 4 llevar al desarrollo de un Trastorno de estrés postraumático?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm22PIR2025 (1)_060",
+      "enunciado": "¿Cuál de los siguientes NO constituye un síntoma sugerido para diagnosticar TEPT complejo por Caballo, Salazar y Carrobles (2024)?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm22PIR2025 (1)_061",
+      "enunciado": "¿Cuál es una característica del trastorno de estrés postraumático según la CIE-11?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm22PIR2025_028",
+      "enunciado": "Señale el autor que defiende la teoría que d explica el origen de los síntomas postraumáticos m argumentando que el individuo procesa la c información traumática como un amenaza m actual: L r",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_009",
+      "enunciado": "¿Cuál de estos NO es un factor de riesgo para desarrollar un Trastorno de estrés postraumático?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm25PIR2025_028",
+      "enunciado": "¿Qué modelo plantea que la información vinculada al sufrimiento de un suceso traumático se almacena a través de dos tipos de representaciones (memoria verbalmente accesible y memoria situacionalmente accesible)?",
+      "clave": "c",
+      "flags": [
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "SmCm25PIR2025_046",
+      "enunciado": "¿Cuál es uno de los problemas actuales del trastorno de adaptación (TA) en las distintas clasificaciones diagnósticas (DSM-5 y CIE-11)?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm25PIR2025_049",
+      "enunciado": "El término DCL (deterioro cognitivo leve) es uno de los más contrastados y extendidos para referirse a las personas en un estadio de predemencia. A pesar de la controversia del mismo muchos neurólogos defienden su utilidad en la práctica clínica. Es por ello que se han realizado múltiples clasificaciones del mismo. Atendiendo a la clasificación de Petersen (2016) sobre subtipos y posibles etiologías, en el caso de que una persona muestre un DCL no mnésico pérdida o ganancia de peso o alteración del apetito; 4. somnio o hipersomnia; 5. agitación o retraso psicomotor; fatiga o anergia; 7. sentimientos de ineptitud o culpabidad excesiva; 8. dificultad para pensar, concentrarse o tor decisiones; y 9. pensamientos de muerte. En cuanto a s características clínicas, aparecen fatiga y alteración del eño en muchos casos, y las alteraciones motoras son muo menos frecuentes, pero son indicativas de una mayor avedad global (Opción 1 incorrecta por ser verdadera). Es y frecuente que el paciente se culpe por el hecho de estar fermo y fracasar en sus responsabilidades, pero esta actud, a menos que sea delirante, no se considera suficiente ra cumplir el criterio de culpa (Opción 2 incorrecta por r verdadera). En los pacientes ancianos, los problemas de moria pueden ser la queja principal y pueden confundirse n los signos precoces de una demencia (“pseudodemena”). Cuando el episodio depresivo se trata con éxito, los oblemas de memoria a menudo desaparecen totalmente. pción 4 incorrecta por ser verdadera). La hiperactividad l eje hipofisiario-hipotalámico-adrenal podría relacionarR con la melancolía, los rasgos psicóticos y el riesgo de posible suicidio (Opción 3 correcta por ser falsa). APIR nual de Psicología Clínica, Tema 2.. Dentro de los especificadores para los trastornos depresivos según el DSM-V, a cuál de ellos pertenece el síntoma “parálisis plúmbea”?",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm29PIR2025_054",
+      "enunciado": "Indica la alternativa INCORRECTA en relación (o a las novedades en DSM-5 con respecto al de trastorno de estrés postraumático: pe da",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm29PIR2025_067",
+      "enunciado": "¿Cuál de las siguientes características es menos relevante para la determinación de un hecho como traumático?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm2PIR2024_066",
+      "enunciado": "Desde el modelo del condicionamiento, por lo que se refiere a las víctimas de agresiones sexuales, ¿cuál de las siguientes afirmaciones es correcta?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm30PIR2025 (1)_036",
+      "enunciado": "¿Cuál de las siguientes variables facilitadoras del trauma se considera un factor de mantenimiento (postrauma)?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm30PIR2025 (1)_048",
+      "enunciado": "¿Cuál de las siguientes afirmaciones sobre las diferencias de género en el riesgo de desarrollar trastorno de estrés postraumático (TEPT) es verdadera?.",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm11PIR2025_049",
+      "enunciado": "En el Trastorno de Estrés Agudo ¿cuántos síntomas son necesarios para poder hacer el diagnóstico?",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "JUSTIFICACION_INSUFICIENTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    }
+  ]
+}
