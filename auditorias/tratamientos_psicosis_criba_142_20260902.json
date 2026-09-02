@@ -1,0 +1,279 @@
+{
+  "screened": 142,
+  "mechanical": {
+    "missingExplanation": 102,
+    "missingReference": 120,
+    "ocrOrContamination": 39,
+    "invalidKey": 0,
+    "emptyOption": 0
+  },
+  "exactDuplicates": [
+    [
+      "Simu 16 comentado_136",
+      "SmCm16PIR2025_138"
+    ]
+  ],
+  "moved": [
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_189",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos somáticos"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_174",
+      "to": "Psicoterapias > Terapias humanistas y existenciales"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_111",
+      "to": "Clínica Adultos > Trastornos del espectro de la esquizofrenia"
+    },
+    {
+      "id": "SmCm1PIR2024_160",
+      "to": "Psicopatología > Psicopatología del pensamiento"
+    },
+    {
+      "id": "SmCm1PIR2024_175",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos alimentarios"
+    },
+    {
+      "id": "SmCm20PIR2024_062",
+      "to": "Tratamientos Adultos > Tratamiento de la depresión y trastornos del ánimo"
+    },
+    {
+      "id": "SmCm20PIR2024_142",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de ansiedad"
+    },
+    {
+      "id": "SmCm20PIR2024_156",
+      "to": "Tratamientos Adultos > Tratamiento de las adicciones"
+    },
+    {
+      "id": "SmCm20PIR2025 (1)_154",
+      "to": "Clínica Adultos > Conducta suicida y autolesión"
+    },
+    {
+      "id": "SmCm20PIR2025 (1)_155",
+      "to": "Clínica Adultos > Conducta suicida y autolesión"
+    },
+    {
+      "id": "SmCm21PIR2025 (2)_061",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de ansiedad"
+    },
+    {
+      "id": "SmCm22PIR2025 (1)_152",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos somáticos"
+    },
+    {
+      "id": "SmCm22PIR2025_173",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos somáticos"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_009",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de personalidad"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_050",
+      "to": "Tratamientos Infantiles > Trastornos de ansiedad infantojuvenil"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_153",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de personalidad"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_156",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de personalidad"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_157",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de personalidad"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_158",
+      "to": "Tratamientos Adultos > Tratamiento del TOC y relacionados"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_160",
+      "to": "Tratamientos Adultos > Tratamiento de las adicciones"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_172",
+      "to": "Tratamientos Adultos > Tratamiento de las adicciones"
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_173",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos disociativos"
+    },
+    {
+      "id": "SmCm23PIR2025_007",
+      "to": "Psicología Social > Procesos de grupo"
+    },
+    {
+      "id": "SmCm23PIR2025_049",
+      "to": "Tratamientos Adultos > Tratamiento del TOC y relacionados"
+    },
+    {
+      "id": "SmCm23PIR2025_052",
+      "to": "Psicoterapias > Psicoanálisis y terapias psicodinámicas"
+    },
+    {
+      "id": "SmCm23PIR2025_147",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de personalidad"
+    },
+    {
+      "id": "SmCm23PIR2025_157",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos alimentarios"
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_002",
+      "to": "Tratamientos Adultos > Tratamiento del TOC y relacionados"
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_082",
+      "to": "Tratamientos Adultos > Tratamiento de la depresión y trastornos del ánimo"
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_093",
+      "to": "Tratamientos Adultos > Tratamiento del trauma y TEPT"
+    },
+    {
+      "id": "SmCm27PIR2025 (1)_069",
+      "to": "Tratamientos Adultos > Introducción"
+    },
+    {
+      "id": "SmCm27PIR2025 (1)_070",
+      "to": "Tratamientos Adultos > Tratamiento de las adicciones"
+    },
+    {
+      "id": "SmCm29PIR2025_057",
+      "to": "Tratamientos Adultos > Tratamiento del trauma y TEPT"
+    },
+    {
+      "id": "SmCm29PIR2025_158",
+      "to": "Tratamientos Infantiles > TDAH"
+    },
+    {
+      "id": "SmCm29PIR2025_182",
+      "to": "Tratamientos Infantiles > Trastornos de ansiedad infantojuvenil"
+    },
+    {
+      "id": "SmCm4PIR2024_132",
+      "to": "Evaluación Psicológica > La entrevista"
+    },
+    {
+      "id": "SmCm4PIR2024_134",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos disociativos"
+    },
+    {
+      "id": "SmCm4PIR2024_155",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de personalidad"
+    },
+    {
+      "id": "SmCm7PIR2024_104",
+      "to": "Tratamientos Adultos > Tratamiento de los trastornos de personalidad"
+    }
+  ],
+  "remaining": [
+    "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_162",
+    "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_167",
+    "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_171",
+    "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_093",
+    "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_138",
+    "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_151",
+    "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_154",
+    "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_084",
+    "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_087",
+    "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_140",
+    "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_104",
+    "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_121",
+    "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_062",
+    "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_091",
+    "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_098",
+    "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_154",
+    "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_178",
+    "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_178",
+    "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_155",
+    "SEPTIEMBRE-DOS-24_COMENTADO_162",
+    "SEPTIEMBRE-DOS-24_COMENTADO_163",
+    "SEPTIEMBRE-DOS-24_COMENTADO_169",
+    "SEPTIEMBRE-UNO-24_COMENTADO_060",
+    "SIM_ABR2_040",
+    "SIM_ABR2_130",
+    "SIM_ABR25_146",
+    "SIM_PERS_AGO25_036",
+    "SIM_PERS_AGO25_062",
+    "Simu 11 comentado_161",
+    "Simu 13 comentado_116",
+    "Simu 13 comentado_117",
+    "Simu 13 comentado_118",
+    "Simu 16 comentado_135",
+    "Simu 16 comentado_136",
+    "Simu 6 comentado__155",
+    "simu 9 comentado_153",
+    "SM_AGOSTO_1_SOL_1_164",
+    "SM_JULIO_1_SOL_1_207",
+    "SM_JULIO_2_SOL_1_140",
+    "SM_JULIO_2_SOL_1_145",
+    "SM_JUNIO_2_SOL_1_126",
+    "SmCm06PIR2025_076",
+    "SmCm08PIR2025_071",
+    "SmCm09PIR2025_016",
+    "SmCm10PIR2025_072",
+    "SmCm11PIR2025_084",
+    "SmCm11PIR2025_087",
+    "SmCm12PIR2024 2_112",
+    "SmCm12PIR2024 2_115",
+    "SmCm13PIR2025_119",
+    "SmCm13PIR2025_133",
+    "SmCm13PIR2025_134",
+    "SmCm14PIR2025_017",
+    "SmCm16PIR2025_138",
+    "SmCm16PIR2025_155",
+    "SmCm16PIR2025_156",
+    "SmCm17PIR2025_144",
+    "SmCm17PIR2025_162",
+    "SmCm17PIR2025_164",
+    "SmCm18PIR2025_039",
+    "SmCm18PIR2025_140",
+    "SmCm18PIR2025_169",
+    "SmCm19PIR2024_036",
+    "SmCm19PIR2024_131",
+    "SmCm1PIR2024_086",
+    "SmCm1PIR2024_087",
+    "SmCm1PIR2024_162",
+    "SmCm1PIR2024_164",
+    "SmCm1PIR2024_166",
+    "SmCm1PIR2024_208",
+    "SmCm20PIR2024_160",
+    "SmCm20PIR2024_190",
+    "SmCm20PIR2025 (1)_063",
+    "SmCm20PIR2025 (1)_156",
+    "SmCm20PIR2025 (1)_166",
+    "SmCm20PIR2025 (1)_167",
+    "SmCm21PIR2025 (2)_083",
+    "SmCm21PIR2025 (2)_181",
+    "SmCm22PIR2025 (1)_107",
+    "SmCm22PIR2025 (1)_109",
+    "SmCm23PIR2025 (2)_151",
+    "SmCm23PIR2025 (2)_175",
+    "SmCm23PIR2025_008",
+    "SmCm23PIR2025_137",
+    "SmCm23PIR2025_150",
+    "SmCm24PIR2025 (1)_005",
+    "SmCm27PIR2025 (1)_034",
+    "SmCm27PIR2025 (1)_036",
+    "SmCm27PIR2025 (1)_043",
+    "SmCm29PIR2025_159",
+    "SmCm29PIR2025_160",
+    "SmCm29PIR2025_161",
+    "SmCm29PIR2025_162",
+    "SmCm2PIR2024_160",
+    "SmCm2PIR2024_161",
+    "SmCm2PIR2024_162",
+    "SmCm3PIR2024_181",
+    "SmCm4PIR2024_133",
+    "SmCm4PIR2024_136",
+    "SmCm4PIR2024_159",
+    "SmCm5PIR2024_035",
+    "SmCm7PIR2024_106",
+    "Simu 7 comentado _200"
+  ]
+}

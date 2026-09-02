@@ -5,7 +5,7 @@
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 1064,
+      "count": 1065,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -21,7 +21,7 @@
     },
     "Clínica Adultos": {
       "slug": "clinica_adultos",
-      "count": 2714,
+      "count": 2717,
       "topics": [
         "Trastornos del espectro de la esquizofrenia",
         "Trastornos depresivos",
@@ -68,7 +68,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4195,
+      "count": 4184,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -93,7 +93,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1977,
+      "count": 1978,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Clasificación de las técnicas de evaluación psicológica",
@@ -177,7 +177,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 662,
+      "count": 664,
       "topics": [
         "Introducción",
         "Historia de las psicoterapias",
@@ -194,7 +194,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 624,
+      "count": 625,
       "topics": [
         "Modelos teóricos sobre la psicología social",
         "Cognición social y procesos de atribución",
@@ -225,7 +225,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 198,
+      "count": 201,
       "topics": [
         "Introducción a la psicología clínica infantil",
         "Discapacidad intelectual",
