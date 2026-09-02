@@ -21,7 +21,7 @@
     },
     "Clínica Adultos": {
       "slug": "clinica_adultos",
-      "count": 2717,
+      "count": 2718,
       "topics": [
         "Trastornos del espectro de la esquizofrenia",
         "Trastornos depresivos",
@@ -68,7 +68,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4184,
+      "count": 4182,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -225,7 +225,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 201,
+      "count": 202,
       "topics": [
         "Introducción a la psicología clínica infantil",
         "Discapacidad intelectual",
