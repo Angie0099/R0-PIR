@@ -1,0 +1,1775 @@
+{
+  "createdAt": "2026-09-02T15:42:32.483Z",
+  "subject": "Clínica Adultos",
+  "topic": "Trastornos adictivos y relacionados con sustancias",
+  "totalTema": 162,
+  "pendingBefore": 116,
+  "summary": {
+    "alta": 32,
+    "media": 80,
+    "baja": 4,
+    "ocr": 83,
+    "explicacionEnOpcion": 4,
+    "sinJustificacion": 36,
+    "sinReferencia": 64,
+    "ubicacionIncompatible": 5,
+    "duplicadosExactos": 2,
+    "casiDuplicados": 10
+  },
+  "batches": {
+    "profundidadPrimero": [
+      "PERSEV_JUL25_D2_034",
+      "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_203",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_059",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_043",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_023",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_167",
+      "SEPTIEMBRE-DOS-24_COMENTADO_134",
+      "SEPTIEMBRE-UNO-24_COMENTADO_166",
+      "Simu 12 comentado_065",
+      "Simu 13 comentado_067",
+      "Simu 31 comentado Hardcore 1_099",
+      "Simu 7 comentado _093",
+      "simu 9 comentado_078",
+      "SM_ABRIL_1_SOL_1_035",
+      "SM_DICIEMBRE_1_SOL_1_052",
+      "SM_ENERO_1_SOL_1_110",
+      "SM_ENERO_1_SOL_1_115",
+      "SM_JULIO_1_SOL_1_048",
+      "SM_JULIO_2_SOL_1_022",
+      "SM_JUNIO_2_SOL_1_019",
+      "SM_JUNIO_2_SOL_1_030",
+      "SM_JUNIO_2_SOL_1_049",
+      "SM_JUNIO_2_SOL_1_050",
+      "SM_MAYO_1_SOL_1_098",
+      "SM_MAYO_1_SOL_1_106",
+      "SmCm12PIR2024 2_049",
+      "SmCm13PIR2025_075",
+      "SmCm18PIR2025_051",
+      "SmCm27PIR2025 (1)_116",
+      "SmCm29PIR2025_082",
+      "SmCm2PIR2024_059",
+      "SmCm7PIR2024_035"
+    ],
+    "profundidadDespues": [
+      "OCTUBRE-UNO-24_COMENTADO_075",
+      "OCTUBRE-UNO-24_COMENTADO_085",
+      "PERSEV_JUL25_D2_051",
+      "PERSEV_JUL25_D2_052",
+      "PERSEV_JUL25_D2_057",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_131",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_159",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_049",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_030",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_065",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_070",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_068",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_085",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_032",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_037",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_062",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_066",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_073",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_090",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_024",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_025",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_027",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_089",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_026",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_035",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_045",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_054",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_133",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_033",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_037",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_061",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_079",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_036",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_040",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_027",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_062",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_079",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_093",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_109",
+      "SEPTIEMBRE-DOS-24_COMENTADO_115",
+      "SEPTIEMBRE-DOS-24_COMENTADO_116",
+      "SEPTIEMBRE-UNO-24_COMENTADO_165",
+      "SEPTIEMBRE-UNO-24_COMENTADO_169",
+      "Simu 13 comentado_065",
+      "Simu 13 comentado_066",
+      "Simu 14 comentado _065",
+      "Simu 15 comentado_049",
+      "Simu 15 comentado_067",
+      "Simu 15 comentado_084",
+      "Simu 32 comentado hardcore 2_059",
+      "Simu 6 comentado__066",
+      "Simu 7 comentado _086",
+      "Simu 7 comentado _105",
+      "SM_ABRIL_1_SOL_1_054",
+      "SM_ABRIL_1_SOL_1_203",
+      "SM_ABRIL_2_SOL_1_058",
+      "SM_ABRIL_2_SOL_1_086",
+      "SM_DICIEMBRE_1_SOL_1_051",
+      "SM_ENERO_1_SOL_1_082",
+      "SM_ENERO_1_SOL_1_098",
+      "SM_JULIO_1_SOL_1_054",
+      "SM_JULIO_2_SOL_1_053",
+      "SM_MAYO_1_SOL_1_103",
+      "SmCm10PIR2025_041",
+      "SmCm12PIR2024 2_048",
+      "SmCm13PIR2025_076",
+      "SmCm17PIR2025_119",
+      "SmCm1PIR2024_141",
+      "SmCm1PIR2024_149",
+      "SmCm23PIR2025 (2)_078",
+      "SmCm23PIR2025_069",
+      "SmCm24PIR2025 (1)_060",
+      "SmCm24PIR2025 (1)_070",
+      "SmCm25PIR2025_048",
+      "SmCm25PIR2025_110",
+      "SmCm27PIR2025 (1)_114",
+      "SmCm28PIR2025_085",
+      "SmCm30PIR2025 (1)_043",
+      "SmCm7PIR2024_034",
+      "DICIEMBRE-UNO-24_COMENTADO_113"
+    ],
+    "revisionFinal": [
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_032",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_038",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_087",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_102"
+    ]
+  },
+  "rows": [
+    {
+      "id": "OCTUBRE-UNO-24_COMENTADO_075",
+      "enunciado": "1 ¿A qué edad se considera que una persona dejará de consumir, o bien consolidará el patrón de consumo?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "OCTUBRE-UNO-24_COMENTADO_085",
+      "enunciado": "Respecto al trastorno por videojuegos, señale la afirmación correcta.",
+      "clave": "d",
+      "flags": [
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEV_JUL25_D2_034",
+      "enunciado": "¿Qué sesgo del juego de apuestas consiste en creer que una habilidad o estrategia personal puede modificar un resultado aleatorio?",
+      "clave": "c",
+      "flags": [
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": [
+        {
+          "id": "SEPTIEMBRE-UNO-24_COMENTADO_166",
+          "score": 0.79
+        }
+      ]
+    },
+    {
+      "id": "PERSEV_JUL25_D2_051",
+      "enunciado": "¿Cuál de los modelos teóricos sobre la etiología de los trastornos de juego es el primero que se centra exclusivamente en trastorno de juego online y además ofrece una propuesta de intervención?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEV_JUL25_D2_052",
+      "enunciado": "Según las diferentes clasi caciones diagnósticas, ¿cómo podríamos diagnosticar el trastorno por videojuegos?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEV_JUL25_D2_057",
+      "enunciado": "Un paciente con larga historia de consumo de cannabis presenta un cuadro de apatía, indife- rencia, problemas de concentración y sin ganas de hacer nada, está experimentando lo que se conoce como:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_131",
+      "enunciado": "2 3 4 5 6 ¿En cuál de los siguientes trastornos relacionados con sustancias y trastornos adictivos NO se encuentra el especificador “con/sin alteraciones de la percepción”?:",
+      "clave": "b",
+      "flags": [
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_159",
+      "enunciado": "2 3 4 5 6 ¿En cuál de los siguientes modelos sobre el uso de internet, tiene un papel central la falta de control, haciéndose más marcada por acción de los refuerzos positivos y negativos?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_049",
+      "enunciado": "Respecto a los distintos tipos de tolerancia, en el contexto de trastornos por consumo de sus- tancias, señale la alternativa correcta:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_203",
+      "enunciado": "2 3 4 5  6 En el ámbito de las adicciones, el intenso síndrome de abstinencia, llamado crash, que se ca- racteriza por disforia, dolores gastrointestinales, craving, depresión o hiperalgesia, ¿con qué sustancia se produce cuando se abandona su consumo?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_030",
+      "enunciado": "1 ¿En cuál de las siguientes sustancias NO se puede realizar un diagnóstico por intoxicación?:",
+      "clave": "d",
+      "flags": [
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_065",
+      "enunciado": "1 ¿A partir de qué cantidad de cafeína se considera que pueden aparecer espas­mos musculares, divagaciones de pensamiento y del habla, taquicardia o arritmia cardíaca, periodos de infati- gabilidad y agitación psicomotora?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_070",
+      "enunciado": "1 ¿A qué sustancia se deben los siguientes síntomas: humor disfórico, retraso psicomotor o agi- tación, insomnio o hipersomnia, sueños vívidos y fatiga?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_059",
+      "enunciado": "1 La sustancia que en el caso de empezar a consumirla antes de los 16 años parece incrementar el riesgo de padecer tumor de testículos en varones es:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": [
+        {
+          "id": "SmCm2PIR2024_059",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_068",
+      "enunciado": "1 Según el informe sobre el consumo de drogas que elabora la Oficina sobre Drogas y Crimen de Naciones Unidas (2016), ¿cuál es la ratio de personas entre 16 y 64 años que han consu- mido al menos una droga ilegal en el último año?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_032",
+      "enunciado": "Señale en qué trastorno se puede utilizar el especificador \"con alteraciones en la percepción\" en el caso de ser necesario:",
+      "clave": "a",
+      "flags": [
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_BAJA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_085",
+      "enunciado": "Uno de los síntomas que se corresponde a la abstinencia de cafeína es:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_032",
+      "enunciado": "2 3 4 5 6 ¿A qué tipo de tolerancia hace referencia la disminución de la sensibilidad a la sustancia de- bido a la inducción enzimática que provoca la sustancia en el organismo?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_037",
+      "enunciado": "2 3 4 5 6 De acuerdo con el modelo neurocognitivo tripartito del trastorno de juego por internet (Wei et al., 2017):",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_043",
+      "enunciado": " 3 El temblor distal de las manos es un síntoma característico del síndrome de abstinencia de:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_062",
+      "enunciado": "2 3 ¿Qué sustancias no tienen, según DSM-5, síndrome de abstinencia? Señala la correcta:",
+      "clave": "c",
+      "flags": [
+        "OCR_CABECERA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_066",
+      "enunciado": "2 3 ¿Qué modalidad sensorial de alucinación aparece más frecuentemente en las Alucinosis Alcohólicas?:",
+      "clave": "b",
+      "flags": [
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_073",
+      "enunciado": "2 3 Indique qué droga es la más consumida en población adulta anualmente:",
+      "clave": "d",
+      "flags": [
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_090",
+      "enunciado": "2 3 En qué edades se da más frecuentemente el abandono o la consolidación del consumo de una droga:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_023",
+      "enunciado": " Señale la sustancia que si se empieza a consumir antes de los 16 años se asocia con el incre- mento de padecer tumor de testículos:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_024",
+      "enunciado": "2 Marque a partir de qué cantidad de cafeína se producen espamos, divagación del pensa- miento, arritmia, infatigabilidad y agitación psicomotora, así como delirium tremens y cua- dros psicóticos:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_025",
+      "enunciado": "2 Respecto a los modelos explicativos sobre el uso de videojuegos, marque cuál de los siguien- tes se considera el primer modelo en centrarse exclusivamente en el juego online:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_027",
+      "enunciado": "2 Marque la sustancia, la abstinencia de la cual produce humor disfórico, lagrimeo o rinorrea, dilatación pupilar, piloerección o sudoración, diarrea y bostezos:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_089",
+      "enunciado": "¿A partir de qué cantidad diaria de cafeína puede considerarse, en general, que puede producir efectos negativos en población adulta sana?",
+      "clave": "c",
+      "flags": [
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_026",
+      "enunciado": "1 ¿El síndrome de abstinencia de qué sustancia se asocia a aumentos de las ondas theta y re- ducciones de las ondas beta?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_035",
+      "enunciado": "1 Entre las sustancias que incluyen el especificador de “Con alteraciones de la percepción” NO se encuentra:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_045",
+      "enunciado": "1 ¿Cuál de los siguientes modelos etiológicos sobre el juego patológico incluye una propuesta de intervención?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_054",
+      "enunciado": "1 ¿El consumo de qué sustancia provoca visión borrosa o diplopía, según sus criterios diagnósticos?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_133",
+      "enunciado": "1 ¿Con el consumo de qué cantidad de cafeína una persona puede tener espasmos, divagación, taquicardia o arítmia, infatigabilidad y agitación?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_167",
+      "enunciado": "1 ¿Cuál de las siguientes opciones NO está contemplada en el modelo de Basson?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "AUTOR_MODELO_REVISAR",
+        "UBICACION_INCOMPATIBLE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": "Psicología Básica > Motivación y emoción / sexualidad",
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_033",
+      "enunciado": "1 En relación a los trastornos relacionados con sustancias (DSM-5), ¿cuál es la única sustancia que NO tiene diagnóstico de trastorno por consumo?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CABECERA",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_037",
+      "enunciado": "1 En relación a los modelos sobre la adicción a internet, ¿qué caracteriza al modelo de Dong y Ponteza?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_038",
+      "enunciado": "¿Qué sesgo del juego consiste en creer que una habilidad o estrategia propia puede alterar un resultado aleatorio?",
+      "clave": "a",
+      "flags": [
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_BAJA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_061",
+      "enunciado": "1 Si una persona presenta nistagmo vertical, hipertensión, entumecimiento, ataxia, disartria, rigidez muscular, convulsiones e hiperacusia, ¿de qué tipo de droga está sufriendo una intoxicación?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_079",
+      "enunciado": "1 En relación a los diferentes tipos de sustancias, ¿en cuál son frecuentes los flashbacks?:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_036",
+      "enunciado": "1 ¿Qué droga, cuando hay un alto consumo, puede producir delirium tremens, cuadros psicóti- cos y pueden apreciarse alteraciones leves sensoriales, como zumbido de los oídos y destellos luminosos?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_040",
+      "enunciado": "1 Una persona que presenta taquicardia, midriasis, hipertensión y alucinaciones con una prueba de realidad alterada, padece con más probabilidad:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_087",
+      "enunciado": "En el juego de apuestas, ¿qué sesgo se incluye entre los errores de control?",
+      "clave": "c",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_027",
+      "enunciado": "1 ¿Cuál de las siguientes sustancias puede tener, aunque sean raros, efectos tóxicos graves como la hipertermia?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_062",
+      "enunciado": "1 Señale la opción correcta en lo que se refiere a la progresión del Trastorno por Juegos de Apuestas (TJA):",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_079",
+      "enunciado": "2 4 ¿Qué sustancia adictiva presenta como criterio diagnóstico del síndrome de abstinencia difi- cultades para dormir, como las pesadillas?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_093",
+      "enunciado": "2 4 ¿Qué tipo de trastorno se caracteriza por presentar como factor de riesgo y pronóstico: \"en- tre los fenotipos de bajo riesgo están aquellos que sufren un enrojecimiento agudo de la piel\"?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_102",
+      "enunciado": "En juego patológico, ¿qué error cognitivo se incluye entre los errores de predicción?",
+      "clave": "a",
+      "flags": [
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_BAJA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_109",
+      "enunciado": "2 4 Señala cuál de las siguientes afirmaciones es CORRECTA respecto a las teorías formuladas para explicar la adicción a los videojuegos:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-DOS-24_COMENTADO_115",
+      "enunciado": "1 ¿Cuál es la droga ilegal más consumida en la población española?:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-DOS-24_COMENTADO_116",
+      "enunciado": "1 Criterio diagnóstico del trastorno por juegos de apuestas que consiste en volver a jugar para intentar recuperar las pérdidas económicas provocadas por el juego:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-DOS-24_COMENTADO_134",
+      "enunciado": "1 La relación positiva entre el ejercicio físico y la salud mental estaría mediada por una serie de procesos biológicos, señale la CORRECTA:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE",
+        "UBICACION_INCOMPATIBLE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": "Psicología Básica > Motivación y emoción",
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_165",
+      "enunciado": "¿Con qué cantidad de cafeína una persona puede presentar aumento de colesterol, hiperten- sión, úlceras, problemas del sueño, arítmias, artritis, migrañas, etc.?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_166",
+      "enunciado": "¿Qué sesgo del juego de apuestas consiste en creer que una habilidad o estrategia propia puede modificar la probabilidad de un resultado aleatorio?",
+      "clave": "a",
+      "flags": [
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": [
+        {
+          "id": "PERSEV_JUL25_D2_034",
+          "score": 0.79
+        }
+      ]
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_169",
+      "enunciado": "¿Qué tipo de tolerancia tiene que ver con mecanismos del propio cuerpo como absorción, distribución, metabolismo y eliminación de la droga?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 12 comentado_065",
+      "enunciado": "El hecho de que una persona, tras consumir alcohol, refiera que no recuerda nada de lo AMIR sucedido mientras estaba ebrio, se conoce con el nombre de:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": [
+        {
+          "id": "SmCm12PIR2024 2_049",
+          "score": 0.93
+        }
+      ]
+    },
+    {
+      "id": "Simu 13 comentado_065",
+      "enunciado": "Los derivados del cannabis se incluyen dentro de:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 13 comentado_066",
+      "enunciado": "En relación a temática de las adicciones, ¿en qué consiste el término “Dependencia cruzada”?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 13 comentado_067",
+      "enunciado": "Señale qué alternativa de las siguientes es m INCORRECTA en relación al consumo de A sustancias: 6",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "JUSTIFICACION_INSUFICIENTE",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": [
+        {
+          "id": "SmCm13PIR2025_075",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": "Simu 14 comentado _065",
+      "enunciado": "Señala la opción correcta en relación con la clasificación de las drogas:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_049",
+      "enunciado": "¿Cuál de los siguientes NO es un trastorno relacionado con el alcohol recogido en el DSM-5?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_067",
+      "enunciado": "El Trastorno por Consumo de Sustancias del DSM-5 tiene varios especificadores, entre ellos, el especificador de gravedad. Diremos que el trastorno es leve si se cumple la presencia de:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_084",
+      "enunciado": "¿Cuál es la droga que produce, en relación a PSICOLOGÍA A otras drogas, un elevado grado de dependencia psicológica y poca dependencia física?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 31 comentado Hardcore 1_099",
+      "enunciado": "¿Qué tipo de sustancia son los productos adelgazantes?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_CABECERA",
+        "UBICACION_INCOMPATIBLE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": "Psicobiología > Acción de los fármacos en el sistema nervioso",
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 32 comentado hardcore 2_059",
+      "enunciado": "Según el DSM-5 ¿Cuál de las siguientes afirmaciones sobre el trastorno por consumo de cafeína es cierta?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 6 comentado__066",
+      "enunciado": "¿Cuál de los siguientes síntomas puede aparece durante la intoxicación por alcohol según el DSM-5?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CABECERA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 7 comentado _086",
+      "enunciado": "¿Cuál de las siguientes alternativas es una consecuencia del consumo de cannabis?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "Simu 7 comentado _093",
+      "enunciado": "¿Cuál de las siguientes sustancias no incluye un \"síndrome de abstinencia\", según el DSM-5?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_CABECERA",
+        "DUPLICADO_EXACTO",
+        "AUTOR_MODELO_REVISAR",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [
+        "SmCm7PIR2024_035"
+      ],
+      "casiDuplicados": [
+        {
+          "id": "SmCm7PIR2024_035",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": "Simu 7 comentado _105",
+      "enunciado": "¿Qué autor del campo de las adicciones sostiene que la sustancia actúa como reforzador positivo al inicio del consumo y como reforzador negativo cuando hay dependencia física?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_CABECERA",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "simu 9 comentado_078",
+      "enunciado": "Muchas personas que padecen obesidad responden a las denominadas “adicciones hiperfágicas”. Alonso-Fernández (2003) estableció cuatro C criterios fundamentales, ¿cuál NO es uno de ellos?: T l",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "UBICACION_INCOMPATIBLE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": "Clínica Adultos > Trastornos de la conducta alimentaria",
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_035",
+      "enunciado": "¿Qué tipo de tolerancia es aquella correspondiente a la propiedad que tienen algunas drogas de producir los mismos efectos, pero con dosis bajas?:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_054",
+      "enunciado": "DSM-5 distingue entre trastorno por consumo de alcohol, intoxicación por alcohol, abstinen- cia de alcohol, otros trastornos inducidos por el alcohol y trastorno relacionado con el al- cohol no especificado. Señale cuál de los siguientes signos o síntomas pertenece a la intoxica- ción por alcohol:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_203",
+      "enunciado": "¿Cuál es la sustancia psicoactiva estimulante de mayor consumo?:",
+      "clave": "d",
+      "flags": [
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ABRIL_2_SOL_1_058",
+      "enunciado": "¿Hacia qué trastorno relacionado con sustancias y trastornos adictivos nos orientaremos, si el sujeto presenta aumento del apetito, boca seca, taquicardia e inyección conjuntival?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ABRIL_2_SOL_1_086",
+      "enunciado": "¿A partir de qué cantidad de consumo de cafeína se considera que produce dependencia?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_051",
+      "enunciado": "¿Qué sustancia no incluye el diagnóstico de «intoxicación» en el DSM-5 pero sí en la CIE-10?:",
+      "clave": "b",
+      "flags": [
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_052",
+      "enunciado": "Señale la respuesta INCORRECTA respecto a las diferencias de género encontradas en el Trastorno de Juego por Apuestas (TJA):",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ENERO_1_SOL_1_082",
+      "enunciado": "¿En qué droga el síndrome de abstinencia puede llevar con más probabilidad a la muerte si no se trata el mismo?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ENERO_1_SOL_1_098",
+      "enunciado": "El DSM-5 ha incluido dentro de la denominación de trastornos relacionados con estimulantes a la cocaína, la sustancia anfetamínica y otros estimulantes. Relacionado con las anfetaminas, indica la opción correcta:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ENERO_1_SOL_1_110",
+      "enunciado": "Respecto al género en el Trastorno por Juegos de Apuesta (TJA), señala la opción correcta:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_ENERO_1_SOL_1_115",
+      "enunciado": "¿En qué consiste la paradoja de la nicotina?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_048",
+      "enunciado": "¿Qué característica presenta la abstinencia a los estimulantes (anfetamina, cocaína)?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_054",
+      "enunciado": "¿Qué característica se corresponde con el trastorno por videojuegos?",
+      "clave": "c",
+      "flags": [
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_022",
+      "enunciado": "Las náuseas o vómitos, el lagrimeo o rinorrea, la dilatación pupilar, piloerección o sudoración, y la diarrea, son síntomas característicos del síndrome de abstinencia de:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_053",
+      "enunciado": "Señale la afirmación correcta en relación con las drogas:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_JUNIO_2_SOL_1_019",
+      "enunciado": "¿Cuál de los siguientes trastornos relacionados con el consumo de sustancias NO incluye la especi�cación “Con alteraciones de la percepción”?",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_JUNIO_2_SOL_1_030",
+      "enunciado": "El sesgo de representatividad es un sesgo implicado en el juego que conduce a errores en las apuestas. Considere cuál de las siguientes hace referencia a este sesgo:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_JUNIO_2_SOL_1_049",
+      "enunciado": "En relación al trastorno por consumo de tabaco:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_JUNIO_2_SOL_1_050",
+      "enunciado": "Dentro de los modelos sobre el uso de videojuegos, encontramos el modelo cognitivo – con- ductual del trastorno de juego por Internet (Dong y Potenza, 2014). Señale cuál de las si- guientes a�rmaciones corresponde a dicho modelo:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_MAYO_1_SOL_1_098",
+      "enunciado": "Señale el modelo para el trastorno por videojuegos (Belloch, 2020) que plantea que las perso- nas que presentan dicho trastorno muestran un sistema impulsivo hiperactivo, un sistema re- �exivo hipoactivo y un sistema interoceptivo que no logra establecer balance entre ambos:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_MAYO_1_SOL_1_103",
+      "enunciado": "El Trastorno de adicción a los videojuegos, patología cada vez más emergente sobretodo en- tre los jóvenes, suele presentar altas tasas de comorbilidad. Entre ellas destacamos:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SM_MAYO_1_SOL_1_106",
+      "enunciado": "¿Cuál es la droga más común consumida a diario?:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm10PIR2025_041",
+      "enunciado": "La encefalopatía de Wernicke se suele encontrar con frecuencia en pacientes con:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm12PIR2024 2_048",
+      "enunciado": "Un paciente orientado y con conciencia conservada que experimenta alucinaciones de tipo auditivo tras dos días de suspender la ingesta alcohólica probablemente presenta:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm12PIR2024 2_049",
+      "enunciado": "El hecho de que una persona, tras consumir alcohol, refiera que no recuerda nada de lo sucedido mientras estaba ebrio, se conoce con el nombre de:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": [
+        {
+          "id": "Simu 12 comentado_065",
+          "score": 0.93
+        }
+      ]
+    },
+    {
+      "id": "SmCm13PIR2025_075",
+      "enunciado": "Señale qué alternativa de las siguientes es INCORRECTA en relación al consumo de sustancias:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": [
+        {
+          "id": "Simu 13 comentado_067",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": "SmCm13PIR2025_076",
+      "enunciado": "Los trastornos por consumo de sustancias aparecen en un amplio rango de gravedad, ¿qué gravedad tendría una persona que presenta 7 síntomas?",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm17PIR2025_119",
+      "enunciado": "Las crisis epilépticas pueden ser síntomas de p abstinencia de: c r",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm18PIR2025_051",
+      "enunciado": "¿Con cuántos síntomas consideramos que un trastorno por consumo de sustancias (DSM 5) es de gravedad leve?: PSICOLOGÍA AM",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm1PIR2024_141",
+      "enunciado": "Un paciente que acude a un dispositivo de atención a las drogodependencias explica, en la primera entrevista, haber sido derivado porque en el último examen médico le detectaron parámetros indicativos de daño hepático por consumo excesivo de alcohol. Se muestra sorprendido ante la derivación ya que refiere que su círculo social tiene el mismo patrón de consumo que él. ¿En qué etapa del cambio es probable que se encuentre el paciente?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm1PIR2024_149",
+      "enunciado": "Señale cuál de las siguientes afirmaciones es CORRECTA con respecto a la descripción del trastorno de juego por internet realizada en el DSM-5: A 2025 / 2026",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_078",
+      "enunciado": "Respecto a la cafeína, señale la INCORRECTA: inc",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025_069",
+      "enunciado": "Existen diversas tipologías del Alcoholismo, en ti cuanto a las que se mencionan a continuación, ca señale la opción correcta: ti",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_060",
+      "enunciado": "Señala cuál de las siguientes alternativas NO se corresponde con un cambio que se haya producido el DSM-5 respecto a su versión anterior, en lo relativo a los trastornos adictivos y relacionados con sustancias:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_070",
+      "enunciado": "Según DSM 5, marque la opción de respuesta 7 correcta en relación al Trastorno por consumo de cannabis:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm25PIR2025_048",
+      "enunciado": "Según el modelo transteórico del cambio (Prochaska y Diclemente, 1992), el último estadío del cambio se denomina:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm25PIR2025_110",
+      "enunciado": "Una de las principales situaciones facilitadoras del inicio de la conducta de fumar es: C",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm27PIR2025 (1)_114",
+      "enunciado": "¿Qué tipo de efecto ejercen sobre el sistema nervioso central los opiáceos?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm27PIR2025 (1)_116",
+      "enunciado": "Señala cual de los siguientes alternativas NO se corresponde a uno de los síntomas de la intoxicación por inhalantes:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm28PIR2025_085",
+      "enunciado": "¿Cuál de los siguientes efectos del cannabis en la respuesta sexual humana es incorrecto?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm29PIR2025_082",
+      "enunciado": "¿En qué trastorno neurocognitivo es característico que los pacientes manifiesten estos 3 síntomas clínicos característicos: demencia intensa y devastadora de curso rápido, enfermedad piramidal y extrapiramidal con movimientos involuntarios y actividad particular del EEG (ondas trifásicas)?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_CABECERA",
+        "UBICACION_INCOMPATIBLE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": "Clínica Adultos > Trastornos neurocognitivos",
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm2PIR2024_059",
+      "enunciado": "La sustancia que en el caso de empezar a consumirla antes de los 16 años parece incrementar el riesgo de padecer tumor de testículos en varones es:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "DATO_CUANTITATIVO_REVISAR",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": [
+        {
+          "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_059",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": "SmCm30PIR2025 (1)_043",
+      "enunciado": "¿Qué síntoma de los expuestos se relaciona con c la intoxicación por cannabis (DSM-5)?: d c",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm7PIR2024_034",
+      "enunciado": "¿Cuál de las siguientes drogas produce un fuerte efecto de miosis durante la intoxicación?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_CABECERA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    },
+    {
+      "id": "SmCm7PIR2024_035",
+      "enunciado": "¿Cuál de las siguientes sustancias no incluye un \"síndrome de abstinencia\", según el DSM-5?",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "DUPLICADO_EXACTO",
+        "AUTOR_MODELO_REVISAR",
+        "CASI_DUPLICADO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [
+        "Simu 7 comentado _093"
+      ],
+      "casiDuplicados": [
+        {
+          "id": "Simu 7 comentado _093",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": "DICIEMBRE-UNO-24_COMENTADO_113",
+      "enunciado": "El modelo de Blaszczynski y Nower (2002) plantea tres tipos de desarrollo del Trastorno por Juego de Apuestas (TJA) en función de las características personales. ¿Cuál de las siguientes NO corresponde con uno de ellos?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "OCR_CABECERA",
+        "JUSTIFICACION_INSUFICIENTE",
+        "AUTOR_MODELO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinoSugerido": null,
+      "duplicadosExactos": [],
+      "casiDuplicados": []
+    }
+  ]
+}
