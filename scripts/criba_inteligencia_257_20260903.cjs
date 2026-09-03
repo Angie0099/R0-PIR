@@ -1,0 +1,30 @@
+const fs=require('fs'),P='public/banco/',topic='Tests de inteligencia';
+const bank=JSON.parse(fs.readFileSync(P+'evaluacion_psicologica.json')),m=JSON.parse(fs.readFileSync(P+'manifest.json'));
+const all=Object.values(m.subjects).flatMap(s=>JSON.parse(fs.readFileSync(P+s.slug+'.json'))),ok=new Set(['VALIDADA_ORIGINAL','CORREGIDA','VALIDADA']);
+const questions=bank.filter(q=>q.t?.includes(topic)),pending=questions.filter(q=>!ok.has(q.v));
+const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+const byText=new Map();for(const q of all){const k=norm(q.e);if(k)(byText.get(k)||byText.set(k,[]).get(k)).push(q.id)}
+function route(q){const e=q.e||'',s=[e,...Object.values(q.o||{})].join(' '),r=[];
+ if(/entrevista|par[aá]frasis|reflejo|clarificaci[oó]n|devoluci[oó]n|proxemia|paraling[uü][ií]st|comunicaci[oó]n no verbal|escucha/i.test(e))r.push('La entrevista');
+ if(/observaci[oó]n|observador|muestreo intrasesional|registro descriptivo|productos de conducta/i.test(e))r.push('Técnicas de observación');
+ if(/autoinforme/i.test(e))r.push('Los autoinformes');
+ if(/t[eé]cnica objetiva|taquitoscopio|term[oó]metro de ranura|percepci[oó]n t[aá]ctil|actividad electrod[eé]rmica|psicofisiol/i.test(e))r.push('Técnicas objetivas');
+ if(/t[eé]cnica subjetiva|rejilla de Kelly|RepTest|clasificaci[oó]n Q|Q-Sort|diferencial sem[aá]ntico|hermen[eé]utic|narrativ/i.test(e))r.push('Técnicas subjetivas');
+ if(/proyectiv|Rorschach/i.test(e))r.push('Técnicas proyectivas');
+ if(/MMPI|Millon|MACI|16PF|NEO-|test.*personalidad/i.test(s))r.push('Tests de personalidad');
+ if(/neuropsicol|Wisconsin|WCST|Halstead|afasia|funciones ejecutivas/i.test(e))r.push('Evaluación neuropsicológica');
+ if(/miedo|fobia|ansiedad/i.test(e))r.push('Evaluación de la ansiedad');
+ if(/adicci[oó]n|alcohol|droga|tabaco/i.test(e))r.push('Evaluación de adicciones');
+ if(/SENA|maltrato infantil|autismo|TEA\b|escolar de \d|adolescente de \d|niñ[oa]s? y adolescentes/i.test(e))r.push('Evaluación infantil');
+ if(/proceso de evaluaci[oó]n|formulaci[oó]n de hip[oó]tesis|nivel de inferencia|informe oral|sistemas de expertos|evaluaci[oó]n informatizada|c[oó]digo deontol[oó]gico/i.test(e))r.push('Fundamentos de la evaluación psicológica');
+ if(/clasificaci[oó]n de t[eé]cnicas|tipo de instrumento|nivel de cualificaci[oó]n/i.test(e))r.push('Clasificación de las técnicas de evaluación psicológica');
+ if(/trastorno|psicopatolog|pseudociesis|prevenci[oó]n|actitud|estereotipo|grupo|cohesi[oó]n|influencia minoritaria/i.test(e)&&!r.length)r.push('FUERA_DE_EVALUACION_REVISAR');
+ return [...new Set(r)];}
+const rows=pending.map(q=>{const opts=Object.values(q.o||{}),txt=[q.e,...opts,q.x,q.r].join(' '),f=[];
+ if(!q.x?.trim())f.push('SIN_JUSTIFICACION');if(!q.r?.trim())f.push('SIN_REFERENCIA');if(!['a','b','c','d'].includes(q.c))f.push('CLAVE_INVALIDA');if(!['a','b','c','d'].every(k=>q.o?.[k]?.trim()))f.push('OPCION_VACIA');
+ if(/�|||PSICOLOGÍA|AMIR|\b(?:R[IC]\s*\d|soluci[oó]n|respuesta correcta)\b/i.test(txt))f.push('OCR_BASURA');if(/\b\w{2,}-\s+\w{2,}\b|^(?:\s*\d+){2,}/.test(q.e||''))f.push('OCR_CORTE');
+ if(opts.some(v=>/(respuesta|opci[oó]n|alternativa)\s*(?:correcta|incorrecta)|\bR[IC]\s*[1-4]|p[aá]gina\s+\d/i.test(v)))f.push('EXPLICACION_EN_OPCION');
+ const dup=(byText.get(norm(q.e))||[]).filter(id=>id!==q.id);if(dup.length)f.push('DUPLICADO_EXACTO');if(q.x?.trim()&&q.x.length<140)f.push('JUSTIFICACION_INSUFICIENTE');if(q.x&&!/(opci[oó]n|alternativa|\ba\b|\bb\b|\bc\b|\bd\b|R[IC][1-4])/i.test(q.x))f.push('SIN_DESCARTE_DISTRACTORES');
+ const dest=route(q);if(dest.length)f.push('UBICACION_REVISAR');const hi=f.some(x=>/CLAVE|VACIA|EXPLICACION|DUPLICADO|UBICACION|OCR_BASURA/.test(x)),med=f.some(x=>/SIN_|OCR_CORTE/.test(x));return{id:q.id,enunciado:q.e,clave:q.c,flags:f,severity:hi?'PRIORIDAD_ALTA':med?'PRIORIDAD_MEDIA':'PRIORIDAD_BAJA',destinosSugeridos:dest,duplicados:dup};});
+const ids=k=>rows.filter(x=>x.severity===k).map(x=>x.id),summary={totalTema:questions.length,yaValidadas:questions.length-pending.length,pendientes:pending.length,alta:ids('PRIORIDAD_ALTA').length,media:ids('PRIORIDAD_MEDIA').length,baja:ids('PRIORIDAD_BAJA').length,ocr:rows.filter(x=>x.flags.some(f=>f.startsWith('OCR'))).length,sinJustificacion:rows.filter(x=>x.flags.includes('SIN_JUSTIFICACION')).length,sinReferencia:rows.filter(x=>x.flags.includes('SIN_REFERENCIA')).length,explicacionEnOpcion:rows.filter(x=>x.flags.includes('EXPLICACION_EN_OPCION')).length,duplicadosExactos:rows.filter(x=>x.flags.includes('DUPLICADO_EXACTO')).length,ubicacionRevisar:rows.filter(x=>x.flags.includes('UBICACION_REVISAR')).length};
+const out='auditorias/evaluacion_inteligencia_criba257_20260903.json';fs.mkdirSync('auditorias',{recursive:true});fs.writeFileSync(out,JSON.stringify({createdAt:new Date().toISOString(),subject:'Evaluación Psicológica',topic,summary,batches:{alta:ids('PRIORIDAD_ALTA'),media:ids('PRIORIDAD_MEDIA'),baja:ids('PRIORIDAD_BAJA')},rows},null,2)+'\n');console.log(JSON.stringify({out,...summary},null,2));
