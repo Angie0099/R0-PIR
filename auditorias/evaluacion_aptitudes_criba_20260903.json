@@ -1,0 +1,3271 @@
+{
+  "createdAt": "2026-09-03T08:28:31.243Z",
+  "subject": "Evaluación Psicológica",
+  "topic": "Tests de inteligencia y aptitudes",
+  "totalTema": 267,
+  "pendingBefore": 255,
+  "summary": {
+    "alta": 86,
+    "media": 146,
+    "baja": 23,
+    "ocr": 91,
+    "sinJustificacion": 141,
+    "sinReferencia": 162,
+    "explicacionEnOpcion": 6,
+    "duplicadosExactos": 4,
+    "ubicacionRevisar": 6
+  },
+  "batches": {
+    "alta": [
+      "3Simulacro2018Comentarios_030",
+      "4Simulacro02018Comentarios_040",
+      "ABRIL-UNO-24_COMENTADO_030",
+      "ABRIL-UNO-24_COMENTADO_038",
+      "ABRIL-UNO-24_COMENTADO_044",
+      "AGOSTO2_162",
+      "AGOSTO2_175",
+      "AGOSTO2_178",
+      "AGOSTO2_179",
+      "DICIEMBRE-UNO-24_COMENTADO_024",
+      "JUNIO-UNO-24_COMENTADO_112",
+      "JUNIO1_051",
+      "MAYO-DOS-24_COMENTADO_095",
+      "MAYO2_083",
+      "NOVIEMBRE-DOS-24_COMENTADO_095",
+      "NOVIEMBRE-DOS-24_COMENTADO_105",
+      "PERSEV_AGO25_U1_082",
+      "PERSEV_JUL25_D2_173",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_109",
+      "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_124",
+      "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_136",
+      "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_140",
+      "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_142",
+      "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_149",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_111",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_128",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_095",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_133",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_171",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_030",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_018",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_021",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_033",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_041",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_050",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_064",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_126",
+      "SEPTIEMBRE-DOS-24_COMENTADO_034",
+      "Simu 11 comentado_013",
+      "Simu 13 comentado_028",
+      "Simu 15 comentado_029",
+      "Simu 31 comentado Hardcore 1_075",
+      "Simu 6 comentado__036",
+      "Simu 6 comentado__045",
+      "Simu 6 comentado__158",
+      "Simu 7 comentado _033",
+      "Simu 8 comentado _082",
+      "Simu 8 comentado _170",
+      "SM_ABRIL_1_SOL_1_123",
+      "SM_ABRIL_1_SOL_1_124",
+      "SM_ABRIL_1_SOL_1_132",
+      "SM_ABRIL_1_SOL_1_142",
+      "SM_ABRIL_2_SOL_1_118",
+      "SM_ABRIL_2_SOL_1_124",
+      "SM_ABRIL_2_SOL_1_136",
+      "SM_AGOSTO_1_SOL_1_035",
+      "SM_AGOSTO_1_SOL_1_037",
+      "SM_AGOSTO_1_SOL_1_045",
+      "SM_DICIEMBRE_1_SOL_1_081",
+      "SM_DICIEMBRE_1_SOL_1_091",
+      "SM_ENERO_1_SOL_1_038",
+      "SM_JULIO_1_SOL_1_147",
+      "SM_JULIO_1_SOL_1_161",
+      "SM_JULIO_1_SOL_1_163",
+      "SM_JULIO_2_SOL_1_097",
+      "SM_JULIO_2_SOL_1_109",
+      "SM_JULIO_2_SOL_1_111",
+      "SM_JUNIO_1_SOL_1_111",
+      "SM_JUNIO_1_SOL_1_153",
+      "SM_JUNIO_1_SOL_1_182",
+      "SM_JUNIO_1_SOL_1_183",
+      "SM_JUNIO_1_SOL_1_203",
+      "SM_JUNIO_2_SOL_1_176",
+      "SM_JUNIO_2_SOL_1_177",
+      "SmCm09PIR2025_105",
+      "SmCm09PIR2025_135",
+      "SmCm09PIR2025_138",
+      "SmCm13PIR2025_168",
+      "SmCm14PIR2025_089",
+      "SmCm14PIR2025_187",
+      "SmCm15PIR2025_080",
+      "SmCm20PIR2024_074",
+      "SmCm22PIR2025_071",
+      "SmCm23PIR2025_086",
+      "SmCm28PIR2025_158",
+      "SmCm28PIR2025_169"
+    ],
+    "media": [
+      "14Simulacro2018Comentarios_047",
+      "14Simulacro2018Comentarios_048",
+      "14Simulacro2018Comentarios_049",
+      "1Simulacro02018Comentarios_058",
+      "1Simulacro02018Comentarios_061",
+      "3Simulacro2018Comentarios_006",
+      "3Simulacro2018Comentarios_007",
+      "3Simulacro2018Comentarios_010",
+      "3Simulacro2018Comentarios_011",
+      "3Simulacro2018Comentarios_018",
+      "3Simulacro2018Comentarios_029",
+      "3Simulacro2018Comentarios_223",
+      "3Simulacro2018Comentarios_224",
+      "3Simulacro2018Comentarios_226",
+      "3Simulacro2018Comentarios_228",
+      "4Simulacro02018Comentarios_031",
+      "4Simulacro02018Comentarios_080",
+      "DICIEMBRE-DOS-24_COMENTADO_178",
+      "DICIEMBRE-UNO-24_COMENTADO_030",
+      "JULIO2_083",
+      "MAYO-DOS-24_COMENTADO_202",
+      "MAYO-UNO-24_COMENTADO_175",
+      "OCTUBRE-UNO-24_COMENTADO_171",
+      "OCTUBRE-UNO-24_COMENTADO_181",
+      "PERSEV_AGO25_U1_094",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_116",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_134",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_209",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_102",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_171",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_174",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_121",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_142",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_027",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_043",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_044",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_048",
+      "SEPTIEMBRE-UNO-24_COMENTADO_090",
+      "SEPTIEMBRE-UNO-24_COMENTADO_098",
+      "SEPTIEMBRE-UNO-24_COMENTADO_105",
+      "Simu 11 comentado_102",
+      "Simu 11 comentado_149",
+      "Simu 13 comentado_025",
+      "Simu 13 comentado_027",
+      "Simu 14 comentado _135",
+      "Simu 14 comentado _138",
+      "Simu 15 comentado_019",
+      "Simu 15 comentado_023",
+      "Simu 15 comentado_034",
+      "Simu 15 comentado_207",
+      "Simu 15 comentado_209",
+      "Simu 15 comentado_210",
+      "Simu 16 comentado_072",
+      "Simu 16 comentado_074",
+      "Simu 31 comentado Hardcore 1_072",
+      "Simu 31 comentado Hardcore 1_073",
+      "Simu 32 comentado hardcore 2_017",
+      "Simu 32 comentado hardcore 2_025",
+      "Simu 6 comentado__156",
+      "Simu 6 comentado__184",
+      "Simu 7 comentado _026",
+      "Simu 8 comentado _002",
+      "Simu 8 comentado _003",
+      "Simu 8 comentado _171",
+      "Simu 8 comentado _174",
+      "Simu 8 comentado _175",
+      "Simu 8 comentado _184",
+      "Simu 8 comentado _192",
+      "simu 9 comentado_029",
+      "Simulacro06.2018Comentarios_063",
+      "Simulacro06.2018Comentarios_068",
+      "SM_AGOSTO_1_SOL_1_026",
+      "SM_DICIEMBRE_1_SOL_1_090",
+      "SM_DICIEMBRE_2_SOL_1_098",
+      "SM_DICIEMBRE_2_SOL_1_119",
+      "SM_JULIO_1_SOL_1_175",
+      "SmCm06PIR2025_072",
+      "SmCm06PIR2025_155",
+      "SmCm08PIR2025_001",
+      "SmCm08PIR2025_048",
+      "SmCm08PIR2025_049",
+      "SmCm09PIR2025_134",
+      "SmCm09PIR2025_136",
+      "SmCm09PIR2025_137",
+      "SmCm10PIR2025_161",
+      "SmCm11PIR2025_070",
+      "SmCm11PIR2025_072",
+      "SmCm11PIR2025_074",
+      "SmCm11PIR2025_133",
+      "SmCm12PIR2024 2_158",
+      "SmCm12PIR2024 2_159",
+      "SmCm12PIR2024 2_160",
+      "SmCm12PIR2024 2_161",
+      "SmCm12PIR2024 2_162",
+      "SmCm12PIR2024 2_163",
+      "SmCm13PIR2025_169",
+      "SmCm14PIR2025_188",
+      "SmCm14PIR2025_192",
+      "SmCm15PIR2025_076",
+      "SmCm15PIR2025_077",
+      "SmCm17PIR2025_052",
+      "SmCm18PIR2025_018",
+      "SmCm18PIR2025_111",
+      "SmCm18PIR2025_112",
+      "SmCm19PIR2024_089",
+      "SmCm19PIR2024_101",
+      "SmCm1PIR2024_014",
+      "SmCm20PIR2025 (1)_041",
+      "SmCm21PIR2025 (2)_085",
+      "SmCm21PIR2025 (2)_151",
+      "SmCm22PIR2025 (1)_198",
+      "SmCm22PIR2025 (1)_200",
+      "SmCm22PIR2025_068",
+      "SmCm23PIR2025 (2)_005",
+      "SmCm23PIR2025 (2)_015",
+      "SmCm23PIR2025 (2)_018",
+      "SmCm23PIR2025 (2)_019",
+      "SmCm23PIR2025 (2)_027",
+      "SmCm23PIR2025_085",
+      "SmCm23PIR2025_090",
+      "SmCm23PIR2025_093",
+      "SmCm24PIR2025 (1)_042",
+      "SmCm24PIR2025 (1)_143",
+      "SmCm25PIR2025_099",
+      "SmCm25PIR2025_196",
+      "SmCm26PIR2025_004",
+      "SmCm26PIR2025_065",
+      "SmCm26PIR2025_068",
+      "SmCm26PIR2025_163",
+      "SmCm26PIR2025_166",
+      "SmCm26PIR2025_180",
+      "SmCm26PIR2025_181",
+      "SmCm27PIR2025 (1)_146",
+      "SmCm28PIR2025_019",
+      "SmCm28PIR2025_170",
+      "SmCm29PIR2025_015",
+      "SmCm29PIR2025_201",
+      "SmCm29PIR2025_203",
+      "SmCm29PIR2025_206",
+      "SmCm2PIR2024_110",
+      "SmCm2PIR2024_113",
+      "SmCm2PIR2024_115",
+      "SmCm30PIR2025 (1)_103",
+      "SmCm3PIR2024_040",
+      "SmCm3PIR2024_060",
+      "SmCm5PIR2024_095"
+    ],
+    "baja": [
+      "DICIEMBRE-UNO-24_COMENTADO_029",
+      "JULIO2_070",
+      "JULIO2_082",
+      "MAYO-UNO-24_COMENTADO_150",
+      "MAYO-UNO-24_COMENTADO_166",
+      "PERSEV_AGO25_U1_056",
+      "PERSEV_JUL25_D2_174",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_108",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_111",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_115",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_130",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_090",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_094",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_041",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_047",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_116",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_123",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_139",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_140",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_148",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_160",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_203",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_205"
+    ]
+  },
+  "rows": [
+    {
+      "id": "14Simulacro2018Comentarios_047",
+      "enunciado": "La subprueba menos discriminativa del WAIS es:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "14Simulacro2018Comentarios_048",
+      "enunciado": "Indica la opción correcta en relación al orden de aplicación de las subpruebas que componen las distintas escalas Wechsler:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "14Simulacro2018Comentarios_049",
+      "enunciado": "Los estímulos de la escala CPM de las Matrices Progresivas de Raven son:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "1Simulacro02018Comentarios_058",
+      "enunciado": "Desde un enfoque clásico las pruebas de inteligencia se dividen en:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "1Simulacro02018Comentarios_061",
+      "enunciado": "Algunos inconvenientes de los test de factor G son:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_006",
+      "enunciado": "La descripción o clasificación de uno mismo, otras personas u objetos, es característica de las técnicas:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_007",
+      "enunciado": "Podemos decir de la metodología racional en la construcción de tests de inteligencia:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_010",
+      "enunciado": "En la STAT de Sternberg, ¿con qué subteoría se relaciona la inteligencia práctica?",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_011",
+      "enunciado": "La Escala de Inteligencia de Standford-Binet está construida originalmente mediante:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_018",
+      "enunciado": "La evaluación individual de la inteligencia presenta, frente a su evaluación colectiva, la siguiente ventaja:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_029",
+      "enunciado": "El tipo de observador que maximiza la objetividad pero también aumenta la reactividad del sujeto, es el:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_030",
+      "enunciado": "¿Cuál de las siguientes pruebas fue diseñada para medir el potencial de aprendizaje?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DUPLICADO_EXACTO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": [
+        "Simu 8 comentado _082"
+      ]
+    },
+    {
+      "id": "3Simulacro2018Comentarios_223",
+      "enunciado": "¿Qué es la pseudociesis?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_224",
+      "enunciado": "¿Qué nivel de prevención son las mamografías que tienen por objetivo detectar el cáncer en las primeras etapas?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_226",
+      "enunciado": "¿Cuál de estas pruebas emplea como medida las Unidades de Cambio Vital?",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "3Simulacro2018Comentarios_228",
+      "enunciado": "El Test de Matrices Progresivas de Raven evalúa:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "4Simulacro02018Comentarios_031",
+      "enunciado": "Una puntuación que, transformada en tasa base en el Inventario Clínico Multiaxial de Millon, es igual a 35, nos está indicando: Parkinson, ¿cuál de estas pruebas resultaría inválida en su aplicación?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "4Simulacro02018Comentarios_040",
+      "enunciado": "La tipología somática de personalidad pícnico, atlético, leptosomático, displásico, ¿por qué autor fue propuesta?",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "UBICACION_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [
+        "Tests de personalidad"
+      ],
+      "duplicados": []
+    },
+    {
+      "id": "4Simulacro02018Comentarios_080",
+      "enunciado": "Según el DSM-5, ¿qué diagnóstico podríamos pensar para un niño con alteraciones en el uso social de la comunicación verbal y no verbal pero que no muestra comportamientos estereotipados y tiene un CI normal?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "ABRIL-UNO-24_COMENTADO_030",
+      "enunciado": "¿A que fase del proceso de evaluación corresponde el de nir sobre qué problemas intervenir?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "ABRIL-UNO-24_COMENTADO_038",
+      "enunciado": "Si el psicólogo en una entrevista verbaliza lo siguiente: «¿ Quieres decir que...?» o «¿Estás di- ciendo que...?». ¿Que técnica de respuesta de escucha está utilizando?:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "ABRIL-UNO-24_COMENTADO_044",
+      "enunciado": "Si decimos que un texto narrativo proporciona una información máxima, es decir, hay una rendundancia mínima, ¿Que aspecto NO formaría parte de este nivel de redundancia?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "AGOSTO2_162",
+      "enunciado": "En relación a la proxemia, señale la CORRECTA sobre las distancias que marcan las dimensio‐ nes de comunicación proxémica:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "AGOSTO2_175",
+      "enunciado": "¿Qué elemento de comunicación no verbal podríamos definir como la capacidad del entrevis‐ tador de intuir, comprender y asumir lo que sucede a tu alrededor y, si es el caso, mejorar o revertir en lo posible la situación?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "AGOSTO2_178",
+      "enunciado": "¿A qué aspecto de la comunicación no verbal se refiere el análisis de la paralinguística?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "AGOSTO2_179",
+      "enunciado": "¿A qué error verbal del entrevistado corresponde el siguiente ejemplo “Cuando me recrimina sé que no se fía de mí”?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "DICIEMBRE-DOS-24_COMENTADO_178",
+      "enunciado": "¿Cuál de las siguientes opciones hace referencia a la técnica que permite comprobar y de- mostrar que el cliente ha sido entendido?:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "DICIEMBRE-UNO-24_COMENTADO_024",
+      "enunciado": "El modelo PASS (Das, Kirby y Jarman, 1979) es uno de los modelos más influyentes en el campo de la evaluación de los procesos cognitivos. Marque los cuatro procesos fundamenta- les del funcionamiento cognitivo que señala este modelo:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "DICIEMBRE-UNO-24_COMENTADO_029",
+      "enunciado": "De los siguientes errores frecuentes en la conducta verbal del entrevistado, ¿cuál se trata de un error lingüístico de distorsión?:",
+      "clave": "c",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "DICIEMBRE-UNO-24_COMENTADO_030",
+      "enunciado": "¿Cuál de las siguientes pruebas evalúa percepción táctil?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "JULIO2_070",
+      "enunciado": "Marque la opción que corresponda con la de nición de \"sincronía\":",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "JULIO2_082",
+      "enunciado": "¿Cuál de las siguientes técnicas evalúa la atención en deterioro cognitivo?:",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "JULIO2_083",
+      "enunciado": "Marque la opción correcta respecto al pensamiento en voz alta:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "JUNIO-UNO-24_COMENTADO_112",
+      "enunciado": "1 ¿Qué técnica de entrevista está utilizando un entrevistador al realizar la siguiente interven- ción: «¿Puede volver a explicármelo de nuevo?»?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "JUNIO1_051",
+      "enunciado": "¿A qué conducta no verbal se hace referencia cuando se habla de la capacidad de intuir, com‐ prender y asumir lo que sucede a su alrededor y, si es el caso, mejorar y revertir en lo posible la situación?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "MAYO-DOS-24_COMENTADO_095",
+      "enunciado": "Dentro del muestreo intrasesional, o segundo nivel de muestreo, información que se registra dentro de cada sesión, señala la correcta sobre las diferentes posibilidades:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "MAYO-DOS-24_COMENTADO_202",
+      "enunciado": "¿Cuál de los siguientes se centra en la evaluación de dificultades emocionales y de conducta en todo el ciclo escolar (3-18 años) para los trastornos del control de los impulsos, disruptivos y de la conducta?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "MAYO-UNO-24_COMENTADO_150",
+      "enunciado": "Señala la INCORRECTA en relación al test de Roscharch:",
+      "clave": "d",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "MAYO-UNO-24_COMENTADO_166",
+      "enunciado": "¿Cuál de los siguientes índices del WAIS-IV sólo puede aplicarse hasta los 69 años?:",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "MAYO-UNO-24_COMENTADO_175",
+      "enunciado": "¿Cuál de las siguientes técnicas objetivas mide percepción visual?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "MAYO2_083",
+      "enunciado": "¿Cuál NO es una meta del informe oral de devolución según Belloch y Carrió (2012)?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "NOVIEMBRE-DOS-24_COMENTADO_095",
+      "enunciado": "¿Cuál de las siguientes indicaciones para ajustar la entrevista a distintos niveles de desarrollo es adecuada para adolescentes (12-18 años)?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "NOVIEMBRE-DOS-24_COMENTADO_105",
+      "enunciado": "¿En cuál de las siguientes técnicas verbales se transmite al paciente tanto los contenidos cog- nitivos como los afectivos del mensaje?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "OCTUBRE-UNO-24_COMENTADO_171",
+      "enunciado": "1 ¿Cuál de las siguientes técnicas verbales de escucha activa utiliza un entrevistador que, du- rante la entrevista, le dice al paciente \"entiendo que eso hizo que te sintieras defraudada con tus jefes\"?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "OCTUBRE-UNO-24_COMENTADO_181",
+      "enunciado": "1 Señala la opción correcta respecto a la conducta no verbal del entrevistador durante las en- trevistas con el paciente:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEV_AGO25_U1_056",
+      "enunciado": "En relación con el Currículo Carolina, señala qué característica es INCORRECTA:",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEV_AGO25_U1_082",
+      "enunciado": " péutico de Efron?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEV_AGO25_U1_094",
+      "enunciado": "¿Qué técnica de escucha activa se encarga de disminuir la intensidad emocional del entrevis- tado dando un \"respiro\" psicológico?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEV_JUL25_D2_173",
+      "enunciado": "Indica la respuesta CORRECTA en relación a los tipos de puntuaciones de los tests:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEV_JUL25_D2_174",
+      "enunciado": "¿En cuál de las siguientes técnicas de escucha no directivas se trata de transmitir al paciente tanto los contenidos cognitivos como los afectivos de su mensaje?:",
+      "clave": "d",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_109",
+      "enunciado": "De los siguientes autores, destacados como padres de la evaluación psicológica, señale cuál de ellos concibe en su teoría funciones sensoriales superiores:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_116",
+      "enunciado": "¿Cuál de las siguientes técnicas de entrevista es una técnica verbal no directiva?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_134",
+      "enunciado": "Señale a qué edades se aplica el sistema de evaluación de niños y adolescentes (SENA) y cuá- les son sus puntuaciones globales:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_124",
+      "enunciado": "2  3 6 En la formulación de hipótesis, el tipo de supuesto que se refiere a la suposición de que el su- jeto presenta los criterios establecidos para situarlo en una categoría (o entidad nosológica) dentro de un determinado sistema de clasificación, se refiere a:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_136",
+      "enunciado": "2 3  4 5 6 Según los test de evaluación de la inteligencia de aplicación colectiva e individual, señala la correcta sobre la Batería de Aptitudes de TEA (BAT-7):",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_140",
+      "enunciado": "2 3 4  5 6 En relación a los test, aptitudes e índices del BAS-II infantil (3:6 a 5:11), ¿qué test se utiliza para medir aptitud espacial?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_142",
+      "enunciado": "2 3 4  5 6 Entre los errores frecuentes en la conducta verbal del entrevistado, ¿en qué categoría se en- cuentra la normalización?:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_149",
+      "enunciado": "2 3 4  5 6 Señale la INCORRECTA respecto a las fuentes de error procedentes del sujeto observado:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_111",
+      "enunciado": "1 Señale la respuesta correcta con respecto a la Batería de Aptitudes de TEA (BAT-7):",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_128",
+      "enunciado": "1 Señale la respuesta correcta con respecto al Sistema de Evaluación de Niños y Adolescentes (SENA):",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_209",
+      "enunciado": "1 ¿Cuál de los siguientes test para el Trastorno Obsesivo-Compulsivo (TOC) destaca por incluir una subescala para evaluar las sensaciones de inacabado (\"not just right\")?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_095",
+      "enunciado": "1 Señale la alternativa correcta en relación a las Escalas de Weschler y sus correspondientes índices:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_102",
+      "enunciado": "1 ¿Cuál de las siguientes alternativas corresponde con una de las características de los siste- mas de expertos a nivel funcional?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_108",
+      "enunciado": "1 ¿Cuál de de los siguientes NO forma parte de los compromisos para el establecimiento de la alianza terapéutica?:",
+      "clave": "c",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_111",
+      "enunciado": "1 ¿Cuál de las siguientes alternativas seria adecuada para ajustar la entrevista a un adolescente de 14 años?:",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_115",
+      "enunciado": "1 ¿Qué indicación es apropiada para ajustar la entrevista a un escolar de 9 años?:",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_130",
+      "enunciado": "1.Señale la afirmación correcta sobre el Test de Aptitudes Mentales Primarias (PMA):",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_133",
+      "enunciado": "1 Indique qué supuestos pueden formularse a la hora de establecer hipótesis en el proceso de evaluación psicológica (p. ej., Fernández Ballesteros):",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_090",
+      "enunciado": "Dentro de las técnicas de evaluación proyectivas, ¿de qué tipo estamos hablando si pedimos al paciente organizar material dado sobre la base de distintas consignas?:",
+      "clave": "c",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_094",
+      "enunciado": "Indique cómo se denomina la técnica de escucha no directiva en la que se muestra que hemos comprendido los contenidos generales que expresa el entrevistado:",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_171",
+      "enunciado": "2 3 4 5  6 Una de las aptitudes intelectuales de segundo orden que evalúa el BAS – II es la aptitud per- ceptiva – motora. ¿Mediante qué test se calcula esta aptitud?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_030",
+      "enunciado": "2 3 Una de las formas de hacer referencia al informe de tipo oral es a través de la entrevista de devolución, dado que nos encontramos devolviendo a la persona estudiada la información que hemos obtenido de una forma estructurada. Señale la respuesta correcta respecto a cuá- les son las metas de un informe verbal:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_018",
+      "enunciado": "2 3 Señale cuál de los siguientes NO corresponde con una categoría de error frecuente en la con- ducta verbal del entrevistado (Cormier y Cormier, 2000):",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_021",
+      "enunciado": "2 3 Durante la entrevista psicológica a qué se refiere la capacidad de Sensibilidad del entrevista- dor, que se da especialmente entre los psicólogos más experimentados:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_033",
+      "enunciado": "2 3 El Sistema de expertos surge propiciado por el desarrollo de la Inteligencia Artificial para emular el proceso que sigue el clínico en el proceso evaluador combinando la información de la mejor manera posible para producir conclusiones diagnósticas, un ejemplo sería:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_041",
+      "enunciado": "2 3 Indique qué instrumento de evaluación del Trastorno Obsesivo Compulsivo (TOC) incorpora la sensación de inacabado (not just right):",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_171",
+      "enunciado": "2 3 Respecto a los componentes de la comunicación que han de ser considerados para el éxito en una entrevista, ¿a quién pertenecen la latencia de respuesta y el contacto ocular?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_174",
+      "enunciado": "2 3 Indique qué técnica de entrevista verbal se trata de una retroalimentación inmediata que fa- vorece la clarificación y denota aceptación:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_050",
+      "enunciado": "2 3 4  5 Señale la opción correcta sobre el registro descriptivo:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_064",
+      "enunciado": " 3 4  5 La Batería de exploración del lenguaje para preescolares (BELP-P) (De la Osa et al., 1994):",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_041",
+      "enunciado": "1 Señale la respuesta INCORRECTA sobre las Escalas de Aptitudes Intelectuales (BAS-II) (Elliot, Smith y McCullogh, 2011):",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_047",
+      "enunciado": "1 ¿Qué técnica verbal no directiva utiliza el terapeuta cuando busca que la persona se sienta comprendida y modelar conductas nuevas?:",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_116",
+      "enunciado": "1 Señale la respuesta INCORRECTA, respecto a la técnica de clasificación Q (Q-Sort):",
+      "clave": "d",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_121",
+      "enunciado": "1 La evaluación de la inteligencia puede ser individual o colectiva, señale la correcta respecto a los test individuales:",
+      "clave": "c",
+      "flags": [
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_123",
+      "enunciado": "1 Señale la correcta respecto a las técnicas proyectivas:",
+      "clave": "c",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_126",
+      "enunciado": "1 ¿Cuál de las siguientes técnicas directivas puede ser útil en la entrevista de devolución?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_139",
+      "enunciado": "1 Señale cuál de los siguientes errores frecuentes en la conducta verbal del entrevistado es un error de distorsión:",
+      "clave": "d",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_140",
+      "enunciado": "1 ¿En cuál de las siguientes técnicas verbales directivas de devolución el terapeuta trata de ofrecer al cliente una perspectiva distinta ante una situación o suceso?:",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_142",
+      "enunciado": "1 ¿En qué conducta comunicativa no verbal se clasifican los gestos, expresiones faciales, con- tacto ocular, posturas y el aspecto físico?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_148",
+      "enunciado": "1 ¿Cuál de las siguientes técnicas objetivas mide la percepción táctil?:",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_160",
+      "enunciado": "1 Señale cuál de los siguientes test evalúan el grado de insight en pacientes con trastornos del espectro obsesivo-compulsivo:",
+      "clave": "c",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_203",
+      "enunciado": "1 Señale cuáles son los tres aspectos del comportamiento no verbal que deben tenerse en cuenta en el psicólogo:",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_205",
+      "enunciado": "1 ¿Con qué dos test se calcula el índice espacial del Test de Inteligencia BAS-II?:",
+      "clave": "d",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_027",
+      "enunciado": "2 4 En la Bateria de Aptitudes de TEA (BAT-7), señala la INCORRECTA:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_043",
+      "enunciado": "2 4 Señala cuál de las siguientes opciones corresponde con la definición de Paráfrasis:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_044",
+      "enunciado": "2 4 ¿Qué tipo de técnica es el termómetro de ranura o agujeros?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_048",
+      "enunciado": "2 4 Según Vallejo, en el ámbito de evaluación del maltrato infantil, es necesario tener en cuenta que:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-DOS-24_COMENTADO_034",
+      "enunciado": " Una de las las siguientes pruebas está destinada a realizar una detección rápida del nivel del lenguaje del sujeto evaluado entre los 5 y los 14 años:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_090",
+      "enunciado": "Según la clasificación de técnicas objetivas de Fernández-Ballesteros (2013), ¿cuál de las si- guientes es una técnica cognitiva?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_098",
+      "enunciado": "En relación a las técnicas de escucha no directivas, señale la técnica que tiene por objetivo \"comunicar que se ha captado la parte emocional del mensaje verbal\":",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_105",
+      "enunciado": "Señale la alternativa INCORRECTA respecto a la batería de aptitudes TEA (BAT-7):",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 11 comentado_013",
+      "enunciado": "El Test de Clasificación de Tarjetas de Wisconsin d (WCST) es una prueba neuropsicológica en M la que aparecen ciertas tarjetas con varios contenidos geométricos (círculos, estrellas, 1 triángulos y cuadrados) en los que tienes que clasificar en base a unas consignas no conocidas. Este test evalúa:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "UBICACION_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [
+        "Evaluación neuropsicológica"
+      ],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 11 comentado_102",
+      "enunciado": "Una niña que está jugando corriendo de un lado go a otro de la habitación, según la clasificación de 2 Piaget está realizando un: ci pa",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 11 comentado_149",
+      "enunciado": "¿Qué autor utilizó el paradigma azúl-verde ci en sus famosos estudios sobre la influencia ne minoritaria?: Re pe",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 13 comentado_025",
+      "enunciado": "A partir de que edad es aplicable el EDI2 (inventario de Trastornos de conducta alimentaria).",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 13 comentado_027",
+      "enunciado": "La Escala de Inteligencia de Wechlser para adultos, versión IV (WAIS-IV) ofrece una medida del funcionamiento intelectual general. Respecto a la misma, señale la opción correcta:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 13 comentado_028",
+      "enunciado": "De las siguientes pruebas, ¿Cuál NO mide la madurez?.",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 14 comentado _135",
+      "enunciado": "Siguiendo la clasificación de fases que realiza Moreno Rosset de la entrevista, ¿en qué fase se llevan a cabo las hipótesis de evaluación verificables?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 14 comentado _138",
+      "enunciado": "En el WISC-V se puede obtener el CI total a través de la administración de siete de las diez pruebas principales, ¿Cuál es una de estas siete pruebas?.",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_019",
+      "enunciado": "En evaluación psicológica, ¿a qué nivel de inferencia nos referimos si decimos que una persona tiene un trastorno psicótico debido a la alta emoción expresada que hay en su ambiente familiar?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_023",
+      "enunciado": "¿Cuál de las siguientes escalas de autoinforme para la evaluación de los miedos y las fobias presenta una forma abreviada?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_029",
+      "enunciado": "¿Cuál de los siguientes instrumentos de evaluación neuropsicológica tiene como objetivo medir el desarrollo cognitivo, emocional y teoría de la mente en niños entre los 3-16 años?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "UBICACION_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [
+        "Evaluación neuropsicológica"
+      ],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_034",
+      "enunciado": "¿Qué instrumento elegirías para evaluar de forma exhaustiva la inteligencia de un niño de 8 años?.",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_207",
+      "enunciado": "El Cuestionario del Ambiente de Grupo (GEQ) fue diseñado por Carron et al. (1985) para medir la cohesión en equipos deportivos. El mismo, está conformado por 18 ítems que se organizan en cuatro factores. La siguiente definición qué factor describe: “Sentimientos individuales de los miembros sobre la aceptación personal y la interacción social que mantienen con el grupo”.",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_209",
+      "enunciado": "Señala la opción que se corresponde con la inteligencia fluida propuesta por Cattell:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 15 comentado_210",
+      "enunciado": "¿Qué mide el test de Dominós de Anstey?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 16 comentado_072",
+      "enunciado": "¿Cuál de los siguientes instrumentos de evaluación del autismo resulta útil en la evaluación de adultos autistas en el ámbito laboral?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 16 comentado_074",
+      "enunciado": "Una de las siguientes pruebas permitiría la evaluación de la inteligencia de un paciente de 14 años a través del estudio del nivel de inteligencia fluida y de inteligencia cristalizada:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 31 comentado Hardcore 1_072",
+      "enunciado": "Una psicóloga desea valorar un posible diagnóstico de trastorno del espectro autista (TEA) en una niña de 1 año. Señale la afirmación incorrecta sobre aquella información que debe tener en cuenta para realizar esta tarea:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 31 comentado Hardcore 1_073",
+      "enunciado": "Una psicóloga clínica desea valorar el nivel co cognitivo de un niño de 2,6 años que no tiene bl capacidad verbal. Para ello, sería conveniente de emplear la prueba: ni ci",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 31 comentado Hardcore 1_075",
+      "enunciado": "El Inventario de Espectro Autista (IDEA) de Rieviere:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 32 comentado hardcore 2_017",
+      "enunciado": "Señale la afirmación incorrecta respecto a las pruebas de evaluación de la inteligencia:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 32 comentado hardcore 2_025",
+      "enunciado": "¿Cuál de las siguientes pruebas no pertenece a la subescala de memoria de las Escalas McCarthy de aptitudes y psicomotricidad para niños?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 6 comentado__036",
+      "enunciado": "Queremos medir la inteligencia de todos los miembros de una familia, pero solo nos han dado presupuesto para poder comprar una prueba de evaluación. La familia consiste en un niño de 5 años, dos madres de 31 y 35 años, un abuelo de 62 años y una bisabuela de 89, ¿Qué prueba sería necesaria comprar?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 6 comentado__045",
+      "enunciado": "En una entrevista de Psicología Clínica, la d profesional ofrece información al paciente sobre p los resultados obtenidos en distintas pruebas e y propone una perspectiva distinta ante la L situación presentada por este. Teniendo esto en f cuenta, ¿qué afirmación de las siguientes NO es ( correcta?: d u",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 6 comentado__156",
+      "enunciado": "¿Cuáles son los tres ejercicios que utiliza Barlow má en su Protocolo Unificado para el tratamiento re transdiagnóstico de los trastornos emocionales la para practicar la conciencia emocional plena?: em ma",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 6 comentado__158",
+      "enunciado": "Respecto al abordaje de los trastornos de la ci conducta alimentaria, señale la afirmación la correcta: ap Ma",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 6 comentado__184",
+      "enunciado": "Indique la afirmación CORRECTA sobre el es Entrenamiento en Manejo para Padres de fo Oregón (PMT-O): te te",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 7 comentado _026",
+      "enunciado": "En relación a las dicotomías descriptivas de los trastornos anímicos, podemos afirmar que:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 7 comentado _033",
+      "enunciado": "¿Qué prueba podemos utilizar para evaluar la inteligencia en un niños de 5 años?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DUPLICADO_EXACTO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": [
+        "SmCm7PIR2024_177"
+      ]
+    },
+    {
+      "id": "Simu 8 comentado _002",
+      "enunciado": "¿Cuál de los siguientes NO está recogido entre los síndromes internalizantes en el CBCL de Achenbach?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 8 comentado _003",
+      "enunciado": "¿Cuál de las siguientes opciones NO corresponde con una de las escalas primarias del WISC-V?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 8 comentado _082",
+      "enunciado": "¿Cuál de las siguientes pruebas fue diseñada para medir el potencial de aprendizaje?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DUPLICADO_EXACTO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": [
+        "3Simulacro2018Comentarios_030"
+      ]
+    },
+    {
+      "id": "Simu 8 comentado _170",
+      "enunciado": "Durante la planificación de las sesiones de pi observación para una investigador, una Psicóloga si Clínica decide que en la primera sesión se llevará un a cabo la observación de 3 sujetos, observando pr a cada uno mediante rondas sucesivas y en la co segunda sesión se observará a un sujeto y se da registrará su conducta si aparece en los primeros da 5 minutos del intervalo de observación prefijado. ci Teniendo esta información en cuenta, señale pr el tipo de muestreo utilizado en la nombrada Ev investigación: la",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 8 comentado _171",
+      "enunciado": "¿Cuál de las siguientes se considera una actitud Té directiva en la habilidad de escucha?: gu re",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 8 comentado _174",
+      "enunciado": "La prueba Puzzles Visuales del WAIS-IV evalúa:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 8 comentado _175",
+      "enunciado": "¿Qué prueba evalúa la memoria de cuentas, memoria de frases, memoria de dígitos y memoria de objetos?: MIR",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 8 comentado _184",
+      "enunciado": "¿Qué escala del K-ABC de Kauffman mide el vocabulario expresivo?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simu 8 comentado _192",
+      "enunciado": "El Test de Factor G de Cattell es una prueba construida mediante metodología:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "simu 9 comentado_029",
+      "enunciado": "Marque la opción incorrecta respecto a los resultados obtenidos a través del estudio de marcadores biológicos e indicadores psicofisiológicos en psicopatología:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simulacro06.2018Comentarios_063",
+      "enunciado": "¿Qué pruebas del WISC IV forman parte del índice de razonamiento perceptivo?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "Simulacro06.2018Comentarios_068",
+      "enunciado": "Podemos considerar un antecedente de la evaluación dinámica cognitiva la obra de:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_123",
+      "enunciado": "¿Qué técnica de entrevista verbal no directiva ayuda a que el cliente piense con claridad so- bre algo concreto, favoreciendo que ordene sus pensamientos?",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_124",
+      "enunciado": "Sobre el test TOMAL, señale la afirmación correcta:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_132",
+      "enunciado": "Señale la respuesta correcta sobre el pensamiento en voz alta:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_142",
+      "enunciado": "¿Cuál de los siguientes instrumentos evalúa, entre otros, flexibilidad cognitiva?:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_ABRIL_2_SOL_1_118",
+      "enunciado": "El RepTest es como llamamos a la forma original, ¿de qué instrumento?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_ABRIL_2_SOL_1_124",
+      "enunciado": "Rogers describe diferentes componentes de la comunicación para garantizar el éxito de la misma. ¿Cuál de las siguientes NO se incluye en los componentes del entrevistado?:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_ABRIL_2_SOL_1_136",
+      "enunciado": "En relación al test MATRICES (Sánchez-Sánchez, Santamaría, Abad, 2015), indique cuál de las siguientes opciones enumera correctamente los datos que ofrece:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_AGOSTO_1_SOL_1_026",
+      "enunciado": "¿Qué tipo de instrumento es el test TKK de reacción discriminativa?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_AGOSTO_1_SOL_1_035",
+      "enunciado": "¿Qué aptitudes del BAS-II infantil (3:6 a 5:11) se sitúan en el estrato II del modelo CHC de Cattell-Horn-Carroll?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_AGOSTO_1_SOL_1_037",
+      "enunciado": "¿Cuál de los siguientes instrumentos evalúa las cuatro principales áreas de razonamiento (es- pacial, numérico, abstracto y verbal), así como la memoria diferida?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_AGOSTO_1_SOL_1_045",
+      "enunciado": "Señala la correcta sobre la herramienta PROLEXIA:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_081",
+      "enunciado": "Señale la respuesta correcta respecto a la Clasi�cación Q:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_090",
+      "enunciado": "Señale qué estrategia se caracteriza porque el examinador toma conciencia de que el pacien- te no está planteando un tema que es necesario tratar, y en un momento determinado lo hace él de forma sorpresiva y directa de tal forma que el paciente tenga que encararlo inevitable- mente:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_091",
+      "enunciado": "En una entrevista, el lenguaje del paciente puede presentar errores lingüísticos como pueden ser las omisiones, las distorsiones y las generalizaciones. Señale a qué nos referimos cuando decimos que el paciente ha cometido una omisión simple:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_DICIEMBRE_2_SOL_1_098",
+      "enunciado": "¿Cuál de los siguientes elementos comunicativos, propios de la entrevista, se clasificaría como comunicación no verbal?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_DICIEMBRE_2_SOL_1_119",
+      "enunciado": "Indiqué cuál de las siguientes afirmaciones NO es una limitación de la evaluación informatizada:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_ENERO_1_SOL_1_038",
+      "enunciado": "¿A qué técnica de entrevista verbal no directiva corresponde la siguiente de�nición de res- puestas de escucha: pregunta que se utiliza para clari�car un mensaje general, ambiguo o confuso del cliente y comprobar y demostrarle que se le ha entendido?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_147",
+      "enunciado": "¿Cuál de las siguientes NO es una batería de aptitudes?:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_161",
+      "enunciado": "En relación a la proxemia, ¿a qué tipo de distancia se encuentran unas personas si están sepa- radas por 45-125 cm?:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_163",
+      "enunciado": "¿Cómo se llama la técnica de entrevista verbal directiva que consiste en proporcionar expli- caciones alternativas a los problemas del paciente desde el marco de referencia del clínico?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_175",
+      "enunciado": "En evaluación existe la técnica del pensamiento en voz alta. ¿Qué características tiene esta técnica?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_097",
+      "enunciado": "¿Qué estrategia se utiliza para confirmar una información, concretar un aspecto del pro- blema o para obtener un dato específico durante una entrevista?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_109",
+      "enunciado": "¿Cuál de las siguientes es una técnica de entrevista verbal NO directiva?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_111",
+      "enunciado": "¿En qué tipo de técnica proyectiva, tras recibir consignas verbales o escritas, el evaluado debe emitir respuestas que se asocien con el estímulo?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JUNIO_1_SOL_1_111",
+      "enunciado": "¿Qué aptitud del BAS-II infantil mide el test de cubos?:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JUNIO_1_SOL_1_153",
+      "enunciado": "¿Qué técnica de entrevista verbal no directiva busca transmitir al paciente tanto los conteni- dos cognitivos como los afectivos de su mensaje?:",
+      "clave": "b",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JUNIO_1_SOL_1_182",
+      "enunciado": "De las conductas no verbales del psicólogo, ¿cuál de ellas se define como la existencia de simi- litud entre mensajes verbales y no verbales?:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JUNIO_1_SOL_1_183",
+      "enunciado": "Una entrevista biográfica es una entrevista:",
+      "clave": "a",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JUNIO_1_SOL_1_203",
+      "enunciado": "Una característica de la inteligencia fluida (Gf), según Cattell, es:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JUNIO_2_SOL_1_176",
+      "enunciado": "¿Qué dos tests componen el Test de inteligencia breve de Reynolds (RIST)?:",
+      "clave": "d",
+      "flags": [
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SM_JUNIO_2_SOL_1_177",
+      "enunciado": "Los test individuales de inteligencia y personalidad, que exigen una titulación superior en psi- cología, psiquiatría o psicopedagogía y experiencia profesional en el diagnóstico clínico exi- gen:",
+      "clave": "c",
+      "flags": [
+        "OCR_BASURA",
+        "OCR_CORTE",
+        "UBICACION_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [
+        "Tests de personalidad"
+      ],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm06PIR2025_072",
+      "enunciado": "El entrenamiento en habilidades sociales te para personas con diferentes trastornos de em salud mental, incluida la esquizofrenia, ha ido mi evolucionando en el tiempo, con respecto a la ci actualidad ¿qué podemos afirmar acerca de estas am intervenciones y los diferentes programas?: so dé",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm06PIR2025_155",
+      "enunciado": "En las Escalas de Inteligencia de Wechsler para adultos (WAIS-III y WAIS-IV), ¿de qué índice forma parte la prueba “Clave de números”?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm08PIR2025_001",
+      "enunciado": "¿Qué es correcto en relación con las características que presentan las técnicas subjetivas?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm08PIR2025_048",
+      "enunciado": "¿Cuál de las siguientes técnicas NO es una s técnica objetiva motora?: l",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm08PIR2025_049",
+      "enunciado": "¿Cuál es el procedimiento en que el sujeto debe responder a un estímulo diana o cada vez que una serie de estímulos se presente y que evalúa el nivel de vigilancia o atención sostenida?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm09PIR2025_105",
+      "enunciado": "¿A cuál de los siguientes autores pertenece el q concepto de Cociente de Desviación? a n PSICOLOGÍA AM",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm09PIR2025_134",
+      "enunciado": "En evaluación psicológica, las diferencias entre lo observado y un criterio objetivo previamente conocido constituyen un indicio de una fuente de error:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm09PIR2025_135",
+      "enunciado": "En la observación, dentro de las medidas “no reactivas”, consideradas como productos de conducta, se incluyen:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm09PIR2025_136",
+      "enunciado": "¿Con qué propósito se creó la prueba proyectiva TEMAS de Constantino?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm09PIR2025_137",
+      "enunciado": "En las Escalas de Inteligencia de Weschler para adultos (WAIS-III y WAIS-IV) ¿De qué índice forma parte la prueba ‘’Aritmética’’?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm09PIR2025_138",
+      "enunciado": "La aplicación de la Escala EPA 2 para la evaluación del potencial de aprendizaje está indicada para:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm10PIR2025_161",
+      "enunciado": "¿Qué escala de las Matrices progresivas de Raven se aplica a niños de 5 a 11 años?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm11PIR2025_070",
+      "enunciado": "Una de las pruebas más conocidas para evaluar me el Patrón de Conducta tipo A es: lo la",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm11PIR2025_072",
+      "enunciado": "La inteligencia analítica, la práctica y la creativa son factores de:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm11PIR2025_074",
+      "enunciado": "En el marco de los estudio científico sobre las falsas memorias, señale la opción FALSA: MIR",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm11PIR2025_133",
+      "enunciado": "¿Qué autor utilizó el paradigma azúl-verde p en sus famosos estudios sobre la influencia c minoritaria? s s",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm12PIR2024 2_158",
+      "enunciado": "¿En qué fase de la entrevista tiene lugar la exploración e identificación del problema del cliente?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm12PIR2024 2_159",
+      "enunciado": "El taquitoscopio es una prueba objetiva que se utiliza para evaluar respuestas:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm12PIR2024 2_160",
+      "enunciado": "El Test de Categorías de Halstead es una técnica de evaluación:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm12PIR2024 2_161",
+      "enunciado": "Las técnicas que permiten la clasificación o descripción que el sujeto hace de sí mismo, de otras personas u objetos, o bien que otros realizan de él, se denominan:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm12PIR2024 2_162",
+      "enunciado": "Los métodos hermenéuticos y narrativos se consideran pruebas de tipo:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm12PIR2024 2_163",
+      "enunciado": "¿Qué tipo de prueba es el test de Matrices Progresivas de Raven?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm13PIR2025_168",
+      "enunciado": "La Escala de Inteligencia de Wechlser para adultos, versión IV (WAIS-IV) ofrece una AMIR medida del funcionamiento intelectual general. Respecto a la misma, señale la opción correcta:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm13PIR2025_169",
+      "enunciado": "La prueba Semejanzas del WAIS: y M",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm14PIR2025_089",
+      "enunciado": "Cuál de las siguientes no es una característica del embotamiento",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DUPLICADO_EXACTO"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": [
+        "Simu 14 comentado _181"
+      ]
+    },
+    {
+      "id": "SmCm14PIR2025_187",
+      "enunciado": "¿Cuál de las siguientes afasias no está recogida 1 en la clasificación de Luria?",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "UBICACION_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [
+        "Evaluación neuropsicológica"
+      ],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm14PIR2025_188",
+      "enunciado": "Voy por la calle caminando de noche y, de repente, algo cruza rápidamente junto a mí. Comienzo a sentirme con mucho miedo, se me acelera el corazón y experimento cierta sensación de bloqueo. Siguiendo las definiciones de los conceptos de la afectividad, podríamos calificar mi respuesta como C L",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm14PIR2025_192",
+      "enunciado": "¿Qué autor utilizó por primera vez la medida del Cociente Intelectual?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm15PIR2025_076",
+      "enunciado": "¿Cuál de los siguientes es un test del WAIS que NO se mantiene en sujetos con deterioro cognitivo?.",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm15PIR2025_077",
+      "enunciado": "¿Cuál de las siguientes escalas se considera secundaria en el WISC-V?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm15PIR2025_080",
+      "enunciado": "¿Qué subtest de las escalas WAIS-IV de Weschler nos permite una buena estimación 8 del nivel cultural, expresión verbal y nivel de familiaridad con el uso de palabras del sujeto evaluado?: PSICOLOGÍA AM",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm17PIR2025_052",
+      "enunciado": "¿A qué dominio cognitivo pertenece la prueba Aritmética en la Escala Total del WISC V?",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm18PIR2025_018",
+      "enunciado": "¿Cuál de las siguientes afirmaciones es incorrecta respecto a la evaluación de la comunicación desviada en familias en las que hay un diagnóstico psicótico?",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm18PIR2025_111",
+      "enunciado": "La amplitud de la respuesta psicofisiológica será inversamente proporcional al nivel basal de la misma. Esto se conoce como:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm18PIR2025_112",
+      "enunciado": "La técnica de la rejilla de Kelly basada en su teoría de constructos personales suele aplicarse:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm19PIR2024_089",
+      "enunciado": "La técnica de rejilla de Kelly fue creada para evaluar:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm19PIR2024_101",
+      "enunciado": "La evaluación de la actividad electrodérmica permite una medida de:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm1PIR2024_014",
+      "enunciado": "Seleccione la prueba estadística más adecuada para las siguientes dos hipótesis. H1: Las estimaciones de CI de los varones son más elevadas que las de las mujeres. H2: El CI medio de las mujeres es más elevado que el de los varones:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm20PIR2024_074",
+      "enunciado": "Acudimos a terapia psicológica recomendadas por una amiga, sin conocer al terapeuta. Al salir, creemos que nuestro psicólogo trabaja desde PSICOLOGÍA una orientación dinámica. Nos hemos dado cuenta de ello porque la entrevista ha sido:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm20PIR2025 (1)_041",
+      "enunciado": "¿Qué test de evaluación de la inteligencia es de metodología racional?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm21PIR2025 (2)_085",
+      "enunciado": "En relación con los registros codificados:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm21PIR2025 (2)_151",
+      "enunciado": "La propuesta de London (1964) como intento de má integración teórica distinguía entre dos tipos de ve terapias: Ps de",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm22PIR2025 (1)_198",
+      "enunciado": "Desde el enfoque de las teorías multialmacén es de la memoria, ¿cuáles son los pasos que tr sigue la información en un proceso normal de di aprendizaje-recuerdo?: ci as",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm22PIR2025 (1)_200",
+      "enunciado": "El modelo de infusión afectiva de Forgas (1995) Co considera cuatro tipos posibles de estrategias de Lo procesamiento de la información. Señale cuál de co las siguientes no es una de ellas: un co",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm22PIR2025_068",
+      "enunciado": "¿En qué Trastorno del Neurodesarrollo (DSMg 5) los síntomas tienen que aparecer antes de los t 12 años para poder realizar el diagnóstico?: M",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm22PIR2025_071",
+      "enunciado": "¿Cuál de las siguientes afirmaciones es INCORRECTA acerca del test de aptitud para el aprendizaje Hiskey-Nebraska (H-NTLA)?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_005",
+      "enunciado": "Si queremos evaluar la inteligencia de un niño de 5 años y 6 meses de edad, ¿qué prueba sería adecuada para ello?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_015",
+      "enunciado": "La ciencia que se dedica al estudio de los fenómenos individuales, se clasifica dentro del enfoque:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_018",
+      "enunciado": "Entre las áreas de contenido ético que atañen a la Evaluación Psicológica NO encontramos:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_019",
+      "enunciado": "En las Escalas de Inteligencia de Weschler para adultos (WAIS-III y WAIS-IV) ¿De qué índice forma parte la prueba ‘’Vocabulario’’?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025 (2)_027",
+      "enunciado": "El Test de Matrices Progresivas de Raven, Test de organización de puntos, Test de plataformas, Test de representaciones de diseños mediante figuras excavadas, Test de analogías verbales, Test de progresiones numéricas, Test de dibujo de la figura compleja de Rey, Test de la figura humana, Test de rememoración de elementos asociados y el Test de memoria de 15 palabras son los subtest que conforman:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025_085",
+      "enunciado": "A la hora de realizar un proceso de evaluación psicológica es importante que el sujeto evaluado quede protegido tanto a nivel de sus datos personales como de los resultados obtenidos. Marque la opción CORRECTA respecto a los siguientes artículos del código deontológico en nuestro país:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025_086",
+      "enunciado": "¿Cuál de las siguientes es una “escala de C Internalización” del Inventario Multifásico de e Personalidad de Minnesota-2 Reestructurado r (MMPI-2-RF)? B P",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "UBICACION_REVISAR"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [
+        "Tests de personalidad"
+      ],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025_090",
+      "enunciado": "Las Escalas McCarthy de aptitudes y psicomotricidad para niños:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm23PIR2025_093",
+      "enunciado": "¿Cuál de las siguientes opciones representan las Co escalas primarias del WISC-V? El qu",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_042",
+      "enunciado": "La evaluación enfatiza variables externas o ambientales y está dirigida al cambio de conducta en el enfoque:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_143",
+      "enunciado": "¿Cuál de las siguientes pruebas permite evaluar inteligencia práctica, analítica y creativa?.",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm25PIR2025_099",
+      "enunciado": "A la hora de estudiar los efectos de las actitudes sobre la conducta, se han desarrollado algunos modelos teóricos en torno a esta cuestión, señala la alternativa INCORRECTA sobre el modelo MODE:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm25PIR2025_196",
+      "enunciado": "Existen cuatro modelos de cambio de estereotipo, señala cuál de ellos afirma que pocos sujetos contradicen dramáticamente al estereotipo: C P",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm26PIR2025_004",
+      "enunciado": "¿Cuál de las siguientes NO es una prueba factorial de evalución de la inteligencia?",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm26PIR2025_065",
+      "enunciado": "En cuanto a los Diagramas Analítico-Funcionales de Casos Clínicos, señale la opción correcta:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm26PIR2025_068",
+      "enunciado": "Señale la opción que NO representa una prueba de inteligencia emocional o social:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm26PIR2025_163",
+      "enunciado": "El Test de Habilidades Lingüísticas de Illinois v (ITPA) fue diseñado por: v u",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm26PIR2025_166",
+      "enunciado": "¿Cuál de las siguientes opciones NO refleja una e de las características de las técnicas subjetivas? d v",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm26PIR2025_180",
+      "enunciado": "¿Cuál de las siguientes opciones se corresponde con la tercera fase del análisis textual?",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm26PIR2025_181",
+      "enunciado": "Señale la opción incorrecta con respecto a la Escala Bayley de Desarrollo Infantil (BSID-III, 2015):",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm27PIR2025 (1)_146",
+      "enunciado": "¿Qué instrumento para la medida de la mer inteligencia se diseñó para evaluar el factor “g” suj tal y como fue definido por Spearman?: Man",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm28PIR2025_019",
+      "enunciado": "¿Cuál de las siguientes pruebas es una ténica proyectiva interpretativa?",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm28PIR2025_158",
+      "enunciado": "En cuanto a las distintas opciones de tratamiento La farmacológico para la anorexia nerviosa, señala ap la afirmación incorrecta sobre la evidencia de las nó mismas: y al",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm28PIR2025_169",
+      "enunciado": "Sobre la Terapia de Debriefing psicológico, pa señale la incorrecta: so ra",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "OCR_BASURA"
+      ],
+      "severity": "PRIORIDAD_ALTA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm28PIR2025_170",
+      "enunciado": "En relación a los trastornos disociativos, señala ló la afirmación correcta: tr la",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm29PIR2025_015",
+      "enunciado": "La subfase de “mutuo conocimiento”, ¿A qué fase de la entrevista pertenece?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm29PIR2025_201",
+      "enunciado": "Señale cuál de las siguientes es una diferencia entre las manifestaciones del TEPT en niños menores de 6 años respecto al TEPT en niños mayores de 6 años, adolescentes y adultos:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm29PIR2025_203",
+      "enunciado": "¿Qué NO es cierto sobre el Test de Matrices Progresivas de Raven?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm29PIR2025_206",
+      "enunciado": "Los rasgos, según Cattell, que tienen en cuenta la manera en que se comporta cada individuo, se refieren a los rasgos:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm2PIR2024_110",
+      "enunciado": "Señale cuál de los siguientes instrumentos de evaluación de las alucinaciones incluye la evaluación de los patrones de afrontamiento (resistencia y compromiso):",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm2PIR2024_113",
+      "enunciado": "¿Qué índice se obtiene en todas las escalas de inteligencia de Wechsler (WPSSI-IV, WISC-V y WAIS-IV)?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm2PIR2024_115",
+      "enunciado": "¿Qué indicación es apropiada para ajustar la entrevista a un escolar de 9 años?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm30PIR2025 (1)_103",
+      "enunciado": "El tratamiento para los niños que han sufrido malos tratos, que interviene tanto sobre la madre como sobre el niño, recibe el nombre de:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm3PIR2024_040",
+      "enunciado": "Al aumento de la media en las puntuaciones de cociente intelectual (CI) a medida que se suceden las generaciones, se le denomina:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm3PIR2024_060",
+      "enunciado": "¿Qué evalúa el subtest “matrices” del WAISIV?",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    },
+    {
+      "id": "SmCm5PIR2024_095",
+      "enunciado": "¿Qué instrumento para la medida de la inteligencia se diseñó para evaluar el factor “g” tal y como fue definido por Spearman?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA",
+      "destinosSugeridos": [],
+      "duplicados": []
+    }
+  ]
+}
