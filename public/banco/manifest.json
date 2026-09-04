@@ -45,7 +45,7 @@
     },
     "Clínica Infantojuvenil": {
       "slug": "clinica_infantojuvenil",
-      "count": 474,
+      "count": 475,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Discapacidad intelectual",
@@ -94,7 +94,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1974,
+      "count": 1972,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Clasificación de las técnicas de evaluación psicológica",
@@ -196,7 +196,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 626,
+      "count": 627,
       "topics": [
         "Modelos teóricos sobre la psicología social",
         "Cognición social y procesos de atribución",
