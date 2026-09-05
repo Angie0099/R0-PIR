@@ -1,0 +1,1486 @@
+{
+  "createdAt": "2026-09-05T14:44:46.381Z",
+  "subject": "Clínica Adultos",
+  "topic": "Trastornos disociativos",
+  "totalTema": 153,
+  "pendingBefore": 134,
+  "summary": {
+    "alta": 13,
+    "media": 112,
+    "baja": 9,
+    "ocr": 80,
+    "explicacionEnOpcion": 5,
+    "sinJustificacion": 42,
+    "sinReferencia": 95,
+    "ubicacionRevisar": 0,
+    "duplicadosExactos": 0
+  },
+  "batches": {
+    "alta": [
+      "JULIO1_076",
+      "JULIO1_104",
+      "MAYO-DOS-24_COMENTADO_123",
+      "MAYO2_064",
+      "MAYO2_068",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_036",
+      "SM_AGOSTO_1_SOL_1_077",
+      "SM_DICIEMBRE_1_SOL_1_035",
+      "SM_ENERO_1_SOL_1_093",
+      "SM_ENERO_1_SOL_1_101",
+      "SM_JULIO_1_SOL_1_043",
+      "SM_JULIO_2_SOL_1_010",
+      "SM_MAYO_1_SOL_1_084"
+    ],
+    "media": [
+      "ABRIL-UNO-24_COMENTADO_152",
+      "ABRIL-UNO-24_COMENTADO_159",
+      "ABRIL-UNO-24_COMENTADO_160",
+      "DICIEMBRE-DOS-24_COMENTADO_020",
+      "JUNIO-UNO-24_COMENTADO_049",
+      "JUNIO-UNO-24_COMENTADO_077",
+      "MAYO-DOS-24_COMENTADO_157",
+      "MAYO-UNO-24_COMENTADO_038",
+      "MAYO-UNO-24_COMENTADO_044",
+      "PERSEV_AGO25_U1_019",
+      "PERSEV_JUL25_D2_039",
+      "PERSEV_JUL25_D2_043",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_139",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_164",
+      "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_176",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_063",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_058",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_059",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_069",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_074",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_063",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_064",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_069",
+      "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_072",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_026",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_048",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_056",
+      "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_066",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_038",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_057",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_069",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_084",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_085",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_091",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_106",
+      "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_109",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_032",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_044",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_210",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_101",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_102",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_103",
+      "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_201",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_058",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_059",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_142",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_166",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_170",
+      "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_179",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_034",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_036",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_203",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_057",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_079",
+      "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_091",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_024",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_030",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_111",
+      "SEPTIEMBRE-DOS-24_COMENTADO_075",
+      "SEPTIEMBRE-DOS-24_COMENTADO_112",
+      "SEPTIEMBRE-DOS-24_COMENTADO_126",
+      "SEPTIEMBRE-UNO-24_COMENTADO_148",
+      "SEPTIEMBRE-UNO-24_COMENTADO_149",
+      "SIM_ABR25_147",
+      "SIM_PERS_AGO25_099",
+      "Simu 13 comentado_053",
+      "Simu 14 comentado _001",
+      "Simu 14 comentado _002",
+      "Simu 14 comentado _049",
+      "Simu 16 comentado_111",
+      "Simu 16 comentado_113",
+      "Simu 7 comentado _078",
+      "Simu 7 comentado _079",
+      "Simu 8 comentado _007",
+      "simu 9 comentado_089",
+      "simu 9 comentado_090",
+      "SM_ABRIL_1_SOL_1_022",
+      "SM_ABRIL_2_SOL_1_090",
+      "SM_JULIO_1_SOL_1_035",
+      "SM_JULIO_2_SOL_1_025",
+      "SM_JULIO_2_SOL_1_040",
+      "SmCm06PIR2025_032",
+      "SmCm08PIR2025_171",
+      "SmCm08PIR2025_173",
+      "SmCm09PIR2025_071",
+      "SmCm09PIR2025_072",
+      "SmCm10PIR2025_037",
+      "SmCm11PIR2025_150",
+      "SmCm11PIR2025_151",
+      "SmCm12PIR2024 2_035",
+      "SmCm14PIR2025_077",
+      "SmCm16PIR2025_063",
+      "SmCm16PIR2025_064",
+      "SmCm17PIR2025_111",
+      "SmCm17PIR2025_112",
+      "SmCm19PIR2024_070",
+      "SmCm22PIR2025 (1)_064",
+      "SmCm22PIR2025_041",
+      "SmCm22PIR2025_042",
+      "SmCm23PIR2025_063",
+      "SmCm24PIR2025 (1)_051",
+      "SmCm24PIR2025 (1)_063",
+      "SmCm25PIR2025_208",
+      "SmCm26PIR2025_007",
+      "SmCm26PIR2025_118",
+      "SmCm27PIR2025 (1)_106",
+      "SmCm28PIR2025_097",
+      "SmCm29PIR2025_072",
+      "SmCm2PIR2024_063",
+      "SmCm2PIR2024_064",
+      "SmCm30PIR2025 (1)_019",
+      "SmCm7PIR2024_020"
+    ],
+    "baja": [
+      "JULIO2_050",
+      "JUNIO1_120",
+      "OCTUBRE-UNO-24_COMENTADO_035",
+      "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_023",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_036",
+      "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_079",
+      "Simu 15 comentado_080",
+      "SM_DICIEMBRE_2_SOL_1_041",
+      "SM_JULIO_1_SOL_1_038"
+    ]
+  },
+  "rows": [
+    {
+      "id": "ABRIL-UNO-24_COMENTADO_152",
+      "enunciado": "Sobre el trastorno de despersonalización/desrealización marca la CORRECTA:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "ABRIL-UNO-24_COMENTADO_159",
+      "enunciado": "Sobre la etiología de los trastornos disociativos señala la correcta:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "ABRIL-UNO-24_COMENTADO_160",
+      "enunciado": "Según Tyrer 1989 clasi ca la disociación según la función afectada. Señala que asociación es correcta:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "DICIEMBRE-DOS-24_COMENTADO_020",
+      "enunciado": "Indique la opción correcta respecto a los Trastornos Disociativos:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "JULIO1_076",
+      "enunciado": "En el ámbito de la psicopatología de la conciencia del sí mismo, ¿a qué dimensión corresponde el fenómeno de escisión de la unidad del yo?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "JULIO1_104",
+      "enunciado": "¿Qué categoría diagnóstica le corresponde a \"afecciones agudas transitorias que duran por lo general menos de un mes, de limitaciones en la conciencia, despersonalización, desrealiza- ción, alteraciones de la percepción, microamnesias, estupor transitorio y/o alteraciones del funcionamiento sensitivo-motor (analgesias o parálisis)?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "JULIO2_050",
+      "enunciado": "¿Qué trastornos de la personalidad se citan como especialmente comórbidos con el trastorno de identidad disociativo?",
+      "clave": "a",
+      "flags": [
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "JUNIO-UNO-24_COMENTADO_049",
+      "enunciado": "1 Una incapacidad para recordar información de un evento específico en un período de tiempo determinado, se debe a una amnesia:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "JUNIO-UNO-24_COMENTADO_077",
+      "enunciado": "1 La amnesia disociativa de las personas con trastorno de identidad disociativo se manifiesta de tres formas principales (indica la INCORRECTA):",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "JUNIO1_120",
+      "enunciado": "¿Qué trastorno disociativo tiene como característica asociada que apoya al diagnóstico las disfunciones sexuales?:",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "MAYO-DOS-24_COMENTADO_123",
+      "enunciado": "¿Cuál de las siguientes es una alteración de la conciencia del sí mismo?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "MAYO-DOS-24_COMENTADO_157",
+      "enunciado": "En cuanto a los factores de riesgo y pronóstico en el Trastorno de Identidad Disociativo (DSM-5):",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "MAYO-UNO-24_COMENTADO_038",
+      "enunciado": "La CIE-11 distingue entre trastorno de identidad disociativo y trastorno de identidad disocia- tivo parcial. Señala la correcta en relación al trastorno de identidad disociativo parcial:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "MAYO-UNO-24_COMENTADO_044",
+      "enunciado": "Indica cuál de las siguientes es una característica clínica afectiva del trastorno de desrealiza- ción-despersonalización:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "MAYO2_064",
+      "enunciado": "¿Cuál de los siguientes trastornos NO se trata de un trastorno disociativo según el DSM-5 (2014)?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "MAYO2_068",
+      "enunciado": "¿Qué autor NO propone un modelo etiológico para explicar la disociación?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "OCTUBRE-UNO-24_COMENTADO_035",
+      "enunciado": "Según el DSM-5-TR, ¿qué trastornos de personalidad son especialmente comórbidos con el trastorno de despersonalización/desrealización?",
+      "clave": "d",
+      "flags": [
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "PERSEV_AGO25_U1_019",
+      "enunciado": "En cuanto a las anomalías en la integración perceptiva, señale la respuesta CORRECTA:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEV_JUL25_D2_039",
+      "enunciado": "Tyrer (1989) presentó una clasi cación categorías diagnósticas disociación según la función afectada. Señale cuál de las siguientes opciones es correcta:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEV_JUL25_D2_043",
+      "enunciado": "Cuando al preguntarle al paciente cómo se siente, nos responde: \"él está otando, existiendo dentro de todas las cosas\". Según la clasi cación de Reed (1988) ¿de qué experiéncia anómala del sí mismo se trata?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_139",
+      "enunciado": "2 3 4 5 6 ¿Qué teoría sobre la explicación de la disociación parte del supuesto de que el aparato men- tal consta de un conjunto de estructuras cognitivas que supervisan, organizan y controlan el pensamiento y la acción, organizadas jerárquicamente?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_164",
+      "enunciado": " Pregunta anulada 1  2 3 4 5 6 Según Caballo (2014), ¿qué alteración fisiológica se relaciona con la amnesia disociativa?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_176",
+      "enunciado": "2  3 4 5 6 De las siguientes opciones de respuesta, ¿cuál es cierta en relación con la amnesia disociativa?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_023",
+      "enunciado": "La amnesia disociativa presenta comorbilidad con trastornos de personalidad, especialmente con:",
+      "clave": "b",
+      "flags": [
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_063",
+      "enunciado": "1 En relación con los fenómenos disociativos, Farina et al. (2019) han señalado una distinción entre desintegración y disociación. ¿Cuál de los siguientes se considera un síntoma de desintegración?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_058",
+      "enunciado": "1 ¿Cuál de los siguientes síntomas disociativos pueden considerarse como una experiencia positiva?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_059",
+      "enunciado": "1 La CIE-11 diferencia entre trastorno de identidad disociativo y trastorno de identidad diso- ciativo parcial. ¿Cuál de las siguientes características es correcta?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_069",
+      "enunciado": "1 ¿Cuál de las siguientes alternativas es una característica fisiológica de la amnesia disociativa?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_074",
+      "enunciado": "1 En el modelo jerárquico de disociación de Van der Hart, van der Kolk y Boon (1996) se pre- sentan una serie de niveles según el tipo de disociación. ¿A qué nivel hace referencia cuando la persona percibe el acontecimiento sin experimentar un impacto emocional completo?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_063",
+      "enunciado": "1 En el modelo jerárquico de disociación de van der Hart, van der Kolk y Boon (1996), ¿qué im- plica la disociación primaria?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_064",
+      "enunciado": "1 De acuerdo con la teoría de Kihlstrom para los trastornos disociativos, estos son considera- dos trastornos de:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_069",
+      "enunciado": "1 ¿Cuál de las siguientes características es FALSA para la desrealización?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_ENERO-UNO-23_072",
+      "enunciado": "1 De acuerdo con el modelo etiológico multifactorial de Vanderlinden y Vandereycken (1997) formulado para explicar la relación entre experiencias traumáticas y síntomas disociativos, ¿qué factor favorece la ocurrencia de síntomas disociativos?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_026",
+      "enunciado": "Según la teoría de la disociación estructural de Van der Hart et al. (2006), ¿qué sistemas se di- socian como respuesta a un suceso traumático?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_048",
+      "enunciado": " 3 4 5 6 Según el modelo jerárquico de disociación de Van der Hart, van der Kolk y Boon (1996), ¿qué disociación supone el desarrollo de identidades separadas?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_056",
+      "enunciado": " Pregunta anulada  1 2 3 4 5 6 Señale la opción correcta respecto al trastorno de identidad disociativo:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_066",
+      "enunciado": " 3 4 5 6 Señale cuál de las siguientes opciones hace referencia a una característica de la Teoría de Kihlstrom para los trastornos disociativos:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_038",
+      "enunciado": "2 3 ¿Qué modelo sobre disociación habla sobre el sistema de defensa frente a la amenaza y el sis- tema que lleva adelante las tareas de la vida cotidiana y que ambos se disociarían como res- puesta al acontecimiento traumático y permanecerían rígidamente fijados en ese estado?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_057",
+      "enunciado": "2 3 ¿Cuál/es de los siguientes criterios diagnósticos se corresponden con el trastorno de identi- dad disociativo?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_069",
+      "enunciado": "2 3 La reacción disociativa en el que la persona, ante una situación percibida como amenazante, experimenta una forma más explícita de desapego, ya que se siente como si estuviera fuera de sí mismo, observando su forma de actuar como si estuviera observando a otra persona, se conoce como:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_084",
+      "enunciado": "2 3 Según Tyrer existe una clasificación de las categorías diagnósticas de la disociación según fuera la función afectada. Señale la respuesta correcta:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_085",
+      "enunciado": "2 3 Señale la respuesta correcta respecto a las modalidades o subtipos de la amnesia disociativa (según el DSM-5):",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-DOS-23_091",
+      "enunciado": "2 3 Según Simeon (2004), cuatro tipos de sustancias han sido identificadas con relación a los tras- tornos disociativos:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_106",
+      "enunciado": "2 3 La CIE-11 crea una nueva categoría específica para los trastornos disociativos que supone eli- minar la previa, en esta nueva categoría incluye el trastorno de la identidad disociativo par- cial que se define como:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_JUNIO-UNO-23_109",
+      "enunciado": "2  3 Farina (2019) realiza una distinción fundamentada en hallazgos empíricos de los trastornos disociativos. ¿Cuál de los siguientes trastornos se incluiría dentro de la desintegración?:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_032",
+      "enunciado": "2 Marque la respuesta correcta sobre la amnesia disociativa:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_036",
+      "enunciado": "2 Señale la opción INCORRECTA sobre el trastorno de desrealización/despersonalización:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_044",
+      "enunciado": "2 3 Señale la respuesta correcta respecto al trastorno de identidad disociativo:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_210",
+      "enunciado": " 3 Un sujeto que, a raíz de un suceso estresante, tiene sensación de que el tiempo transcurre muy despacio, se siente anestesiado, presenta momentos de parálisis y de amnesia, síntomas todos ellos que, en general, desaparecen en menos de un mes; padece con más probabilidad:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_101",
+      "enunciado": "2 3  4 5 Según la clasificación de Kihlstrom y su equipo (1992), indique dónde se encontraría la ce- guera psicógena:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_102",
+      "enunciado": "2 3  4 5 ¿Cuál NO se considera una de las funciones afectadas según la clasificación de Tyrer (1989)?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_103",
+      "enunciado": "2 3  4 5 ¿Para qué trastorno disociativo existe el especificador con fuga disociativa?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_201",
+      "enunciado": "2 3 4  5 ¿Cuál de los siguientes modelos para los trastornos disociativos plantea que el funciona- miento integrado del procesamiento de la información requiere un funcionamiento sincró- nico de cuatro ejes?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_058",
+      "enunciado": "1 Según el concepto acuñado por Schalinski et al. (2016) “Ventanas sensibles en el neurodesa- rollo”, ¿cuál sería el periodo ventana en el que la negligencia física y emocional podría dar lu- gar a síntomas disociativos?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-DOS-23_059",
+      "enunciado": "1 ¿Qué autor propone un modelo jerárquico de disociación de tres niveles para explicar los fe- nómenos disociativos?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_142",
+      "enunciado": "1 Los autores Van der Hart, Van der Kolk y Boon (1996) proponen un modelo jerárquico de di- sociación con tres niveles. ¿Qué encontramos en el segundo nivel?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_166",
+      "enunciado": "1 ¿Qué diagnóstico le correspondería a la reducción aguda o la pérdida completa de la concien- cia del entorno inmediato, manifestado como apatía o insensibilidad intensa a estímulos del entorno, que puede ir acompañada de comportamientos estereotipados mínimos, parálisis transitoria?:",
+      "clave": "d",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_170",
+      "enunciado": "1 Kihlstrom plantea una explicación sobre los trastornos disociativos. Marque cuál de las si- guientes opciones es correcta respecto a su teoría:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_179",
+      "enunciado": "1 Según la clasificación de Tyrer (1989) sobre las categorías diagnósticas de la disociación se- gún la función afectada, ¿en qué categoría se clasifica la amnesia disociativa?:",
+      "clave": "a",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_034",
+      "enunciado": "1 En relación a los modelos explicativos de los trastornos disociativos, ¿cuál le otorga un papel predominante a la relación conflictiva entre el mundo interno y la realidad?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_036",
+      "enunciado": "1 Según los trastornos disociativos, en la amnesia disociativa se encuentra entre sus alteracio- nes fisiológicas:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_203",
+      "enunciado": "1 ¿Con qué trastorno se relaciona al modelo etiológico multifactorial de Vanderlinden y Vandereycken?:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_057",
+      "enunciado": "1 Indique cuál de las siguientes es una característica clínica fisiológica del trastorno de identi- dad disociativo:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_079",
+      "enunciado": "1 Señale la correcta respecto al trastorno de trance de la CIE-11:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_091",
+      "enunciado": "1 Respecto a las modalidades en las que se puede presentar la amnesia disociativa, la existen- cia de un recuerdo parcial de los hechos que ocurrieron en el período de tiempo ligado al ol- vido se refiere a la modalidad:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_024",
+      "enunciado": "1 La clínica de los trastornos disociativos ha sido asociada a diferentes variables explicativas, estando la mayoría de ellas relacionadas con impactos emocionales o experiencias traumáti- cas tempranas. Señale la opción correcta respecto a estas últimas:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_030",
+      "enunciado": "1 Anna tuvo un accidente de tráfico hace dos semanas. Aun saliendo ilesa de la colisión entre su vehículo y una moto, desde entonces presenta limitación de la consciencia, estupor transito- rio y síntomas de despersonalización y desrealización. En consulta refiere que el tiempo \"le pasa más lento\", que hay momentos en los que ve todo su campo perceptivo a escala aumen- tada, y que tiene la sensación de que hay veces en las que no siente tanto dolor físico como antes. Además, le preocupa que, aunque solo sea por un breve periodo de tiempo, no puede recordar lo que pasó. Según criterios DSM-5, ¿qué trastorno es más probable que presente Anna?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_036",
+      "enunciado": "¿Qué enunciado es correcto sobre la teoría neodisociativa de Hilgard?",
+      "clave": "d",
+      "flags": [
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_079",
+      "enunciado": "1 La amnesia disociativa suele estar asociada a los sucesos traumáticos. ¿Qué sentimientos pueden explicar la existencia de este tipo de amnesia?:",
+      "clave": "b",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_111",
+      "enunciado": "2 4 En la valoración clínica del paciente es importante detectar ciertos aspectos cuya evaluación será importante para realizar un buen diagnóstico de trastorno de disociación. ¿Cuál NO es uno de ellos?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SEPTIEMBRE-DOS-24_COMENTADO_075",
+      "enunciado": "1 Señale la afirmación correcta respecto a las amnesias disociativas:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SEPTIEMBRE-DOS-24_COMENTADO_112",
+      "enunciado": "1 ¿A qué trastorno disociativo nos referimos si hablamos de \"la reducción aguda o la pérdida completa de la consciencia del entorno inmediato que se manifiesta como apatía o insensibi- lidad intensa a los estímulos del entorno\"?:",
+      "clave": "c",
+      "flags": [
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SEPTIEMBRE-DOS-24_COMENTADO_126",
+      "enunciado": "1 El modelo etiológico multifactorial de Vanderlinden y Vandereycken (1997) fue formulado para explicar la relación entre experiencias traumáticas y síntomas disociativos; en él se pro- pone una serie de variables que favorecen la ocurrencia de síntomas disociativos (señale la INCORRECTA):",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_148",
+      "enunciado": "¿Con qué trastornos de la personalidad es comórbida la amnesia disociativa?:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SEPTIEMBRE-UNO-24_COMENTADO_149",
+      "enunciado": "Señale cuál sería un criterio diagnóstico necesario para el trastorno de identidad disociativa:",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SIM_ABR25_147",
+      "enunciado": "Amnesia disociativa requiere:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "JUSTIFICACION_INSUFICIENTE",
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SIM_PERS_AGO25_099",
+      "enunciado": "Un paciente relata sentir como si fuera un observador externo de sus propios procesos mentales y de su cuerpo, experimentando un distanciamiento de sí mismo. Este síntoma se clasifica como:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 13 comentado_053",
+      "enunciado": "¿A qué hace la reducción aguda o pérdida completa de la consciencia del entorno inmediato que se manifiesta como apatía o insensibilidad intensa a los estímulos y que puede acompañarse de comportamientos estereotipados mínimos de los que el individuo no es consciente y/o no controla o de parálisis transitoria o pérdida de la consciencia?.",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 14 comentado _001",
+      "enunciado": "¿Cuál de los siguientes diagnósticos ubicados dentro de Otro trastorno disociativo específicado DSM-5 correspondería al diagnóstico de TID parcial en CIE-11?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 14 comentado _002",
+      "enunciado": "¿Cuál de los siguientes subtipos de Amnesia Disociativa es de tipo anterógrada?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 14 comentado _049",
+      "enunciado": "Respecto al trastorno de despersonalización y desrealización, señale la opción CORRECTA:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 15 comentado_080",
+      "enunciado": "La siguiente definición a qué cuadro diagnóstico hace referencia “incapacidad de recordar información autobiográfica importante, generalmente de naturaleza traumática o estresante, que es incompatible con el olvido ordinario”:",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "Simu 16 comentado_111",
+      "enunciado": "Señale la opción correcta con respecto al C trastorno de identidad disociativo (DSM 5): L r",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 16 comentado_113",
+      "enunciado": "Entre los factores de riesgo y pronóstico del ci trastorno de despersonalización/desrealización, de cual de las siguiente alternativas es ge INCORRECTA: cl bi",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 7 comentado _078",
+      "enunciado": "¿Cuál de los siguientes síntomas conductuales es más característico de la amnesia disociativa?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 7 comentado _079",
+      "enunciado": "¿Dónde se encuentra la fuga disociativa en DSM-5?: ÍA 2025 / 2026",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "Simu 8 comentado _007",
+      "enunciado": "Cuando se produce de una forma extrema, puede vivirse como un “yo escindido”, algo que se conoce como “una experiencia fuera del cuerpo”:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "simu 9 comentado_089",
+      "enunciado": "¿Cuál de los siguientes autores postula un de modelo el cual realiza una clasifica la disociación o d patológica en tres niveles?: rac rel",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "simu 9 comentado_090",
+      "enunciado": "¿Qué diagnóstico podríamos hacer, según el DSM5, a una persona que presenta interrupciones no demasiado intensas del sentido del yo y del sentido de entidad?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_ABRIL_1_SOL_1_022",
+      "enunciado": "Si un paciente presenta lapsos recurrentes en la memoria de acontecimientos cotidianos, in- formación personal importante y/ o sucesos traumáticos con el olvido ordinario, ¿según el DSM-5 qué diagnóstico podría recibir?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_ABRIL_2_SOL_1_090",
+      "enunciado": "Un sujeto que presenta reducción aguda o pérdida de la conciencia del entorno inmediato, manifestado como apatía o insensibilidad intensa a los estímulos del entorno, padece con más probabilidad:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_AGOSTO_1_SOL_1_077",
+      "enunciado": "En el sistema de clasi�cación CIE-11, se diferencia el Trastorno de Identidad Disociativo (TDI) y el Trastorno de Identidad Disociativo Parcial (TDI Parcial). La principal diferencia entre es- tas dos categorías es:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_DICIEMBRE_1_SOL_1_035",
+      "enunciado": "Ante una situación percibida de forma amenazante, la persona experimenta una forma más explícita de desapego, ya que se siente como si estuviera fuera de sí mismo, observando su forma de actuar como si estuviera observando a otra persona. ¿A qué alteración de la con- ciencia del sí mismo hace referencia esta descripción?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_DICIEMBRE_2_SOL_1_041",
+      "enunciado": "La pseudociesis es la creencia falsa de estar embarazada acompañada de signos y síntomas de embarazo. Este trastorno se clasifica como:",
+      "clave": "c",
+      "flags": [
+        "SIN_DESCARTE_DISTRACTORES"
+      ],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "SM_ENERO_1_SOL_1_093",
+      "enunciado": "¿Cuál de los siguientes síntomas �siológicos de la amnesia disociativa es correcto?:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_ENERO_1_SOL_1_101",
+      "enunciado": "En los trastornos disociativos, la CIE-11 diferencia dos categorías diagnósticas, ¿respecto a qué se diferencia el trastorno disociativo parcial del trastorno disociativo?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_035",
+      "enunciado": "De las siguientes características que hacen referencia al Trastorno de Identidad Disociativo (TID), señale la alternativa INCORRECTA:",
+      "clave": "d",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_038",
+      "enunciado": "En DSM-5-TR, ¿cuál puede especificarse como «otro trastorno disociativo especificado»?",
+      "clave": "a",
+      "flags": [],
+      "severity": "PRIORIDAD_BAJA"
+    },
+    {
+      "id": "SM_JULIO_1_SOL_1_043",
+      "enunciado": "En relación a los modelos explicativos de la disociación:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_010",
+      "enunciado": "La CIE-11 incorpora, respecto a su predecesora, importantes cambios, como por ejemplo se- parar los trastornos disociativos de la sintomatología exclusivamente somática. ¿Por qué trastorno sustituye el concepto de “conversión”?:",
+      "clave": "b",
+      "flags": [
+        "OCR_CORTE",
+        "EXPLICACION_EN_OPCION"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_025",
+      "enunciado": "Según la clasificación de las alteraciones de la conciencia del sí mismo de Reed (1988), ¿cuál de las siguientes se corresponde con “una sensación de separación o escisión de su propio yo”?:",
+      "clave": "c",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_JULIO_2_SOL_1_040",
+      "enunciado": "Señale la afirmación correcta respecto a la amnesia disociativa (DSM-5):",
+      "clave": "b",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_CORTE",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SM_MAYO_1_SOL_1_084",
+      "enunciado": "El trastorno de desrealización y despersonalización suele presentar comorbilidad con:",
+      "clave": "a",
+      "flags": [
+        "SIN_REFERENCIA",
+        "OCR_BASURA",
+        "OCR_CORTE"
+      ],
+      "severity": "PRIORIDAD_ALTA"
+    },
+    {
+      "id": "SmCm06PIR2025_032",
+      "enunciado": "Señala la alternativa INCORRECTA respecto a la clasificación de Tyrer:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm08PIR2025_171",
+      "enunciado": "Señale la respuesta INCORRECTA respecto al trastorno de identidad disociativos (DSM 5):",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm08PIR2025_173",
+      "enunciado": "Señale cual de los siguientes NO forma parte del modelo 4D de Frewen y Lanius:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm09PIR2025_071",
+      "enunciado": "Kopelman (1987) y Pratt (1977) definen una serie de factores predisponentes para la fuga disociativa, ¿cuál de los siguientes NO se incluye?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm09PIR2025_072",
+      "enunciado": "Braun (1988) propone un modelo para explicar los trastornos disociativos, ¿Qué modelo propone?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm10PIR2025_037",
+      "enunciado": "Según DSM-5, el único caso en el que se produce amnesia anterógrada de origen psicógeno es:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm11PIR2025_150",
+      "enunciado": "Tyrer (1989) según la función afectada propone distintos tipos de disociación, ¿qué trastorno o trastornos tendrían lugar si se produce la disociación de conductas complejas?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm11PIR2025_151",
+      "enunciado": "El modelo Bask de Braun (1988) se compone de 1 cuatro dimensiones, señale cual NO es una de ellas:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm12PIR2024 2_035",
+      "enunciado": "Señale cuál de las siguientes NO es una característica transdiagnóstica de los trastornos disociativos:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm14PIR2025_077",
+      "enunciado": "¿Cuál de los siguientes trastornos se incluye en Otro trastorno disociativo especificado (DSM 5)?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm16PIR2025_063",
+      "enunciado": "Entre los factores de riesgo y pronóstico del trastorno de despersonalización/desrealización, cual de las siguiente alternativas es INCORRECTA:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm16PIR2025_064",
+      "enunciado": "Señale la opción correcta con respecto al trastorno de identidad disociativo (DSM 5):",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm17PIR2025_111",
+      "enunciado": "Respecto a la amnesia disociativa sabemos: e s",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm17PIR2025_112",
+      "enunciado": "Dentro de los modelos explicativos de los Trastornos disociativos, los estudios de trauma y disociación de Van der Hart y cols. indican que:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm19PIR2024_070",
+      "enunciado": "¿Qué tipos de amnesias disociativas suelen pasar desapercibidas?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm22PIR2025 (1)_064",
+      "enunciado": "¿Cuánto puede llegar a durar la amnesia disociativa?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm22PIR2025_041",
+      "enunciado": "Cardeña y Carlson (2011) resumen las características transdiagnósticas de los trastornos disociativos en tres áreas. Señale cuál de los siguientes síntomas NO pertenecería a ninguna de dichas áreas:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm22PIR2025_042",
+      "enunciado": "¿En cuál de los siguientes trastornos el sujeto da respuestas aproximadas a las preguntas?:",
+      "clave": "c",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm23PIR2025_063",
+      "enunciado": "¿A qué trastorno hace referencia la afección que se caracteriza por la reducción aguda o la pérdida completa de la consciencia del entorno inmediato que se manifiesta como apatía o insensibilidad intensa a los estímulos del entorno?: MIR",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_051",
+      "enunciado": "Señale cuál de los siguientes fenómenos es menos propio y definitorio del trastorno de identidad disociativo (DSM 5):",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm24PIR2025 (1)_063",
+      "enunciado": "Según la CIE-11 en relación con el Trastorno por e trance de posesión, marque la opción correcta: p m PSICOLOGÍA AM",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm25PIR2025_208",
+      "enunciado": "Dentro de “Otros trastornos disociativos especificados”, DSM-5 incluye algunos ejemplos. ¿Cuál de los siguientes NO forma parte de los mismos?:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm26PIR2025_007",
+      "enunciado": "En el Modelo transdiagnóstico jerárquico de los trastornos emocionales se diferencian 5 niveles que recogen distintos de rasgos o patrones que pueden presentar en mayor o menor medida personas con trastornos emocionales. Con respecto a las estrategias del tercer nivel, ¿cuáles serían más propia del TAG?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm26PIR2025_118",
+      "enunciado": "¿Cuál de los siguientes NO es un desencadenante de inicio del trastorno de identidad disociativo?:",
+      "clave": "d",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm27PIR2025 (1)_106",
+      "enunciado": "¿En cuál de los siguientes trastornos encontramos como factor de riesgo temperamental la presencia de esquemas de sobreconexión o desconexión?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm28PIR2025_097",
+      "enunciado": "La Fuga Disociativa se caracteriza por la su pérdida de la identidad personal lo cual es poco si frecuente en alteraciones orgánicas (a excepción am de las demencias muy avanzadas), señale la rr opción incorrecta en cuanto a la fuga disociativa de entre las siguientes afirmaciones: pr su",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm29PIR2025_072",
+      "enunciado": "La amnesia disociativa:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA",
+        "DATO_CUANTITATIVO_REVISAR"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm2PIR2024_063",
+      "enunciado": "En el modelo jerárquico de disociación de van der Hart, van der Kolk y Boon (1996), ¿qué implica la disociación primaria?:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm2PIR2024_064",
+      "enunciado": "De acuerdo con la teoría de Kihlstrom para los trastornos disociativos, estos son considerados trastornos de:",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm30PIR2025 (1)_019",
+      "enunciado": "Señale la opción correcta respecto a la amnesia 21. disociativa:",
+      "clave": "a",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    },
+    {
+      "id": "SmCm7PIR2024_020",
+      "enunciado": "¿Dónde se encuentra la fuga disociativa en DSM-5?",
+      "clave": "b",
+      "flags": [
+        "SIN_JUSTIFICACION",
+        "SIN_REFERENCIA"
+      ],
+      "severity": "PRIORIDAD_MEDIA"
+    }
+  ]
+}
