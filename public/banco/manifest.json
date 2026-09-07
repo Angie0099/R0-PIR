@@ -5,7 +5,7 @@
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 1032,
+      "count": 1024,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -45,7 +45,7 @@
     },
     "Clínica Infantojuvenil": {
       "slug": "clinica_infantojuvenil",
-      "count": 508,
+      "count": 515,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Discapacidad intelectual",
@@ -94,7 +94,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1972,
+      "count": 1973,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Clasificación de las técnicas de evaluación psicológica",
