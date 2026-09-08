@@ -5,7 +5,7 @@
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 1024,
+      "count": 1023,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -45,7 +45,7 @@
     },
     "Clínica Infantojuvenil": {
       "slug": "clinica_infantojuvenil",
-      "count": 515,
+      "count": 516,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Discapacidad intelectual",
