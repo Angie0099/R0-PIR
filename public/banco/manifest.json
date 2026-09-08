@@ -5,7 +5,7 @@
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 1013,
+      "count": 1005,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -21,7 +21,7 @@
     },
     "Clínica Adultos": {
       "slug": "clinica_adultos",
-      "count": 2712,
+      "count": 2716,
       "topics": [
         "Trastornos del espectro de la esquizofrenia",
         "Trastornos depresivos",
@@ -45,7 +45,7 @@
     },
     "Clínica Infantojuvenil": {
       "slug": "clinica_infantojuvenil",
-      "count": 520,
+      "count": 524,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Discapacidad intelectual",
