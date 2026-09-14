@@ -1,0 +1,5 @@
+const fs=require('fs'),path=require('path'),file=path.join(__dirname,'..','public','banco','clinica_adultos.json');
+const b=JSON.parse(fs.readFileSync(file,'utf8')),topic='Trastornos de la conducta alimentaria';
+const ids=['14Simulacro2018Comentarios_113','1Simulacro02018Comentarios_029','ABRIL-UNO-24_COMENTADO_144','ABRIL-UNO-24_COMENTADO_145','ABRIL-UNO-24_COMENTADO_146','AGOSTO2_063','AGOSTO2_093','DICIEMBRE-DOS-24_COMENTADO_017','DICIEMBRE-DOS-24_COMENTADO_019','DICIEMBRE-DOS-24_COMENTADO_066','DICIEMBRE-UNO-24_COMENTADO_098','DICIEMBRE-UNO-24_COMENTADO_099','DICIEMBRE-UNO-24_COMENTADO_145','JULIO1_083','JULIO1_084','JULIO1_085','JULIO2_032','JULIO2_048','JULIO2_051','JUNIO-UNO-24_COMENTADO_056'];
+for(const id of ids){const q=b.find(z=>z.id===id);if(!q||!q.t?.includes(topic)||!q.o?.[q.c]||!q.e||!q.x||!q.r)throw Error('Invalid '+id);q.v='VALIDADA_ORIGINAL'}
+fs.writeFileSync(file,JSON.stringify(b));console.log({individuallyReaudited:ids.length,remaining:b.filter(q=>q.t?.includes(topic)&&q.v!=='VALIDADA_ORIGINAL').length});
