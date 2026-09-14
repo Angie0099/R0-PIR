@@ -1,0 +1,12 @@
+const fs=require('fs'),path=require('path');
+const dir=path.join(__dirname,'..','public','banco');
+const adultFile=path.join(dir,'tratamientos_adultos.json'),childFile=path.join(dir,'tratamientos_infantiles.json');
+const adults=JSON.parse(fs.readFileSync(adultFile,'utf8')),children=JSON.parse(fs.readFileSync(childFile,'utf8'));
+const id='DICIEMBRE-UNO-24_COMENTADO_157',index=adults.findIndex(q=>q.id===id);
+if(index<0)throw Error('No se encontró la pregunta en tratamientos de adultos');
+if(children.some(q=>q.id===id))throw Error('El identificador ya existe en tratamientos infantiles');
+const [q]=adults.splice(index,1);
+Object.assign(q,{s:'Tratamientos Infantiles',t:['TDAH'],e:'¿Cuál de los siguientes fármacos NO es un tratamiento específico del trastorno por déficit de atención con hiperactividad (TDAH)?',o:{a:'Metilfenidato.',b:'Guanfacina.',c:'Atomoxetina.',d:'Sulpirida.'},c:'d',x:'La d es correcta: la sulpirida es un antipsicótico y no un tratamiento específico del TDAH. Metilfenidato es un psicoestimulante; atomoxetina y guanfacina son alternativas no estimulantes utilizadas en el tratamiento farmacológico del TDAH.',r:'Grupo de trabajo de la Guía de Práctica Clínica sobre las Intervenciones Terapéuticas en el TDAH. Guía de Práctica Clínica; Fonseca-Pedrero, E. (coord.) (2021). Manual de tratamientos psicológicos: infancia y adolescencia. Pirámide.',v:'VALIDADA_ORIGINAL',origen:q.origen||'banco_oficial'});
+children.push(q);
+fs.writeFileSync(adultFile,JSON.stringify(adults));fs.writeFileSync(childFile,JSON.stringify(children));
+console.log({moved:id,from:'Tratamiento de la psicosis y esquizofrenia',to:'TDAH'});
