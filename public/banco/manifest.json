@@ -1,7 +1,7 @@
 {
   "_type": "r0pir-banco-oficial",
   "_version": 1,
-  "total": 15992,
+  "total": 15989,
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
@@ -21,7 +21,7 @@
     },
     "Clínica Adultos": {
       "slug": "clinica_adultos",
-      "count": 2650,
+      "count": 2652,
       "topics": [
         "Trastornos del espectro de la esquizofrenia",
         "Trastornos depresivos",
@@ -69,7 +69,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4150,
+      "count": 4143,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -179,7 +179,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 666,
+      "count": 667,
       "topics": [
         "Introducción",
         "Historia de las psicoterapias",
@@ -227,7 +227,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 236,
+      "count": 237,
       "topics": [
         "Introducción a la psicología clínica infantil",
         "Discapacidad intelectual",
