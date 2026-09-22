@@ -1,0 +1,364 @@
+{
+  "date": "2026-09-22",
+  "before": 2715,
+  "after": 2644,
+  "removedCount": 71,
+  "correctedOcrCount": 13,
+  "removed": [
+    {
+      "removedId": "SIM_PERS_AGO25_084",
+      "keptId": "4Simulacro02018Comentarios_212",
+      "stem": "En la esquizofrenia, las alucinaciones más frecuentes son:"
+    },
+    {
+      "removedId": "SmCm14PIR2025_057",
+      "keptId": "4Simulacro02018Comentarios_212",
+      "stem": "En la esquizofrenia, las alucinaciones más frecuentes son:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_079",
+      "keptId": "SM_JUNIO_2_SOL_1_046",
+      "stem": "Respecto a los Estados Mentales de Alto Riesgo (EMAR), señale la afirmación correcta:"
+    },
+    {
+      "removedId": "JULIO1_114",
+      "keptId": "SM_JUNIO_2_SOL_1_046",
+      "stem": "Respecto a los Estados Mentales de Alto Riesgo (EMAR), señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-UNO-23_070",
+      "keptId": "SM_JUNIO_2_SOL_1_046",
+      "stem": "Respecto a los Estados Mentales de Alto Riesgo (EMAR), señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SM_ABRIL_1_SOL_1_063",
+      "keptId": "MAYO-UNO-24_COMENTADO_033",
+      "stem": "En la dimensión negativa de la esquizofrenia, el componente experiencial incluye:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_031",
+      "keptId": "OCTUBRE-UNO-24_COMENTADO_077",
+      "stem": "Respecto a los sesgos cognitivos implicados en los delirios, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SmCm06PIR2025_021",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_161",
+      "stem": "El trastorno esquizofreniforme se diferencia de la esquizofrenia porque:"
+    },
+    {
+      "removedId": "SIM_ABR25_136",
+      "keptId": "SIM_PERS_AGO25_136",
+      "stem": "En el trastorno delirante, el funcionamiento general de la persona:"
+    },
+    {
+      "removedId": "simu 9 comentado_081",
+      "keptId": "SmCm27PIR2025 (1)_087",
+      "stem": "Respecto a los modelos explicativos del síndrome psicótico, señale la afirmación INCORRECTA:"
+    },
+    {
+      "removedId": "SmCm16PIR2025_202",
+      "keptId": "SmCm19PIR2024_073",
+      "stem": "¿Cuál de los siguientes NO es un síntoma negativo de la esquizofrenia?"
+    },
+    {
+      "removedId": "AGOSTO2_030",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_173",
+      "stem": "¿Cómo se denomina la reaparición de síntomas depresivos durante la remisión del mismo episodio?"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_170",
+      "keptId": "JULIO2_035",
+      "stem": "Respecto al trastorno depresivo persistente, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_110",
+      "keptId": "JULIO2_035",
+      "stem": "Respecto al trastorno depresivo persistente, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SmCm21PIR2025 (2)_032",
+      "keptId": "MAYO-DOS-24_COMENTADO_151",
+      "stem": "Respecto al trastorno depresivo persistente, señale la afirmación incorrecta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_116",
+      "keptId": "SM_ENERO_1_SOL_1_107",
+      "stem": "Respecto al trastorno disfórico premenstrual, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "MAYO-DOS-24_COMENTADO_152",
+      "keptId": "SM_ENERO_1_SOL_1_107",
+      "stem": "Respecto al trastorno disfórico premenstrual, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SmCm27PIR2025 (1)_110",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_045",
+      "stem": "Respecto al curso del trastorno depresivo mayor, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "Simu 7 comentado _076",
+      "keptId": "MAYO-UNO-24_COMENTADO_021",
+      "stem": "Señale la afirmación INCORRECTA sobre riesgo suicida en el trastorno depresivo mayor:"
+    },
+    {
+      "removedId": "SmCm19PIR2024_076",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_069",
+      "stem": "¿Qué combinación define el trastorno bipolar II según DSM-5-TR?"
+    },
+    {
+      "removedId": "SEPTIEMBRE-UNO-24_COMENTADO_138",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_070",
+      "stem": "Señale la opción correcta respecto a la fobia específica (DSM-5):"
+    },
+    {
+      "removedId": "Simu 7 comentado _103",
+      "keptId": "SmCm7PIR2024_063",
+      "stem": "En el Trastorno de Ansiedad social hay un modelo que propone la teoría de la autopresentación y de la audiencia, ¿De qué modelo se trata?"
+    },
+    {
+      "removedId": "SM_JULIO_2_SOL_1_030",
+      "keptId": "SmCm22PIR2025 (1)_053",
+      "stem": "¿Qué componente NO pertenece al modelo de intolerancia a la incertidumbre de Dugas para el TAG?"
+    },
+    {
+      "removedId": "JUNIO1_109",
+      "keptId": "PERSEV_JUL25_D2_037",
+      "stem": "Según el DSM-5-TR, ¿cuál es un predictor robusto del trastorno de estrés agudo?"
+    },
+    {
+      "removedId": "JULIO1_099",
+      "keptId": "NOVIEMBRE-DOS-24_COMENTADO_054",
+      "stem": "Respecto al trastorno por juego de apuestas, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "JULIO1_102",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_064",
+      "stem": "Según el DSM-5-TR, ¿qué afirmación es correcta sobre el trastorno de síntomas neurológicos funcionales?"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-UNO-23_075",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_064",
+      "stem": "Según el DSM-5-TR, ¿qué afirmación es correcta sobre el trastorno de síntomas neurológicos funcionales?"
+    },
+    {
+      "removedId": "MAYO-UNO-24_COMENTADO_048",
+      "keptId": "SM_ABRIL_2_SOL_1_069",
+      "stem": "Respecto al trastorno de síntomas somáticos, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_055",
+      "keptId": "SM_ABRIL_2_SOL_1_069",
+      "stem": "Respecto al trastorno de síntomas somáticos, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SM_DICIEMBRE_2_SOL_1_064",
+      "keptId": "SM_ABRIL_2_SOL_1_069",
+      "stem": "Respecto al trastorno de síntomas somáticos, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_073",
+      "keptId": "SM_ABRIL_2_SOL_1_069",
+      "stem": "Respecto al trastorno de síntomas somáticos, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_ABRIL-DOS-23_161",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_172",
+      "stem": "Sobre el trastorno de síntomas neurológicos funcionales, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_MAYO-UNO-23_106",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_051",
+      "stem": "Respecto al trastorno facticio, señale la afirmación INCORRECTA:"
+    },
+    {
+      "removedId": "SmCm13PIR2025_069",
+      "keptId": "Simu 13 comentado_055",
+      "stem": "Respecto al trastorno de síntomas somáticos, señale la afirmación INCORRECTA:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_060",
+      "keptId": "Simu 13 comentado_055",
+      "stem": "Respecto al trastorno de síntomas somáticos, señale la afirmación INCORRECTA:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_081",
+      "keptId": "SEPTIEMBRE-UNO-24_COMENTADO_139",
+      "stem": "Respecto al trastorno de ansiedad por enfermedad, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_069",
+      "keptId": "SM_JUNIO_2_SOL_1_021",
+      "stem": "Respecto al trastorno de síntomas neurológicos funcionales, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SmCm06PIR2025_036",
+      "keptId": "JULIO1_083",
+      "stem": "Respecto a la bulimia nerviosa, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SmCm10PIR2025_050",
+      "keptId": "JULIO2_048",
+      "stem": "Respecto a la bulimia nerviosa, señale la afirmación INCORRECTA:"
+    },
+    {
+      "removedId": "SEPTIEMBRE-DOS-24_COMENTADO_180",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_069",
+      "stem": "Respecto al trastorno de rumiación (DSM-5), señale la opción correcta:"
+    },
+    {
+      "removedId": "SmCm15PIR2025_042",
+      "keptId": "Simu 15 comentado_075",
+      "stem": "¿Qué término se emplea para la reducción deliberada de insulina en una persona con diabetes mellitus tipo 1 con la finalidad de controlar el peso?"
+    },
+    {
+      "removedId": "SM_JUNIO_2_SOL_1_026",
+      "keptId": "SM_DICIEMBRE_2_SOL_1_071",
+      "stem": "Respecto a la anorexia nerviosa, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SM_MAYO_1_SOL_1_099",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_027",
+      "stem": "Respecto a la narcolepsia, señale la opción correcta:"
+    },
+    {
+      "removedId": "ABRIL-UNO-24_COMENTADO_121",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_027",
+      "stem": "Respecto a la narcolepsia, señale la opción correcta:"
+    },
+    {
+      "removedId": "JUNIO1_099",
+      "keptId": "DICIEMBRE-UNO-24_COMENTADO_143",
+      "stem": "Respecto al desarrollo y curso de la narcolepsia, señale la opción correcta:"
+    },
+    {
+      "removedId": "SmCm12PIR2024 2_043",
+      "keptId": "Simu 12 comentado_078",
+      "stem": "¿Dentro de qué diagnóstico se engloba la respiración de Cheynes-Stokes?"
+    },
+    {
+      "removedId": "SmCm7PIR2024_025",
+      "keptId": "Simu 7 comentado _089",
+      "stem": "Uno de los principales cambios del capítulo de trastorno de sueñovigilia es el criterio temporal para el insomnio y la hipersomnia ¿Cuántas veces tiene que ocurrir para poder diagnosticarse estos dos cuadros?:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_043",
+      "keptId": "MAYO-DOS-24_COMENTADO_131",
+      "stem": "Respecto al trastorno eréctil, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-DOS-23_024",
+      "keptId": "SM_DICIEMBRE_2_SOL_1_068",
+      "stem": "¿Cuál es una idea central del modelo de Basson sobre la respuesta sexual femenina?"
+    },
+    {
+      "removedId": "SM_DICIEMBRE_1_SOL_1_047",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_134",
+      "stem": "Respecto al trastorno orgásmico femenino, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SM_DICIEMBRE_2_SOL_1_079",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_134",
+      "stem": "Respecto al trastorno orgásmico femenino, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_AGOSTO-UNO-23_043",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_081",
+      "stem": "Según el modelo de Barlow para la disfunción eréctil, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_013",
+      "keptId": "JULIO2_031",
+      "stem": "Señale la afirmación correcta sobre la disforia de género según el DSM-5:"
+    },
+    {
+      "removedId": "SM_MAYO_1_SOL_1_102",
+      "keptId": "JULIO2_031",
+      "stem": "Señale la afirmación correcta sobre la disforia de género según el DSM-5:"
+    },
+    {
+      "removedId": "SM_ABRIL_1_SOL_1_040",
+      "keptId": "PERSEV_AGO25_U1_033",
+      "stem": "Según el DSM-5, señale la afirmación correcta sobre la disforia de género:"
+    },
+    {
+      "removedId": "SEPTIEMBRE-UNO-24_COMENTADO_067",
+      "keptId": "JULIO2_014",
+      "stem": "Según el DSM-5, señale la afirmación correcta sobre el trastorno explosivo intermitente:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_024",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_036",
+      "stem": "¿Cuál de estas manifestaciones puede aparecer en una intoxicación grave por cafeína?"
+    },
+    {
+      "removedId": "SmCm15PIR2025_053",
+      "keptId": "ABRIL-UNO-24_COMENTADO_147",
+      "stem": "Respecto al trastorno neurocognitivo vascular, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SM_DICIEMBRE_2_SOL_1_040",
+      "keptId": "ABRIL-UNO-24_COMENTADO_147",
+      "stem": "Respecto al trastorno neurocognitivo vascular, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SM_DICIEMBRE_1_SOL_1_060",
+      "keptId": "ABRIL-UNO-24_COMENTADO_147",
+      "stem": "Respecto al trastorno neurocognitivo vascular, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEV_JUL25_D2_053",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-DOS-23_062",
+      "stem": "Respecto a las variantes de afasia primaria progresiva, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_053",
+      "keptId": "PERSEV_JUL25_D2_054",
+      "stem": "Según el DSM-5-TR, ¿cuál es una característica diagnóstica sugestiva del trastorno neurocognitivo con cuerpos de Lewy?"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_DICIEMBRE-UNO-23_060",
+      "keptId": "PERSEV_JUL25_D2_054",
+      "stem": "Según el DSM-5-TR, ¿cuál es una característica diagnóstica sugestiva del trastorno neurocognitivo con cuerpos de Lewy?"
+    },
+    {
+      "removedId": "SEPTIEMBRE-UNO-24_COMENTADO_178",
+      "keptId": "PERSEV_JUL25_D2_054",
+      "stem": "Según el DSM-5-TR, ¿cuál es una característica diagnóstica sugestiva del trastorno neurocognitivo con cuerpos de Lewy?"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-DOS-23_042",
+      "keptId": "SM_DICIEMBRE_2_SOL_1_038",
+      "stem": "Respecto al deterioro cognitivo leve, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_NOVIEMBRE-UNO-23_140",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_JULIO-UNO-23_051",
+      "stem": "Respecto al trastorno neurocognitivo debido a enfermedad de Alzheimer, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_MAYO-DOS-23_051",
+      "keptId": "PERSEVER___SIMULACRO_COMENTADO_SEPTIEMBRE-DOS-23_052",
+      "stem": "Respecto a la epidemiología de los trastornos neurocognitivos, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "PERSEVER___SIMULACRO_COMENTADO_OCTUBRE-UNO-23_074",
+      "keptId": "Simu 7 comentado _094",
+      "stem": "Respecto a la degeneración frontotemporal, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SmCm7PIR2024_037",
+      "keptId": "Simu 7 comentado _094",
+      "stem": "Respecto a la degeneración frontotemporal, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SmCm24PIR2025 (1)_059",
+      "keptId": "Simu 11 comentado_066",
+      "stem": "Respecto a la enfermedad de Huntington, señale la afirmación correcta:"
+    },
+    {
+      "removedId": "SmCm20PIR2024_048",
+      "keptId": "SmCm20PIR2025 (1)_061",
+      "stem": "Las placas neuríticas características de la enfermedad de Alzheimer contienen principalmente:"
+    }
+  ]
+}
