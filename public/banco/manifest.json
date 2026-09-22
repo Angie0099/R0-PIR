@@ -1,7 +1,7 @@
 {
   "_type": "r0pir-banco-oficial",
   "_version": 1,
-  "total": 15966,
+  "total": 15965,
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
@@ -69,7 +69,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4062,
+      "count": 4059,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -227,7 +227,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 284,
+      "count": 286,
       "topics": [
         "Introducción a la psicología clínica infantil",
         "Discapacidad intelectual",
