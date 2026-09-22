@@ -1,11 +1,11 @@
 {
   "_type": "r0pir-banco-oficial",
   "_version": 1,
-  "total": 15965,
+  "total": 15954,
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 947,
+      "count": 904,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -21,7 +21,7 @@
     },
     "Clínica Adultos": {
       "slug": "clinica_adultos",
-      "count": 2656,
+      "count": 2665,
       "topics": [
         "Trastornos del espectro de la esquizofrenia",
         "Trastornos depresivos",
@@ -45,7 +45,7 @@
     },
     "Clínica Infantojuvenil": {
       "slug": "clinica_infantojuvenil",
-      "count": 543,
+      "count": 549,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Discapacidad intelectual",
@@ -69,7 +69,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4059,
+      "count": 4063,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -115,7 +115,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1404,
+      "count": 1408,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Estrategias de investigación en Psicología Diferencial",
@@ -140,7 +140,7 @@
     },
     "Psicobiología": {
       "slug": "psicobiologia",
-      "count": 1240,
+      "count": 1243,
       "topics": [
         "Aproximación a la genética",
         "Nivel celular: la neurona",
@@ -196,7 +196,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 629,
+      "count": 632,
       "topics": [
         "Modelos teóricos sobre la psicología social",
         "Cognición social y procesos de atribución",
@@ -211,7 +211,7 @@
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
-      "count": 491,
+      "count": 492,
       "topics": [
         "Introducción a la psicología del desarrollo",
         "Perspectivas teóricas en psicología del desarrollo",
@@ -247,7 +247,7 @@
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
-      "count": 251,
+      "count": 253,
       "topics": [
         "Introducción",
         "Método científico y experimental",
