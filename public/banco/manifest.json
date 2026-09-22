@@ -1,11 +1,11 @@
 {
   "_type": "r0pir-banco-oficial",
   "_version": 1,
-  "total": 15954,
+  "total": 15952,
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 904,
+      "count": 900,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -45,7 +45,7 @@
     },
     "Clínica Infantojuvenil": {
       "slug": "clinica_infantojuvenil",
-      "count": 549,
+      "count": 550,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Discapacidad intelectual",
@@ -227,7 +227,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 286,
+      "count": 287,
       "topics": [
         "Introducción a la psicología clínica infantil",
         "Discapacidad intelectual",
