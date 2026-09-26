@@ -1,11 +1,11 @@
 {
   "_type": "r0pir-banco-oficial",
   "_version": 1,
-  "total": 15952,
+  "total": 15689,
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 899,
+      "count": 832,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -21,7 +21,7 @@
     },
     "Clínica Adultos": {
       "slug": "clinica_adultos",
-      "count": 2665,
+      "count": 2726,
       "topics": [
         "Trastornos del espectro de la esquizofrenia",
         "Trastornos depresivos",
@@ -45,7 +45,7 @@
     },
     "Clínica Infantojuvenil": {
       "slug": "clinica_infantojuvenil",
-      "count": 550,
+      "count": 556,
       "topics": [
         "Introducción a la psicopatología infantil",
         "Discapacidad intelectual",
@@ -64,12 +64,13 @@
         "Trastornos de eliminación infantojuveniles",
         "Trastornos del sueño-vigilia infantojuveniles",
         "Trastornos disruptivos, del control de los impulsos y de la conducta infantojuveniles",
-        "Disforia de género infantojuvenil"
+        "Disforia de género infantojuvenil",
+        "Otros problemas infantojuveniles"
       ]
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4064,
+      "count": 4106,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -94,7 +95,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1974,
+      "count": 1984,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Clasificación de las técnicas de evaluación psicológica",
@@ -115,7 +116,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1408,
+      "count": 1231,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Estrategias de investigación en Psicología Diferencial",
@@ -140,7 +141,7 @@
     },
     "Psicobiología": {
       "slug": "psicobiologia",
-      "count": 1243,
+      "count": 1132,
       "topics": [
         "Aproximación a la genética",
         "Nivel celular: la neurona",
@@ -162,7 +163,7 @@
     },
     "Psicología Básica": {
       "slug": "psicologia_basica",
-      "count": 814,
+      "count": 755,
       "topics": [
         "Introducción a la psicología",
         "Sensación y percepción",
@@ -179,7 +180,7 @@
     },
     "Psicoterapias": {
       "slug": "psicoterapias",
-      "count": 671,
+      "count": 665,
       "topics": [
         "Introducción",
         "Historia de las psicoterapias",
@@ -196,7 +197,7 @@
     },
     "Psicología Social": {
       "slug": "psicologia_social",
-      "count": 632,
+      "count": 614,
       "topics": [
         "Modelos teóricos sobre la psicología social",
         "Cognición social y procesos de atribución",
@@ -211,7 +212,7 @@
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
-      "count": 492,
+      "count": 483,
       "topics": [
         "Introducción a la psicología del desarrollo",
         "Perspectivas teóricas en psicología del desarrollo",
@@ -227,7 +228,7 @@
     },
     "Tratamientos Infantiles": {
       "slug": "tratamientos_infantiles",
-      "count": 287,
+      "count": 320,
       "topics": [
         "Introducción a la psicología clínica infantil",
         "Discapacidad intelectual",
@@ -242,12 +243,13 @@
         "Trastornos de conducta infantojuvenil",
         "Trastornos de excreción infantojuvenil",
         "Conducta suicida y autolesión infantojuvenil",
-        "Otros problemas infantojuveniles"
+        "Otros problemas infantojuveniles",
+        "Trastorno obsesivo-compulsivo y relacionados infantojuveniles"
       ]
     },
     "Psicología Experimental": {
       "slug": "psicologia_experimental",
-      "count": 253,
+      "count": 285,
       "topics": [
         "Introducción",
         "Método científico y experimental",
