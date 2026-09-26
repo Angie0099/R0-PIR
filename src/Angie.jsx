@@ -210,7 +210,7 @@ const LEARN_N = 3;
 const K = { deck:"pir:deck_v5", stats:"pir:stats_v1", qstats:"pir:qstats_v1", hiddenOfficial:"pir:hidden_oficial_v1" };
 
 // Preguntas del banco oficial corruptas por OCR (marca de agua colada en el texto): se descartan al cargar.
-const OFFICIAL_CORRUPT_RX = /PSICOLOG[IÍ]A\s*AMI|\bAMIR\b|\bCEDE\b/i;
+const OFFICIAL_CORRUPT_RX = /PSICOLOG[IÍ]A\s*AMI(?:R)?\b|\bAMIR\b/i;
 const isCorruptOfficial = (q) => {
   try {
     const o = q.o || {};

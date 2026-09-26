@@ -1,11 +1,11 @@
 {
   "_type": "r0pir-banco-oficial",
   "_version": 1,
-  "total": 15689,
+  "total": 15681,
   "subjects": {
     "Psicopatología": {
       "slug": "psicopatologia",
-      "count": 832,
+      "count": 831,
       "topics": [
         "Modelos en psicopatología",
         "Sistemas clasificatorios en psicopatología",
@@ -70,7 +70,7 @@
     },
     "Tratamientos Adultos": {
       "slug": "tratamientos_adultos",
-      "count": 4106,
+      "count": 4103,
       "topics": [
         "Introducción",
         "Técnicas psicológicas generales",
@@ -95,7 +95,7 @@
     },
     "Evaluación Psicológica": {
       "slug": "evaluacion_psicologica",
-      "count": 1984,
+      "count": 1983,
       "topics": [
         "Fundamentos de la evaluación psicológica",
         "Clasificación de las técnicas de evaluación psicológica",
@@ -116,7 +116,7 @@
     },
     "Psicología de la Personalidad y Diferencial": {
       "slug": "psicologia_de_la_personalidad_y_diferencial",
-      "count": 1231,
+      "count": 1232,
       "topics": [
         "Introducción a la psicología de la personalidad",
         "Estrategias de investigación en Psicología Diferencial",
@@ -141,7 +141,7 @@
     },
     "Psicobiología": {
       "slug": "psicobiologia",
-      "count": 1132,
+      "count": 1130,
       "topics": [
         "Aproximación a la genética",
         "Nivel celular: la neurona",
@@ -163,7 +163,7 @@
     },
     "Psicología Básica": {
       "slug": "psicologia_basica",
-      "count": 755,
+      "count": 754,
       "topics": [
         "Introducción a la psicología",
         "Sensación y percepción",
@@ -212,7 +212,7 @@
     },
     "Psicología Evolutiva": {
       "slug": "psicologia_evolutiva",
-      "count": 483,
+      "count": 482,
       "topics": [
         "Introducción a la psicología del desarrollo",
         "Perspectivas teóricas en psicología del desarrollo",
